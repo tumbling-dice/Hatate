@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TimePickerPreference">
+        <attr name="key_hour" format="string"/>
+        <attr name="key_minute" format="string"/>
+        <attr name="defualt_hour" format="integer"/>
+        <attr name="defualt_minute" format="integer"/>
+    </declare-styleable>
+</resources>
