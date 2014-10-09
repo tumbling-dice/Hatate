@@ -7,7 +7,7 @@
 	<inujini_.hatate.preference.TimePickerPreference
 	    android:key="time"
 	    android:title="時刻"
-	    android:summary="包丁で刺される時刻を設定します。\n現在は00:00に設定されています。"
+	    android:summary="包丁で刺される時刻を設定します。\n現在は%02d:%02dに設定されています。"
 	    hatate:key_hour="hour"
 	    hatate:key_minute="time"/>
 	</PreferenceCategory>
@@ -34,6 +34,26 @@
             android:summary="刺されると最後の力で端末が振動します。"
             android:key="isVibration"
             android:defaultValue="true"
+            android:dependency="isNoisy"/>
+	    <CheckBoxPreference
+	        android:title="憎しみの光"
+	        android:summary="刺されると最後の力でLEDが点灯します。\n（※スリープ時のみ点灯します。）"
+	        android:key="isLight"
+            android:defaultValue="true"
+            android:dependency="isNoisy"/>
+	    <ListPreference
+            android:title="光の色"
+	        android:summary="点灯するLEDの色を設定します。\n現在の色は%sです。"
+            android:entries="@array/LightColorList"
+            android:entryValues="@array/LightColorValues"
+            android:key="lightColor"
+            android:dependency="isLight"/>
+	    <CheckBoxPreference
+	        android:title="殺害報告"
+	        android:summaryOff="はたてちゃんが刺されたことをTwitterで報告することが出来ますが、TLが醜くなるだけなので使わないでください。"
+	        android:summaryOn="やめろっていってんだろ。"
+	        android:key="isTweet"
+            android:defaultValue="false"
             android:dependency="isNoisy"/>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="その他">

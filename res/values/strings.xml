@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">HatateAlarm</string>
     <string name="ugu">ウグゥーーーーーーーーーーッ!!!</string>
+    <string name="consumer_key"></string>
+    <string name="consumer_secret"></string>
+    <string name="callback">myapp://hatate</string>
+    <string name="hash"> #HatateHoutyouAlarm</string>
+    <string name="houkoku1">あっぱれおじゃる様！包丁にて、見事%d匹目のはたてちゃんを刺し殺し遊ばれました！ </string>
+    <string name="houkoku2">ウグゥーーーーーーーーーーッ!!!</string>
+    <string name="houkoku3">姫海棠はたては包丁で刺されると死ぬんじゃ。</string>
+    <string name="houkoku4">%d人目のはたてちゃんを包丁で刺しました。</string>
 </resources>

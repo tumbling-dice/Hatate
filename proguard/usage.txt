@@ -276,7 +276,6 @@ android.support.v4.app.NotificationCompat$Builder:
     439:441:public android.support.v4.app.NotificationCompat$Builder setSound(android.net.Uri)
     451:453:public android.support.v4.app.NotificationCompat$Builder setSound(android.net.Uri,int)
     463:464:public android.support.v4.app.NotificationCompat$Builder setVibrate(long[])
-    473:479:public android.support.v4.app.NotificationCompat$Builder setLights(int,int,int)
     494:495:public android.support.v4.app.NotificationCompat$Builder setOngoing(boolean)
     503:504:public android.support.v4.app.NotificationCompat$Builder setOnlyAlertOnce(boolean)
     514:515:public android.support.v4.app.NotificationCompat$Builder setAutoCancel(boolean)
@@ -1191,9 +1190,23 @@ android.support.v4.widget.ViewDragHelper:
     908:927:protected boolean canScroll(android.view.View,boolean,int,int,int,int)
     1331:1337:public boolean isEdgeTouched(int)
     1351:1351:public boolean isEdgeTouched(int,int)
+inujini_.function.Function:
+    4:4:private Function()
+inujini_.function.Function$Action3
+inujini_.function.Function$Action4
+inujini_.function.Function$Action5
+inujini_.function.Function$Actions
+inujini_.function.Function$Func2
+inujini_.function.Function$Func3
+inujini_.function.Function$Func4
+inujini_.function.Function$Func5
+inujini_.function.Function$Funcs
+inujini_.function.Function$IAction
+inujini_.function.Function$IFunc
 inujini_.hatate.BuildConfig
 inujini_.hatate.R:
     10:10:public R()
+inujini_.hatate.R$array
 inujini_.hatate.R$attr
 inujini_.hatate.R$drawable
 inujini_.hatate.R$id
@@ -1202,15 +1215,80 @@ inujini_.hatate.R$raw
 inujini_.hatate.R$string
 inujini_.hatate.R$style
 inujini_.hatate.R$styleable:
-    117:117:public R$styleable()
+    140:140:public R$styleable()
 inujini_.hatate.R$xml
+inujini_.hatate.data.meta.MetaAccount:
+    public static final java.lang.String TBL_NAME
+    8:8:public MetaAccount()
+    25:25:public static boolean hasPrimaryId()
+inujini_.hatate.preference.SeekBarPreference:
+    26:26:public int getMax()
+    27:27:public int getCurrentValue()
 inujini_.hatate.preference.VolumePreference:
-    23:23:public int getCurrentVolume()
-    24:24:public int getVolumeType()
+    89:97:public void setVolumeType(int)
+    18:18:public int getVolumeType()
+inujini_.hatate.reactive.ReactiveAsyncTask:
+    58:60:public inujini_.hatate.reactive.ReactiveAsyncTask setOnProgress(inujini_.function.Function$Func,inujini_.function.Function$Action1)
+    123:123:public boolean isCanceled()
+    127:128:public void setCanceled(boolean)
+inujini_.hatate.service.Houtyou:
+    public static final java.lang.String KEY_KILL
+    public static final java.lang.String KEY_KILL_COUNT
+    public static final java.lang.String KEY_IS_PREVIEW
+inujini_.hatate.sqlite.DatabaseHelper:
+    private static final int DB_VERSION
+    private static final java.lang.String DB_NAME
+    public static final java.lang.String KEY_OPEN_DB
+    public static final java.lang.String KEY_IS_OPENED
+inujini_.hatate.twitter.TwitterAccountDao:
+    22:22:public TwitterAccountDao()
 inujini_.hatate.util.PrefGetter:
     7:7:public PrefGetter()
 inujini_.hatate.util.TimeUtil:
     16:16:public TimeUtil()
+inujini_.linq.Evaluator
+inujini_.linq.LazyLinq
+inujini_.linq.Linq:
+    22:24:private Linq(java.lang.Iterable)
+    31:37:private Linq(byte[])
+    40:45:private Linq(int[])
+    48:53:private Linq(short[])
+    56:61:private Linq(long[])
+    64:69:private Linq(float[])
+    72:77:private Linq(double[])
+    80:85:private Linq(char[])
+    88:93:private Linq(boolean[])
+    96:96:public static inujini_.linq.Linq linq(java.lang.Iterable)
+    104:104:public static inujini_.linq.Linq linq(byte[])
+    108:108:public static inujini_.linq.Linq linq(int[])
+    112:112:public static inujini_.linq.Linq linq(short[])
+    116:116:public static inujini_.linq.Linq linq(long[])
+    120:120:public static inujini_.linq.Linq linq(float[])
+    124:124:public static inujini_.linq.Linq linq(double[])
+    128:128:public static inujini_.linq.Linq linq(char[])
+    132:132:public static inujini_.linq.Linq linq(boolean[])
+    152:158:public inujini_.linq.Linq select(inujini_.function.Function$Func1)
+    163:171:public inujini_.linq.Linq selectMany(inujini_.function.Function$Func1)
+    176:184:public inujini_.linq.Linq selectManyArray(inujini_.function.Function$Func1)
+    189:204:public inujini_.linq.Linq skip(int)
+    209:221:public inujini_.linq.Linq skipWhile(inujini_.function.Function$Predicate)
+    225:243:public inujini_.linq.Linq take(int)
+    247:259:public inujini_.linq.Linq takeWhile(inujini_.function.Function$Predicate)
+    264:301:public inujini_.linq.Linq join(java.util.Collection,inujini_.function.Function$Func1,inujini_.function.Function$Func1,inujini_.function.Function$Func2)
+    305:308:public inujini_.linq.Linq orderBy(java.util.Comparator)
+    312:312:public boolean any()
+    316:321:public boolean any(inujini_.function.Function$Predicate)
+    325:325:public java.lang.Object first()
+    329:344:public java.util.Map groupBy(inujini_.function.Function$Func1,inujini_.function.Function$Func1)
+    348:356:public java.util.List toList()
+    366:372:public java.util.Map toMap(inujini_.function.Function$Func1,inujini_.function.Function$Func1)
+    376:382:public inujini_.linq.Linq distinct()
+    387:387:public java.lang.Object[] toArray()
+inujini_.sqlite.meta.annotation.SqliteField:
+    public abstract boolean autoincrement()
+inujini_.sqlite.meta.factory.MetaField
+inujini_.sqlite.meta.factory.MetaTable
+inujini_.sqlite.meta.factory.PropertyFactory
 lombok.AccessLevel
 lombok.AllArgsConstructor
 lombok.AllArgsConstructor$AnyAnnotation

@@ -1,10 +1,13 @@
-# view AndroidManifest.xml #generated:25
+# view AndroidManifest.xml #generated:28
 -keep class inujini_.hatate.LicenseActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:17
+# view AndroidManifest.xml #generated:19
 -keep class inujini_.hatate.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:24
+# view AndroidManifest.xml #generated:30
+-keep class inujini_.hatate.OauthActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:26
 -keep class inujini_.hatate.VoiceSettingActivity { <init>(...); }
 
 # view res/xml/main.xml #generated:7
@@ -14,12 +17,12 @@
 # view res/xml/voice_setting.xml #generated:6
 -keep class inujini_.hatate.preference.VolumePreference { <init>(...); }
 
-# view AndroidManifest.xml #generated:27
+# view AndroidManifest.xml #generated:40
 -keep class inujini_.hatate.service.Houtyou { <init>(...); }
 
-# view AndroidManifest.xml #generated:28
+# view AndroidManifest.xml #generated:42
 -keep class inujini_.hatate.service.RebootReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:35
+# view AndroidManifest.xml #generated:50
 -keep class inujini_.hatate.service.UpdateReceiver { <init>(...); }
 

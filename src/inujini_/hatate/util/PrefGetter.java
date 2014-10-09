@@ -31,4 +31,39 @@ public class PrefGetter {
 		return pref.getBoolean("isNoisy", true);
 	}
 
+	public static boolean isLight(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		return pref.getBoolean("isLight", true);
+	}
+
+	public static long getLightColor(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+
+		// デフォルトはとりあえず赤
+		return Long.decode(pref.getString("lightColor", "0xffff0000"));
+	}
+
+	public static String getLightColorName(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		val strColor = pref.getString("lightColor", "0xffff0000");
+		return getLightColorName(strColor);
+	}
+
+	public static String getLightColorName(String strColor) {
+		if(strColor.equals("0xffff0000")) {
+			return "赤";
+		} else if(strColor.equals("0xff0000ff")) {
+			return "青";
+		} else if(strColor.equals("0xff00ff00")) {
+			return "緑";
+		} else {
+			throw new IllegalStateException(String.format("this lightColor is undifiend. %s", strColor));
+		}
+	}
+
+	public static boolean isTweet(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		return pref.getBoolean("isTweet", false);
+	}
+
 }

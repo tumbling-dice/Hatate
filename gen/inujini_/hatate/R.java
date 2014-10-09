@@ -8,6 +8,10 @@
 package inujini_.hatate;
 
 public final class R {
+    public static final class array {
+        public static final int LightColorList=0x7f060000;
+        public static final int LightColorValues=0x7f060001;
+    }
     public static final class attr {
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
@@ -16,7 +20,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int defualt_hour=0x7f010002;
+        public static final int defualt_hour=0x7f010003;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -24,7 +28,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int defualt_minute=0x7f010003;
+        public static final int defualt_minute=0x7f010004;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -32,7 +36,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int key_hour=0x7f010000;
+        public static final int key_hour=0x7f010001;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -40,7 +44,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int key_minute=0x7f010001;
+        public static final int key_minute=0x7f010002;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int max=0x7f010000;
         /** <p>May be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -61,37 +73,48 @@ containing a value of this type.
 <tr><td><code>notification</code></td><td>5</td><td></td></tr>
 </table>
          */
-        public static final int type=0x7f010004;
+        public static final int type=0x7f010005;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int alarm=0x7f060004;
-        public static final int imgIcon=0x7f060006;
-        public static final int music=0x7f060003;
-        public static final int notification=0x7f060005;
-        public static final int ring=0x7f060002;
-        public static final int skbVolume=0x7f06000c;
-        public static final int system=0x7f060001;
-        public static final int txvCuttentVolume=0x7f06000a;
-        public static final int txvMaxVolume=0x7f06000b;
-        public static final int txvMinVolume=0x7f060009;
-        public static final int txvSummary=0x7f060008;
-        public static final int txvTitle=0x7f060007;
-        public static final int voice=0x7f060000;
+        public static final int alarm=0x7f070004;
+        public static final int imgIcon=0x7f070008;
+        public static final int music=0x7f070003;
+        public static final int notification=0x7f070005;
+        public static final int ring=0x7f070002;
+        public static final int seekbar=0x7f070006;
+        public static final int skbVolume=0x7f07000e;
+        public static final int system=0x7f070001;
+        public static final int txvCuttentVolume=0x7f07000c;
+        public static final int txvMaxVolume=0x7f07000d;
+        public static final int txvMinVolume=0x7f07000b;
+        public static final int txvSummary=0x7f07000a;
+        public static final int txvTitle=0x7f070009;
+        public static final int txvValue=0x7f070007;
+        public static final int voice=0x7f070000;
     }
     public static final class layout {
         public static final int activity_licence=0x7f030000;
         public static final int datepicker_dialog=0x7f030001;
-        public static final int volume_preference=0x7f030002;
+        public static final int seekbar_preference=0x7f030002;
+        public static final int volume_preference=0x7f030003;
     }
     public static final class raw {
         public static final int ugu=0x7f050000;
     }
     public static final class string {
-        public static final int app_name=0x7f070000;
-        public static final int ugu=0x7f070001;
+        public static final int app_name=0x7f080000;
+        public static final int callback=0x7f080004;
+        public static final int consumer_key=0x7f080002;
+        public static final int consumer_secret=0x7f080003;
+        public static final int hash=0x7f080005;
+        public static final int houkoku1=0x7f080006;
+        public static final int houkoku2=0x7f080007;
+        public static final int houkoku3=0x7f080008;
+        public static final int houkoku4=0x7f080009;
+        public static final int ugu=0x7f080001;
     }
     public static final class style {
         /** 
@@ -104,17 +127,52 @@ containing a value of this type.
             backward-compatibility can go here.
         
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f090001;
     }
     public static final class xml {
         public static final int main=0x7f040000;
         public static final int voice_setting=0x7f040001;
     }
     public static final class styleable {
+        /** Attributes that can be used with a SeekBarPreference.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SeekBarPreference_android_defaultValue android:defaultValue}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekBarPreference_max inujini_.hatate:max}</code></td><td></td></tr>
+           </table>
+           @see #SeekBarPreference_android_defaultValue
+           @see #SeekBarPreference_max
+         */
+        public static final int[] SeekBarPreference = {
+            0x010101ed, 0x7f010000
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#defaultValue}
+          attribute's value can be found in the {@link #SeekBarPreference} array.
+          @attr name android:defaultValue
+        */
+        public static final int SeekBarPreference_android_defaultValue = 0;
+        /**
+          <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#max}
+          attribute's value can be found in the {@link #SeekBarPreference} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name inujini_.hatate:max
+        */
+        public static final int SeekBarPreference_max = 1;
         /** Attributes that can be used with a TimePickerPreference.
            <p>Includes the following attributes:</p>
            <table>
@@ -132,7 +190,7 @@ containing a value of this type.
            @see #TimePickerPreference_key_minute
          */
         public static final int[] TimePickerPreference = {
-            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003
+            0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004
         };
         /**
           <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#defualt_hour}
@@ -201,7 +259,7 @@ containing a value of this type.
            @see #VolumePreference_type
          */
         public static final int[] VolumePreference = {
-            0x7f010004
+            0x7f010005
         };
         /**
           <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#type}

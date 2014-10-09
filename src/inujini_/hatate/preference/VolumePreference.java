@@ -1,44 +1,26 @@
 package inujini_.hatate.preference;
 
-import inujini_.hatate.R;
-
 import java.lang.ref.WeakReference;
 
+import inujini_.hatate.R;
 import lombok.Cleanup;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.val;
 import lombok.experimental.Accessors;
 import android.content.Context;
 import android.media.AudioManager;
 import android.preference.Preference;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
 
-public class VolumePreference extends Preference implements OnSeekBarChangeListener {
+public class VolumePreference extends SeekBarPreference {
 
-	public final int MAX_VOLUME;
-	@Accessors(prefix="_") @Getter private int _currentVolume;
-	@Accessors(prefix="_") @Getter private final int _volumeType;
-
-	private ProgressTracker _tracker;
-
-	private static class ProgressTracker {
-		private final WeakReference<TextView> textView;
-
-		public ProgressTracker(TextView textView) {
-			this.textView = new WeakReference<TextView>(textView);
-		}
-
-		public void track(int value) {
-			if(textView.get() != null) textView.get().setText(String.format("設定値：%d", value));
-		}
-	}
+	@Accessors(prefix="_") @Getter private int _volumeType;
+	@Accessors(prefix="_") @Getter @Setter private OnPreferenceChangeListener _onPreferenceChangeListener;
+	private WeakReference<AudioManager> _manager;
 
 	public VolumePreference(Context context, int volumeType) {
-		super(context);
+		super(context, 0);
 
 		if(volumeType < 0 || volumeType > 5)
 			throw new IllegalArgumentException(String.format("you should use AudioManager's STREAM enums.\n volumeType:%d"
@@ -46,27 +28,18 @@ public class VolumePreference extends Preference implements OnSeekBarChangeListe
 
 		_volumeType = volumeType;
 
-		val am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-		MAX_VOLUME = am.getStreamMaxVolume(volumeType);
-		_currentVolume = am.getStreamVolume(volumeType);
-
-		setLayoutResource(R.layout.volume_preference);
+		init(_volumeType, context);
 	}
 
 	public VolumePreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
-
 		@Cleanup("recycle") val t = context.obtainStyledAttributes(attrs, R.styleable.VolumePreference);
 		_volumeType = t.getInt(R.styleable.VolumePreference_type, -1);
 
 		if(_volumeType == -1)
 			throw new IllegalStateException("type must not be null.");
 
-		val am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-		MAX_VOLUME = am.getStreamMaxVolume(_volumeType);
-		_currentVolume = am.getStreamVolume(_volumeType);
-
-		setLayoutResource(R.layout.volume_preference);
+		init(_volumeType, context);
 	}
 
 	public VolumePreference(Context context, AttributeSet attrs, int defStyle) {
@@ -78,43 +51,58 @@ public class VolumePreference extends Preference implements OnSeekBarChangeListe
 		if(_volumeType == -1)
 			throw new IllegalStateException("type must not be null.");
 
+		init(_volumeType, context);
+	}
+
+	private void init(int volumeType, Context context) {
 		val am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-		MAX_VOLUME = am.getStreamMaxVolume(_volumeType);
-		_currentVolume = am.getStreamVolume(_volumeType);
+		super.setMax(am.getStreamMaxVolume(volumeType));
+		super.setCurrentValue(am.getStreamVolume(volumeType));
 
-		setLayoutResource(R.layout.volume_preference);
+		_manager = new WeakReference<AudioManager>(am);
+
+		super.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+			@Override
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				getAudioManager().setStreamVolume(_volumeType, (Integer) newValue, 0);
+
+				if(_onPreferenceChangeListener != null)
+					_onPreferenceChangeListener.onPreferenceChange(preference, newValue);
+
+				return true;
+			}
+		});
 	}
 
 	@Override
-	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-		_tracker.track(progress);
+	public void setCurrentValue(int currentValue) {
+		super.setCurrentValue(currentValue);
+		getAudioManager().setStreamVolume(_volumeType, currentValue, 0);
 	}
 
 	@Override
-	public void onStartTrackingTouch(SeekBar seekBar) {}
-
-	@Override
-	public void onStopTrackingTouch(SeekBar seekBar) {
-		_currentVolume = seekBar.getProgress();
-		((AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE))
-			.setStreamVolume(_volumeType, _currentVolume, 0);
+	public void setMax(int max) {
+		throw new UnsupportedOperationException("VolumePreference's max value is defined by volume type and device.");
 	}
 
-	@Override
-	protected void onBindView(View view) {
-		((TextView) view.findViewById(R.id.txvTitle)).setText(getTitle());
-		((TextView) view.findViewById(R.id.txvSummary)).setText(getSummary());
-		((TextView) view.findViewById(R.id.txvMaxVolume)).setText(String.valueOf(MAX_VOLUME));
+	public void setVolumeType(int volumeType) {
+		if(volumeType < 0 || volumeType > 5)
+			throw new IllegalArgumentException(String.format("you should use AudioManager's STREAM enums.\n volumeType:%d"
+					, volumeType));
 
-		val seekBar = (SeekBar) view.findViewById(R.id.skbVolume);
-		seekBar.setMax(MAX_VOLUME);
-		seekBar.setProgress(_currentVolume);
-		seekBar.setOnSeekBarChangeListener(this);
-
-		_tracker = new ProgressTracker((TextView) view.findViewById(R.id.txvCuttentVolume));
-		_tracker.track(_currentVolume);
-
-		super.onBindView(view);
+		_volumeType = volumeType;
+		val am = getAudioManager();
+		super.setMax(am.getStreamMaxVolume(volumeType));
+		super.setCurrentValue(am.getStreamVolume(volumeType));
 	}
 
+	private AudioManager getAudioManager() {
+		AudioManager m = _manager.get();
+		if(m == null) {
+			m = ((AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE));
+			_manager = new WeakReference<AudioManager>(m);
+		}
+
+		return m;
+	}
 }

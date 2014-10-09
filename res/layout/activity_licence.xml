@@ -15,7 +15,30 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="このソフトウェアは、 MITライセンスで配布されている製作物が含まれています。" />
+            android:text="このソフトウェアは、 Apache 2.0ライセンスで配布されている製作物が含まれています。\nApache 2.0ライセンスに関しては下記内容をお読み下さい。" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="http://www.apache.org/licenses/LICENSE-2.0"
+            android:autoLink="web"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Apache 2.0ライセンスで配布されている制作物は以下の通りです。" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="● Twittrer4J" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="また、このソフトウェアには、 MITライセンスで配布されている以下の製作物が含まれています。" />
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

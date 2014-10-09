@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="LightColorList">
+        <item>赤</item>
+        <item>青</item>
+        <item>緑</item>
+    </string-array>
+    <string-array name="LightColorValues">
+        <item>0xffff0000</item>
+        <item>0xff0000ff</item>
+        <item>0xff00ff00</item>
+    </string-array>
+</resources>

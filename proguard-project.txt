@@ -69,4 +69,37 @@
     @android.webkit.JavascriptInterface <methods>;
 }
 
+##### Serializable Object #####
+
+-keepnames class * implements java.io.Serializable
+
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    !private <fields>;
+    !private <methods>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+##### Libraries #####
+
+-keep class twitter4j.** { *; }
+-keep class inujini_.sqlite.helper.* { *; }
+-keep class inujini_.sqlite.meta.* { *; }
+-keep class inujini_.sqlite.annotation.* { *; }
+-keep @inujini_.sqlite.meta.annotation.** class * { *; }
+-keep class * implements @inujini_.sqlite.meta.annotation.SqliteTable *
+-keepclassmembers class * {
+    @inujini_.sqlite.meta.annotation.SqliteField *;
+}
+
+##### don't warn #####
+-dontwarn inujini_.sqlite.meta.factory.PropertyFactory
+-dontwarn twitter4j.management.*
+-dontwarn twitter4j.*Logger*
+-dontwarn twitter4j.TwitterAPIMonitor
 -dontwarn lombok.ConfigurationKeys*
