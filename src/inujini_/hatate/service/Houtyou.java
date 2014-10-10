@@ -29,61 +29,63 @@ public class Houtyou extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-
-		val isPreview = intent.getBooleanExtra(KEY_IS_PREVIEW, false);
-
-		// バイブ
-		if(context.isVibration()) {
-			val vibrator = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
-			vibrator.vibrate(1000L);
-		}
-
-		// 声
-		if(context.isScream()) {
-			val mp = MediaPlayer.create(context, R.raw.ugu);
-			mp.seekTo(0);
-			mp.start();
-			mp.setOnCompletionListener(new OnCompletionListener() {
-				@Override
-				public void onCompletion(MediaPlayer mp) {
-					mp.release();
+		new ReactiveAsyncTask<Context, Void, Void>(asyncOnReceive(intent)).execute(context);
+	}
+	
+	private Func1<Context, Void> asyncOnReceive(final Intent intent) {
+		return new Func1<Context, Void>() {
+			@Override
+			@SuppressLint("DefaultLocale")
+			public Void call(Context context) {
+				val isPreview = intent.getBooleanExtra(KEY_IS_PREVIEW, false);
+				
+				// バイブ
+				if(context.isVibration()) {
+					((Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(1000L);
 				}
-			});
-		}
 
-		// 通知
-		val notifyManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+				// 声
+				if(context.isScream()) {
+					val mp = MediaPlayer.create(context, R.raw.ugu);
+					mp.seekTo(0);
+					mp.start();
+					mp.setOnCompletionListener(new OnCompletionListener() {
+						@Override
+						public void onCompletion(MediaPlayer mp) {
+							mp.release();
+						}
+					});
+				}
 
-		val notify = new NotificationCompat.Builder(context)
-						.setSmallIcon(R.drawable.ic_launcher)
-						.setTicker("ウグゥーーーーーーーーーーッ!!!")
-						.setWhen(System.currentTimeMillis())
-						.setContentTitle("Hatate Houtyou Alarm")
-						.setContentText("ウグゥーーーーーーーーーーッ!!!");
+				// 通知
+				val notifyManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-		// LED
-		if(context.isLight()) {
-			notify.setLights((int) context.getLightColor(), 3000, 3000);
-		}
+				val notify = new NotificationCompat.Builder(context)
+								.setSmallIcon(R.drawable.ic_launcher)
+								.setTicker("ウグゥーーーーーーーーーーッ!!!")
+								.setWhen(System.currentTimeMillis())
+								.setContentTitle("Hatate Houtyou Alarm")
+								.setContentText("ウグゥーーーーーーーーーーッ!!!");
 
-		notifyManager.notify(0, notify.build());
+				// LED
+				if(context.isLight()) {
+					notify.setLights((int) context.getLightColor(), 3000, 3000);
+				}
 
-		if(!isPreview) {
-			val pref = context.getSharedPreferences(KEY_KILL, 0);
-			pref.edit().putInt(KEY_KILL_COUNT, (pref.getInt(KEY_KILL_COUNT, 0) + 1)).commit();
+				notifyManager.notify(0, notify.build());
 
-			if(context.isTweet()) {
-				new ReactiveAsyncTask<Context, Void, Void>(new Func1<Context, Void>() {
-					@SuppressLint("DefaultLocale")
-					@Override
-					public Void call(Context x) {
-						val res = x.getResources();
-						val time = String.format("[%02d:%02d]", x.getHour(), x.getMinute());
+				if(!isPreview) {
+					val pref = context.getSharedPreferences(KEY_KILL, 0);
+					pref.edit().putInt(KEY_KILL_COUNT, (pref.getInt(KEY_KILL_COUNT, 0) + 1)).commit();
+
+					if(context.isTweet()) {
+						val res = context.getResources();
+						val time = String.format("[%02d:%02d]", context.getHour(), context.getMinute());
 
 						val hash = res.getString(R.string.hash);
 
 						String tweet = null;
-						val pref = x.getSharedPreferences(KEY_KILL, 0);
+						val pref = context.getSharedPreferences(KEY_KILL, 0);
 
 						switch(new Random().nextInt(4)) {
 						case 0:
@@ -100,19 +102,18 @@ public class Houtyou extends BroadcastReceiver {
 							break;
 						}
 
-						val twitter = TwitterAccountDao.getTwitter(x);
+						val twitter = TwitterAccountDao.getTwitter(context, res);
 						try {
 							twitter.updateStatus(String.format("%s%s%s", time, tweet, hash));
 						} catch (TwitterException e) {
 							e.printStackTrace();
 						}
-						return null;
 					}
-				}).execute(context);
+				}
+				
+				return null;
 			}
-		}
-
-
+		};
 	}
 
 }

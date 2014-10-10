@@ -22,12 +22,15 @@ import android.database.sqlite.SQLiteDatabase;
 public class TwitterAccountDao {
 
 	public static Twitter getTwitter(Context context) {
+		return getTwitter(context, context.getResources());
+	}
+	
+	public static Twitter getTwitter(Context context, Resources res) {
 		val q = new QueryBuilder();
 		val query = q.selectAll()
 						.from(MetaAccount.TBL_NAME)
 						.toString();
 
-		val res = context.getResources();
 		val consumerKey = res.getString(R.string.consumer_key);
 		val consumerSecret = res.getString(R.string.consumer_secret);
 
