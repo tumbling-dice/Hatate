@@ -12,6 +12,7 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.preference.Preference;
 import android.util.AttributeSet;
+import android.view.View;
 
 public class VolumePreference extends SeekBarPreference {
 
@@ -55,11 +56,7 @@ public class VolumePreference extends SeekBarPreference {
 	}
 
 	private void init(int volumeType, Context context) {
-		val am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-		super.setMax(am.getStreamMaxVolume(volumeType));
-		super.setCurrentValue(am.getStreamVolume(volumeType));
-
-		_manager = new WeakReference<AudioManager>(am);
+		_manager = new WeakReference<AudioManager>((AudioManager) context.getSystemService(Context.AUDIO_SERVICE));
 
 		super.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			@Override
@@ -105,4 +102,13 @@ public class VolumePreference extends SeekBarPreference {
 
 		return m;
 	}
+
+	@Override
+	protected void onBindView(View view) {
+		super.onBindView(view);
+		val am = getAudioManager();
+		super.setMax(am.getStreamMaxVolume(_volumeType));
+		super.setCurrentValue(am.getStreamVolume(_volumeType));
+	}
+
 }

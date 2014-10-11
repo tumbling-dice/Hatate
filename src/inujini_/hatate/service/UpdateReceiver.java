@@ -1,19 +1,18 @@
 package inujini_.hatate.service;
 
 import inujini_.hatate.util.PrefGetter;
-import inujini_.hatate.util.TimeUtil;
+import inujini_.hatate.util.Util;
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
 @ExtensionMethod({PrefGetter.class})
-public class UpdateReceiver extends BroadcastReceiver {
+public class UpdateReceiver extends AsyncBroadcastReceiver {
 
 	@Override
-	public void onReceive(Context context, Intent intent) {
+	protected void asyncOnReceive(Context context, Intent intent) {
 		if(intent == null || !context.isNoisy()) return;
 
 		Log.d("UpdateReceiver", "onReceive");
@@ -26,9 +25,8 @@ public class UpdateReceiver extends BroadcastReceiver {
 		if(Intent.ACTION_PACKAGE_REPLACED.equals(action)
 				&& packagePath.equals("package:" + context.getPackageName())) {
 			Log.d("UpdateReceiver", "this intent is PACKAGE_REPLACED");
-			TimeUtil.setAlerm(context);
+			Util.setAlarm(context);
 		}
-
 	}
 
 }

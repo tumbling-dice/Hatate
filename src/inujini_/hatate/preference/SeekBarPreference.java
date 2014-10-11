@@ -138,8 +138,10 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 
 		val seekBar = _seekBar.get();
 		if(seekBar != null) {
+			seekBar.setOnSeekBarChangeListener(null);
 			seekBar.setMax(max);
 			seekBar.setProgress(_currentValue);
+			seekBar.setOnSeekBarChangeListener(this);
 		}
 	}
 
@@ -150,7 +152,11 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 		if(_seekBar == null) return;
 
 		val seekBar = _seekBar.get();
-		if(seekBar != null) seekBar.setProgress(currentValue);
+		if(seekBar != null) {
+			seekBar.setOnSeekBarChangeListener(null);
+			seekBar.setProgress(currentValue);
+			seekBar.setOnSeekBarChangeListener(this);
+		}
 
 		saveValue(_currentValue);
 	}

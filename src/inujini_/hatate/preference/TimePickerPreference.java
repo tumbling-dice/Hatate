@@ -90,15 +90,15 @@ public class TimePickerPreference extends Preference {
 
 		val timePicker = new TimePickerDialog(getContext(), new OnTimeSetListener() {
 			@Override
-			public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-				val pref = getSharedPreferences().edit();
-				pref.putInt(KEY_HOUR, hourOfDay);
-				pref.putInt(KEY_MINUTE, minute);
-				pref.commit();
+			public void onTimeSet(TimePicker picker, int hourOfDay, int minute) {
+				val innerPref = getSharedPreferences().edit();
+				innerPref.putInt(KEY_HOUR, hourOfDay);
+				innerPref.putInt(KEY_MINUTE, minute);
+				innerPref.commit();
 
 				if(_onChangedListener != null) {
 					val listener = _onChangedListener.get();
-					if(listener != null) listener.onTimeChanged(view, hourOfDay, minute);
+					if(listener != null) listener.onTimeChanged(picker, hourOfDay, minute);
 				}
 			}
 		}, pref.getInt(KEY_HOUR, _defaultHour), pref.getInt(KEY_MINUTE, _defaultMinute), true);

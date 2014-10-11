@@ -268,7 +268,6 @@ android.support.v4.app.NotificationCompat$Builder:
     340:341:public android.support.v4.app.NotificationCompat$Builder setContentInfo(java.lang.CharSequence)
     349:352:public android.support.v4.app.NotificationCompat$Builder setProgress(int,int,boolean)
     359:360:public android.support.v4.app.NotificationCompat$Builder setContent(android.widget.RemoteViews)
-    372:373:public android.support.v4.app.NotificationCompat$Builder setContentIntent(android.app.PendingIntent)
     384:385:public android.support.v4.app.NotificationCompat$Builder setDeleteIntent(android.app.PendingIntent)
     402:404:public android.support.v4.app.NotificationCompat$Builder setFullScreenIntent(android.app.PendingIntent,boolean)
     422:424:public android.support.v4.app.NotificationCompat$Builder setTicker(java.lang.CharSequence,android.widget.RemoteViews)
@@ -1225,8 +1224,8 @@ inujini_.hatate.preference.SeekBarPreference:
     26:26:public int getMax()
     27:27:public int getCurrentValue()
 inujini_.hatate.preference.VolumePreference:
-    89:97:public void setVolumeType(int)
-    18:18:public int getVolumeType()
+    86:94:public void setVolumeType(int)
+    19:19:public int getVolumeType()
 inujini_.hatate.reactive.ReactiveAsyncTask:
     58:60:public inujini_.hatate.reactive.ReactiveAsyncTask setOnProgress(inujini_.function.Function$Func,inujini_.function.Function$Action1)
     123:123:public boolean isCanceled()
@@ -1235,6 +1234,8 @@ inujini_.hatate.service.Houtyou:
     public static final java.lang.String KEY_KILL
     public static final java.lang.String KEY_KILL_COUNT
     public static final java.lang.String KEY_IS_PREVIEW
+inujini_.hatate.service.Kill:
+    public static final java.lang.String ACTION_KILL
 inujini_.hatate.sqlite.DatabaseHelper:
     private static final int DB_VERSION
     private static final java.lang.String DB_NAME
@@ -1244,8 +1245,8 @@ inujini_.hatate.twitter.TwitterAccountDao:
     22:22:public TwitterAccountDao()
 inujini_.hatate.util.PrefGetter:
     7:7:public PrefGetter()
-inujini_.hatate.util.TimeUtil:
-    16:16:public TimeUtil()
+inujini_.hatate.util.Util:
+    18:18:public Util()
 inujini_.linq.Evaluator
 inujini_.linq.LazyLinq
 inujini_.linq.Linq:

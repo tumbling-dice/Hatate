@@ -521,6 +521,7 @@ android.support.v4.app.NotificationCompat$Builder -> af:
     276:277:android.support.v4.app.NotificationCompat$Builder setSmallIcon(int) -> a
     300:301:android.support.v4.app.NotificationCompat$Builder setContentTitle(java.lang.CharSequence) -> a
     308:309:android.support.v4.app.NotificationCompat$Builder setContentText(java.lang.CharSequence) -> b
+    372:373:android.support.v4.app.NotificationCompat$Builder setContentIntent(android.app.PendingIntent) -> a
     412:413:android.support.v4.app.NotificationCompat$Builder setTicker(java.lang.CharSequence) -> c
     473:479:android.support.v4.app.NotificationCompat$Builder setLights(int,int,int) -> a
     612:612:android.app.Notification build() -> a
@@ -1906,68 +1907,74 @@ inujini_.function.Function$Predicate -> gr:
 inujini_.hatate.LicenseActivity -> inujini_.hatate.LicenseActivity:
     10:12:void onCreate(android.os.Bundle) -> onCreate
 inujini_.hatate.MainActivity -> inujini_.hatate.MainActivity:
-    33:133:void onCreate(android.os.Bundle) -> onCreate
-    137:140:boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
-    145:148:void onRestart() -> onRestart
+    34:141:void onCreate(android.os.Bundle) -> onCreate
+    145:148:boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    153:156:void onRestart() -> onRestart
 inujini_.hatate.MainActivity$1 -> gs:
     inujini_.hatate.MainActivity this$0 -> a
-    44:47:void onTimeChanged(android.widget.TimePicker,int,int) -> onTimeChanged
+    45:48:void onTimeChanged(android.widget.TimePicker,int,int) -> onTimeChanged
 inujini_.hatate.MainActivity$2 -> gt:
     inujini_.hatate.MainActivity this$0 -> a
-    61:64:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+    54:57:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
 inujini_.hatate.MainActivity$3 -> gu:
     inujini_.hatate.MainActivity this$0 -> a
-    71:72:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+    64:65:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
 inujini_.hatate.MainActivity$4 -> gv:
     inujini_.hatate.MainActivity this$0 -> a
-    79:108:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
-    76:76:inujini_.hatate.MainActivity access$0(inujini_.hatate.MainActivity$4) -> a
+    72:101:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+    69:69:inujini_.hatate.MainActivity access$0(inujini_.hatate.MainActivity$4) -> a
 inujini_.hatate.MainActivity$4$1 -> gw:
     inujini_.hatate.MainActivity$4 this$1 -> a
-    87:93:void onClick(android.content.DialogInterface,int) -> onClick
+    80:86:void onClick(android.content.DialogInterface,int) -> onClick
 inujini_.hatate.MainActivity$4$2 -> gx:
     inujini_.hatate.MainActivity$4 this$1 -> a
-    97:98:void onClick(android.content.DialogInterface,int) -> onClick
+    90:91:void onClick(android.content.DialogInterface,int) -> onClick
 inujini_.hatate.MainActivity$5 -> gy:
     inujini_.hatate.MainActivity this$0 -> a
-    118:120:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
+    111:113:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
+inujini_.hatate.MainActivity$6 -> gz:
+    inujini_.hatate.MainActivity this$0 -> a
+    124:127:boolean validation(java.lang.String) -> a
+inujini_.hatate.MainActivity$7 -> ha:
+    inujini_.hatate.MainActivity this$0 -> a
+    133:135:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
 inujini_.hatate.OauthActivity -> inujini_.hatate.OauthActivity:
     twitter4j.auth.OAuthAuthorization _oauth -> a
     28:88:void onCreate(android.os.Bundle) -> onCreate
     92:140:void onNewIntent(android.content.Intent) -> onNewIntent
     24:24:twitter4j.auth.OAuthAuthorization access$0(inujini_.hatate.OauthActivity) -> a
-inujini_.hatate.OauthActivity$1 -> gz:
+inujini_.hatate.OauthActivity$1 -> hb:
     inujini_.hatate.OauthActivity this$0 -> a
     53:59:java.lang.String call(java.lang.String) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$2 -> ha:
+inujini_.hatate.OauthActivity$2 -> hc:
     inujini_.hatate.OauthActivity this$0 -> a
     android.app.ProgressDialog val$prog -> b
     64:65:void call() -> a
-inujini_.hatate.OauthActivity$3 -> hb:
+inujini_.hatate.OauthActivity$3 -> hd:
     inujini_.hatate.OauthActivity this$0 -> a
     android.app.ProgressDialog val$prog -> b
     69:75:void call(java.lang.String) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$4 -> hc:
+inujini_.hatate.OauthActivity$4 -> he:
     inujini_.hatate.OauthActivity this$0 -> a
     android.app.ProgressDialog val$prog -> b
     79:86:void call(java.lang.Exception) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$5 -> hd:
+inujini_.hatate.OauthActivity$5 -> hf:
     inujini_.hatate.OauthActivity this$0 -> a
     101:120:java.lang.Void call(android.net.Uri) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$6 -> he:
+inujini_.hatate.OauthActivity$6 -> hg:
     inujini_.hatate.OauthActivity this$0 -> a
     125:129:void call(java.lang.Void) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$7 -> hf:
+inujini_.hatate.OauthActivity$7 -> hh:
     inujini_.hatate.OauthActivity this$0 -> a
     133:136:void call(java.lang.Exception) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.R -> hg:
-inujini_.hatate.R$styleable -> hh:
+inujini_.hatate.R -> hi:
+inujini_.hatate.R$styleable -> hj:
     int[] SeekBarPreference -> SeekBarPreference
     int SeekBarPreference_android_defaultValue -> SeekBarPreference_android_defaultValue
     int SeekBarPreference_max -> SeekBarPreference_max
@@ -2001,7 +2008,7 @@ inujini_.hatate.data.TwitterAccount -> inujini_.hatate.data.TwitterAccount:
     11:11:boolean canEqual(java.lang.Object) -> canEqual
     11:11:int hashCode() -> hashCode
     11:11:java.lang.String toString() -> toString
-inujini_.hatate.data.meta.MetaAccount -> hi:
+inujini_.hatate.data.meta.MetaAccount -> hk:
     inujini_.sqlite.meta.ColumnProperty Id -> a
     inujini_.sqlite.meta.ColumnProperty AccessSecret -> b
     inujini_.sqlite.meta.ColumnProperty AccessToken -> c
@@ -2016,14 +2023,14 @@ inujini_.hatate.preference.SeekBarPreference -> inujini_.hatate.preference.SeekB
     64:73:void init(android.content.Context,android.util.AttributeSet) -> a
     78:104:android.view.View onCreateView(android.view.ViewGroup) -> onCreateView
     109:131:void onBindView(android.view.View) -> onBindView
-    134:144:void setMax(int) -> a
-    147:156:void setCurrentValue(int) -> b
-    159:163:void changeTextView() -> a
-    167:169:void onProgressChanged(android.widget.SeekBar,int,boolean) -> onProgressChanged
-    172:172:void onStartTrackingTouch(android.widget.SeekBar) -> onStartTrackingTouch
-    176:178:void onStopTrackingTouch(android.widget.SeekBar) -> onStopTrackingTouch
-    181:183:void saveValue(int) -> c
-inujini_.hatate.preference.SeekBarPreference$SeekBarPreferenceViewHolder -> hj:
+    134:146:void setMax(int) -> a
+    149:162:void setCurrentValue(int) -> b
+    165:169:void changeTextView() -> a
+    173:175:void onProgressChanged(android.widget.SeekBar,int,boolean) -> onProgressChanged
+    178:178:void onStartTrackingTouch(android.widget.SeekBar) -> onStartTrackingTouch
+    182:184:void onStopTrackingTouch(android.widget.SeekBar) -> onStopTrackingTouch
+    187:189:void saveValue(int) -> c
+inujini_.hatate.preference.SeekBarPreference$SeekBarPreferenceViewHolder -> hl:
     android.widget.TextView txtValue -> a
     android.widget.SeekBar seekBar -> b
 inujini_.hatate.preference.TimePickerPreference -> inujini_.hatate.preference.TimePickerPreference:
@@ -2041,26 +2048,43 @@ inujini_.hatate.preference.TimePickerPreference -> inujini_.hatate.preference.Ti
     20:20:java.lang.String access$0(inujini_.hatate.preference.TimePickerPreference) -> a
     21:21:java.lang.String access$1(inujini_.hatate.preference.TimePickerPreference) -> b
     26:26:java.lang.ref.WeakReference access$2(inujini_.hatate.preference.TimePickerPreference) -> c
-inujini_.hatate.preference.TimePickerPreference$1 -> hk:
+inujini_.hatate.preference.TimePickerPreference$1 -> hm:
     inujini_.hatate.preference.TimePickerPreference this$0 -> a
     94:103:void onTimeSet(android.widget.TimePicker,int,int) -> onTimeSet
+inujini_.hatate.preference.ValidatableEditTextPreference -> inujini_.hatate.preference.ValidatableEditTextPreference:
+    boolean _isNeedValidation -> a
+    java.lang.String _errorMessage -> b
+    inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator _validator -> c
+    46:85:void onAddEditTextToDialogView(android.view.View,android.widget.EditText) -> onAddEditTextToDialogView
+    88:91:void setValidation(java.lang.String,inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator) -> a
+    22:22:inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator access$0(inujini_.hatate.preference.ValidatableEditTextPreference) -> a
+    21:21:java.lang.String access$1(inujini_.hatate.preference.ValidatableEditTextPreference) -> b
+inujini_.hatate.preference.ValidatableEditTextPreference$1 -> hn:
+    inujini_.hatate.preference.ValidatableEditTextPreference this$0 -> a
+    android.widget.TextView val$txtView -> b
+    63:63:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+    66:66:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    70:83:void afterTextChanged(android.text.Editable) -> afterTextChanged
+inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator -> ho:
+    boolean validation(java.lang.String) -> a
 inujini_.hatate.preference.VolumePreference -> inujini_.hatate.preference.VolumePreference:
     int _volumeType -> a
     android.preference.Preference$OnPreferenceChangeListener _onPreferenceChangeListener -> b
     java.lang.ref.WeakReference _manager -> c
-    58:75:void init(int,android.content.Context) -> a
-    79:81:void setCurrentValue(int) -> b
-    85:85:void setMax(int) -> a
-    100:106:android.media.AudioManager getAudioManager() -> a
-    19:19:android.preference.Preference$OnPreferenceChangeListener getOnPreferenceChangeListener() -> getOnPreferenceChangeListener
-    19:19:void setOnPreferenceChangeListener(android.preference.Preference$OnPreferenceChangeListener) -> setOnPreferenceChangeListener
-    99:99:android.media.AudioManager access$0(inujini_.hatate.preference.VolumePreference) -> a
-    18:18:int access$1(inujini_.hatate.preference.VolumePreference) -> b
-    19:19:android.preference.Preference$OnPreferenceChangeListener access$2(inujini_.hatate.preference.VolumePreference) -> c
-inujini_.hatate.preference.VolumePreference$1 -> hl:
+    59:72:void init(int,android.content.Context) -> a
+    76:78:void setCurrentValue(int) -> b
+    82:82:void setMax(int) -> a
+    97:103:android.media.AudioManager getAudioManager() -> a
+    108:112:void onBindView(android.view.View) -> onBindView
+    20:20:android.preference.Preference$OnPreferenceChangeListener getOnPreferenceChangeListener() -> getOnPreferenceChangeListener
+    20:20:void setOnPreferenceChangeListener(android.preference.Preference$OnPreferenceChangeListener) -> setOnPreferenceChangeListener
+    96:96:android.media.AudioManager access$0(inujini_.hatate.preference.VolumePreference) -> a
+    19:19:int access$1(inujini_.hatate.preference.VolumePreference) -> b
+    20:20:android.preference.Preference$OnPreferenceChangeListener access$2(inujini_.hatate.preference.VolumePreference) -> c
+inujini_.hatate.preference.VolumePreference$1 -> hp:
     inujini_.hatate.preference.VolumePreference this$0 -> a
-    67:72:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
-inujini_.hatate.reactive.ReactiveAsyncResult -> hm:
+    64:69:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
+inujini_.hatate.reactive.ReactiveAsyncResult -> hq:
     java.lang.Object result -> a
     java.lang.Exception error -> b
     15:15:boolean hasError() -> a
@@ -2068,7 +2092,7 @@ inujini_.hatate.reactive.ReactiveAsyncResult -> hm:
     12:12:void setResult(java.lang.Object) -> a
     13:13:java.lang.Exception getError() -> c
     13:13:void setError(java.lang.Exception) -> a
-inujini_.hatate.reactive.ReactiveAsyncTask -> hn:
+inujini_.hatate.reactive.ReactiveAsyncTask -> hr:
     inujini_.function.Function$Action _onPreExecute -> a
     inujini_.function.Function$Func1 _onBackground -> b
     inujini_.function.Function$Func _progressArg -> c
@@ -2087,38 +2111,50 @@ inujini_.hatate.reactive.ReactiveAsyncTask -> hn:
     138:144:void destroy() -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+inujini_.hatate.service.AsyncBroadcastReceiver -> inujini_.hatate.service.AsyncBroadcastReceiver:
+    13:20:void onReceive(android.content.Context,android.content.Intent) -> onReceive
+    void asyncOnReceive(android.content.Context,android.content.Intent) -> a
+inujini_.hatate.service.AsyncBroadcastReceiver$1 -> hs:
+    inujini_.hatate.service.AsyncBroadcastReceiver this$0 -> a
+    android.content.Intent val$intent -> b
+    16:17:java.lang.Void call(android.content.Context) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
 inujini_.hatate.service.Houtyou -> inujini_.hatate.service.Houtyou:
-    33:116:void onReceive(android.content.Context,android.content.Intent) -> onReceive
-inujini_.hatate.service.Houtyou$1 -> ho:
+    33:116:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
+inujini_.hatate.service.Houtyou$1 -> ht:
     inujini_.hatate.service.Houtyou this$0 -> a
     49:50:void onCompletion(android.media.MediaPlayer) -> onCompletion
-inujini_.hatate.service.Houtyou$2 -> hp:
-    inujini_.hatate.service.Houtyou this$0 -> a
-    80:109:java.lang.Void call(android.content.Context) -> a
-    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.service.Kill -> inujini_.hatate.service.Kill:
+    24:25:void onHandleIntent(android.content.Intent) -> onHandleIntent
+    29:33:void onDestroy() -> onDestroy
+inujini_.hatate.service.OneMoreLovely -> inujini_.hatate.service.OneMoreLovely:
+    25:64:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
+inujini_.hatate.service.OneMoreLovely$1 -> hu:
+    inujini_.hatate.service.OneMoreLovely this$0 -> a
+    38:39:void onCompletion(android.media.MediaPlayer) -> onCompletion
 inujini_.hatate.service.RebootReceiver -> inujini_.hatate.service.RebootReceiver:
-    16:24:void onReceive(android.content.Context,android.content.Intent) -> onReceive
+    15:24:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
 inujini_.hatate.service.UpdateReceiver -> inujini_.hatate.service.UpdateReceiver:
-    17:32:void onReceive(android.content.Context,android.content.Intent) -> onReceive
-inujini_.hatate.sqlite.DatabaseHelper -> hq:
+    16:30:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
+inujini_.hatate.sqlite.DatabaseHelper -> hv:
     android.content.Context _context -> a
     29:44:void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
     49:49:void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
     52:53:boolean isDbOpened(android.content.Context) -> a
-inujini_.hatate.twitter.TwitterAccountDao -> hr:
+inujini_.hatate.twitter.TwitterAccountDao -> hw:
     25:34:twitter4j.Twitter getTwitter(android.content.Context) -> a
     52:64:void insert(inujini_.hatate.data.TwitterAccount,android.content.Context) -> a
     67:68:boolean isAuthorized(android.content.Context) -> b
-inujini_.hatate.twitter.TwitterAccountDao$1 -> hs:
+inujini_.hatate.twitter.TwitterAccountDao$1 -> hx:
     java.lang.String val$consumerKey -> a
     java.lang.String val$consumerSecret -> b
     37:37:twitter4j.Twitter call(android.database.Cursor) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.twitter.TwitterAccountDao$2 -> ht:
+inujini_.hatate.twitter.TwitterAccountDao$2 -> hy:
     android.content.ContentValues val$values -> a
     61:62:void call(android.database.sqlite.SQLiteDatabase) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.util.PrefGetter -> hu:
+inujini_.hatate.util.PrefGetter -> hz:
     10:11:int getHour(android.content.Context) -> a
     15:16:int getMinute(android.content.Context) -> b
     20:21:boolean isScream(android.content.Context) -> c
@@ -2129,10 +2165,20 @@ inujini_.hatate.util.PrefGetter -> hu:
     47:49:java.lang.String getLightColorName(android.content.Context) -> h
     53:60:java.lang.String getLightColorName(java.lang.String) -> a
     65:66:boolean isTweet(android.content.Context) -> i
-inujini_.hatate.util.TimeUtil -> hv:
-    20:33:long getAlermTime(int,int) -> a
-    37:46:void setAlerm(android.content.Context) -> a
-inujini_.linq.Linq -> hw:
+    70:71:boolean isSnooze(android.content.Context) -> j
+    75:76:int getSnoozeTime(android.content.Context) -> k
+    80:81:long getSnoozeTimeMill(android.content.Context) -> l
+inujini_.hatate.util.Util -> ia:
+    java.lang.ref.SoftReference _alarmManager -> a
+    24:37:long getAlermTime(int,int) -> a
+    41:44:void setAlarm(android.content.Context) -> a
+    47:48:void removeAlarm(android.content.Context) -> b
+    51:51:android.app.PendingIntent getAlarmIntent(android.content.Context) -> c
+    56:59:void setSnooze(android.content.Context) -> d
+    62:63:void removeSnooze(android.content.Context) -> e
+    66:66:android.app.PendingIntent getSnoozeIntent(android.content.Context) -> f
+    71:81:android.app.AlarmManager getAlarmManager(android.content.Context) -> g
+inujini_.linq.Linq -> ib:
     java.lang.Iterable _items -> a
     100:100:inujini_.linq.Linq linq(java.lang.Object[]) -> a
     137:147:inujini_.linq.Linq where(inujini_.function.Function$Predicate) -> a
@@ -2228,7 +2274,7 @@ inujini_.sqlite.meta.ISqlite -> inujini_.sqlite.meta.ISqlite:
     int FIELD_REAL -> FIELD_REAL
     int FIELD_BLOB -> FIELD_BLOB
     int FIELD_NULL -> FIELD_NULL
-inujini_.sqlite.meta.annotation.SqliteField -> hx:
+inujini_.sqlite.meta.annotation.SqliteField -> ic:
     int type() -> a
     java.lang.String name() -> b
     boolean notNull() -> c
@@ -2236,7 +2282,7 @@ inujini_.sqlite.meta.annotation.SqliteField -> hx:
     boolean unique() -> e
     java.lang.String indexName() -> f
     java.lang.String defaultValue() -> g
-inujini_.sqlite.meta.annotation.SqliteTable -> hy:
+inujini_.sqlite.meta.annotation.SqliteTable -> id:
     java.lang.String value() -> a
     boolean hasPrimaryId() -> b
 twitter4j.AccountSettings -> twitter4j.AccountSettings:

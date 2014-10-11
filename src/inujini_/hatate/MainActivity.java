@@ -1,15 +1,15 @@
 package inujini_.hatate;
 
 import inujini_.hatate.preference.TimePickerPreference;
+import inujini_.hatate.preference.ValidatableEditTextPreference;
+import inujini_.hatate.preference.ValidatableEditTextPreference.TextValidator;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.twitter.TwitterAccountDao;
 import inujini_.hatate.util.PrefGetter;
-import inujini_.hatate.util.TimeUtil;
+import inujini_.hatate.util.Util;
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -17,10 +17,11 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
@@ -46,14 +47,6 @@ public class MainActivity extends PreferenceActivity {
 
 			}
 		});
-
-		/*findPreference("screamDetail").setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(Preference preference) {
-				startActivity(new Intent(getApplicationContext(), VoiceSettingActivity.class));
-				return false;
-			}
-		});*/
 
 		findPreference("preview").setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			@Override
@@ -117,25 +110,40 @@ public class MainActivity extends PreferenceActivity {
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 				preference.setSummary(String.format("点灯するLEDの色を設定します。\n現在の色は%sです。"
 						, PrefGetter.getLightColorName(newValue.toString())));
-				return false;
+				return true;
+			}
+		});
+
+		val snoozeTimePref = (ValidatableEditTextPreference) findPreference("snoozeTime");
+		snoozeTimePref.setSummary(String.format(snoozeTimePref.getSummary().toString()
+				, getApplicationContext().getSnoozeTime()));
+		snoozeTimePref.getEditText().setInputType(InputType.TYPE_CLASS_NUMBER);
+		snoozeTimePref.setValidation("0以下の数値を入力することは出来ません。", new TextValidator() {
+			@Override
+			public boolean validation(String s) {
+				if(s.equals("")) return false;
+
+				val i = Integer.parseInt(s);
+				return i > 0;
+			}
+		});
+		snoozeTimePref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+			@Override
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				preference.setSummary(String.format("スヌーズの間隔を設定します。(単位：秒)\n現在は%s秒に設定されています。"
+						, newValue));
+				return true;
 			}
 		});
 
 		// 設定画面起動時にアラーム設定を削除する
-		val context = getBaseContext();
-		val intent = new Intent(context, Houtyou.class);
-
-		val pendingIntent = PendingIntent.getBroadcast(context, -1, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-
-		val alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-		alarmManager.cancel(pendingIntent);
-
+		Util.removeAlarm(getApplicationContext());
 	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK && getApplicationContext().isNoisy()) {
-			TimeUtil.setAlerm(getBaseContext());
+			Util.setAlarm(getApplicationContext());
 		}
 		return super.onKeyDown(keyCode, event);
 	}

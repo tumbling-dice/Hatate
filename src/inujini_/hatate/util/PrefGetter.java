@@ -66,4 +66,19 @@ public class PrefGetter {
 		return pref.getBoolean("isTweet", false);
 	}
 
+	public static boolean isSnooze(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		return pref.getBoolean("isSnooze", false);
+	}
+
+	public static int getSnoozeTime(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		return Integer.parseInt(pref.getString("snoozeTime", "60"));
+	}
+
+	public static long getSnoozeTimeMill(Context context) {
+		val time = getSnoozeTime(context);
+		return (long) time * 1000;
+	}
+
 }

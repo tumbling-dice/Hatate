@@ -215,12 +215,24 @@ inujini_.hatate.preference.TimePickerPreference
 inujini_.hatate.preference.TimePickerPreference: TimePickerPreference(android.content.Context,java.lang.String,java.lang.String)
 inujini_.hatate.preference.TimePickerPreference: TimePickerPreference(android.content.Context,android.util.AttributeSet)
 inujini_.hatate.preference.TimePickerPreference: TimePickerPreference(android.content.Context,android.util.AttributeSet,int)
+inujini_.hatate.preference.ValidatableEditTextPreference
+inujini_.hatate.preference.ValidatableEditTextPreference: ValidatableEditTextPreference(android.content.Context)
+inujini_.hatate.preference.ValidatableEditTextPreference: ValidatableEditTextPreference(android.content.Context,int)
+inujini_.hatate.preference.ValidatableEditTextPreference: ValidatableEditTextPreference(android.content.Context,android.util.AttributeSet)
+inujini_.hatate.preference.ValidatableEditTextPreference: ValidatableEditTextPreference(android.content.Context,android.util.AttributeSet,int)
 inujini_.hatate.preference.VolumePreference
 inujini_.hatate.preference.VolumePreference: VolumePreference(android.content.Context,int)
 inujini_.hatate.preference.VolumePreference: VolumePreference(android.content.Context,android.util.AttributeSet)
 inujini_.hatate.preference.VolumePreference: VolumePreference(android.content.Context,android.util.AttributeSet,int)
+inujini_.hatate.service.AsyncBroadcastReceiver
+inujini_.hatate.service.AsyncBroadcastReceiver: AsyncBroadcastReceiver()
 inujini_.hatate.service.Houtyou
 inujini_.hatate.service.Houtyou: Houtyou()
+inujini_.hatate.service.Kill
+inujini_.hatate.service.Kill: Kill()
+inujini_.hatate.service.Kill: Kill(java.lang.String)
+inujini_.hatate.service.OneMoreLovely
+inujini_.hatate.service.OneMoreLovely: OneMoreLovely()
 inujini_.hatate.service.RebootReceiver
 inujini_.hatate.service.RebootReceiver: RebootReceiver()
 inujini_.hatate.service.UpdateReceiver

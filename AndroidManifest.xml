@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="inujini_.hatate"
-    android:versionCode="5"
-    android:versionName="1.0.3b" >
+    android:versionCode="6"
+    android:versionName="1.0.4" >
 
     <uses-sdk
         android:minSdkVersion="4"
@@ -38,6 +38,7 @@
         </activity>
 
         <receiver android:name="inujini_.hatate.service.Houtyou" android:process=":remote"/>
+        <receiver android:name="inujini_.hatate.service.OneMoreLovely" android:process=":remote"/>
 
         <receiver android:name="inujini_.hatate.service.RebootReceiver"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
@@ -54,6 +55,8 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+
+        <service android:name="inujini_.hatate.service.Kill" android:exported="false" />
     </application>
 
 </manifest>
