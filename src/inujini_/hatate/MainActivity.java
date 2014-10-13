@@ -4,7 +4,9 @@ import inujini_.hatate.preference.TimePickerPreference;
 import inujini_.hatate.preference.ValidatableEditTextPreference;
 import inujini_.hatate.preference.ValidatableEditTextPreference.TextValidator;
 import inujini_.hatate.service.Houtyou;
-import inujini_.hatate.twitter.TwitterAccountDao;
+import inujini_.hatate.sqlite.DatabaseHelper;
+import inujini_.hatate.sqlite.dao.AccountDao;
+import inujini_.hatate.sqlite.dao.StatisticsDao;
 import inujini_.hatate.util.PrefGetter;
 import inujini_.hatate.util.Util;
 import lombok.val;
@@ -23,8 +25,9 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.widget.TimePicker;
-import android.widget.TimePicker.OnTimeChangedListener;
+import android.widget.Toast;
 
 @ExtensionMethod({PrefGetter.class})
 public class MainActivity extends PreferenceActivity {
@@ -34,17 +37,27 @@ public class MainActivity extends PreferenceActivity {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.main);
 
+		// check db state
+		if(!DatabaseHelper.isDbOpened(getApplicationContext())
+			|| !DatabaseHelper.isDbUpdated(getApplicationContext())) {
+			val d = new DatabaseHelper(getApplicationContext());
+			d.getWritableDatabase().close();
+			d.close();
+		}
+
 		val timePref = (TimePickerPreference)findPreference("time");
 
 		timePref.setSummary(String.format(timePref.getSummary().toString()
 				, getApplicationContext().getHour(), getApplicationContext().getMinute()));
 
-		timePref.setOnTimeChangedListener(new OnTimeChangedListener() {
+		timePref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			@Override
-			public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				val timePicker = (TimePicker) newValue;
 				val pref = findPreference("time");
-				pref.setSummary(String.format("包丁で刺される時刻を設定します。\n現在は%02d:%02dに設定されています。", hourOfDay, minute));
-
+				pref.setSummary(String.format("包丁で刺される時刻を設定します。\n現在は%02d:%02dに設定されています。"
+						, timePicker.getCurrentHour(), timePicker.getCurrentMinute()));
+				return true;
 			}
 		});
 
@@ -69,7 +82,7 @@ public class MainActivity extends PreferenceActivity {
 		findPreference("isTweet").setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
-				if(!TwitterAccountDao.isAuthorized(getApplicationContext())) {
+				if(!AccountDao.isAuthorized(getApplicationContext())) {
 
 					new AlertDialog.Builder(MainActivity.this)
 						.setTitle("確認")
@@ -133,6 +146,21 @@ public class MainActivity extends PreferenceActivity {
 				preference.setSummary(String.format("スヌーズの間隔を設定します。(単位：秒)\n現在は%s秒に設定されています。"
 						, newValue));
 				return true;
+			}
+		});
+
+		findPreference("love").setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+				val statistics = StatisticsDao.getStatistics(getApplicationContext());
+
+				val toast = new Toast(getApplicationContext());
+				toast.setView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.toast_love, null));
+				toast.setDuration(Toast.LENGTH_SHORT);
+				toast.setText(String.format("刺した回数：%d\n好感度：%d"
+						, statistics.getCount(), statistics.getLove()));
+				toast.show();
+				return false;
 			}
 		});
 

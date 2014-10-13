@@ -1,7 +1,7 @@
 package inujini_.hatate.service;
 
-import lombok.val;
 import inujini_.hatate.util.Util;
+import lombok.val;
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.content.Context;

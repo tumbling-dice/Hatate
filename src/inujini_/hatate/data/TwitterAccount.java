@@ -1,10 +1,11 @@
 package inujini_.hatate.data;
 
-import java.io.Serializable;
-
 import inujini_.sqlite.meta.ISqlite;
 import inujini_.sqlite.meta.annotation.SqliteField;
 import inujini_.sqlite.meta.annotation.SqliteTable;
+
+import java.io.Serializable;
+
 import lombok.Data;
 
 @SqliteTable(value="Account",hasPrimaryId=true)

@@ -1,8 +1,9 @@
 package inujini_.hatate.preference;
 
+import inujini_.hatate.R;
+
 import java.lang.ref.WeakReference;
 
-import inujini_.hatate.R;
 import lombok.Cleanup;
 import lombok.Getter;
 import lombok.Setter;

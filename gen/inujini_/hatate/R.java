@@ -99,10 +99,13 @@ containing a value of this type.
         public static final int activity_licence=0x7f030000;
         public static final int datepicker_dialog=0x7f030001;
         public static final int seekbar_preference=0x7f030002;
-        public static final int volume_preference=0x7f030003;
+        public static final int toast_love=0x7f030003;
+        public static final int volume_preference=0x7f030004;
     }
     public static final class raw {
         public static final int ugu=0x7f050000;
+        public static final int ugu_hate=0x7f050001;
+        public static final int ugu_love=0x7f050002;
     }
     public static final class string {
         public static final int app_name=0x7f080000;

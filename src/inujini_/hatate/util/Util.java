@@ -27,7 +27,7 @@ public class Util {
 		val currentMinute = calendar.get(Calendar.MINUTE);
 
 		if(Integer.parseInt(String.format("%02d%02d", hour, minute))
-				< Integer.parseInt(String.format("%02d%02d", currentHour, currentMinute))) {
+				<= Integer.parseInt(String.format("%02d%02d", currentHour, currentMinute))) {
 			calendar.set(Calendar.DAY_OF_MONTH, (calendar.get(Calendar.DAY_OF_MONTH) + 1));
 		}
 

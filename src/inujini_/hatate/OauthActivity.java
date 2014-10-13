@@ -5,7 +5,7 @@ import inujini_.function.Function.Action1;
 import inujini_.function.Function.Func1;
 import inujini_.hatate.data.TwitterAccount;
 import inujini_.hatate.reactive.ReactiveAsyncTask;
-import inujini_.hatate.twitter.TwitterAccountDao;
+import inujini_.hatate.sqlite.dao.AccountDao;
 import lombok.val;
 import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
@@ -115,7 +115,7 @@ public class OauthActivity extends Activity {
 					accountData.setUse(true);
 					accountData.setUserId(accessToken.getUserId());
 
-					TwitterAccountDao.insert(accountData, getApplicationContext());
+					AccountDao.insert(accountData, getApplicationContext());
 
 					return null;
 				}
