@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="summary_time">包丁で刺される時刻を設定します。\n現在は%1$02d:%2$02dに設定されています。</string>
+    <string name="summary_snooze">スヌーズの間隔を設定します。(単位：秒)\n現在は%1$d秒に設定されています。</string>
+    <string name="summary_light">点灯するLEDの色を設定します。\n現在の色は%1$sです。</string>
+</resources>

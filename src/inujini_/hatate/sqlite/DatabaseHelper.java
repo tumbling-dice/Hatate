@@ -19,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final int DB_VERSION = 2;
 	private static final String DB_NAME = "HATATE_DB";
 
-	public static final String KEY_OPEN_DB = "OpenDbPreference";
+	public static final String KEY_DB_PREFERENCE = "OpenDbPreference";
 	public static final String KEY_IS_OPENED = "isOpened";
 	public static final String KEY_CURRENT_DB_VERSION = "currentDBVersion";
 
@@ -41,7 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			updateTo2(db, context);
 			db.setTransactionSuccessful();
 
-			val pref = context.getSharedPreferences(KEY_OPEN_DB, 0);
+			val pref = context.getSharedPreferences(KEY_DB_PREFERENCE, 0);
 			if(!pref.getBoolean(KEY_IS_OPENED, false)) {
 				pref.edit().putBoolean(KEY_IS_OPENED, true).commit();
 			}
@@ -62,7 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				updateTo2(db, context);
 			}
 
-			val pref = context.getSharedPreferences(KEY_OPEN_DB, 0);
+			val pref = context.getSharedPreferences(KEY_DB_PREFERENCE, 0);
 			if(pref.getInt(KEY_CURRENT_DB_VERSION, oldVersion) != newVersion) {
 				pref.edit().putInt(KEY_CURRENT_DB_VERSION, newVersion).commit();
 			}
@@ -89,12 +89,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public static boolean isDbOpened(Context context) {
-		val pref = context.getSharedPreferences(KEY_OPEN_DB, 0);
+		val pref = context.getSharedPreferences(KEY_DB_PREFERENCE, 0);
 		return pref.getBoolean(KEY_IS_OPENED, false);
 	}
 
 	public static boolean isDbUpdated(Context context) {
-		val pref = context.getSharedPreferences(KEY_OPEN_DB, 0);
+		val pref = context.getSharedPreferences(KEY_DB_PREFERENCE, 0);
 		return pref.getInt(KEY_CURRENT_DB_VERSION, 0) == DB_VERSION;
 	}
 

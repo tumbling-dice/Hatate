@@ -36,6 +36,8 @@
                 <data android:scheme="myapp" android:host="hatate"/>
             </intent-filter>
         </activity>
+        
+        <activity android:name="inujini_.hatate.NotificationActivity" />
 
         <receiver android:name="inujini_.hatate.service.Houtyou" android:process=":remote"/>
         <receiver android:name="inujini_.hatate.service.OneMoreLovely" android:process=":remote"/>
