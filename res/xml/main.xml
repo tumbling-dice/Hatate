@@ -28,15 +28,36 @@
                 android:targetClass="inujini_.hatate.NotificationActivity" />
         </PreferenceScreen>
     </PreferenceCategory>
+    <PreferenceCategory android:title="スペルカード">
+        <PreferenceScreen
+                android:key="gacha"
+                android:title="スペルカードガチャ"
+                android:summary="はたてちゃんの頭部を部位破壊してスペルカードを手に入れよう！"
+                android:enabled="false">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="inujini_.hatate"
+                android:targetClass="inujini_.hatate.GachaActivity" />
+        </PreferenceScreen>
+        <PreferenceScreen
+                android:key="spellCardList"
+                android:title="一覧"
+                android:summary="手に入れたスペルカードを眺めます。">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="inujini_.hatate"
+                android:targetClass="inujini_.hatate.SpellCardListActivity" />
+        </PreferenceScreen>
+    </PreferenceCategory>
     <PreferenceCategory android:title="その他">
-        <Preference
-            android:key="preview"
-            android:title="確認"
-            android:summary="実際に刺されるとどうなるのか見てみます。"/>
         <Preference
             android:key="love"
             android:title="好感度"
             android:summary="普通人は包丁で刺された相手のことを憎むんじゃ。" />
+        <inujini_.hatate.preference.PreviewPreference
+            android:key="preview"
+            android:title="確認"
+            android:summary="実際に刺されるとどうなるのか見てみます。"/>
         <PreferenceScreen
             android:key="license"
             android:title="ライセンス"

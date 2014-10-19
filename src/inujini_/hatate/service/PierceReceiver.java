@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 
 @ExtensionMethod({PrefGetter.class})
@@ -24,14 +23,9 @@ public abstract class PierceReceiver extends AsyncBroadcastReceiver {
 
 	@Override
 	protected void asyncOnReceive(Context context, Intent intent) {
+		Util.dbUpdate(context);
 
 		_statistics = StatisticsDao.getStatistics(context);
-
-		// バイブ
-		if(context.isVibration()) {
-			val vibrator = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
-			vibrator.vibrate(1000L);
-		}
 
 		// 声
 		if(context.isScream()) {
@@ -49,19 +43,26 @@ public abstract class PierceReceiver extends AsyncBroadcastReceiver {
 		// 通知
 		val notifyManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
+		val killIntent = PendingIntent.getService(context, -2, new Intent(context, Kill.class)
+				, PendingIntent.FLAG_UPDATE_CURRENT);
+
 		val notify = new NotificationCompat.Builder(context)
 						.setSmallIcon(R.drawable.ic_launcher)
 						.setTicker("ウグゥーーーーーーーーーーッ!!!")
 						.setWhen(System.currentTimeMillis())
 						.setContentTitle("Hatate Houtyou Alarm")
 						.setContentText("ウグゥーーーーーーーーーーッ!!!")
-						.setContentIntent(PendingIntent
-								.getService(context, -2, new Intent(context, Kill.class)
-								, PendingIntent.FLAG_UPDATE_CURRENT));
+						.setContentIntent(killIntent)
+						.setDeleteIntent(killIntent);
 
 		// LED
 		if(context.isLight()) {
 			notify.setLights((int) context.getLightColor(), 3000, 3000);
+		}
+
+		// バイブ
+		if(context.isVibration()) {
+			notify.setVibrate(context.getVibrationPattern());
 		}
 
 		notifyManager.notify(0, notify.build());

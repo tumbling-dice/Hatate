@@ -3,6 +3,7 @@ package inujini_.hatate.service;
 import inujini_.hatate.R;
 import inujini_.hatate.love.Love;
 import inujini_.hatate.sqlite.dao.AccountDao;
+import inujini_.hatate.sqlite.dao.SpellCardDao;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
 import inujini_.hatate.util.PrefGetter;
 
@@ -32,6 +33,10 @@ public class Houtyou extends PierceReceiver {
 		val isPreview = intent.getBooleanExtra(KEY_IS_PREVIEW, false);
 
 		if(!isPreview || DEBUG) {
+			// スペルカードの取得
+			val spellCard = SpellCardDao.getRandomSpellCard(context);
+
+			// 統計情報
 			val killCount = _statistics.getCount() + 1;
 			int love = _statistics.getLove() + Love.culcLove(killCount);
 
@@ -45,7 +50,7 @@ public class Houtyou extends PierceReceiver {
 
 				String tweet = null;
 
-				switch(new Random().nextInt(4)) {
+				switch(new Random().nextInt(5)) {
 				case 0:
 					tweet = res.getString(R.string.houkoku1, killCount);
 					break;
@@ -58,13 +63,18 @@ public class Houtyou extends PierceReceiver {
 				case 3:
 					tweet = res.getString(R.string.houkoku4, killCount);
 					break;
+				case 4:
+					tweet = res.getString(R.string.houkoku5, spellCard.getName());
+					break;
 				}
 
-				val twitter = AccountDao.getTwitter(context);
-				try {
-					twitter.updateStatus(String.format("%s%s%s", time, tweet, hash));
-				} catch (TwitterException e) {
-					e.printStackTrace();
+				if(!DEBUG) {
+					val twitter = AccountDao.getTwitter(context);
+					try {
+						twitter.updateStatus(String.format("%s%s%s", time, tweet, hash));
+					} catch (TwitterException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 

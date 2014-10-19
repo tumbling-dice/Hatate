@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="inujini_.hatate"
-    android:versionCode="7"
-    android:versionName="1.1.0" >
+    android:versionCode="9"
+    android:versionName="1.2.0β" >
 
     <uses-sdk
         android:minSdkVersion="4"
-        android:targetSdkVersion="4" />
+        android:targetSdkVersion="10" />
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -36,8 +36,12 @@
                 <data android:scheme="myapp" android:host="hatate"/>
             </intent-filter>
         </activity>
-        
+
         <activity android:name="inujini_.hatate.NotificationActivity" />
+
+        <activity android:name="inujini_.hatate.GachaActivity" />
+
+        <activity android:name="inujini_.hatate.SpellCardListActivity" />
 
         <receiver android:name="inujini_.hatate.service.Houtyou" android:process=":remote"/>
         <receiver android:name="inujini_.hatate.service.OneMoreLovely" android:process=":remote"/>

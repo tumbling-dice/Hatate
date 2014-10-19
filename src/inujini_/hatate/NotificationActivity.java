@@ -1,21 +1,22 @@
 package inujini_.hatate;
 
-import inujini_.hatate.preference.TimePickerPreference;
+import inujini_.function.Function.Func1;
+import inujini_.hatate.preference.EventableListPreference;
+import inujini_.hatate.preference.EventableListPreference.OnChosenListener;
 import inujini_.hatate.preference.ValidatableEditTextPreference;
 import inujini_.hatate.preference.ValidatableEditTextPreference.TextValidator;
-import inujini_.hatate.service.Houtyou;
-import inujini_.hatate.sqlite.DatabaseHelper;
 import inujini_.hatate.sqlite.dao.AccountDao;
-import inujini_.hatate.sqlite.dao.StatisticsDao;
 import inujini_.hatate.util.PrefGetter;
-import inujini_.hatate.util.Util;
+import inujini_.linq.Linq;
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -24,12 +25,8 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.text.InputType;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
-@ExtensionMethod({PrefGetter.class})
+@ExtensionMethod({PrefGetter.class, Linq.class})
 public class NotificationActivity extends PreferenceActivity {
 
 	@Override
@@ -42,7 +39,7 @@ public class NotificationActivity extends PreferenceActivity {
 			public boolean onPreferenceClick(Preference preference) {
 				if(!AccountDao.isAuthorized(getApplicationContext())) {
 
-					new AlertDialog.Builder(MainActivity.this)
+					new AlertDialog.Builder(NotificationActivity.this)
 						.setTitle("確認")
 						.setMessage("この機能を使用するにはOAuth認証が必要です。\n認証画面を表示しますか？")
 						.setPositiveButton("はい", new OnClickListener() {
@@ -50,6 +47,7 @@ public class NotificationActivity extends PreferenceActivity {
 							public void onClick(DialogInterface dialog, int which) {
 								dialog.dismiss();
 								val intent = new Intent(getApplicationContext(), OauthActivity.class);
+								//intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 								intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 								startActivity(intent);
 							}
@@ -72,11 +70,12 @@ public class NotificationActivity extends PreferenceActivity {
 		});
 
 		val lightColorPref = (ListPreference) findPreference("lightColor");
-		lightColorPref.setSummary(getString(R.stirng.summary_light, getApplicationContext().getLightColorName()));
+		lightColorPref.setSummary(getString(R.string.summary_light, getApplicationContext().getLightColorName()));
 		lightColorPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				preference.setSummary(getString(R.string.summary_light, PrefGetter.getLightColorName(newValue.toString())));
+				preference.setSummary(getString(R.string.summary_light
+						, getApplicationContext().getLightColorName(newValue.toString())));
 				return true;
 			}
 		});
@@ -96,10 +95,35 @@ public class NotificationActivity extends PreferenceActivity {
 		snoozeTimePref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				preference.setSummary(getString(R.string.summary_snooze, newValue));
+				preference.setSummary(getString(R.string.summary_snooze, Integer.parseInt(newValue.toString())));
 				return true;
 			}
 		});
+
+		val vibrationPatternPref = (EventableListPreference) findPreference("vibrationPattern");
+		vibrationPatternPref.setSummary(getString(R.string.summary_vibration
+				, getApplicationContext().getVibrationPatternName()));
+		vibrationPatternPref.setOnChosenListener(new OnChosenListener() {
+			@Override
+			public void onChosen(int index, String entry, String entryValue) {
+				val vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+				vibrator.vibrate(entryValue.split(",").linq().select(new Func1<String, Long>() {
+					@Override
+					public Long call(String x) {
+						return Long.parseLong(x);
+					}
+				}).toLongArray(), -1);
+			}
+		});
+		vibrationPatternPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+			@Override
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				preference.setSummary(getString(R.string.summary_vibration
+						, getApplicationContext().getVibrationPatternName(newValue.toString())));
+				return true;
+			}
+		});
+
 	}
 
 	@Override

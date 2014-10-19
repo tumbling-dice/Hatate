@@ -1,8 +1,16 @@
 package inujini_.hatate.util;
 
+import inujini_.function.Function.Action;
+import inujini_.function.Function.Action1;
+import inujini_.function.Function.Func1;
+import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.service.OneMoreLovely;
+import inujini_.hatate.sqlite.DatabaseHelper;
+import inujini_.linq.Linq;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.ref.SoftReference;
 import java.util.Calendar;
 
@@ -11,10 +19,12 @@ import lombok.experimental.ExtensionMethod;
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
 
-@ExtensionMethod({PrefGetter.class})
+@ExtensionMethod({PrefGetter.class, Linq.class})
 public class Util {
 
 	private static SoftReference<AlarmManager> _alarmManager;
@@ -82,5 +92,62 @@ public class Util {
 		return am;
 	}
 
+	public static InputStreamReader getAssetStream(Context context, String fileName) throws IOException {
+		val asm = context.getResources().getAssets();
+		return new InputStreamReader(asm.open(fileName));
+	}
+
+
+	public static void dbUpdateAsync(final Context context) {
+		if(!DatabaseHelper.isDbOpened(context)
+			|| !DatabaseHelper.isDbUpdated(context)) {
+
+			val prog = new ProgressDialog(context);
+			prog.setTitle("DB Update");
+			prog.setMessage("内部データベースをUpdateしています...");
+			prog.setCancelable(false);
+			prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+			new ReactiveAsyncTask<Context, Void, Void>(new Func1<Context, Void>() {
+				@Override
+				public Void call(Context c) {
+					val d = new DatabaseHelper(c);
+					d.getWritableDatabase().close();
+					d.close();
+					return null;
+				}
+			}).setOnPreExecute(new Action() {
+				@Override
+				public void call() {
+					prog.show();
+				}
+			}).setOnPostExecute(new Action1<Void>() {
+				@Override
+				public void call(Void arg0) {
+					if(prog != null && prog.isShowing())
+						prog.dismiss();
+				}
+			}).setOnError(new Action1<Exception>() {
+				@Override
+				public void call(Exception e) {
+					if(prog != null && prog.isShowing())
+						prog.dismiss();
+
+					if(e != null) e.printStackTrace();
+					Toast.makeText(context, "エラーが発生しました。", Toast.LENGTH_SHORT).show();
+
+				}
+			}).execute(context);
+		}
+	}
+
+	public static void dbUpdate(Context context) {
+		if(!DatabaseHelper.isDbOpened(context)
+				|| !DatabaseHelper.isDbUpdated(context)) {
+			val d = new DatabaseHelper(context);
+			d.getWritableDatabase().close();
+			d.close();
+		}
+	}
 
 }

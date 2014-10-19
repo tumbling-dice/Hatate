@@ -1,29 +1,16 @@
 package inujini_.hatate;
 
 import inujini_.hatate.preference.TimePickerPreference;
-import inujini_.hatate.preference.ValidatableEditTextPreference;
-import inujini_.hatate.preference.ValidatableEditTextPreference.TextValidator;
-import inujini_.hatate.service.Houtyou;
-import inujini_.hatate.sqlite.DatabaseHelper;
-import inujini_.hatate.sqlite.dao.AccountDao;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
 import inujini_.hatate.util.PrefGetter;
 import inujini_.hatate.util.Util;
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
-import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.widget.TimePicker;
@@ -36,14 +23,6 @@ public class MainActivity extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.main);
-
-		// check db state
-		if(!DatabaseHelper.isDbOpened(getApplicationContext())
-			|| !DatabaseHelper.isDbUpdated(getApplicationContext())) {
-			val d = new DatabaseHelper(getApplicationContext());
-			d.getWritableDatabase().close();
-			d.close();
-		}
 
 		val timePref = (TimePickerPreference)findPreference("time");
 
@@ -58,16 +37,6 @@ public class MainActivity extends PreferenceActivity {
 				pref.setSummary(getString(R.string.summary_time
 						, timePicker.getCurrentHour(), timePicker.getCurrentMinute()));
 				return true;
-			}
-		});
-
-		findPreference("preview").setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(Preference preference) {
-				val intent = new Intent();
-				intent.putExtra(Houtyou.KEY_IS_PREVIEW, true);
-				new Houtyou().onReceive(getApplicationContext(), intent);
-				return false;
 			}
 		});
 
@@ -86,16 +55,19 @@ public class MainActivity extends PreferenceActivity {
 			}
 		});
 
+		// check db state
+		Util.dbUpdateAsync(this);
+
 		// 設定画面起動時にアラーム設定を削除する
 		Util.removeAlarm(getApplicationContext());
 	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK && getApplicationContext().isNoisy()) {
+		if (keyCode == KeyEvent.KEYCODE_BACK
+				&& getApplicationContext().isNoisy()) {
 			Util.setAlarm(getApplicationContext());
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-
 }

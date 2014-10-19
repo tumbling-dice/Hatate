@@ -1,22 +1,40 @@
 package inujini_.hatate.sqlite;
 
+import inujini_.function.Function.Action1;
+import inujini_.function.Function.Func1;
+import inujini_.hatate.data.Character;
+import inujini_.hatate.data.Series;
+import inujini_.hatate.data.SpellCard;
+import inujini_.hatate.data.SpellCardHistory;
 import inujini_.hatate.data.Statistics;
 import inujini_.hatate.data.TwitterAccount;
+import inujini_.hatate.data.meta.MetaCharacter;
+import inujini_.hatate.data.meta.MetaSeries;
+import inujini_.hatate.data.meta.MetaSpellCard;
+import inujini_.hatate.scraping.Scraper.XElement;
+import inujini_.hatate.scraping.XmlScraper;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
+import inujini_.hatate.util.Util;
+import inujini_.linq.Linq;
 import inujini_.sqlite.helper.SqliteUtil;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
+
+import org.xmlpull.v1.XmlPullParserException;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-@ExtensionMethod({SqliteUtil.class})
+@ExtensionMethod({SqliteUtil.class, Linq.class})
 public class DatabaseHelper extends SQLiteOpenHelper {
-	private static final int DB_VERSION = 2;
+	private static final int DB_VERSION = 3;
 	private static final String DB_NAME = "HATATE_DB";
 
 	public static final String KEY_DB_PREFERENCE = "OpenDbPreference";
@@ -38,13 +56,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 		try {
 			db.execSQL(TwitterAccount.class.getCreateTableQuery());
+
 			updateTo2(db, context);
+			updateTo3(db, context);
 			db.setTransactionSuccessful();
 
-			val pref = context.getSharedPreferences(KEY_DB_PREFERENCE, 0);
-			if(!pref.getBoolean(KEY_IS_OPENED, false)) {
-				pref.edit().putBoolean(KEY_IS_OPENED, true).commit();
-			}
+			val editor = context.getSharedPreferences(KEY_DB_PREFERENCE, 0).edit();
+			editor.putBoolean(KEY_IS_OPENED, true);
+			editor.putInt(KEY_CURRENT_DB_VERSION, DB_VERSION).commit();
 		} finally {
 			db.endTransaction();
 		}
@@ -60,6 +79,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			// to version 2
 			if(oldVersion <= 1 && newVersion >= 2) {
 				updateTo2(db, context);
+			}
+
+			// to version 3
+			if(oldVersion <= 2 && newVersion >= 3) {
+				updateTo3(db, context);
 			}
 
 			val pref = context.getSharedPreferences(KEY_DB_PREFERENCE, 0);
@@ -86,6 +110,90 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(Statistics.class.getCreateTableQuery());
 		val killCount = context.getSharedPreferences(Houtyou.KEY_KILL, 0).getInt(Houtyou.KEY_KILL_COUNT, 0);
 		StatisticsDao.init(db, killCount);
+	}
+
+	/**
+	 * [2014/10/18]
+	 * db version 3
+	 * 1. add SpellCard Rule
+	 * @param db
+	 * @param context
+	 */
+	private static void updateTo3(final SQLiteDatabase db, Context context) {
+		db.execSQL(Series.class.getCreateTableQuery());
+		db.execSQL(Character.class.getCreateTableQuery());
+		db.execSQL(SpellCard.class.getCreateTableQuery());
+		db.execSQL(SpellCardHistory.class.getCreateTableQuery());
+
+		XmlScraper scraper = null;
+		try {
+			scraper = new XmlScraper(Util.getAssetStream(context, "series.xml"));
+			scraper.extract("Seriese").linq().forEach(new Action1<XElement>() {
+				@Override
+				public void call(XElement x) {
+					val cv = new ContentValues();
+					cv.put(MetaSeries.Id.getColumnName(), Integer.parseInt(x.getAttributeValue("id")));
+					cv.put(MetaSeries.Name.getColumnName(), x.getText());
+					db.insert(MetaSeries.TBL_NAME, null, cv);
+				}
+			});
+
+			scraper.close();
+
+			scraper = new XmlScraper(Util.getAssetStream(context, "characters.xml"));
+			scraper.extract("Character").linq().forEach(new Action1<XElement>() {
+				@Override
+				public void call(XElement x) {
+					val cId = Integer.parseInt(x.getAttributeValue("id"));
+					val cv = new ContentValues();
+					cv.put(MetaCharacter.Id.getColumnName(), cId);
+					cv.put(MetaCharacter.Name.getColumnName(), x.getAttributeValue("name"));
+					db.insert(MetaCharacter.TBL_NAME, null, cv);
+
+					x.getInnerElements().linq().selectMany(new Func1<XElement, Iterable<XElement>>() {
+						@Override
+						public Iterable<XElement> call(XElement y) {
+							return y.getInnerElements();
+						}
+					}).forEach(new Action1<XElement>() {
+						@Override
+						public void call(XElement y) {
+							val cvs = new ContentValues();
+							cvs.put(MetaSpellCard.Id.getColumnName(), Integer.parseInt(y.getAttributeValue("id")));
+							cvs.put(MetaSpellCard.Name.getColumnName(), y.getAttributeValue("name"));
+							cvs.put(MetaSpellCard.Power.getColumnName(), Integer.parseInt(y.getAttributeValue("power")));
+							cvs.put(MetaSpellCard.CharacterId.getColumnName(), cId);
+							cvs.put(MetaSpellCard.SeriesId.getColumnName()
+									, y.getInnerElements().linq().select(new Func1<XElement, String>() {
+										@Override
+										public String call(XElement z) {
+											return z.getText();
+										}
+									}).toJoinedString(","));
+
+							db.insert(MetaSpellCard.TBL_NAME, null, cvs);
+						}
+					});
+				}
+			});
+
+			scraper.close();
+
+		} catch (XmlPullParserException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			if(scraper != null) {
+				try {
+					scraper.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	public static boolean isDbOpened(Context context) {

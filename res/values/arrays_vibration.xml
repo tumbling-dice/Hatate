@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="VibraitionList">
+        <item>ウグゥーーーーーーーーーーッ!!!</item>
+        <item>ウ、ウ、ウ、ウグゥーーーーーーーーーーッ!!!</item>
+        <item>ウグゥーーーーーッ!!!ウグゥーーーーーッ!!!</item>
+    </string-array>
+    <string-array name="VibrationValues">
+        <item>0,2000</item>
+        <item>0,500,300,500,300,500,800,2000</item>
+        <item>0,1000,500,1000</item>
+    </string-array>
+</resources>

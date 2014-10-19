@@ -11,6 +11,8 @@ public final class R {
     public static final class array {
         public static final int LightColorList=0x7f060000;
         public static final int LightColorValues=0x7f060001;
+        public static final int VibraitionList=0x7f060002;
+        public static final int VibrationValues=0x7f060003;
     }
     public static final class attr {
         /** <p>Must be an integer value, such as "<code>100</code>".
@@ -76,31 +78,38 @@ containing a value of this type.
         public static final int type=0x7f010005;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int hatate=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
         public static final int alarm=0x7f070004;
-        public static final int imgIcon=0x7f070008;
+        public static final int imgHatate=0x7f070006;
+        public static final int imgIcon=0x7f07000b;
         public static final int music=0x7f070003;
         public static final int notification=0x7f070005;
         public static final int ring=0x7f070002;
-        public static final int seekbar=0x7f070006;
-        public static final int skbVolume=0x7f07000e;
+        public static final int seekbar=0x7f070009;
+        public static final int skbVolume=0x7f070011;
         public static final int system=0x7f070001;
-        public static final int txvCuttentVolume=0x7f07000c;
-        public static final int txvMaxVolume=0x7f07000d;
-        public static final int txvMinVolume=0x7f07000b;
-        public static final int txvSummary=0x7f07000a;
-        public static final int txvTitle=0x7f070009;
-        public static final int txvValue=0x7f070007;
+        public static final int txvCuttentVolume=0x7f07000f;
+        public static final int txvMaxVolume=0x7f070010;
+        public static final int txvMinVolume=0x7f07000e;
+        public static final int txvName=0x7f070007;
+        public static final int txvSummary=0x7f07000d;
+        public static final int txvTimestamp=0x7f070008;
+        public static final int txvTitle=0x7f07000c;
+        public static final int txvValue=0x7f07000a;
         public static final int voice=0x7f070000;
     }
     public static final class layout {
-        public static final int activity_licence=0x7f030000;
-        public static final int datepicker_dialog=0x7f030001;
-        public static final int seekbar_preference=0x7f030002;
-        public static final int toast_love=0x7f030003;
-        public static final int volume_preference=0x7f030004;
+        public static final int activity_gacha=0x7f030000;
+        public static final int activity_licence=0x7f030001;
+        public static final int activity_spellcard_list=0x7f030002;
+        public static final int adapter_spellcard_history=0x7f030003;
+        public static final int datepicker_dialog=0x7f030004;
+        public static final int seekbar_preference=0x7f030005;
+        public static final int toast_love=0x7f030006;
+        public static final int volume_preference=0x7f030007;
     }
     public static final class raw {
         public static final int ugu=0x7f050000;
@@ -109,14 +118,19 @@ containing a value of this type.
     }
     public static final class string {
         public static final int app_name=0x7f080000;
-        public static final int callback=0x7f080004;
-        public static final int consumer_key=0x7f080002;
-        public static final int consumer_secret=0x7f080003;
-        public static final int hash=0x7f080005;
+        public static final int callback=0x7f08000e;
+        public static final int consumer_key=0x7f08000c;
+        public static final int consumer_secret=0x7f08000d;
+        public static final int hash=0x7f08000b;
         public static final int houkoku1=0x7f080006;
         public static final int houkoku2=0x7f080007;
         public static final int houkoku3=0x7f080008;
         public static final int houkoku4=0x7f080009;
+        public static final int houkoku5=0x7f08000a;
+        public static final int summary_light=0x7f080004;
+        public static final int summary_snooze=0x7f080003;
+        public static final int summary_time=0x7f080002;
+        public static final int summary_vibration=0x7f080005;
         public static final int ugu=0x7f080001;
     }
     public static final class style {
@@ -138,7 +152,8 @@ containing a value of this type.
     }
     public static final class xml {
         public static final int main=0x7f040000;
-        public static final int voice_setting=0x7f040001;
+        public static final int notification=0x7f040001;
+        public static final int voice_setting=0x7f040002;
     }
     public static final class styleable {
         /** Attributes that can be used with a SeekBarPreference.

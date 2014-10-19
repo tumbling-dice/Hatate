@@ -30,6 +30,13 @@
         android:summary="刺されると最後の力で端末が振動します。"
         android:key="isVibration"
         android:defaultValue="true"/>
+    <inujini_.hatate.preference.EventableListPreference
+        android:key="vibrationPattern"
+        android:entries="@array/VibraitionList"
+        android:entryValues="@array/VibrationValues"
+        android:title="バイブパターン"
+        android:summary="@string/summary_vibration"
+        android:dependency="isVibration" />
     <CheckBoxPreference
         android:title="憎しみの光"
         android:summary="刺されると最後の力でLEDが点灯します。\n（※スリープ時のみ点灯します。）"
@@ -48,4 +55,8 @@
         android:summaryOn="やめろっていってんだろ。"
         android:key="isTweet"
         android:defaultValue="false"/>
+    <inujini_.hatate.preference.PreviewPreference
+        android:key="preview"
+        android:title="確認"
+        android:summary="実際に刺されるとどうなるのか見てみます。"/>
 </PreferenceScreen>

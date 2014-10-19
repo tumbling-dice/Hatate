@@ -4,5 +4,6 @@
     <string name="houkoku2">ウグゥーーーーーーーーーーッ!!!</string>
     <string name="houkoku3">姫海棠はたては包丁で刺されると死ぬんじゃ。</string>
     <string name="houkoku4">%d人目のはたてちゃんを包丁で刺しました。</string>
+    <string name="houkoku5">はたてちゃんの頭部から「%s」を剥ぎ取りました。</string>
     <string name="hash"> #HatateHoutyouAlarm</string>
 </resources>

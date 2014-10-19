@@ -1,9 +1,14 @@
 package inujini_.hatate.util;
 
+import inujini_.function.Function.Func1;
+import inujini_.hatate.R;
+import inujini_.linq.Linq;
 import lombok.val;
+import lombok.experimental.ExtensionMethod;
 import android.content.Context;
 import android.preference.PreferenceManager;
 
+@ExtensionMethod({Linq.class})
 public class PrefGetter {
 
 	public static int getHour(Context context) {
@@ -46,19 +51,19 @@ public class PrefGetter {
 	public static String getLightColorName(Context context) {
 		val pref = PreferenceManager.getDefaultSharedPreferences(context);
 		val strColor = pref.getString("lightColor", "0xffff0000");
-		return getLightColorName(strColor);
+		return getLightColorName(context, strColor);
 	}
 
-	public static String getLightColorName(String strColor) {
-		if(strColor.equals("0xffff0000")) {
-			return "赤";
-		} else if(strColor.equals("0xff0000ff")) {
-			return "青";
-		} else if(strColor.equals("0xff00ff00")) {
-			return "緑";
-		} else {
-			throw new IllegalStateException(String.format("this lightColor is undifiend. %s", strColor));
+	public static String getLightColorName(Context context, String strColor) {
+		val res = context.getResources();
+		val a = res.getStringArray(R.array.LightColorValues);
+
+		for (int i = 0; i < a.length; i++) {
+			if(strColor.equals(a[i]))
+				return res.getStringArray(R.array.LightColorList)[i];
 		}
+
+		throw new IllegalStateException("lightColor couldn't find.");
 	}
 
 	public static boolean isTweet(Context context) {
@@ -79,6 +84,34 @@ public class PrefGetter {
 	public static long getSnoozeTimeMill(Context context) {
 		val time = getSnoozeTime(context);
 		return (long) time * 1000;
+	}
+
+	public static long[] getVibrationPattern(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		return pref.getString("vibrationPattern", "0,2000").split(",").linq().select(new Func1<String, Long>() {
+			@Override
+			public Long call(String x) {
+				return Long.parseLong(x);
+			}
+		}).toLongArray();
+	}
+
+	public static String getVibrationPatternName(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		val str = pref.getString("vibrationPattern", "0,2000");
+		return getVibrationPatternName(context, str);
+	}
+
+	public static String getVibrationPatternName(Context context, String pattern) {
+		val res = context.getResources();
+		val a = res.getStringArray(R.array.VibrationValues);
+
+		for (int i = 0; i < a.length; i++) {
+			if(pattern.equals(a[i]))
+				return res.getStringArray(R.array.VibraitionList)[i];
+		}
+
+		throw new IllegalStateException("vibration pattern couldn't find.");
 	}
 
 }
