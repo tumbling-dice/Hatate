@@ -1,0 +1,65 @@
+#概要
+[包丁で刺されるはたてちゃんアラーム](https://play.google.com/store/apps/details?id=inujini_.hatate)の全ソースコードです。
+更新したのにコミットを忘れていることがあるので常に最新とは限りません。
+
+また、Twitter連携部分のConsumer KeyやConsumer Secretは削除しています。
+
+#更新履歴
+
++ ver 1.2.0β
+    * スペルカード収集機能の追加
+    * 細かなバグフィックス
++ ver 1.1.1
+    * 通知に関する設定を別画面へ移動
+    * バイブレーションパターンの追加
+    * その他細かいバグ修正
++ ver 1.1.0
+    * 好感度システムの実装<br>
+      →好感度によって悲鳴が変わるようになりました
+    * 時刻設定の表示がちゃんと変わらないバグの修正
+    * 全く同じ時刻に設定すると即刺しに行くバグの修正
++ ver 1.0.4
+    * 確殺機能（スヌーズ機能）の追加
+    * 他アプリでの音量変更を反映できていないバグを修正
++ ver 1.0.3b
+    * 声量を設定するシークバーがダサすぎたので修正
++ ver 1.0.3
+    * スリープ時にLEDを光らせる機能を追加
+    * Twitter連携機能の追加
++ ver 1.0.2
+    * 声量を画面上で設定できるよう修正
++ ver 1.0.1
+    * 端末再起動時に自動でアラームを設定し直すよう修正
++ ver 1.0.0
+    * 公開
+
+#ライセンス
+ソースコードに関してはMITライセンスを採用しています。以下はその全文となります。
+
+***
+The MIT License (MIT)
+
+Copyright (c) 2014 [@inujini_](https://twitter.com/inujini_)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+ this software and associated documentation files (the "Software"), to deal in
+ the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ the Software, and to permit persons to whom the Software is furnished to do so,
+ subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+***
+
+**ただし、当成果物に含まれている画像リソースに関してはこの限りではありません。**<br>
+**画像に関する全ての権利は[天篭り](https://twitter.com/tcm_b_c)氏が所有しており、使用・加工・再配布に関しては氏の許諾を得る必要があります。**
+
+また、当成果物内で使用している各種ライブラリのライセンスに関しては以下の通りとなっています。
+
++ [Apache 2.0ライセンス](http://www.apache.org/licenses/LICENSE-2.0)で配布されているもの
+    * [Twittrer4J](http://twitter4j.org/ja/index.html)
++ MITライセンスで配布されているもの
+    * [Lombok](http://projectlombok.org/)
