@@ -18,7 +18,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * キャラデータ.
+ * 繧ｭ繝｣繝ｩ繝�繝ｼ繧ｿ.
  *
  * @see MetaCharacter
  */
