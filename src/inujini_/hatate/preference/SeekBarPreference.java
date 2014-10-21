@@ -31,7 +31,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 /**
- * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+ * {@link SeekBar}ã‚’æŒã£ãŸ{@link Preference}.
  */
 public class SeekBarPreference extends Preference implements OnSeekBarChangeListener {
 
@@ -52,10 +52,10 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 	}
 
 	/**
-	 * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+	 * {@link SeekBar}ã‚’æŒã£ãŸ{@link Preference}.
 	 * 
 	 * @param context
-	 * @param max SeekBar‚ÌÅ‘å’l
+	 * @param max SeekBarã®æœ€å¤§å€¤
 	 */
 	public SeekBarPreference(Context context, int max) {
 		super(context);
@@ -63,11 +63,11 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 	}
 
 	/**
-	 * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+	 * {@link SeekBar}ã‚’æŒã£ãŸ{@link Preference}.
 	 * 
 	 * @param context
-	 * @param max SeekBar‚ÌÅ‘å’l
-	 * @param currentValue SeekBar‚Ì‰Šú’l
+	 * @param max SeekBarã®æœ€å¤§å€¤
+	 * @param currentValue SeekBarã®åˆæœŸå€¤
 	 */
 	public SeekBarPreference(Context context, int max, int currentValue) {
 		super(context);
@@ -76,7 +76,7 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 	}
 
 	/**
-	 * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+	 * {@link SeekBar}ã‚’æŒã£ãŸ{@link Preference}.
 	 * 
 	 * @param context
 	 * @param attrs
@@ -87,7 +87,7 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 	}
 
 	/**
-	 * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+	 * {@link SeekBar}ã‚’æŒã£ãŸ{@link Preference}.
 	 * 
 	 * @param context
 	 * @param attrs

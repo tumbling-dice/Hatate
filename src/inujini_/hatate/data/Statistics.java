@@ -18,7 +18,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * “Œvî•ñ.
+ * çµ±è¨ˆæƒ…å ±.
  *
  * @see MetaStatistics
  */

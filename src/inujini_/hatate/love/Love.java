@@ -16,44 +16,44 @@ import java.util.Random;
 import lombok.val;
 
 /**
- * DŠ´“xŒvZ.
+ * å¥½æ„Ÿåº¦è¨ˆç®—.
  */
 public class Love {
 
 	/**
-	 * DŠ´“x‰Šú‰».
+	 * å¥½æ„Ÿåº¦åˆæœŸåŒ–.
 	 * 
-	 * @param count h‚µ‚½‰ñ”
-	 * @return count‚Ì2”{
+	 * @param count åˆºã—ãŸå›æ•°
+	 * @return countã®2å€
 	 */
 	public static int init(int count) {
 		return count * 2;
 	}
 
 	/**
-	 * <p>DŠ´“x‚É‰‚¶‚Ä‰¹ºƒf[ƒ^‚ğ‘I‘ğ.</p>
-	 * <p>•Ô‚Á‚Ä‚­‚é‰¹º‚ÍˆÈ‰º‚Ì’Ê‚è.</p>
+	 * <p>å¥½æ„Ÿåº¦ã«å¿œã˜ã¦éŸ³å£°ãƒ‡ãƒ¼ã‚¿ã‚’é¸æŠ.</p>
+	 * <p>è¿”ã£ã¦ãã‚‹éŸ³å£°ã¯ä»¥ä¸‹ã®é€šã‚Š.</p>
 	 * <table>
 	 *   <tr>
-	 *     <th>DŠ´“x</th>
-	 *     <th>ƒf[ƒ^</th>
+	 *     <th>å¥½æ„Ÿåº¦</th>
+	 *     <th>ãƒ‡ãƒ¼ã‚¿</th>
 	 *   </tr>
 	 *   <tr>
-	 *     <td>75ˆÈã</td>
+	 *     <td>75ä»¥ä¸Š</td>
 	 *     <td>ugu_love</td>
 	 *   </tr>
 	 *   <tr>
-	 *     <td>-50–¢–</td>
+	 *     <td>-50æœªæº€</td>
 	 *     <td>ugu_hate</td>
 	 *   </tr>
 	 *   <tr>
-	 *     <td>‚»‚êˆÈŠO</td>
+	 *     <td>ãã‚Œä»¥å¤–</td>
 	 *     <td>ugu</td>
 	 *   </tr>
 	 * </table>
 	 * 
-	 * @param love DŠ´“x
-	 * @return DŠ´“x‚É‰‚¶‚½‰¹ºƒf[ƒ^‚ÌƒŠƒ\[ƒXID
+	 * @param love å¥½æ„Ÿåº¦
+	 * @return å¥½æ„Ÿåº¦ã«å¿œã˜ãŸéŸ³å£°ãƒ‡ãƒ¼ã‚¿ã®ãƒªã‚½ãƒ¼ã‚¹ID
 	 */
 	public static int getVoice(int love) {
 		if(love >= 75) {
@@ -66,24 +66,24 @@ public class Love {
 	}
 
 	/**
-	 * <p>DŠ´“xŒvZ.</p>
-	 * <p>DŠ´“x‚ÌŒvZ‚É‚Í—”‚Æh‚µ‚½‰ñ”‚ğ—p‚¢‚é.</p>
-	 * <p>‚Ü‚¸A0`254‚Ì—”‚©‚çŠî‘b’l‚ğ‹‚ß‚é.—”‚ÆŠî‘b’l‚Ì‘Î‰‚ÍˆÈ‰º‚Ì’Ê‚è.</p>
+	 * <p>å¥½æ„Ÿåº¦è¨ˆç®—.</p>
+	 * <p>å¥½æ„Ÿåº¦ã®è¨ˆç®—ã«ã¯ä¹±æ•°ã¨åˆºã—ãŸå›æ•°ã‚’ç”¨ã„ã‚‹.</p>
+	 * <p>ã¾ãšã€0ï½254ã®ä¹±æ•°ã‹ã‚‰åŸºç¤å€¤ã‚’æ±‚ã‚ã‚‹.ä¹±æ•°ã¨åŸºç¤å€¤ã®å¯¾å¿œã¯ä»¥ä¸‹ã®é€šã‚Š.</p>
 	 * <table>
 	 *   <tr>
-	 *     <th>—””ÍˆÍ</th>
-	 *     <th>Šî‘b’l</th>
+	 *     <th>ä¹±æ•°ç¯„å›²</th>
+	 *     <th>åŸºç¤å€¤</th>
 	 *   </tr>
 	 *   <tr>
 	 *     <td>0</td>
 	 *     <td>-100</td>
 	 *   </tr>
 	 *   <tr>
-	 *     <td>1`100</td>
+	 *     <td>1ï½100</td>
 	 *     <td>2</td>
 	 *   </tr>
 	 *   <tr>
-	 *     <td>101`253</td>
+	 *     <td>101ï½253</td>
 	 *     <td>-10</td>
 	 *   </tr>
 	 *   <tr>
@@ -91,17 +91,17 @@ public class Love {
 	 *     <td>10</td>
 	 *   </tr>
 	 *   <tr>
-	 *     <td>‚»‚êˆÈŠO</td>
+	 *     <td>ãã‚Œä»¥å¤–</td>
 	 *     <td>100</td>
 	 *   </tr>
 	 * </table>
 	 * 
-	 * <p>‚à‚µkillCount‚ª5‚æ‚è‚à‘å‚«‚­A‚È‚¨‚©‚Â{@link Random#nextBoolean()}‚ªtrue‚¾‚Á‚½ê‡A
-	 * killCount / 5‚Ì’l‚ğã‹L‚ÌŠî‘b’l‚ÉæZ‚µ‚½‚à‚Ì‚ğ•Ô‹p‚·‚é.</p>
-	 * <p>5ˆÈ‰º‚Ìê‡‚ÍŠî‘b’l‚ğ‚»‚Ì‚Ü‚Ü•Ô‹p‚·‚é.</p>
+	 * <p>ã‚‚ã—killCountãŒ5ã‚ˆã‚Šã‚‚å¤§ããã€ãªãŠã‹ã¤{@link Random#nextBoolean()}ãŒtrueã ã£ãŸå ´åˆã€
+	 * killCount / 5ã®å€¤ã‚’ä¸Šè¨˜ã®åŸºç¤å€¤ã«ä¹—ç®—ã—ãŸã‚‚ã®ã‚’è¿”å´ã™ã‚‹.</p>
+	 * <p>5ä»¥ä¸‹ã®å ´åˆã¯åŸºç¤å€¤ã‚’ãã®ã¾ã¾è¿”å´ã™ã‚‹.</p>
 	 *
-	 * @param killCount h‚µ‚½‰ñ”
-	 * @return ZoŒ‹‰Ê
+	 * @param killCount åˆºã—ãŸå›æ•°
+	 * @return ç®—å‡ºçµæœ
 	 */
 	// FIXME: Rename(culcLove -> culc)
 	public static int culcLove(int killCount) {

@@ -20,7 +20,7 @@ import android.util.AttributeSet;
 import android.widget.TimePicker;
 
 /**
- * {@link TimePickerDialog}‚ğ•\¦‚·‚é{@link Preference}.
+ * {@link TimePickerDialog}ã‚’è¡¨ç¤ºã™ã‚‹{@link Preference}.
  */
 public class TimePickerPreference extends Preference {
 
@@ -30,12 +30,12 @@ public class TimePickerPreference extends Preference {
 	private int _defaultMinute = 0;
 
 	/**
-	 * {@link TimePickerDialog}‚ğ•\¦‚·‚é{@link Preference}.
+	 * {@link TimePickerDialog}ã‚’è¡¨ç¤ºã™ã‚‹{@link Preference}.
 	 * 
 	 * @param context
-	 * @param keyOfHour ŠÔ‚ğ•Û‘¶‚·‚ékey
-	 * @param keyOfMinute •ª‚ğ•Û‘¶‚·‚ékey
-	 * @throws IllegalStateException keyOfHour‚à‚µ‚­‚ÍkeyOfMinute‚ªnull.
+	 * @param keyOfHour æ™‚é–“ã‚’ä¿å­˜ã™ã‚‹key
+	 * @param keyOfMinute åˆ†ã‚’ä¿å­˜ã™ã‚‹key
+	 * @throws IllegalStateException keyOfHourã‚‚ã—ãã¯keyOfMinuteãŒnull.
 	 */
 	public TimePickerPreference(Context context, String keyOfHour, String keyOfMinute) {
 		super(context);
@@ -49,11 +49,11 @@ public class TimePickerPreference extends Preference {
 	}
 
 	/**
-	 * {@link TimePickerDialog}‚ğ•\¦‚·‚é{@link Preference}.
+	 * {@link TimePickerDialog}ã‚’è¡¨ç¤ºã™ã‚‹{@link Preference}.
 	 * 
 	 * @param context
 	 * @param attrs
-	 * @throws IllegalStateException key_hour‚à‚µ‚­‚Íkey_minute‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢.
+	 * @throws IllegalStateException key_hourã‚‚ã—ãã¯key_minuteãŒè¨­å®šã•ã‚Œã¦ã„ãªã„.
 	 */
 	public TimePickerPreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -74,12 +74,12 @@ public class TimePickerPreference extends Preference {
 	}
 
 	/**
-	 * {@link TimePickerDialog}‚ğ•\¦‚·‚é{@link Preference}.
+	 * {@link TimePickerDialog}ã‚’è¡¨ç¤ºã™ã‚‹{@link Preference}.
 	 * 
 	 * @param context
 	 * @param attrs
 	 * @params defStyle
-	 * @throws IllegalStateException key_hour‚à‚µ‚­‚Íkey_minute‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢.
+	 * @throws IllegalStateException key_hourã‚‚ã—ãã¯key_minuteãŒè¨­å®šã•ã‚Œã¦ã„ãªã„.
 	 */
 	public TimePickerPreference(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);

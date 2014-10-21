@@ -21,15 +21,15 @@ import lombok.val;
 import org.xmlpull.v1.XmlPullParser;
 
 /**
- * {@link XmlPullParser}‚ÌŠg’£ƒƒ\ƒbƒhŒQ.
+ * {@link XmlPullParser}ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ç¾¤.
  */
 public final class XmlPullParserExtensions {
 
 	/**
-	 * Œ»ƒCƒxƒ“ƒg‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‘SAttribute‚Ìæ“¾.
+	 * ç¾ã‚¤ãƒ™ãƒ³ãƒˆã«å«ã¾ã‚Œã¦ã„ã‚‹å…¨Attributeã®å–å¾—.
 	 * 
 	 * @param parser
-	 * @return ‘SAttribute‚ÌƒŠƒXƒg
+	 * @return å…¨Attributeã®ãƒªã‚¹ãƒˆ
 	 */
 	public static List<XAttribute> getAttributes(XmlPullParser parser) {
 		val attrs = new ArrayList<XAttribute>();
@@ -41,13 +41,13 @@ public final class XmlPullParserExtensions {
 	}
 
 	/**
-	 * Œ»ƒCƒxƒ“ƒg‚Éw’è‚³‚ê‚½Attribute‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚é.
+	 * ç¾ã‚¤ãƒ™ãƒ³ãƒˆã«æŒ‡å®šã•ã‚ŒãŸAttributeãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹.
 	 * 
 	 * @param parser
-	 * @param namespace –¼‘O‹óŠÔinull‚Ìê‡‚Íƒ`ƒFƒbƒN‚µ‚È‚¢j
-	 * @param name ‘®«–¼
-	 * @param value ‘®«‚Ì’linull‚Ìê‡‚Íƒ`ƒFƒbƒN‚µ‚È‚¢j
-	 * @return Œ»ƒCƒxƒ“ƒg“à‚ÉnamespaceAnameAvalue‚Ì‚·‚×‚Ä‚ªˆê’v‚·‚éAttribute‚ª‘¶İ‚·‚ê‚Îtrue.
+	 * @param namespace åå‰ç©ºé–“ï¼ˆnullã®å ´åˆã¯ãƒã‚§ãƒƒã‚¯ã—ãªã„ï¼‰
+	 * @param name å±æ€§å
+	 * @param value å±æ€§ã®å€¤ï¼ˆnullã®å ´åˆã¯ãƒã‚§ãƒƒã‚¯ã—ãªã„ï¼‰
+	 * @return ç¾ã‚¤ãƒ™ãƒ³ãƒˆå†…ã«namespaceã€nameã€valueã®ã™ã¹ã¦ãŒä¸€è‡´ã™ã‚‹AttributeãŒå­˜åœ¨ã™ã‚Œã°true.
 	 */
 	public static boolean hasAttribute(XmlPullParser parser, String namespace, @NonNull String name, String value) {
 		for(int i = 0, attrCount = parser.getAttributeCount(); i < attrCount; i++) {
@@ -62,12 +62,12 @@ public final class XmlPullParserExtensions {
 	}
 
 	/**
-	 * Œ»ƒCƒxƒ“ƒg‚Éw’è‚³‚ê‚½Attribute‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚é.
+	 * ç¾ã‚¤ãƒ™ãƒ³ãƒˆã«æŒ‡å®šã•ã‚ŒãŸAttributeãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹.
 	 * 
 	 * @param parser
-	 * @param name ‘®«–¼
-	 * @param value ‘®«‚Ì’linull‚Ìê‡‚Íƒ`ƒFƒbƒN‚µ‚È‚¢j
-	 * @return Œ»ƒCƒxƒ“ƒg“à‚ÉnameAvalue‚Ì‚·‚×‚Ä‚ªˆê’v‚·‚éAttribute‚ª‘¶İ‚·‚ê‚Îtrue.
+	 * @param name å±æ€§å
+	 * @param value å±æ€§ã®å€¤ï¼ˆnullã®å ´åˆã¯ãƒã‚§ãƒƒã‚¯ã—ãªã„ï¼‰
+	 * @return ç¾ã‚¤ãƒ™ãƒ³ãƒˆå†…ã«nameã€valueã®ã™ã¹ã¦ãŒä¸€è‡´ã™ã‚‹AttributeãŒå­˜åœ¨ã™ã‚Œã°true.
 	 * @see #hasAttribute(XmlPullParser, String, String, String)
 	 */
 	public static boolean hasAttribute(XmlPullParser parser, String name, String value) {
@@ -75,11 +75,11 @@ public final class XmlPullParserExtensions {
 	}
 
 	/**
-	 * Œ»ƒCƒxƒ“ƒg‚Éw’è‚³‚ê‚½Attribute‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚é.
+	 * ç¾ã‚¤ãƒ™ãƒ³ãƒˆã«æŒ‡å®šã•ã‚ŒãŸAttributeãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹.
 	 * 
 	 * @param parser
-	 * @param name ‘®«–¼
-	 * @return Œ»ƒCƒxƒ“ƒg“à‚Éname‚ªˆê’v‚·‚éAttribute‚ª‘¶İ‚·‚ê‚Îtrue.
+	 * @param name å±æ€§å
+	 * @return ç¾ã‚¤ãƒ™ãƒ³ãƒˆå†…ã«nameãŒä¸€è‡´ã™ã‚‹AttributeãŒå­˜åœ¨ã™ã‚Œã°true.
 	 * @see #hasAttribute(XmlPullParser, String, String, String)
 	 */
 	public static boolean hasAttribute(XmlPullParser parser, String name) {
@@ -87,11 +87,11 @@ public final class XmlPullParserExtensions {
 	}
 
 	/**
-	 * Œ»ƒCƒxƒ“ƒg‚Éw’è‚³‚ê‚½Attribute‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚é.
+	 * ç¾ã‚¤ãƒ™ãƒ³ãƒˆã«æŒ‡å®šã•ã‚ŒãŸAttributeãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹.
 	 * 
 	 * @param parser
 	 * @param attributeFilter
-	 * @return Œ»ƒCƒxƒ“ƒg‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚éAttribute‚©‚çattributeFilter‚Åtrue‚ª•Ô‚³‚ê‚ê‚Îtrue.
+	 * @return ç¾ã‚¤ãƒ™ãƒ³ãƒˆã«å«ã¾ã‚Œã¦ã„ã‚‹Attributeã‹ã‚‰attributeFilterã§trueãŒè¿”ã•ã‚Œã‚Œã°true.
 	 */
 	public static boolean hasAttribute(XmlPullParser parser, AttributeFilter attributeFilter) {
 

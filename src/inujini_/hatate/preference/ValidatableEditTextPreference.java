@@ -26,7 +26,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * ���͓��e�����؂��A���[���Ɉᔽ���Ă����ꍇ�͒l��o�^�����Ȃ�{@link EditTextPreference}.
+ * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
  */
 public class ValidatableEditTextPreference extends EditTextPreference {
 
@@ -35,20 +35,20 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 	private TextValidator _validator;
 
 	/**
-	 * ���͓��e���؃��[��.
+	 * 入力内容検証ルール.
 	 */
 	public interface TextValidator {
 		/**
-		 * ���͓��e����.
+		 * 入力内容検証.
 		 * 
-		 * @param s ���͓��e
-		 * @return ���[���ɓK���Ă���ꍇ��true�A�ᔽ���Ă���ꍇ��false.
+		 * @param s 入力内容
+		 * @return ルールに適している場合はtrue、違反している場合はfalse.
 		 */
 		boolean validation(String s);
 	}
 
 	/**
-	 * ���͓��e�����؂��A���[���Ɉᔽ���Ă����ꍇ�͒l��o�^�����Ȃ�{@link EditTextPreference}.
+	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
 	 * 
 	 * @param context
 	 */
@@ -57,7 +57,7 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 	}
 
 	/**
-	 * ���͓��e�����؂��A���[���Ɉᔽ���Ă����ꍇ�͒l��o�^�����Ȃ�{@link EditTextPreference}.
+	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
 	 * 
 	 * @param context
 	 * @param attrs
@@ -67,7 +67,7 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 	}
 
 	/**
-	 * ���͓��e�����؂��A���[���Ɉᔽ���Ă����ꍇ�͒l��o�^�����Ȃ�{@link EditTextPreference}.
+	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
 	 * 
 	 * @param context
 	 * @param attrs
@@ -127,10 +127,10 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 	}
 
 	/**
-	 * ���؃��[���o�^.
+	 * 検証ルール登録.
 	 * 
-	 * @param errorMessage ���[���ᔽ���ɕ\�����郁�b�Z�[�W
-	 * @param validator ���؃��[��
+	 * @param errorMessage ルール違反時に表示するメッセージ
+	 * @param validator 検証ルール
 	 */
 	public void setValidation(@NonNull String errorMessage, @NonNull TextValidator validator) {
 		_isNeedValidation = true;

@@ -18,7 +18,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * スペルカードデータ.
+ * 繧ｹ繝壹Ν繧ｫ繝ｼ繝峨ョ繝ｼ繧ｿ.
  *
  * @see MetaSpellCard
  */

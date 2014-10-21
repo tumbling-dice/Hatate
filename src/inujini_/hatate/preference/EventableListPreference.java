@@ -19,20 +19,20 @@ import android.preference.ListPreference;
 import android.util.AttributeSet;
 
 /**
- * ƒAƒCƒeƒ€‘I‘ğ‚ÉƒCƒxƒ“ƒg‚ğ”­¶‚³‚¹‚é{@link ListPreference}.
+ * ã‚¢ã‚¤ãƒ†ãƒ é¸æŠæ™‚ã«ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºç”Ÿã•ã›ã‚‹{@link ListPreference}.
  */
 public class EventableListPreference extends ListPreference {
 
 	/**
-	 * ƒAƒCƒeƒ€‘I‘ğ‚ÌƒCƒxƒ“ƒgƒŠƒXƒi[.
+	 * ã‚¢ã‚¤ãƒ†ãƒ é¸æŠæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼.
 	 */
 	public interface OnChosenListener {
 		/**
-		 * ƒAƒCƒeƒ€‘I‘ğƒCƒxƒ“ƒg
+		 * ã‚¢ã‚¤ãƒ†ãƒ é¸æŠæ™‚ã‚¤ãƒ™ãƒ³ãƒˆ
 		 * 
-		 * @param index ƒAƒCƒeƒ€‚ÌˆÊ’u
-		 * @param entry ‘I‘ğ‚³‚ê‚½’liandroid:entriesj
-		 * @param entryValue ‘I‘ğ‚³‚ê‚½’liandroid:entryValuesj
+		 * @param index ã‚¢ã‚¤ãƒ†ãƒ ã®ä½ç½®
+		 * @param entry é¸æŠã•ã‚ŒãŸå€¤ï¼ˆandroid:entriesï¼‰
+		 * @param entryValue é¸æŠã•ã‚ŒãŸå€¤ï¼ˆandroid:entryValuesï¼‰
 		 */
 		public void onChosen(int index, String entry, String entryValue);
 	}
@@ -41,7 +41,7 @@ public class EventableListPreference extends ListPreference {
 	@Accessors(prefix="_") @Setter private OnChosenListener _onChosenListener;
 
 	/**
-	 * ƒAƒCƒeƒ€‘I‘ğ‚ÉƒCƒxƒ“ƒg‚ğ”­¶‚³‚¹‚é{@link ListPreference}.
+	 * ã‚¢ã‚¤ãƒ†ãƒ é¸æŠæ™‚ã«ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºç”Ÿã•ã›ã‚‹{@link ListPreference}.
 	 * 
 	 * @param context
 	 */
@@ -50,7 +50,7 @@ public class EventableListPreference extends ListPreference {
 	}
 
 	/**
-	 * ƒAƒCƒeƒ€‘I‘ğ‚ÉƒCƒxƒ“ƒg‚ğ”­¶‚³‚¹‚é{@link ListPreference}.
+	 * ã‚¢ã‚¤ãƒ†ãƒ é¸æŠæ™‚ã«ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºç”Ÿã•ã›ã‚‹{@link ListPreference}.
 	 * 
 	 * @param context
 	 * @param attrs

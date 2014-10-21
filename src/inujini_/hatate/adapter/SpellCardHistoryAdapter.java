@@ -23,7 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 /**
- * スペルカード履歴一覧用ArrayAdapter.
+ * 繧ｹ繝壹Ν繧ｫ繝ｼ繝牙ｱ･豁ｴ荳隕ｧ逕ｨArrayAdapter.
  */
 public class SpellCardHistoryAdapter extends ArrayAdapter<SpellCardHistory> {
 

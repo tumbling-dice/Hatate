@@ -25,7 +25,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * ’[––‚ÌŠe‰¹—Ê‚ğİ’è‚·‚é{@link SeekBarPreference}.
+ * ç«¯æœ«ã®å„éŸ³é‡ã‚’è¨­å®šã™ã‚‹{@link SeekBarPreference}.
  * 
  * @see AudioManager
  */
@@ -36,11 +36,11 @@ public class VolumePreference extends SeekBarPreference {
 	private WeakReference<AudioManager> _manager;
 
 	/**
-	 * ’[––‚ÌŠe‰¹—Ê‚ğİ’è‚·‚é{@link SeekBarPreference}.
+	 * ç«¯æœ«ã®å„éŸ³é‡ã‚’è¨­å®šã™ã‚‹{@link SeekBarPreference}.
 	 * 
 	 * @param context
-	 * @param volumeType İ’è‚·‚é‰¹—Ê‚Ìí—Ş
-	 * @throws IllegalArgumentException volumeType‚ª0–¢–‚à‚µ‚­‚Í5‚æ‚è‘å‚«‚¢
+	 * @param volumeType è¨­å®šã™ã‚‹éŸ³é‡ã®ç¨®é¡
+	 * @throws IllegalArgumentException volumeTypeãŒ0æœªæº€ã‚‚ã—ãã¯5ã‚ˆã‚Šå¤§ãã„
 	 * @see AudioManager
 	 */
 	public VolumePreference(Context context, int volumeType) {
@@ -56,11 +56,11 @@ public class VolumePreference extends SeekBarPreference {
 	}
 
 	/**
-	 * ’[––‚ÌŠe‰¹—Ê‚ğİ’è‚·‚é{@link SeekBarPreference}.
+	 * ç«¯æœ«ã®å„éŸ³é‡ã‚’è¨­å®šã™ã‚‹{@link SeekBarPreference}.
 	 * 
 	 * @param context
 	 * @param attrs
-	 * @throws IllegalStateException type‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢
+	 * @throws IllegalStateException typeãŒè¨­å®šã•ã‚Œã¦ã„ãªã„
 	 * @see AudioManager
 	 */
 	public VolumePreference(Context context, AttributeSet attrs) {
@@ -75,11 +75,11 @@ public class VolumePreference extends SeekBarPreference {
 	}
 
 	/**
-	 * ’[––‚ÌŠe‰¹—Ê‚ğİ’è‚·‚é{@link SeekBarPreference}.
+	 * ç«¯æœ«ã®å„éŸ³é‡ã‚’è¨­å®šã™ã‚‹{@link SeekBarPreference}.
 	 * 
 	 * @param context
 	 * @param attrs
-	 * @throws IllegalStateException type‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢
+	 * @throws IllegalStateException typeãŒè¨­å®šã•ã‚Œã¦ã„ãªã„
 	 * @see AudioManager
 	 */
 	public VolumePreference(Context context, AttributeSet attrs, int defStyle) {

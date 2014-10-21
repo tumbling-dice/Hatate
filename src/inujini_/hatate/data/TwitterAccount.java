@@ -18,7 +18,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * Twitterアカウント情報.
+ * Twitter繧｢繧ｫ繧ｦ繝ｳ繝域ュ蝣ｱ.
  *
  * @see MetaAccount
  */

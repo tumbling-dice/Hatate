@@ -17,7 +17,7 @@ import inujini_.sqlite.meta.annotation.SqliteTable;
 import lombok.Data;
 
 /**
- * スペルカード取得履歴.
+ * 繧ｹ繝壹Ν繧ｫ繝ｼ繝牙叙蠕怜ｱ･豁ｴ.
  *
  * @see MetaSpellCardHistory
  */

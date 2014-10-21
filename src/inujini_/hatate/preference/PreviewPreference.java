@@ -17,12 +17,12 @@ import android.preference.Preference;
 import android.util.AttributeSet;
 
 /**
- * {@link Houtyou}の動作を確認する{@link Preference}.
+ * {@link Houtyou}縺ｮ蜍穂ｽ懊ｒ遒ｺ隱阪☆繧宮@link Preference}.
  */
 public class PreviewPreference extends Preference {
 
 	/**
-	 * {@link Houtyou}の動作を確認する{@link Preference}.
+	 * {@link Houtyou}縺ｮ蜍穂ｽ懊ｒ遒ｺ隱阪☆繧宮@link Preference}.
 	 * 
 	 * @param context
 	 */
@@ -31,7 +31,7 @@ public class PreviewPreference extends Preference {
 	}
 
 	/**
-	 * {@link Houtyou}の動作を確認する{@link Preference}.
+	 * {@link Houtyou}縺ｮ蜍穂ｽ懊ｒ遒ｺ隱阪☆繧宮@link Preference}.
 	 * 
 	 * @param context
 	 * @param attrs
@@ -41,7 +41,7 @@ public class PreviewPreference extends Preference {
 	}
 
 	/**
-	 * {@link Houtyou}の動作を確認する{@link Preference}.
+	 * {@link Houtyou}縺ｮ蜍穂ｽ懊ｒ遒ｺ隱阪☆繧宮@link Preference}.
 	 * 
 	 * @param context
 	 * @param attrs
