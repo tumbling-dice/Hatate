@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate.scraping;
 
 import java.io.InputStreamReader;
@@ -17,7 +26,7 @@ public class XmlScraper extends ScraperImpl {
 
 	@Override
 	protected XmlPullParser createParser(String source, XmlPullParserFactory factory) throws XmlPullParserException {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override

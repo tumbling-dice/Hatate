@@ -23,8 +23,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="inujini_.hatate.VoiceSettingActivity" />
-
         <activity android:name="inujini_.hatate.LicenseActivity" />
 
         <activity android:name="inujini_.hatate.OauthActivity"
@@ -41,7 +39,7 @@
 
         <activity android:name="inujini_.hatate.GachaActivity" />
 
-        <activity android:name="inujini_.hatate.SpellCardListActivity" />
+        <activity android:name="inujini_.hatate.SpellCardHistoryActivity" />
 
         <receiver android:name="inujini_.hatate.service.Houtyou" android:process=":remote"/>
         <receiver android:name="inujini_.hatate.service.OneMoreLovely" android:process=":remote"/>

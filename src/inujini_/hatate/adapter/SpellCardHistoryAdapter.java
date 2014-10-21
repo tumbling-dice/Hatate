@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate.adapter;
 
 import inujini_.hatate.R;
@@ -13,6 +22,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+/**
+ * スペルカード履歴一覧用ArrayAdapter.
+ */
 public class SpellCardHistoryAdapter extends ArrayAdapter<SpellCardHistory> {
 
 	private LayoutInflater _inflater;
@@ -52,7 +64,5 @@ public class SpellCardHistoryAdapter extends ArrayAdapter<SpellCardHistory> {
 
 		return view;
 	}
-
-
 
 }

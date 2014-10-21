@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    HatateHoutyouAlarm
+    Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+    
+    This software is released under the MIT License.
+    http://opensource.org/licenses/mit-license.php
+--!>
+
 <resources>
     <string name="summary_time">包丁で刺される時刻を設定します。\n現在は%1$02d:%2$02dに設定されています。</string>
     <string name="summary_snooze">スヌーズの間隔を設定します。(単位：秒)\n現在は%1$d秒に設定されています。</string>

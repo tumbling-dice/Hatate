@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate.preference;
 
 import lombok.Setter;
@@ -9,19 +18,43 @@ import android.content.DialogInterface;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 
+/**
+ * アイテム選択時にイベントを発生させる{@link ListPreference}.
+ */
 public class EventableListPreference extends ListPreference {
 
+	/**
+	 * アイテム選択時のイベントリスナー.
+	 */
 	public interface OnChosenListener {
+		/**
+		 * アイテム選択時イベント
+		 * 
+		 * @param index アイテムの位置
+		 * @param entry 選択された値（android:entries）
+		 * @param entryValue 選択された値（android:entryValues）
+		 */
 		public void onChosen(int index, String entry, String entryValue);
 	}
 
 	private int _selectedEntryIndex;
 	@Accessors(prefix="_") @Setter private OnChosenListener _onChosenListener;
 
+	/**
+	 * アイテム選択時にイベントを発生させる{@link ListPreference}.
+	 * 
+	 * @param context
+	 */
 	public EventableListPreference(Context context) {
 		super(context);
 	}
 
+	/**
+	 * アイテム選択時にイベントを発生させる{@link ListPreference}.
+	 * 
+	 * @param context
+	 * @param attrs
+	 */
 	public EventableListPreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}

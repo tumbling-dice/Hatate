@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate.preference;
 
 import inujini_.hatate.R;
@@ -10,6 +19,9 @@ import android.preference.Preference;
 import android.util.AttributeSet;
 import android.widget.TimePicker;
 
+/**
+ * {@link TimePickerDialog}を表示する{@link Preference}.
+ */
 public class TimePickerPreference extends Preference {
 
 	private final String KEY_HOUR;
@@ -17,7 +29,14 @@ public class TimePickerPreference extends Preference {
 	private int _defaultHour = 0;
 	private int _defaultMinute = 0;
 
-
+	/**
+	 * {@link TimePickerDialog}を表示する{@link Preference}.
+	 * 
+	 * @param context
+	 * @param keyOfHour 時間を保存するkey
+	 * @param keyOfMinute 分を保存するkey
+	 * @throws IllegalStateException keyOfHourもしくはkeyOfMinuteがnull.
+	 */
 	public TimePickerPreference(Context context, String keyOfHour, String keyOfMinute) {
 		super(context);
 
@@ -29,6 +48,13 @@ public class TimePickerPreference extends Preference {
 		KEY_MINUTE = keyOfMinute;
 	}
 
+	/**
+	 * {@link TimePickerDialog}を表示する{@link Preference}.
+	 * 
+	 * @param context
+	 * @param attrs
+	 * @throws IllegalStateException key_hourもしくはkey_minuteが設定されていない.
+	 */
 	public TimePickerPreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
@@ -47,6 +73,14 @@ public class TimePickerPreference extends Preference {
 		KEY_MINUTE = keyOfMinute;
 	}
 
+	/**
+	 * {@link TimePickerDialog}を表示する{@link Preference}.
+	 * 
+	 * @param context
+	 * @param attrs
+	 * @params defStyle
+	 * @throws IllegalStateException key_hourもしくはkey_minuteが設定されていない.
+	 */
 	public TimePickerPreference(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 

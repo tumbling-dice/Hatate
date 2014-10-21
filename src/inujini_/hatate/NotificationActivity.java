@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate;
 
 import inujini_.function.Function.Func1;
@@ -26,6 +35,9 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 
+/**
+ * 通知詳細設定画面.
+ */
 @ExtensionMethod({PrefGetter.class, Linq.class})
 public class NotificationActivity extends PreferenceActivity {
 
@@ -47,7 +59,6 @@ public class NotificationActivity extends PreferenceActivity {
 							public void onClick(DialogInterface dialog, int which) {
 								dialog.dismiss();
 								val intent = new Intent(getApplicationContext(), OauthActivity.class);
-								//intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 								intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 								startActivity(intent);
 							}

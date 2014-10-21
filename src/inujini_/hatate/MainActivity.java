@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate;
 
 import inujini_.hatate.preference.TimePickerPreference;
@@ -16,6 +25,9 @@ import android.view.LayoutInflater;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+/**
+ * 初期表示画面.
+ */
 @ExtensionMethod({PrefGetter.class})
 public class MainActivity extends PreferenceActivity {
 

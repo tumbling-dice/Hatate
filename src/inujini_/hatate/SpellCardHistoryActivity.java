@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate;
 
 import inujini_.function.Function.Action;
@@ -17,12 +26,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class SpellCardListActivity extends ListActivity {
+/**
+ * スペルカード履歴一覧画面.
+ */
+public class SpellCardHistoryActivity extends ListActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_spellcard_list);
+		setContentView(R.layout.activity_list);
 
 		val prog = new ProgressDialog(this);
 		prog.setTitle("データ取得");

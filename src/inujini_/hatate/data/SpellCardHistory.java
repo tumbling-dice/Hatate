@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate.data;
 
 import java.io.Serializable;
@@ -7,6 +16,11 @@ import inujini_.sqlite.meta.annotation.SqliteField;
 import inujini_.sqlite.meta.annotation.SqliteTable;
 import lombok.Data;
 
+/**
+ * スペルカード取得履歴.
+ *
+ * @see MetaSpellCardHistory
+ */
 @Data
 @SqliteTable("SpellCardHistory")
 public class SpellCardHistory implements Serializable, ISqlite {

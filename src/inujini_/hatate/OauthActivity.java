@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate;
 
 import inujini_.function.Function.Action;
@@ -19,13 +28,40 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
+/**
+ * <p>Oauth認証画面.</p>
+ * <p>Intentに{@link KEY_NEED_CALLBACK}としてtrueが渡されていた場合、Oauth認証済みの{@link TwitterAccount}を返す.</p>
+ * <p>基本的にこのActivityはOauth認証画面を表示し、終わったら{@link Activity#finish()}するだけなので、
+ * {@link Intent#FLAG_ACTIVITY_NO_HISTORY}を使って起動すること.</p>
+ *
+ * @see Activity#startActivityForResult(Intent, int)
+ * @see Activity#onActivityResult(int, int, Intent)
+ */
 public class OauthActivity extends Activity {
-
+	
+	/**
+	 * Activityのコールバック設定用キー.
+	 * 
+	 * @see #KEY_ACCOUNT
+	 */
+	public static final String KEY_NEED_CALLBACK = "isNeedCallback";
+	
+	/**
+	 * 戻り値となる{@link TwitterAccount}の取得用キー.
+	 * 
+	 * @see #KEY_NEED_CALLBACK
+	 */
+	public static final Stirng KEY_ACCOUNT = "account";
+	
 	private OAuthAuthorization _oauth;
+	private boolean _isNeedCallback = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		val intent = super.getIntent();
+		if(intent != null) _isNeedCallback = intent.getBooleanExtra(KEY_NEED_CALLBACK, false);
 
 		val res = getApplicationContext().getResources();
 		val consumerKey = res.getString(R.string.consumer_key);
@@ -55,6 +91,8 @@ public class OauthActivity extends Activity {
 					e.printStackTrace();
 					throw new RuntimeException(e);
 				}
+				
+				if(_isNeedCallback) uri += "&force_login=true";
 
 				return uri;
 			}
@@ -94,9 +132,9 @@ public class OauthActivity extends Activity {
 		val res = getApplicationContext().getResources();
 
 		if (uri != null && uri.toString().startsWith(res.getString(R.string.callback))) {
-			new ReactiveAsyncTask<Uri, Void, Void>(new Func1<Uri, Void>() {
+			new ReactiveAsyncTask<Uri, Void, TwitterAccount>(new Func1<Uri, TwitterAccount>() {
 				@Override
-				public Void call(Uri _uri) {
+				public TwitterAccount call(Uri _uri) {
 					//AccessTokenの取得
 					val verifier = _uri.getQueryParameter("oauth_verifier");
 					AccessToken accessToken;
@@ -117,14 +155,21 @@ public class OauthActivity extends Activity {
 
 					AccountDao.insert(accountData, getApplicationContext());
 
-					return null;
+					return accountData;
 				}
-			}).setOnPostExecute(new Action1<Void>() {
+			}).setOnPostExecute(new Action1<TwitterAccount>() {
 				@Override
-				public void call(Void x) {
-					Toast.makeText(getApplicationContext(), "OAuth認証が完了しました。", Toast.LENGTH_SHORT).show();
-					val pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-					pref.edit().putBoolean("isTweet", true).commit();
+				public void call(TwitterAccount x) {
+					if(!_isNeedCallback) {
+						Toast.makeText(getApplicationContext(), "OAuth認証が完了しました。", Toast.LENGTH_SHORT).show();
+						val pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+						pref.edit().putBoolean("isTweet", true).commit();
+					} else {
+						val data = new Intent();
+						data.putExtra(KEY_ACCOUNT, x);
+						setResult(RESULT_OK, data);
+					}
+
 					finish();
 				}
 			}).setOnError(new Action1<Exception>() {
@@ -132,6 +177,9 @@ public class OauthActivity extends Activity {
 				public void call(Exception e) {
 					e.printStackTrace();
 					Toast.makeText(getApplicationContext(), "Oauth認証に失敗しました", Toast.LENGTH_LONG).show();
+					if(_isNeedCallback) {
+						setResult(RESULT_CANCELED);
+					}
 					finish();
 				}
 			}).execute(uri);

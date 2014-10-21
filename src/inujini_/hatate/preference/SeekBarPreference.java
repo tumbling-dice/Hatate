@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate.preference;
 
 import inujini_.hatate.R;
@@ -21,6 +30,9 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
+/**
+ * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+ */
 public class SeekBarPreference extends Preference implements OnSeekBarChangeListener {
 
 	@Accessors(prefix="_") @Getter private int _max;
@@ -39,22 +51,48 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 		}
 	}
 
+	/**
+	 * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+	 * 
+	 * @param context
+	 * @param max SeekBar‚ÌÅ‘å’l
+	 */
 	public SeekBarPreference(Context context, int max) {
 		super(context);
 		_max = max;
 	}
 
+	/**
+	 * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+	 * 
+	 * @param context
+	 * @param max SeekBar‚ÌÅ‘å’l
+	 * @param currentValue SeekBar‚Ì‰Šú’l
+	 */
 	public SeekBarPreference(Context context, int max, int currentValue) {
 		super(context);
 		_max = max;
 		_currentValue = currentValue;
 	}
 
+	/**
+	 * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+	 * 
+	 * @param context
+	 * @param attrs
+	 */
 	public SeekBarPreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init(context, attrs);
 	}
 
+	/**
+	 * {@link SeekBar}‚ğ‚Á‚½{@link Preference}.
+	 * 
+	 * @param context
+	 * @param attrs
+	 * @param defStyle
+	 */
 	public SeekBarPreference(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init(context, attrs);
@@ -185,7 +223,7 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
 
 	private void saveValue(int v) {
 		if(super.callChangeListener(v))
-			super.getEditor().putInt(super.getKey(), v).commit();
+			super.persistInt(v);
 	}
 
 }

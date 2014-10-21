@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    HatateHoutyouAlarm
+    Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+    
+    This software is released under the MIT License.
+    http://opensource.org/licenses/mit-license.php
+--!>
+
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:hatate="http://schemas.android.com/apk/res/inujini_.hatate"
@@ -41,12 +49,12 @@
         </PreferenceScreen>
         <PreferenceScreen
                 android:key="spellCardList"
-                android:title="一覧"
-                android:summary="手に入れたスペルカードを眺めます。">
+                android:title="履歴一覧"
+                android:summary="最近手に入れたスペルカードを眺めます。">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="inujini_.hatate"
-                android:targetClass="inujini_.hatate.SpellCardListActivity" />
+                android:targetClass="inujini_.hatate.SpellCardHistoryActivity" />
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory android:title="その他">

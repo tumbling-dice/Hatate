@@ -1,3 +1,12 @@
+/**
+ * HatateHoutyouAlarm
+ * 
+ * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 package inujini_.hatate.preference;
 
 import inujini_.hatate.service.Houtyou;
@@ -7,16 +16,37 @@ import android.content.Intent;
 import android.preference.Preference;
 import android.util.AttributeSet;
 
+/**
+ * {@link Houtyou}の動作を確認する{@link Preference}.
+ */
 public class PreviewPreference extends Preference {
 
+	/**
+	 * {@link Houtyou}の動作を確認する{@link Preference}.
+	 * 
+	 * @param context
+	 */
 	public PreviewPreference(Context context) {
 		super(context);
 	}
 
+	/**
+	 * {@link Houtyou}の動作を確認する{@link Preference}.
+	 * 
+	 * @param context
+	 * @param attrs
+	 */
 	public PreviewPreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
+	/**
+	 * {@link Houtyou}の動作を確認する{@link Preference}.
+	 * 
+	 * @param context
+	 * @param attrs
+	 * @param defStyle
+	 */
 	public PreviewPreference(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
