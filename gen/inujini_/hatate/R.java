@@ -84,32 +84,28 @@ containing a value of this type.
     public static final class id {
         public static final int alarm=0x7f070004;
         public static final int imgHatate=0x7f070006;
-        public static final int imgIcon=0x7f07000b;
+        public static final int menu_item_add=0x7f07000b;
         public static final int music=0x7f070003;
         public static final int notification=0x7f070005;
         public static final int ring=0x7f070002;
         public static final int seekbar=0x7f070009;
-        public static final int skbVolume=0x7f070011;
         public static final int system=0x7f070001;
-        public static final int txvCuttentVolume=0x7f07000f;
-        public static final int txvMaxVolume=0x7f070010;
-        public static final int txvMinVolume=0x7f07000e;
         public static final int txvName=0x7f070007;
-        public static final int txvSummary=0x7f07000d;
         public static final int txvTimestamp=0x7f070008;
-        public static final int txvTitle=0x7f07000c;
         public static final int txvValue=0x7f07000a;
         public static final int voice=0x7f070000;
     }
     public static final class layout {
         public static final int activity_gacha=0x7f030000;
         public static final int activity_licence=0x7f030001;
-        public static final int activity_spellcard_list=0x7f030002;
-        public static final int adapter_spellcard_history=0x7f030003;
-        public static final int datepicker_dialog=0x7f030004;
+        public static final int activity_list=0x7f030002;
+        public static final int adapter_account_list=0x7f030003;
+        public static final int adapter_spellcard_history=0x7f030004;
         public static final int seekbar_preference=0x7f030005;
         public static final int toast_love=0x7f030006;
-        public static final int volume_preference=0x7f030007;
+    }
+    public static final class menu {
+        public static final int menu_account_list=0x7f0a0000;
     }
     public static final class raw {
         public static final int ugu=0x7f050000;
