@@ -2,7 +2,7 @@
 <!--
     HatateHoutyouAlarm
     Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
-
+    
     This software is released under the MIT License.
     http://opensource.org/licenses/mit-license.php
 -->
@@ -66,15 +66,6 @@
             android:key="preview"
             android:title="確認"
             android:summary="実際に刺されるとどうなるのか見てみます。"/>
-        <PreferenceScreen
-            android:key="account"
-            android:title="Twitterアカウント"
-            android:summary="Twitter連携するアカウントを管理します。">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:targetPackage="inujini_.hatate"
-                android:targetClass="inujini_.hatate.AccountListActivity" />
-        </PreferenceScreen>
         <PreferenceScreen
             android:key="license"
             android:title="ライセンス"

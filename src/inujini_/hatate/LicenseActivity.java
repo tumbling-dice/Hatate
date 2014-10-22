@@ -13,8 +13,8 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * <p>繝ｩ繧､繧ｻ繝ｳ繧ｹ陦ｨ遉ｺ逕ｻ髱｢.</p>
- * <p>邏ｰ縺九＞蜀�螳ｹ縺ｯ縺吶∋縺ｦXML縺ｫ險倩ｿｰ縺吶ｋ.</p>
+ * <p>ライセンス表示画面.</p>
+ * <p>細かい内容はすべてXMLに記述する.</p>
  */
 public class LicenseActivity extends Activity {
 

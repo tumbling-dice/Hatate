@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
- * 繧ｹ繝壹Ν繧ｫ繝ｼ繝峨ぎ繝√Ε逕ｻ髱｢.
+ * スペルカードガチャ画面.
  */
 public class GachaActivity extends Activity {
 
