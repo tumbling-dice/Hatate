@@ -14,6 +14,9 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# eclipse
+*.pref
+
 # =========================
 # Operating System Files
 # =========================

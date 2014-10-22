@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -29,6 +29,11 @@ public class SpellCardHistoryAdapter extends ArrayAdapter<SpellCardHistory> {
 
 	private LayoutInflater _inflater;
 
+	/**
+	 * スペルカード履歴一覧用ArrayAdapter.
+	 * @param context
+	 * @param objects
+	 */
 	public SpellCardHistoryAdapter(Context context, List<SpellCardHistory> objects) {
 		super(context, 0, objects);
 		_inflater = LayoutInflater.from(context);

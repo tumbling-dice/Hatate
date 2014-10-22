@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -40,7 +40,6 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 	public interface TextValidator {
 		/**
 		 * 入力内容検証.
-		 * 
 		 * @param s 入力内容
 		 * @return ルールに適している場合はtrue、違反している場合はfalse.
 		 */
@@ -49,7 +48,6 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 
 	/**
 	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
-	 * 
 	 * @param context
 	 */
 	public ValidatableEditTextPreference(Context context) {
@@ -58,7 +56,6 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 
 	/**
 	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
-	 * 
 	 * @param context
 	 * @param attrs
 	 */
@@ -68,7 +65,6 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 
 	/**
 	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
-	 * 
 	 * @param context
 	 * @param attrs
 	 * @param defStyle
@@ -83,7 +79,6 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 
 		if(!_isNeedValidation) return;
 
-		// val container = (ViewGroup) dialogView.findViewById(android.R.id.edittext_container);
 		val container = (ViewGroup) dialogView
 				.findViewById(Resources.getSystem().getIdentifier("edittext_container", "id","android"));
 
@@ -109,7 +104,7 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 
 			@Override
 			public void afterTextChanged(Editable s) {
-				val d = (AlertDialog) super.getDialog();
+				val d = (AlertDialog) getDialog();
 				if(d == null) return;
 
 				val btn = d.getButton(DialogInterface.BUTTON_POSITIVE);
@@ -128,7 +123,6 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 
 	/**
 	 * 検証ルール登録.
-	 * 
 	 * @param errorMessage ルール違反時に表示するメッセージ
 	 * @param validator 検証ルール
 	 */

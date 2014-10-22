@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -18,6 +18,9 @@ import inujini_.hatate.sqlite.DatabaseHelper;
 import inujini_.sqlite.helper.CursorExtensions;
 import inujini_.sqlite.helper.QueryBuilder;
 import inujini_.sqlite.helper.SqliteUtil;
+
+import java.util.List;
+
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
 import twitter4j.Twitter;
@@ -30,17 +33,17 @@ import android.database.sqlite.SQLiteDatabase;
 
 @ExtensionMethod({SqliteUtil.class, CursorExtensions.class})
 public class AccountDao {
-	
+
 	private static final Func1<Cursor, TwitterAccount> _converter = new Func1<Cursor, TwitterAccount>() {
 		@Override
 		public TwitterAccount call(Cursor c) {
 			val a = new TwitterAccount();
-			a.setScreenName(c.getStringMeta(MetaAccount.ScreenName));
+			a.setScreenName(c.getStringByMeta(MetaAccount.ScreenName));
 			a.setUserId(Long.parseLong(c.getStringByMeta(MetaAccount.UserId)));
-			a.setUser(c.getBooleanMeta(MetaAccount.UseFlag));
+			a.setUse(c.getBooleanByMeta(MetaAccount.UseFlag));
 			return a;
 		}
-	}
+	};
 
 	public static List<Twitter> getTwitter(Context context) {
 		val q = new QueryBuilder()
@@ -69,13 +72,13 @@ public class AccountDao {
 			}
 		});
 	}
-	
+
 	public static List<TwitterAccount> getAllAccount(Context context) {
 		val q = new QueryBuilder()
 					.selectAll()
 					.from(MetaAccount.TBL_NAME)
 					.toString();
-		
+
 		return new DatabaseHelper(context).getList(q, context, _converter);
 	}
 
@@ -93,12 +96,12 @@ public class AccountDao {
 			}
 		});
 	}
-	
+
 	public static void update(TwitterAccount account, Context context) {
 		val userId = account.getUserId();
 		val cv = new ContentValues();
-		cv.put(MetaAccount.UseFlag, (account.isUse() ? 1: 0));
-		
+		cv.put(MetaAccount.UseFlag.getColumnName(), (account.isUse() ? 1: 0));
+
 		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
 			@Override
 			public void call(SQLiteDatabase db) {
@@ -106,10 +109,10 @@ public class AccountDao {
 			}
 		});
 	}
-	
+
 	public static void delete(TwitterAccount account, Context context) {
 		val userId = account.getUserId();
-		
+
 		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
 			@Override
 			public void call(SQLiteDatabase db) {
@@ -119,8 +122,8 @@ public class AccountDao {
 	}
 
 	public static boolean isAuthorized(Context context) {
-		if(!DatabaseHelper.isDbOpened(context)) return false;
-		return getTwitter(context) != null;
+		val t = getTwitter(context);
+		return t != null && !t.isEmpty();
 	}
 
 }

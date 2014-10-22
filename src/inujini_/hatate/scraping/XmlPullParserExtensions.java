@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -27,7 +27,6 @@ public final class XmlPullParserExtensions {
 
 	/**
 	 * 現イベントに含まれている全Attributeの取得.
-	 * 
 	 * @param parser
 	 * @return 全Attributeのリスト
 	 */
@@ -42,7 +41,6 @@ public final class XmlPullParserExtensions {
 
 	/**
 	 * 現イベントに指定されたAttributeが存在するかどうかをチェックする.
-	 * 
 	 * @param parser
 	 * @param namespace 名前空間（nullの場合はチェックしない）
 	 * @param name 属性名
@@ -63,7 +61,6 @@ public final class XmlPullParserExtensions {
 
 	/**
 	 * 現イベントに指定されたAttributeが存在するかどうかをチェックする.
-	 * 
 	 * @param parser
 	 * @param name 属性名
 	 * @param value 属性の値（nullの場合はチェックしない）
@@ -76,7 +73,6 @@ public final class XmlPullParserExtensions {
 
 	/**
 	 * 現イベントに指定されたAttributeが存在するかどうかをチェックする.
-	 * 
 	 * @param parser
 	 * @param name 属性名
 	 * @return 現イベント内にnameが一致するAttributeが存在すればtrue.
@@ -88,7 +84,6 @@ public final class XmlPullParserExtensions {
 
 	/**
 	 * 現イベントに指定されたAttributeが存在するかどうかをチェックする.
-	 * 
 	 * @param parser
 	 * @param attributeFilter
 	 * @return 現イベントに含まれているAttributeからattributeFilterでtrueが返されればtrue.

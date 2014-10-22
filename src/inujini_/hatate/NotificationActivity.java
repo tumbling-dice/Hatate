@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -10,20 +10,23 @@
 package inujini_.hatate;
 
 import inujini_.function.Function.Func1;
+import inujini_.hatate.data.TwitterAccount;
 import inujini_.hatate.preference.EventableListPreference;
 import inujini_.hatate.preference.EventableListPreference.OnChosenListener;
 import inujini_.hatate.preference.ValidatableEditTextPreference;
 import inujini_.hatate.preference.ValidatableEditTextPreference.TextValidator;
+import inujini_.hatate.service.CallbackBroadcastReceiver;
+import inujini_.hatate.service.OauthService;
 import inujini_.hatate.sqlite.dao.AccountDao;
 import inujini_.hatate.util.PrefGetter;
 import inujini_.linq.Linq;
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
+import twitter4j.auth.AccessToken;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.CheckBoxPreference;
@@ -32,14 +35,23 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
 import android.text.InputType;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 /**
  * 通知詳細設定画面.
  */
 @ExtensionMethod({PrefGetter.class, Linq.class})
 public class NotificationActivity extends PreferenceActivity {
+
+	/**
+	 * <p>Oauth認証用レシーバ.<p>
+	 * <p>使い終わった後は必ずnullにする</p>
+	 * <p>画面を閉じる際にnullになっていなかったら
+	 * {@link Context#unregisterReceiver(android.content.BroadcastReceiver)}を呼ぶこと</p>
+	 */
+	private CallbackBroadcastReceiver _receiver;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +70,46 @@ public class NotificationActivity extends PreferenceActivity {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
 								dialog.dismiss();
-								val intent = new Intent(getApplicationContext(), OauthActivity.class);
-								intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-								startActivity(intent);
+
+								if(_receiver != null) {
+									unregisterReceiver(_receiver);
+									_receiver = null;
+								}
+
+								_receiver = new CallbackBroadcastReceiver() {
+									@Override
+									public void onSuccess(AccessToken token) {
+										Toast.makeText(getApplicationContext()
+												, "OAuth認証が完了しました。\nブラウザが開きっぱなしの場合は閉じて下さい。",
+												Toast.LENGTH_SHORT).show();
+										val accountData = new TwitterAccount();
+										accountData.setScreenName(token.getScreenName());
+										accountData.setAccessToken(token.getToken());
+										accountData.setAccessSecret(token.getTokenSecret());
+										accountData.setUse(true);
+										accountData.setUserId(token.getUserId());
+
+										AccountDao.insert(accountData, getApplicationContext());
+
+										val p = (CheckBoxPreference) findPreference("isTweet");
+										p.setChecked(true);
+										_receiver = null;
+									}
+
+									@Override
+									public void onError(Exception exception) {
+										Toast.makeText(getApplicationContext(), "Oauth認証に失敗しました"
+												, Toast.LENGTH_LONG).show();
+										_receiver = null;
+									}
+								};
+
+								registerReceiver(_receiver, CallbackBroadcastReceiver.createIntentFilter());
+
+								// Oauth認証開始
+								val res = getApplicationContext().getResources();
+								startService(OauthService.createIntent(res.getString(R.string.consumer_key)
+										, res.getString(R.string.consumer_secret), getApplicationContext()));
 							}
 						}).setNegativeButton("キャンセル", new OnClickListener() {
 							@Override
@@ -138,10 +187,11 @@ public class NotificationActivity extends PreferenceActivity {
 	}
 
 	@Override
-	protected void onRestart() {
-		super.onRestart();
-		val pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-		((CheckBoxPreference) findPreference("isTweet")).setChecked(pref.getBoolean("isTweet", false));
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && _receiver != null) {
+			unregisterReceiver(_receiver);
+			_receiver = null;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
-
 }

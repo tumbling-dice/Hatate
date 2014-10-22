@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -12,14 +12,22 @@ package inujini_.hatate.util;
 import inujini_.function.Function.Action;
 import inujini_.function.Function.Action1;
 import inujini_.function.Function.Func1;
+import inujini_.hatate.NotificationActivity;
 import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.service.OneMoreLovely;
 import inujini_.hatate.sqlite.DatabaseHelper;
 import inujini_.linq.Linq;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.io.StreamCorruptedException;
 import java.lang.ref.SoftReference;
 import java.util.Calendar;
 
@@ -43,7 +51,6 @@ public class Util {
 
 	/**
 	 * アラームをセットする時間の取得.
-	 * 
 	 * @param hour
 	 * @param minute
 	 * @return <p>今日 + hour + minute + 0秒のミリ秒.</p>
@@ -75,7 +82,6 @@ public class Util {
 	/**
 	 * <p>アラームのセット.</p>
 	 * <p>{@link NotificationActivity}で設定した時刻をもとに1日おきに定時実行するIntentを設定する.</p>
-	 * 
 	 * @param context
 	 * @see #getAlarmTime(int, int)
 	 * @see #getAlarmIntent(Context)
@@ -89,7 +95,6 @@ public class Util {
 
 	/**
 	 * アラームの解除.
-	 * 
 	 * @param context
 	 * @see #getAlarmIntent(Context)
 	 * @see AlarmManager#cancel(PendingIntent)
@@ -100,10 +105,9 @@ public class Util {
 
 	/**
 	 * アラームとして定時実行するPendingIntentの作成.
-	 * 
 	 * @param context
 	 * @return {@link Houtyou}を実行するPendingIntent
-	 * @see PendingIntent#getBroadcast(Context, int, Intent, int) 
+	 * @see PendingIntent#getBroadcast(Context, int, Intent, int)
 	 */
 	public static PendingIntent getAlarmIntent(Context context) {
 		return PendingIntent.getBroadcast(context, -1, new Intent(context, Houtyou.class)
@@ -113,7 +117,6 @@ public class Util {
 	/**
 	 * <p>スヌーズ設定.</p>
 	 * <p>現在日時のミリ秒 + {@link NotificationActivity}で設定したスヌーズ間隔のミリ秒で実行するIntentを設定する.</p>
-	 * 
 	 * @param context
 	 * @see #getSnoozeIntent(Context)
 	 * @see PrefGetter#getSnoozeTimeMill()
@@ -127,7 +130,6 @@ public class Util {
 
 	/**
 	 * スヌーズ解除.
-	 * 
 	 * @param context
 	 * @see #getSnoozeIntent(Context)
 	 * @see AlarmManager#cancel(PendingIntent)
@@ -138,10 +140,9 @@ public class Util {
 
 	/**
 	 * スヌーズとして定時実行するPendingIntentの作成.
-	 * 
 	 * @param context
 	 * @return {@link OneMoreLovely}を実行するPendingIntent
-	 * @see PendingIntent#getBroadcast(Context, int, Intent, int) 
+	 * @see PendingIntent#getBroadcast(Context, int, Intent, int)
 	 */
 	public static PendingIntent getSnoozeIntent(Context context) {
 		return PendingIntent.getBroadcast(context, -1, new Intent(context, OneMoreLovely.class)
@@ -150,7 +151,6 @@ public class Util {
 
 	/**
 	 * AlarmManagerの取得とキャッシング.
-	 *
 	 * @param context
 	 * @return contextから取得した{@link AlarmManager} or キャッシュされた{@link AlarmManager}
 	 * @see Context#getSystemService(String)
@@ -162,7 +162,7 @@ public class Util {
 			am = _alarmManager.get();
 			if(am != null) return am;
 		}
-		
+
 		// Note: Context#getSystemServiceはめちゃめちゃ重いのでキャッシュしておくにこしたことはない
 		am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		_alarmManager = new SoftReference<AlarmManager>(am);
@@ -171,7 +171,6 @@ public class Util {
 
 	/**
 	 * assets内のファイルをInputStreamReaderとして取得.
-	 * 
 	 * @param context
 	 * @param fileName ファイル名
 	 * @return fileNameで指定されたファイルのInputStreamReader
@@ -185,7 +184,6 @@ public class Util {
 	 * <p>内部DBのアップデート（非同期版）.</p>
 	 * <p>DBがまだ作成されていない、もしくはアップデートされていない場合に実行.</p>
 	 * <p>ProgressDialogを表示し、非同期処理でDBのアップデートを行う.</p>
-	 * 
 	 * @param context ActivityContext（{@link ProgressDialog}を呼び出すため）
 	 * @see dbUpdate(Context)
 	 * @see DatabaseHelper#isDbOpened(Context)
@@ -237,7 +235,6 @@ public class Util {
 	/**
 	 * <p>内部DBのアップデート.</p>
 	 * <p>DBがまだ作成されていない、もしくはアップデートされていない場合にのみ実行.</p>
-	 * 
 	 * @param context
 	 * @see dbUpdateAsync(Context)
 	 * @see DatabaseHelper#isDbOpened(Context)
@@ -250,6 +247,80 @@ public class Util {
 			d.getWritableDatabase().close();
 			d.close();
 		}
+	}
+
+	public static <T extends Serializable> void serialize(T obj, String fileName, Context context) {
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		try {
+			try {
+				fos = context.openFileOutput(fileName, 0);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				return;
+			}
+
+			try {
+				if (fos != null) {
+					oos = new ObjectOutputStream(fos);
+					if (oos != null) oos.writeObject(obj);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+				return;
+			}
+		} finally {
+			if(fos != null) {
+				try {
+					if(oos != null) oos.close();
+					fos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends Serializable> T deserialize(String fileName, Context context) {
+
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		T obj = null;
+
+		try {
+			try {
+				fis = context.openFileInput(fileName);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				return null;
+			}
+
+			try {
+				ois = new ObjectInputStream(fis);
+				obj = (T) ois.readObject();
+			} catch (StreamCorruptedException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			}
+
+		} finally {
+			if(fis != null) {
+				try {
+					if(ois != null) ois.close();
+					fis.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return obj;
 	}
 
 }

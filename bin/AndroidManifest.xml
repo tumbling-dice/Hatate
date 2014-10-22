@@ -1,7 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    HatateHoutyouAlarm
+    Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+
+    This software is released under the MIT License.
+    http://opensource.org/licenses/mit-license.php
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="inujini_.hatate"
-    android:versionCode="9"
-    android:versionName="1.2.0β" >
+    android:versionCode="10"
+    android:versionName="1.2.0β2" >
 
     <uses-sdk
         android:minSdkVersion="4"
@@ -23,17 +31,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="inujini_.hatate.VoiceSettingActivity" />
-
         <activity android:name="inujini_.hatate.LicenseActivity" />
 
-        <activity android:name="inujini_.hatate.OauthActivity"
-            android:launchMode="singleTask">
+        <activity android:name="inujini_.hatate.OauthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="myapp" android:host="hatate"/>
+                <data android:scheme="oauth" android:host="callback"/>
             </intent-filter>
         </activity>
 
@@ -41,7 +46,9 @@
 
         <activity android:name="inujini_.hatate.GachaActivity" />
 
-        <activity android:name="inujini_.hatate.SpellCardListActivity" />
+        <activity android:name="inujini_.hatate.SpellCardHistoryActivity" />
+
+        <activity android:name="inujini_.hatate.AccountListActivity" />
 
         <receiver android:name="inujini_.hatate.service.Houtyou" android:process=":remote"/>
         <receiver android:name="inujini_.hatate.service.OneMoreLovely" android:process=":remote"/>
@@ -63,6 +70,9 @@
         </receiver>
 
         <service android:name="inujini_.hatate.service.Kill" android:exported="false" />
+
+        <service android:name="inujini_.hatate.service.OauthService" android:exported="false" />
+
     </application>
 
 </manifest>

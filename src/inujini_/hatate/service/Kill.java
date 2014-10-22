@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -16,6 +16,9 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 
+/**
+ *
+ */
 public class Kill extends IntentService {
 
 	public static final String ACTION_KILL = "inujini_.hatate.service.action.KILL";

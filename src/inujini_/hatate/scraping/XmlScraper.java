@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -18,8 +18,16 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+/**
+ *
+ */
 public class XmlScraper extends ScraperImpl {
 
+	/**
+	 *
+	 * @param source
+	 * @throws XmlPullParserException
+	 */
 	public XmlScraper(InputStreamReader source) throws XmlPullParserException {
 		super(source);
 	}

@@ -2,10 +2,10 @@
 <!--
     HatateHoutyouAlarm
     Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
-    
+
     This software is released under the MIT License.
     http://opensource.org/licenses/mit-license.php
---!>
+-->
 
 <resources>
     <string name="summary_time">包丁で刺される時刻を設定します。\n現在は%1$02d:%2$02dに設定されています。</string>

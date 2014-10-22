@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -25,6 +25,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 
+/**
+ *
+ */
 @ExtensionMethod({PrefGetter.class})
 public class Houtyou extends PierceReceiver {
 
@@ -47,7 +50,7 @@ public class Houtyou extends PierceReceiver {
 
 			// 統計情報
 			val killCount = _statistics.getCount() + 1;
-			int love = _statistics.getLove() + Love.culcLove(killCount);
+			int love = _statistics.getLove() + Love.culc(killCount);
 
 			val time = String.format("[%02d:%02d]", context.getHour(), context.getMinute());
 			if(time.equals("[00:00]")) love += 10;
@@ -78,11 +81,15 @@ public class Houtyou extends PierceReceiver {
 				}
 
 				if(!DEBUG) {
-					val twitter = AccountDao.getTwitter(context);
-					try {
-						twitter.updateStatus(String.format("%s%s%s", time, tweet, hash));
-					} catch (TwitterException e) {
-						e.printStackTrace();
+					val twitters = AccountDao.getTwitter(context);
+					if(twitters != null && !twitters.isEmpty()) {
+						for (val twitter : twitters) {
+							try {
+								twitter.updateStatus(String.format("%s%s%s", time, tweet, hash));
+							} catch (TwitterException e) {
+								e.printStackTrace();
+							}
+						}
 					}
 				}
 			}

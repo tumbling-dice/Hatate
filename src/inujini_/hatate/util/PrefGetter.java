@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -19,7 +19,6 @@ import android.preference.PreferenceManager;
 
 /**
  * PreferenceActivityで設定された各値を取得するためのUtility class.
- * 
  * @see PreferenceManager#getDefaultSharedPreferences(Context)
  */
 @ExtensionMethod({Linq.class})
@@ -27,7 +26,6 @@ public class PrefGetter {
 
 	/**
 	 * 起動時刻（単位：時）の取得.
-	 * 
 	 * @param context
 	 * @return key:[hour] default:0
 	 */
@@ -38,7 +36,6 @@ public class PrefGetter {
 
 	/**
 	 * 起動時刻（単位：分）の取得.
-	 * 
 	 * @param context
 	 * @return key:[time] default:0
 	 */
@@ -49,7 +46,6 @@ public class PrefGetter {
 
 	/**
 	 * 悲鳴の実行有無.
-	 * 
 	 * @param context
 	 * @return key:[isScream] default:true
 	 */
@@ -60,7 +56,6 @@ public class PrefGetter {
 
 	/**
 	 * バイブ機能の実行有無.
-	 * 
 	 * @param context
 	 * @return key:[isVibration] default:true
 	 */
@@ -71,7 +66,6 @@ public class PrefGetter {
 
 	/**
 	 * 通知機能の実行有無.
-	 * 
 	 * @param context
 	 * @return key:[isNoisy] default:true
 	 */
@@ -82,7 +76,6 @@ public class PrefGetter {
 
 	/**
 	 * LEDの点灯有無.
-	 * 
 	 * @param context
 	 * @return key:[isLight] default:true
 	 */
@@ -94,7 +87,6 @@ public class PrefGetter {
 	/**
 	 * <p>LEDのカラーコード(ARGB)取得.</p>
 	 * <p>カラーコードはlongにデコードされた値となる.</p>
-	 * 
 	 * @param context
 	 * @return key:[lightColor] default:0xffff0000 (red)
 	 * @see Long#decode(String)
@@ -106,7 +98,6 @@ public class PrefGetter {
 
 	/**
 	 * LEDの色名取得.
-	 * 
 	 * @param context
 	 * @return {@link R#array#LightColorValues}からカラーコードの一覧を検索し、ヒットした位置の{@link R#array#LightColorList}の値.
 	 * @see #getLightColorName(Context, String)
@@ -119,7 +110,6 @@ public class PrefGetter {
 
 	/**
 	 * LEDの色名取得.
-	 * 
 	 * @param context
 	 * @param strColor カラーコード (ARGB)
 	 * @return {@link R#array#LightColorValues}からカラーコードの一覧を検索し、ヒットした位置の{@link R#array#LightColorList}の値.
@@ -139,7 +129,6 @@ public class PrefGetter {
 
 	/**
 	 * Twitter連携機能の実行有無.
-	 * 
 	 * @param context
 	 * @return key:[isTweet] default:false
 	 */
@@ -150,7 +139,6 @@ public class PrefGetter {
 
 	/**
 	 * スヌーズ機能の実行有無.
-	 * 
 	 * @param context
 	 * @return key:[isSnooze] default:false
 	 */
@@ -161,7 +149,6 @@ public class PrefGetter {
 
 	/**
 	 * スヌーズの間隔を取得（単位：秒）.
-	 * 
 	 * @param context
 	 * @return key:[snoozeTime] default:60
 	 * @see #getSnoozeTimeMill(Context)
@@ -173,7 +160,6 @@ public class PrefGetter {
 
 	/**
 	 * スヌーズの間隔を取得（単位：ミリ秒）.
-	 * 
 	 * @param context
 	 * @return (key:[snoozeTime] default:60) の1000倍
 	 * @see #getSnoozeTime(Context)
@@ -185,7 +171,6 @@ public class PrefGetter {
 
 	/**
 	 * バイブレーションパターン取得.
-	 * 
 	 * @param context
 	 * @return key:[vibrationPattern] default:0,2000
 	 */
@@ -201,7 +186,6 @@ public class PrefGetter {
 
 	/**
 	 * バイブレーションパターン名取得.
-	 * 
 	 * @param context
 	 * @return key:[vibrationPattern] default:0,2000
 	 * @see #getVibrationPatternName(Context, String)
@@ -214,7 +198,6 @@ public class PrefGetter {
 
 	/**
 	 * LEDの色名取得.
-	 * 
 	 * @param context
 	 * @param pattern
 	 * @return {@link R#array#VibrationValues}からパターンを検索し、ヒットした位置の{@link R#array#VibraitionList}の値.

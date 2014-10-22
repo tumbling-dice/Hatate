@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -22,7 +22,6 @@ public class Love {
 
 	/**
 	 * 好感度初期化.
-	 * 
 	 * @param count 刺した回数
 	 * @return countの2倍
 	 */
@@ -51,7 +50,6 @@ public class Love {
 	 *     <td>ugu</td>
 	 *   </tr>
 	 * </table>
-	 * 
 	 * @param love 好感度
 	 * @return 好感度に応じた音声データのリソースID
 	 */
@@ -95,7 +93,7 @@ public class Love {
 	 *     <td>100</td>
 	 *   </tr>
 	 * </table>
-	 * 
+	 *
 	 * <p>もしkillCountが5よりも大きく、なおかつ{@link Random#nextBoolean()}がtrueだった場合、
 	 * killCount / 5の値を上記の基礎値に乗算したものを返却する.</p>
 	 * <p>5以下の場合は基礎値をそのまま返却する.</p>
@@ -103,12 +101,11 @@ public class Love {
 	 * @param killCount 刺した回数
 	 * @return 算出結果
 	 */
-	// FIXME: Rename(culcLove -> culc)
-	public static int culcLove(int killCount) {
+	public static int culc(int killCount) {
 		val rnd = new Random();
 		val base = rnd.nextInt(255);
 		int tmpLove = 0;
-		
+
 		if(base == 0) {
 			tmpLove = -100;
 		} else if(base >= 1 && base <= 100) {
