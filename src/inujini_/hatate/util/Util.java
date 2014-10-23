@@ -249,6 +249,7 @@ public class Util {
 		}
 	}
 
+	/* シリアライズ / デシリアライズ
 	public static <T extends Serializable> void serialize(T obj, String fileName, Context context) {
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
@@ -322,5 +323,6 @@ public class Util {
 
 		return obj;
 	}
+	*/
 
 }

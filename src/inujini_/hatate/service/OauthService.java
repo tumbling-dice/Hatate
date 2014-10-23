@@ -26,21 +26,47 @@ import android.content.Intent;
 import android.net.Uri;
 
 /**
- *
+ * <p>Oauth認証処理.</p>
+ * <p>このServiceは以下の三つの機能を有する.</p>
+ * <ol>
+ *   <li>Intentに含まれたconsumer_keyとconsumer_secretから認証用URIを生成し、画面に表示する</li>
+ *   <li>認証完了後、コールバックとして渡されたURIから{@link AccessToken}を抽出し、
+ *       {@link CallbackBroadcastReceiver#onSuccess(AccessToken)}へ処理を委譲する</li>
+ *   <li>処理中に何らかの例外が発生した場合は即座に{@link CallbackBroadcastReceiver#onError(Exception)}へ処理を委譲する</li>
+ * </ol>
  */
 public class OauthService extends IntentService {
 
+	// use in start oauth
 	public static final String KEY_CONSUMER_KEY = "consumerKey";
 	public static final String KEY_CONSUMER_SECRET = "consumerSecret";
+	private static final String URI_CALLBACK = "oauth://callback";
+	
+	// use in get access_token
+	public static final String KEY_FINISHED_OAUTH = "isFinished";
 
+	/**
+	 * Oauth認証処理.
+	 */
 	public OauthService() {
 		super("OauthService");
 	}
 
+	/**
+	 * Oauth認証処理.
+	 * @param name
+	 */
 	public OauthService(String name) {
 		super(name);
 	}
 
+	/**
+	 * OauthServiceへのIntentを作成.
+	 * @param consumerKey
+	 * @param consumerSecret
+	 * @param context
+	 * @return ExtraとしてconsumerKeyとconsumerSecretを持ったOauthServiceへのIntent
+	 */
 	public static Intent createIntent(String consumerKey, String consumerSecret, Context context) {
 		Intent intent = new Intent(context, OauthService.class);
 		intent.putExtra(KEY_CONSUMER_KEY, consumerKey);
@@ -51,14 +77,10 @@ public class OauthService extends IntentService {
 
 	@Override
 	protected void onHandleIntent(Intent intent) {
-		if(intent.hasExtra(KEY_CONSUMER_KEY)){
+		if(!intent.getBooleanExtra(KEY_FINISHED_OAUTH, false))
 			startOauth(intent);
-		} else {
-			if(intent.getData() == null) {
-				throw new IllegalStateException();
-			}
+		else 
 			getAccessToken(intent);
-		}
 	}
 
 	/**
@@ -66,21 +88,28 @@ public class OauthService extends IntentService {
 	 * @param intent
 	 */
 	private void startOauth(Intent intent) {
-		String consumerKey = intent.getStringExtra(KEY_CONSUMER_KEY);
-		String consumerSecret = intent.getStringExtra(KEY_CONSUMER_SECRET);
-		String callbackUri = "oauth://callback";
+		// validate
+		if(!intent.hasExtra(KEY_CONSUMER_KEY) || !intent.hasExtra(KEY_CONSUMER_SECRET)) {
+			IllegalStateException e 
+				= IllegalStateException("In startOauth, intent's extra must have consumerKey and consumerSecret.");
+			
+			CallbackBroadcastReceiver.Data data = CallbackBroadcastReceiver.Data.create(e);
+			sendBroadcast(CallbackBroadcastReceiver.createIntent(data));
+			return;
+		}
 
 		Configuration conf = new ConfigurationBuilder()
-									.setOAuthConsumerKey(consumerKey)
-									.setOAuthConsumerSecret(consumerSecret)
+									.setOAuthConsumerKey(intent.getStringExtra(KEY_CONSUMER_KEY))
+									.setOAuthConsumerSecret(intent.getStringExtra(KEY_CONSUMER_SECRET))
 									.build();
 
 		OAuthAuthorization oauth = new OAuthAuthorization(conf);
 		oauth.setOAuthAccessToken(null);
 
+		// 認証用URI作成
 		String uri;
 		try {
-			uri = oauth.getOAuthRequestToken(callbackUri).getAuthorizationURL();
+			uri = oauth.getOAuthRequestToken(URI_CALLBACK).getAuthorizationURL();
 		} catch (TwitterException e) {
 			e.printStackTrace();
 			CallbackBroadcastReceiver.Data data = CallbackBroadcastReceiver.Data.create(e);
@@ -88,6 +117,7 @@ public class OauthService extends IntentService {
 			return;
 		}
 
+		// OAuthAuthorization保存
 		try {
 			serialize(oauth, "oauth.dat");
 		} catch (IOException e) {
@@ -98,6 +128,9 @@ public class OauthService extends IntentService {
 		}
 
 		Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+		// TODO:リダイレクトし終わった後ブラウザが閉じない
+		//      NO_HISTORYを渡せばいけそうな気がするので試してみる
+		//i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivity(i);
 	}
@@ -107,8 +140,19 @@ public class OauthService extends IntentService {
 	 * @param intent
 	 */
 	private void getAccessToken(Intent intent) {
+		// validate
+		if(intent.getData() == null) {
+			IllegalStateException e 
+				= new IllegalStateException("OAuth is success but intent's data (URI) is null.");
+			
+			CallbackBroadcastReceiver.Data data = CallbackBroadcastReceiver.Data.create(e);
+			sendBroadcast(CallbackBroadcastReceiver.createIntent(data));
+			return;
+		}
+		
 		OAuthAuthorization oauth = null;
 
+		// OAuthAuthorization復元
 		try {
 			oauth = deserialize("oauth.dat");
 		} catch(Exception e) {
@@ -118,6 +162,7 @@ public class OauthService extends IntentService {
 			return;
 		}
 
+		// AccessToken抽出
 		String verifier = intent.getData().getQueryParameter("oauth_verifier");
 		AccessToken accessToken;
 		try {
@@ -153,7 +198,6 @@ public class OauthService extends IntentService {
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
 
-
 		try {
 			fis = openFileInput(fileName);
 			ois = new ObjectInputStream(fis);
@@ -164,6 +208,7 @@ public class OauthService extends IntentService {
 				fis.close();
 			}
 
+			// Note:残しておいても仕方ないので削除する
 			deleteFile(fileName);
 		}
 	}

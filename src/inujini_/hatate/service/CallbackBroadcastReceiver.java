@@ -18,14 +18,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 /**
- *
+ * Oauth認証後のコールバック.
  */
 public abstract class CallbackBroadcastReceiver extends BroadcastReceiver {
 
-	public static final String ACTION_CALLBACK = "twitter4j.auth.action.callback";
-	public static final String KEY_DATA = "data";
+	private static final String ACTION_CALLBACK = "twitter4j.auth.action.callback";
+	private static final String KEY_DATA = "data";
 
-	static class Data implements Serializable {
+	/* package private */ static class Data implements Serializable {
 		private static final long serialVersionUID = -2779961412302689699L;
 		AccessToken token;
 		Exception exception;
@@ -83,6 +83,16 @@ public abstract class CallbackBroadcastReceiver extends BroadcastReceiver {
 		}
 	}
 
+	/**
+	 * Oauth認証成功後処理.
+	 * @param token
+	 */
 	public abstract void onSuccess(AccessToken token);
+	
+	/**
+	 * Oauth認証において何らかの例外が発生した場合のエラーハンドラ.
+	 * （シリアライズ / デシリアライズにおける{@link IOException}を含む）
+	 * @param exception
+	 */
 	public abstract void onError(Exception exception);
 }

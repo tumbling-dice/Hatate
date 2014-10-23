@@ -24,6 +24,7 @@ public class OauthActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Intent intent = new Intent(getApplicationContext(), OauthService.class);
 		intent.setData(getIntent().getData());
+		intent.putExtra(OauthService.KEY_FINISHED_OAUTH, true);
 		startService(intent);
 		finish();
 	}
