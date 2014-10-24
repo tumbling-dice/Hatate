@@ -31,9 +31,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+/**
+ * TwitterAccountのDAO
+ */
 @ExtensionMethod({SqliteUtil.class, CursorExtensions.class})
 public class AccountDao {
 
+	/** Cursor -> TwitterAccount (selectAll専用) */
 	private static final Func1<Cursor, TwitterAccount> _converter = new Func1<Cursor, TwitterAccount>() {
 		@Override
 		public TwitterAccount call(Cursor c) {
@@ -45,6 +49,11 @@ public class AccountDao {
 		}
 	};
 
+	/**
+	 * 連携用Twitter取得.
+	 * @param context
+	 * @return 使用フラグが立っているすべてのアカウントの{@link Twitter}
+	 */
 	public static List<Twitter> getTwitter(Context context) {
 		val q = new QueryBuilder()
 					.selectAll()
@@ -73,6 +82,11 @@ public class AccountDao {
 		});
 	}
 
+	/**
+	 * 全アカウント取得.
+	 * @param context
+	 * @return 全{@link TwitterAccount}のリスト
+	 */
 	public static List<TwitterAccount> getAllAccount(Context context) {
 		val q = new QueryBuilder()
 					.selectAll()
@@ -82,6 +96,11 @@ public class AccountDao {
 		return new DatabaseHelper(context).getList(q, context, _converter);
 	}
 
+	/**
+	 * データ登録.
+	 * @param account 登録するアカウント
+	 * @param context
+	 */
 	public static void insert(TwitterAccount account, Context context) {
 		val values = new ContentValues();
 		values.put(MetaAccount.ScreenName.getColumnName(), account.getScreenName());
@@ -97,10 +116,29 @@ public class AccountDao {
 		});
 	}
 
-	public static void update(TwitterAccount account, Context context) {
-		val userId = account.getUserId();
+	/**
+	 * データ登録(非同期).
+	 * @param account 登録するアカウント
+	 * @param context
+	 */
+	public static void insertAsync(final TwitterAccount account, Context context) {
+		new ReactiveAsyncTask<Context, Void, Void>(new Func1<Context, Void>(){
+			@Override
+			public Void call(Context x) {
+				AccountDao.insert(account, x);
+			}
+		}).execute(context);
+	}
+
+	/**
+	 * 使用フラグ更新.
+	 * @param userId TwitterのuserId
+	 * @param isUse 使用フラグ
+	 * @param context
+	 */
+	public static void setUseFlag(long userId, boolean isUse, Context context) {
 		val cv = new ContentValues();
-		cv.put(MetaAccount.UseFlag.getColumnName(), (account.isUse() ? 1: 0));
+		cv.put(MetaAccount.UseFlag.getColumnName(), (isUse ? 1: 0));
 
 		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
 			@Override
@@ -110,6 +148,34 @@ public class AccountDao {
 		});
 	}
 
+	/**
+	 * 使用フラグ更新.
+	 * @param account
+	 * @param context
+	 */
+	public static void setUseFlag(TwitterAccount account, Context context) {
+		setUseFlag(account.getUserId(), account.isUse(), context);
+	}
+
+	/**
+	 * 使用フラグ更新(非同期版).
+	 * @param account
+	 * @param context
+	 */
+	public static void setUseFlagAsync(final TwitterAccount account, Context context) {
+		new ReactiveAsyncTask<Context, Void, Void>(new Func1<Context, Void>(){
+			@Override
+			public Void call(Context x) {
+				AccountDao.update(account, x);
+			}
+		}).execute(context);
+	}
+
+	/**
+	 * アカウント削除.
+	 * @param account
+	 * @param context
+	 */
 	public static void delete(TwitterAccount account, Context context) {
 		val userId = account.getUserId();
 
@@ -121,9 +187,51 @@ public class AccountDao {
 		});
 	}
 
+	/**
+	 * アカウント削除(非同期版).
+	 * @param account
+	 * @param context
+	 */
+	public static void deleteAsync(final TwitterAccount account, Context context) {
+		new ReactiveAsyncTask<Context, Void, Void>(new Func1<Context, Void>(){
+			@Override
+			public Void call(Context x) {
+				AccountDao.delete(account, x);
+			}
+		}).execute(context);
+	}
+
+	/**
+	 * 認証済みデータ存在チェック.
+	 * @param context
+	 * @return 既に1件でも登録されていたらtrue
+	 */
 	public static boolean isAuthorized(Context context) {
+		// FIXME: 効率が悪すぎる
+		// 何かのカウントをとるべき。
 		val t = getTwitter(context);
 		return t != null && !t.isEmpty();
+	}
+	
+	/**
+	 * 登録済みチェック.
+	 * @param userId チェックしたいアカウントのuser_id
+	 * @param context
+	 * @return userIdを持つレコードが存在する場合はtrue
+	 */
+	public static boolean isExist(long userId, Context context) {
+		val q = new QueryBuilder()
+				.select(MetaAccount.UserId)
+				.from(MetaAccount.TBL_NAME)
+				.where().equal(MetaAccount.UserId, userId)
+				.toString();
+		
+		return new DatabaseHelper(context).get(q, context, new Func1<Cursor, Long>() {
+			@Override
+			public Long call(Cursor c) {
+				return Long.parseLong(c.getStringByMeta(MetaAccount.UserId));
+			}
+		}) != null;
 	}
 
 }

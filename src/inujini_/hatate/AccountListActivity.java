@@ -33,7 +33,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 /**
- *
+ * Twitter連携に使用するアカウントの管理画面.
  */
 public class AccountListActivity extends ListActivity implements OnItemLongClickListener {
 
@@ -54,8 +54,14 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 		val lv = super.getListView();
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		lv.setOnItemLongClickListener(this);
-
-		setListAdapter(new AccountAdapter(context, AccountDao.getAllAccount(context)));
+		
+		val adapter = new AccountAdapter(context, AccountDao.getAllAccount(context));
+		super.setListAdapter(adapter);
+		
+		// set default checkbox's value
+		for(int i = 0, count = adapter.getCount(); i < count, i++) {
+			lv.setItemChecked(i, adapter.getItem(i).isUse());
+		}
 	}
 
 	@Override
@@ -63,7 +69,7 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 		val adapter = (AccountAdapter) getListAdapter();
 		val item = adapter.getItem(position);
 		item.setUse(!item.isUse());
-		AccountDao.update(item, getApplicationContext());
+		AccountDao.setUseAsync(item, getApplicationContext());
 		adapter.notifyDataSetChanged();
 	}
 
@@ -79,8 +85,10 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.dismiss();
-					AccountDao.delete(item, getApplicationContext());
+					AccountDao.deleteAsync(item, getApplicationContext());
 					adapter.remove(item);
+					
+					// 全アカウントが削除されたらTwitter連携を自動で切る
 					if(adapter.getCount() == 0) {
 						PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
 							.edit().putBoolean("isTweet", false).commit();
@@ -114,9 +122,18 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 			_receiver = new CallbackBroadcastReceiver() {
 				@Override
 				public void onSuccess(AccessToken token) {
+					_receiver = null;
+					
+					if(AccountDao.isExist(token.getUserId())) {
+						Toast.makeText(getApplicationContext()
+							, "既に登録されているアカウントは追加できません。"
+							,Toast.LENGTH_SHORT).show();
+						return;
+					}
+					
 					Toast.makeText(getApplicationContext()
-							, "OAuth認証が完了しました。\nブラウザが開きっぱなしの場合は閉じて下さい。",
-							Toast.LENGTH_SHORT).show();
+							, "OAuth認証が完了しました。\nブラウザが開きっぱなしの場合は閉じて下さい。"
+							,Toast.LENGTH_SHORT).show();
 					val accountData = new TwitterAccount();
 					accountData.setScreenName(token.getScreenName());
 					accountData.setAccessToken(token.getToken());
@@ -124,18 +141,15 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 					accountData.setUse(true);
 					accountData.setUserId(token.getUserId());
 
-					AccountDao.insert(accountData, getApplicationContext());
-					_receiver = null;
-
-					val adapter = (AccountAdapter) getListAdapter();
-					adapter.add(accountData);
+					AccountDao.insertAsync(accountData, getApplicationContext());
+					((AccountAdapter) getListAdapter()).add(accountData);
 				}
 
 				@Override
 				public void onError(Exception exception) {
+					_receiver = null;
 					Toast.makeText(getApplicationContext(), "Oauth認証に失敗しました"
 							, Toast.LENGTH_LONG).show();
-					_receiver = null;
 				}
 			};
 
