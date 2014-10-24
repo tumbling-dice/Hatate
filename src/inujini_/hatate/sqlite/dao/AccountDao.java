@@ -32,12 +32,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * TwitterAccount‚ÌDAO
+ * TwitterAccountã®DAO
  */
 @ExtensionMethod({SqliteUtil.class, CursorExtensions.class})
 public class AccountDao {
 
-	/** Cursor -> TwitterAccount (selectAllê—p) */
+	/** Cursor -> TwitterAccount (selectAllå°‚ç”¨) */
 	private static final Func1<Cursor, TwitterAccount> _converter = new Func1<Cursor, TwitterAccount>() {
 		@Override
 		public TwitterAccount call(Cursor c) {
@@ -50,9 +50,9 @@ public class AccountDao {
 	};
 
 	/**
-	 * ˜AŒg—pTwitteræ“¾.
+	 * é€£æºç”¨Twitterå–å¾—.
 	 * @param context
-	 * @return g—pƒtƒ‰ƒO‚ª—§‚Á‚Ä‚¢‚é‚·‚×‚Ä‚ÌƒAƒJƒEƒ“ƒg‚Ì{@link Twitter}
+	 * @return ä½¿ç”¨ãƒ•ãƒ©ã‚°ãŒç«‹ã£ã¦ã„ã‚‹ã™ã¹ã¦ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®{@link Twitter}
 	 */
 	public static List<Twitter> getTwitter(Context context) {
 		val q = new QueryBuilder()
@@ -83,9 +83,9 @@ public class AccountDao {
 	}
 
 	/**
-	 * ‘SƒAƒJƒEƒ“ƒgæ“¾.
+	 * å…¨ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå–å¾—.
 	 * @param context
-	 * @return ‘S{@link TwitterAccount}‚ÌƒŠƒXƒg
+	 * @return å…¨{@link TwitterAccount}ã®ãƒªã‚¹ãƒˆ
 	 */
 	public static List<TwitterAccount> getAllAccount(Context context) {
 		val q = new QueryBuilder()
@@ -97,8 +97,8 @@ public class AccountDao {
 	}
 
 	/**
-	 * ƒf[ƒ^“o˜^.
-	 * @param account “o˜^‚·‚éƒAƒJƒEƒ“ƒg
+	 * ãƒ‡ãƒ¼ã‚¿ç™»éŒ².
+	 * @param account ç™»éŒ²ã™ã‚‹ã‚¢ã‚«ã‚¦ãƒ³ãƒˆ
 	 * @param context
 	 */
 	public static void insert(TwitterAccount account, Context context) {
@@ -117,8 +117,8 @@ public class AccountDao {
 	}
 
 	/**
-	 * ƒf[ƒ^“o˜^(”ñ“¯Šú).
-	 * @param account “o˜^‚·‚éƒAƒJƒEƒ“ƒg
+	 * ãƒ‡ãƒ¼ã‚¿ç™»éŒ²(éåŒæœŸ).
+	 * @param account ç™»éŒ²ã™ã‚‹ã‚¢ã‚«ã‚¦ãƒ³ãƒˆ
 	 * @param context
 	 */
 	public static void insertAsync(final TwitterAccount account, Context context) {
@@ -131,9 +131,9 @@ public class AccountDao {
 	}
 
 	/**
-	 * g—pƒtƒ‰ƒOXV.
-	 * @param userId Twitter‚ÌuserId
-	 * @param isUse g—pƒtƒ‰ƒO
+	 * ä½¿ç”¨ãƒ•ãƒ©ã‚°æ›´æ–°.
+	 * @param userId Twitterã®userId
+	 * @param isUse ä½¿ç”¨ãƒ•ãƒ©ã‚°
 	 * @param context
 	 */
 	public static void setUseFlag(long userId, boolean isUse, Context context) {
@@ -149,7 +149,7 @@ public class AccountDao {
 	}
 
 	/**
-	 * g—pƒtƒ‰ƒOXV.
+	 * ä½¿ç”¨ãƒ•ãƒ©ã‚°æ›´æ–°.
 	 * @param account
 	 * @param context
 	 */
@@ -158,7 +158,7 @@ public class AccountDao {
 	}
 
 	/**
-	 * g—pƒtƒ‰ƒOXV(”ñ“¯Šú”Å).
+	 * ä½¿ç”¨ãƒ•ãƒ©ã‚°æ›´æ–°(éåŒæœŸç‰ˆ).
 	 * @param account
 	 * @param context
 	 */
@@ -172,7 +172,7 @@ public class AccountDao {
 	}
 
 	/**
-	 * ƒAƒJƒEƒ“ƒgíœ.
+	 * ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå‰Šé™¤.
 	 * @param account
 	 * @param context
 	 */
@@ -188,7 +188,7 @@ public class AccountDao {
 	}
 
 	/**
-	 * ƒAƒJƒEƒ“ƒgíœ(”ñ“¯Šú”Å).
+	 * ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå‰Šé™¤(éåŒæœŸç‰ˆ).
 	 * @param account
 	 * @param context
 	 */
@@ -202,22 +202,22 @@ public class AccountDao {
 	}
 
 	/**
-	 * ”FØÏ‚İƒf[ƒ^‘¶İƒ`ƒFƒbƒN.
+	 * èªè¨¼æ¸ˆã¿ãƒ‡ãƒ¼ã‚¿å­˜åœ¨ãƒã‚§ãƒƒã‚¯.
 	 * @param context
-	 * @return Šù‚É1Œ‚Å‚à“o˜^‚³‚ê‚Ä‚¢‚½‚çtrue
+	 * @return æ—¢ã«1ä»¶ã§ã‚‚ç™»éŒ²ã•ã‚Œã¦ã„ãŸã‚‰true
 	 */
 	public static boolean isAuthorized(Context context) {
-		// FIXME: Œø—¦‚ªˆ«‚·‚¬‚é
-		// ‰½‚©‚ÌƒJƒEƒ“ƒg‚ğ‚Æ‚é‚×‚«B
+		// FIXME: åŠ¹ç‡ãŒæ‚ªã™ãã‚‹
+		// ä½•ã‹ã®ã‚«ã‚¦ãƒ³ãƒˆã‚’ã¨ã‚‹ã¹ãã€‚
 		val t = getTwitter(context);
 		return t != null && !t.isEmpty();
 	}
 	
 	/**
-	 * “o˜^Ï‚İƒ`ƒFƒbƒN.
-	 * @param userId ƒ`ƒFƒbƒN‚µ‚½‚¢ƒAƒJƒEƒ“ƒg‚Ìuser_id
+	 * ç™»éŒ²æ¸ˆã¿ãƒã‚§ãƒƒã‚¯.
+	 * @param userId ãƒã‚§ãƒƒã‚¯ã—ãŸã„ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®user_id
 	 * @param context
-	 * @return userId‚ğ‚ÂƒŒƒR[ƒh‚ª‘¶İ‚·‚éê‡‚Ítrue
+	 * @return userIdã‚’æŒã¤ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯true
 	 */
 	public static boolean isExist(long userId, Context context) {
 		val q = new QueryBuilder()
