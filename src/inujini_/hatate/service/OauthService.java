@@ -41,7 +41,7 @@ public class OauthService extends IntentService {
 	public static final String KEY_CONSUMER_KEY = "consumerKey";
 	public static final String KEY_CONSUMER_SECRET = "consumerSecret";
 	private static final String URI_CALLBACK = "oauth://callback";
-	
+
 	// use in get access_token
 	public static final String KEY_FINISHED_OAUTH = "isFinished";
 
@@ -79,7 +79,7 @@ public class OauthService extends IntentService {
 	protected void onHandleIntent(Intent intent) {
 		if(!intent.getBooleanExtra(KEY_FINISHED_OAUTH, false))
 			startOauth(intent);
-		else 
+		else
 			getAccessToken(intent);
 	}
 
@@ -90,9 +90,9 @@ public class OauthService extends IntentService {
 	private void startOauth(Intent intent) {
 		// validate
 		if(!intent.hasExtra(KEY_CONSUMER_KEY) || !intent.hasExtra(KEY_CONSUMER_SECRET)) {
-			IllegalStateException e 
-				= IllegalStateException("In startOauth, intent's extra must have consumerKey and consumerSecret.");
-			
+			IllegalStateException e
+				= new IllegalStateException("In startOauth, intent's extra must have consumerKey and consumerSecret.");
+
 			CallbackBroadcastReceiver.Data data = CallbackBroadcastReceiver.Data.create(e);
 			sendBroadcast(CallbackBroadcastReceiver.createIntent(data));
 			return;
@@ -128,9 +128,6 @@ public class OauthService extends IntentService {
 		}
 
 		Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-		// TODO:リダイレクトし終わった後ブラウザが閉じない
-		//      NO_HISTORYを渡せばいけそうな気がするので試してみる
-		//i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivity(i);
 	}
@@ -142,14 +139,14 @@ public class OauthService extends IntentService {
 	private void getAccessToken(Intent intent) {
 		// validate
 		if(intent.getData() == null) {
-			IllegalStateException e 
+			IllegalStateException e
 				= new IllegalStateException("OAuth is success but intent's data (URI) is null.");
-			
+
 			CallbackBroadcastReceiver.Data data = CallbackBroadcastReceiver.Data.create(e);
 			sendBroadcast(CallbackBroadcastReceiver.createIntent(data));
 			return;
 		}
-		
+
 		OAuthAuthorization oauth = null;
 
 		// OAuthAuthorization復元

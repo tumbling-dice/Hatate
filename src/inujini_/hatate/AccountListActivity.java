@@ -18,6 +18,7 @@ import lombok.val;
 import twitter4j.auth.AccessToken;
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -54,12 +55,12 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 		val lv = super.getListView();
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		lv.setOnItemLongClickListener(this);
-		
+
 		val adapter = new AccountAdapter(context, AccountDao.getAllAccount(context));
 		super.setListAdapter(adapter);
-		
+
 		// set default checkbox's value
-		for(int i = 0, count = adapter.getCount(); i < count, i++) {
+		for(int i = 0, count = adapter.getCount(); i < count; i++) {
 			lv.setItemChecked(i, adapter.getItem(i).isUse());
 		}
 	}
@@ -69,7 +70,7 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 		val adapter = (AccountAdapter) getListAdapter();
 		val item = adapter.getItem(position);
 		item.setUse(!item.isUse());
-		AccountDao.setUseAsync(item, getApplicationContext());
+		AccountDao.setUseFlagAsync(item, getApplicationContext());
 		adapter.notifyDataSetChanged();
 	}
 
@@ -87,7 +88,7 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 					dialog.dismiss();
 					AccountDao.deleteAsync(item, getApplicationContext());
 					adapter.remove(item);
-					
+
 					// 全アカウントが削除されたらTwitter連携を自動で切る
 					if(adapter.getCount() == 0) {
 						PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
@@ -119,18 +120,24 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 				_receiver = null;
 			}
 
+			val prog = new ProgressDialog(this);
+			prog.setMessage("OAuth認証画面を開いています。しばらくお待ちください。");
+			prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
 			_receiver = new CallbackBroadcastReceiver() {
 				@Override
 				public void onSuccess(AccessToken token) {
 					_receiver = null;
-					
-					if(AccountDao.isExist(token.getUserId())) {
+					if(prog != null && prog.isShowing())
+						prog.dismiss();
+
+					if(AccountDao.isExist(token.getUserId(), getApplicationContext())) {
 						Toast.makeText(getApplicationContext()
 							, "既に登録されているアカウントは追加できません。"
 							,Toast.LENGTH_SHORT).show();
 						return;
 					}
-					
+
 					Toast.makeText(getApplicationContext()
 							, "OAuth認証が完了しました。\nブラウザが開きっぱなしの場合は閉じて下さい。"
 							,Toast.LENGTH_SHORT).show();
@@ -148,6 +155,9 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 				@Override
 				public void onError(Exception exception) {
 					_receiver = null;
+					if(prog != null && prog.isShowing())
+						prog.dismiss();
+
 					Toast.makeText(getApplicationContext(), "Oauth認証に失敗しました"
 							, Toast.LENGTH_LONG).show();
 				}
@@ -159,6 +169,8 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 			val res = getApplicationContext().getResources();
 			startService(OauthService.createIntent(res.getString(R.string.consumer_key)
 					, res.getString(R.string.consumer_secret), getApplicationContext()));
+			prog.show();
+
 			return true;
 		default:
 			return false;

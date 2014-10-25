@@ -9,14 +9,13 @@
 
 package inujini_.hatate.preference;
 
-import lombok.val;
 import lombok.NonNull;
+import lombok.val;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.preference.EditTextPreference;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -26,9 +25,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
+ * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link IconEditTextPreference}.
  */
-public class ValidatableEditTextPreference extends EditTextPreference {
+public class ValidatableEditTextPreference extends IconEditTextPreference {
 
 	private boolean _isNeedValidation;
 	private String _errorMessage;
@@ -47,7 +46,7 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 	}
 
 	/**
-	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
+	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link IconEditTextPreference}.
 	 * @param context
 	 */
 	public ValidatableEditTextPreference(Context context) {
@@ -55,7 +54,7 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 	}
 
 	/**
-	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
+	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link IconEditTextPreference}.
 	 * @param context
 	 * @param attrs
 	 */
@@ -64,7 +63,7 @@ public class ValidatableEditTextPreference extends EditTextPreference {
 	}
 
 	/**
-	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link EditTextPreference}.
+	 * 入力内容を検証し、ルールに違反していた場合は値を登録させない{@link IconEditTextPreference}.
 	 * @param context
 	 * @param attrs
 	 * @param defStyle

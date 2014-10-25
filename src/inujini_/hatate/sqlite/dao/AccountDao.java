@@ -14,6 +14,7 @@ import inujini_.function.Function.Func1;
 import inujini_.hatate.R;
 import inujini_.hatate.data.TwitterAccount;
 import inujini_.hatate.data.meta.MetaAccount;
+import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.sqlite.DatabaseHelper;
 import inujini_.sqlite.helper.CursorExtensions;
 import inujini_.sqlite.helper.QueryBuilder;
@@ -83,6 +84,26 @@ public class AccountDao {
 	}
 
 	/**
+	 * 登録済みデータ件数取得
+	 * @param context
+	 * @return 登録済みデータの件数
+	 */
+	public static int getCount(Context context) {
+		val q = new QueryBuilder()
+					.select(MetaAccount.Id)
+					.from(MetaAccount.TBL_NAME)
+					.toString();
+
+		return new DatabaseHelper(context).getList(q, context, new Func1<Cursor, Integer>() {
+			@Override
+			public Integer call(Cursor arg0) {
+				return 0;
+			}
+		}).size();
+
+	}
+
+	/**
 	 * 全アカウント取得.
 	 * @param context
 	 * @return 全{@link TwitterAccount}のリスト
@@ -126,6 +147,7 @@ public class AccountDao {
 			@Override
 			public Void call(Context x) {
 				AccountDao.insert(account, x);
+				return null;
 			}
 		}).execute(context);
 	}
@@ -136,7 +158,7 @@ public class AccountDao {
 	 * @param isUse 使用フラグ
 	 * @param context
 	 */
-	public static void setUseFlag(long userId, boolean isUse, Context context) {
+	public static void setUseFlag(final long userId, boolean isUse, Context context) {
 		val cv = new ContentValues();
 		cv.put(MetaAccount.UseFlag.getColumnName(), (isUse ? 1: 0));
 
@@ -166,7 +188,8 @@ public class AccountDao {
 		new ReactiveAsyncTask<Context, Void, Void>(new Func1<Context, Void>(){
 			@Override
 			public Void call(Context x) {
-				AccountDao.update(account, x);
+				AccountDao.setUseFlag(account, x);
+				return null;
 			}
 		}).execute(context);
 	}
@@ -197,6 +220,7 @@ public class AccountDao {
 			@Override
 			public Void call(Context x) {
 				AccountDao.delete(account, x);
+				return null;
 			}
 		}).execute(context);
 	}
@@ -207,12 +231,9 @@ public class AccountDao {
 	 * @return 既に1件でも登録されていたらtrue
 	 */
 	public static boolean isAuthorized(Context context) {
-		// FIXME: 効率が悪すぎる
-		// 何かのカウントをとるべき。
-		val t = getTwitter(context);
-		return t != null && !t.isEmpty();
+		return getCount(context) != 0;
 	}
-	
+
 	/**
 	 * 登録済みチェック.
 	 * @param userId チェックしたいアカウントのuser_id
@@ -225,7 +246,7 @@ public class AccountDao {
 				.from(MetaAccount.TBL_NAME)
 				.where().equal(MetaAccount.UserId, userId)
 				.toString();
-		
+
 		return new DatabaseHelper(context).get(q, context, new Func1<Cursor, Long>() {
 			@Override
 			public Long call(Cursor c) {

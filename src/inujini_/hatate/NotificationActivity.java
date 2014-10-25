@@ -24,6 +24,7 @@ import lombok.val;
 import lombok.experimental.ExtensionMethod;
 import twitter4j.auth.AccessToken;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -71,6 +72,10 @@ public class NotificationActivity extends PreferenceActivity {
 							public void onClick(DialogInterface dialog, int which) {
 								dialog.dismiss();
 
+								val prog = new ProgressDialog(NotificationActivity.this);
+								prog.setMessage("OAuth認証画面を開いています。しばらくお待ちください。");
+								prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
 								if(_receiver != null) {
 									unregisterReceiver(_receiver);
 									_receiver = null;
@@ -79,6 +84,8 @@ public class NotificationActivity extends PreferenceActivity {
 								_receiver = new CallbackBroadcastReceiver() {
 									@Override
 									public void onSuccess(AccessToken token) {
+										if(prog != null && prog.isShowing())
+											prog.dismiss();
 										Toast.makeText(getApplicationContext()
 												, "OAuth認証が完了しました。\nブラウザが開きっぱなしの場合は閉じて下さい。",
 												Toast.LENGTH_SHORT).show();
@@ -98,6 +105,8 @@ public class NotificationActivity extends PreferenceActivity {
 
 									@Override
 									public void onError(Exception exception) {
+										if(prog != null && prog.isShowing())
+											prog.dismiss();
 										Toast.makeText(getApplicationContext(), "Oauth認証に失敗しました"
 												, Toast.LENGTH_LONG).show();
 										_receiver = null;
@@ -110,6 +119,7 @@ public class NotificationActivity extends PreferenceActivity {
 								val res = getApplicationContext().getResources();
 								startService(OauthService.createIntent(res.getString(R.string.consumer_key)
 										, res.getString(R.string.consumer_secret), getApplicationContext()));
+								prog.show();
 							}
 						}).setNegativeButton("キャンセル", new OnClickListener() {
 							@Override

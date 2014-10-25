@@ -2,7 +2,7 @@
 <!--
     HatateHoutyouAlarm
     Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
-    
+
     This software is released under the MIT License.
     http://opensource.org/licenses/mit-license.php
 -->
@@ -11,60 +11,74 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:hatate="http://schemas.android.com/apk/res/inujini_.hatate"
     android:title="通知設定詳細" >
-    <CheckBoxPreference
+    <inujini_.hatate.preference.IconCheckboxPreference
         android:key="isSnooze"
         android:title="確実にとどめをさす"
         android:defaultValue="false"
-        android:summary="通知をタップするまで刺し続けます。"/>
+        android:summary="通知をタップするまで刺し続けます。"
+        hatate:iconOn="@drawable/ic_timer_black_24dp"
+        hatate:iconOff="@drawable/ic_timer_off_black_24dp"/>
     <inujini_.hatate.preference.ValidatableEditTextPreference
         android:key="snoozeTime"
         android:title="生存確認間隔"
         android:summary="@string/summary_snooze"
         android:dependency="isSnooze"
-        android:defaultValue="60"/>
-    <CheckBoxPreference
+        android:defaultValue="60"
+        android:icon="@drawable/ic_navigate_next_black_24dp"/>
+    <inujini_.hatate.preference.IconCheckboxPreference
         android:title="声"
         android:summary="刺されると最後の力で悲鳴をあげます。"
         android:key="isScream"
-        android:defaultValue="true"/>
+        android:defaultValue="true"
+        hatate:iconOn="@drawable/ic_mic_black_24dp"
+        hatate:iconOff="@drawable/ic_mic_off_black_24dp"/>
     <inujini_.hatate.preference.VolumePreference
         android:key="volume"
         android:title="声量"
         android:summary="端末のメディア音量を変更します。"
         android:dependency="isScream"
         hatate:type="music" />
-    <CheckBoxPreference
+    <inujini_.hatate.preference.IconCheckboxPreference
         android:title="バイブ"
         android:summary="刺されると最後の力で端末が振動します。"
         android:key="isVibration"
-        android:defaultValue="true"/>
+        android:defaultValue="true"
+        hatate:iconOn="@drawable/ic_vibration_black_24dp"
+        hatate:iconOff="@drawable/ic_vibration_black_24dp"/>
     <inujini_.hatate.preference.EventableListPreference
         android:key="vibrationPattern"
         android:entries="@array/VibraitionList"
         android:entryValues="@array/VibrationValues"
         android:title="バイブパターン"
         android:summary="@string/summary_vibration"
-        android:dependency="isVibration" />
-    <CheckBoxPreference
+        android:dependency="isVibration"
+        android:icon="@drawable/ic_list_black_24dp" />
+    <inujini_.hatate.preference.IconCheckboxPreference
         android:title="憎しみの光"
         android:summary="刺されると最後の力でLEDが点灯します。\n（※スリープ時のみ点灯します。）"
         android:key="isLight"
-        android:defaultValue="true"/>
-    <ListPreference
+        android:defaultValue="true"
+        hatate:iconOn="@drawable/ic_flash_on_black_24dp"
+        hatate:iconOff="@drawable/ic_flash_off_black_24dp"/>
+    <inujini_.hatate.preference.IconListPreference
         android:title="光の色"
         android:summary="@string/summary_light"
         android:entries="@array/LightColorList"
         android:entryValues="@array/LightColorValues"
         android:key="lightColor"
-        android:dependency="isLight"/>
-    <CheckBoxPreference
+        android:dependency="isLight"
+        android:icon="@drawable/ic_color_lens_black_24dp"/>
+    <inujini_.hatate.preference.IconCheckboxPreference
         android:title="殺害報告"
         android:summaryOff="はたてちゃんが刺されたことをTwitterで報告することが出来ますが、TLが醜くなるだけなので使わないでください。"
         android:summaryOn="やめろっていってんだろ。"
         android:key="isTweet"
-        android:defaultValue="false"/>
+        android:defaultValue="false"
+        hatate:iconOn="@drawable/ic_sms_black_24dp"
+        hatate:iconOff="@drawable/ic_sms_black_24dp"/>
     <inujini_.hatate.preference.PreviewPreference
         android:key="preview"
         android:title="確認"
-        android:summary="実際に刺されるとどうなるのか見てみます。"/>
+        android:summary="実際に刺されるとどうなるのか見てみます。"
+        android:icon="@drawable/ic_play_arrow_black_24dp"/>
 </PreferenceScreen>

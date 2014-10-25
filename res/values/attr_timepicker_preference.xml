@@ -13,5 +13,6 @@
         <attr name="key_minute" format="string"/>
         <attr name="defualt_hour" format="integer"/>
         <attr name="defualt_minute" format="integer"/>
+        <attr name="android:icon" />
     </declare-styleable>
 </resources>

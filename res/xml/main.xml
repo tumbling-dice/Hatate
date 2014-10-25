@@ -16,73 +16,83 @@
         android:key="time"
         android:title="時刻"
         android:summary="@string/summary_time"
+        android:icon="@drawable/ic_alarm_black_24dp"
         hatate:key_hour="hour"
         hatate:key_minute="time"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="通知設定">
-        <CheckBoxPreference
+        <inujini_.hatate.preference.IconCheckboxPreference
             android:title="とどめをささない"
             android:summary="通知のオン・オフを切り替えます。"
             android:key="isNoisy"
-            android:defaultValue="true"/>
-        <PreferenceScreen
+            android:defaultValue="true"
+            hatate:iconOn="@drawable/ic_notifications_black_24dp"
+            hatate:iconOff="@drawable/ic_notifications_off_black_24dp"/>
+        <inujini_.hatate.preference.IconPreference
             android:key="notify"
             android:title="詳細設定"
             android:summary="通知に関する詳細設定を行います。"
-            android:dependency="isNoisy">
+            android:dependency="isNoisy"
+            android:icon="@drawable/ic_expand_more_black_24dp">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="inujini_.hatate"
                 android:targetClass="inujini_.hatate.NotificationActivity" />
-        </PreferenceScreen>
+        </inujini_.hatate.preference.IconPreference>
     </PreferenceCategory>
     <PreferenceCategory android:title="スペルカード">
-        <PreferenceScreen
+        <inujini_.hatate.preference.IconPreference
                 android:key="gacha"
                 android:title="スペルカードガチャ"
                 android:summary="はたてちゃんの頭部を部位破壊してスペルカードを手に入れよう！"
-                android:enabled="false">
+                android:enabled="false"
+                android:icon="@drawable/ic_navigate_next_black_24dp">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="inujini_.hatate"
                 android:targetClass="inujini_.hatate.GachaActivity" />
-        </PreferenceScreen>
-        <PreferenceScreen
+        </inujini_.hatate.preference.IconPreference>
+        <inujini_.hatate.preference.IconPreference
                 android:key="spellCardList"
                 android:title="履歴一覧"
-                android:summary="最近手に入れたスペルカードを眺めます。">
+                android:summary="最近手に入れたスペルカードを眺めます。"
+                android:icon="@drawable/ic_view_list_black_24dp">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="inujini_.hatate"
                 android:targetClass="inujini_.hatate.SpellCardHistoryActivity" />
-        </PreferenceScreen>
+        </inujini_.hatate.preference.IconPreference>
     </PreferenceCategory>
     <PreferenceCategory android:title="その他">
-        <Preference
+        <inujini_.hatate.preference.IconPreference
             android:key="love"
             android:title="好感度"
-            android:summary="普通人は包丁で刺された相手のことを憎むんじゃ。" />
+            android:summary="普通人は包丁で刺された相手のことを憎むんじゃ。"
+            android:icon="@drawable/ic_favorite_black_24dp"/>
         <inujini_.hatate.preference.PreviewPreference
             android:key="preview"
             android:title="確認"
-            android:summary="実際に刺されるとどうなるのか見てみます。"/>
-        <PreferenceScreen
+            android:summary="実際に刺されるとどうなるのか見てみます。"
+            android:icon="@drawable/ic_play_arrow_black_24dp"/>
+        <inujini_.hatate.preference.IconPreference
             android:key="account"
             android:title="Twitterアカウント"
-            android:summary="Twitter連携するアカウントを管理します。">
+            android:summary="Twitter連携するアカウントを管理します。"
+            android:icon="@drawable/ic_account_box_black_24dp">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="inujini_.hatate"
                 android:targetClass="inujini_.hatate.AccountListActivity" />
-        </PreferenceScreen>
-        <PreferenceScreen
+        </inujini_.hatate.preference.IconPreference>
+        <inujini_.hatate.preference.IconPreference
             android:key="license"
             android:title="ライセンス"
-            android:summary="使ったライブラリのあれとか">
+            android:summary="使ったライブラリのあれとか"
+            android:icon="@drawable/ic_description_black_24dp">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="inujini_.hatate"
                 android:targetClass="inujini_.hatate.LicenseActivity" />
-        </PreferenceScreen>
+        </inujini_.hatate.preference.IconPreference>
     </PreferenceCategory>
 </PreferenceScreen>

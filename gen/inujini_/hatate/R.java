@@ -22,7 +22,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int defualt_hour=0x7f010003;
+        public static final int defualt_hour=0x7f010005;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -30,7 +30,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int defualt_minute=0x7f010004;
+        public static final int defualt_minute=0x7f010006;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int iconOff=0x7f010001;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int iconOn=0x7f010000;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -38,7 +46,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int key_hour=0x7f010001;
+        public static final int key_hour=0x7f010003;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -46,7 +54,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int key_minute=0x7f010002;
+        public static final int key_minute=0x7f010004;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -54,7 +62,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int max=0x7f010000;
+        public static final int max=0x7f010002;
         /** <p>May be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -75,24 +83,45 @@ containing a value of this type.
 <tr><td><code>notification</code></td><td>5</td><td></td></tr>
 </table>
          */
-        public static final int type=0x7f010005;
+        public static final int type=0x7f010007;
     }
     public static final class drawable {
         public static final int hatate=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int ic_account_box_black_24dp=0x7f020001;
+        public static final int ic_alarm_black_24dp=0x7f020002;
+        public static final int ic_color_lens_black_24dp=0x7f020003;
+        public static final int ic_description_black_24dp=0x7f020004;
+        public static final int ic_expand_more_black_24dp=0x7f020005;
+        public static final int ic_favorite_black_24dp=0x7f020006;
+        public static final int ic_flash_off_black_24dp=0x7f020007;
+        public static final int ic_flash_on_black_24dp=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int ic_list_black_24dp=0x7f02000a;
+        public static final int ic_mic_black_24dp=0x7f02000b;
+        public static final int ic_mic_off_black_24dp=0x7f02000c;
+        public static final int ic_navigate_next_black_24dp=0x7f02000d;
+        public static final int ic_notifications_black_24dp=0x7f02000e;
+        public static final int ic_notifications_off_black_24dp=0x7f02000f;
+        public static final int ic_play_arrow_black_24dp=0x7f020010;
+        public static final int ic_sms_black_24dp=0x7f020011;
+        public static final int ic_timer_black_24dp=0x7f020012;
+        public static final int ic_timer_off_black_24dp=0x7f020013;
+        public static final int ic_vibration_black_24dp=0x7f020014;
+        public static final int ic_view_list_black_24dp=0x7f020015;
     }
     public static final class id {
         public static final int alarm=0x7f070004;
         public static final int imgHatate=0x7f070006;
-        public static final int menu_item_add=0x7f07000b;
+        public static final int menu_item_add=0x7f07000c;
         public static final int music=0x7f070003;
         public static final int notification=0x7f070005;
+        public static final int preferenceIcon=0x7f070009;
         public static final int ring=0x7f070002;
-        public static final int seekbar=0x7f070009;
+        public static final int seekbar=0x7f07000a;
         public static final int system=0x7f070001;
         public static final int txvName=0x7f070007;
         public static final int txvTimestamp=0x7f070008;
-        public static final int txvValue=0x7f07000a;
+        public static final int txvValue=0x7f07000b;
         public static final int voice=0x7f070000;
     }
     public static final class layout {
@@ -101,8 +130,9 @@ containing a value of this type.
         public static final int activity_list=0x7f030002;
         public static final int adapter_account_list=0x7f030003;
         public static final int adapter_spellcard_history=0x7f030004;
-        public static final int seekbar_preference=0x7f030005;
-        public static final int toast_love=0x7f030006;
+        public static final int icon_preference_imageview=0x7f030005;
+        public static final int seekbar_preference=0x7f030006;
+        public static final int toast_love=0x7f030007;
     }
     public static final class menu {
         public static final int menu_account_list=0x7f0a0000;
@@ -152,6 +182,98 @@ containing a value of this type.
         public static final int voice_setting=0x7f040002;
     }
     public static final class styleable {
+        /** Attributes that can be used with a IconCheckboxPreference.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #IconCheckboxPreference_iconOff inujini_.hatate:iconOff}</code></td><td></td></tr>
+           <tr><td><code>{@link #IconCheckboxPreference_iconOn inujini_.hatate:iconOn}</code></td><td></td></tr>
+           </table>
+           @see #IconCheckboxPreference_iconOff
+           @see #IconCheckboxPreference_iconOn
+         */
+        public static final int[] IconCheckboxPreference = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#iconOff}
+          attribute's value can be found in the {@link #IconCheckboxPreference} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name inujini_.hatate:iconOff
+        */
+        public static final int IconCheckboxPreference_iconOff = 1;
+        /**
+          <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#iconOn}
+          attribute's value can be found in the {@link #IconCheckboxPreference} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name inujini_.hatate:iconOn
+        */
+        public static final int IconCheckboxPreference_iconOn = 0;
+        /** Attributes that can be used with a IconEditTextPreference.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #IconEditTextPreference_android_icon android:icon}</code></td><td></td></tr>
+           </table>
+           @see #IconEditTextPreference_android_icon
+         */
+        public static final int[] IconEditTextPreference = {
+            0x01010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#icon}
+          attribute's value can be found in the {@link #IconEditTextPreference} array.
+          @attr name android:icon
+        */
+        public static final int IconEditTextPreference_android_icon = 0;
+        /** Attributes that can be used with a IconListPreference.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #IconListPreference_android_icon android:icon}</code></td><td></td></tr>
+           </table>
+           @see #IconListPreference_android_icon
+         */
+        public static final int[] IconListPreference = {
+            0x01010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#icon}
+          attribute's value can be found in the {@link #IconListPreference} array.
+          @attr name android:icon
+        */
+        public static final int IconListPreference_android_icon = 0;
+        /** Attributes that can be used with a IconPreference.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #IconPreference_android_icon android:icon}</code></td><td></td></tr>
+           </table>
+           @see #IconPreference_android_icon
+         */
+        public static final int[] IconPreference = {
+            0x01010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#icon}
+          attribute's value can be found in the {@link #IconPreference} array.
+          @attr name android:icon
+        */
+        public static final int IconPreference_android_icon = 0;
         /** Attributes that can be used with a SeekBarPreference.
            <p>Includes the following attributes:</p>
            <table>
@@ -165,7 +287,7 @@ containing a value of this type.
            @see #SeekBarPreference_max
          */
         public static final int[] SeekBarPreference = {
-            0x010101ed, 0x7f010000
+            0x010101ed, 0x7f010002
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#defaultValue}
@@ -193,19 +315,28 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #TimePickerPreference_android_icon android:icon}</code></td><td></td></tr>
            <tr><td><code>{@link #TimePickerPreference_defualt_hour inujini_.hatate:defualt_hour}</code></td><td></td></tr>
            <tr><td><code>{@link #TimePickerPreference_defualt_minute inujini_.hatate:defualt_minute}</code></td><td></td></tr>
            <tr><td><code>{@link #TimePickerPreference_key_hour inujini_.hatate:key_hour}</code></td><td></td></tr>
            <tr><td><code>{@link #TimePickerPreference_key_minute inujini_.hatate:key_minute}</code></td><td></td></tr>
            </table>
+           @see #TimePickerPreference_android_icon
            @see #TimePickerPreference_defualt_hour
            @see #TimePickerPreference_defualt_minute
            @see #TimePickerPreference_key_hour
            @see #TimePickerPreference_key_minute
          */
         public static final int[] TimePickerPreference = {
-            0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004
+            0x01010002, 0x7f010003, 0x7f010004, 0x7f010005,
+            0x7f010006
         };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#icon}
+          attribute's value can be found in the {@link #TimePickerPreference} array.
+          @attr name android:icon
+        */
+        public static final int TimePickerPreference_android_icon = 0;
         /**
           <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#defualt_hour}
           attribute's value can be found in the {@link #TimePickerPreference} array.
@@ -219,7 +350,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name inujini_.hatate:defualt_hour
         */
-        public static final int TimePickerPreference_defualt_hour = 2;
+        public static final int TimePickerPreference_defualt_hour = 3;
         /**
           <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#defualt_minute}
           attribute's value can be found in the {@link #TimePickerPreference} array.
@@ -233,7 +364,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name inujini_.hatate:defualt_minute
         */
-        public static final int TimePickerPreference_defualt_minute = 3;
+        public static final int TimePickerPreference_defualt_minute = 4;
         /**
           <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#key_hour}
           attribute's value can be found in the {@link #TimePickerPreference} array.
@@ -247,7 +378,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name inujini_.hatate:key_hour
         */
-        public static final int TimePickerPreference_key_hour = 0;
+        public static final int TimePickerPreference_key_hour = 1;
         /**
           <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#key_minute}
           attribute's value can be found in the {@link #TimePickerPreference} array.
@@ -261,7 +392,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name inujini_.hatate:key_minute
         */
-        public static final int TimePickerPreference_key_minute = 1;
+        public static final int TimePickerPreference_key_minute = 2;
         /** Attributes that can be used with a VolumePreference.
            <p>Includes the following attributes:</p>
            <table>
@@ -273,7 +404,7 @@ containing a value of this type.
            @see #VolumePreference_type
          */
         public static final int[] VolumePreference = {
-            0x7f010005
+            0x7f010007
         };
         /**
           <p>This symbol is the offset where the {@link inujini_.hatate.R.attr#type}

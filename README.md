@@ -6,6 +6,10 @@
 
 #更新履歴
 
++ ver 1.2.0β2
+    * 設定画面に色々とアイコンを追加
+    * Twitter連携アカウントを複数設定可能（やめろ）
+    * ライセンスの追記（Material Design Icons）
 + ver 1.2.0β
     * スペルカード収集機能の追加
     * 細かなバグフィックス
@@ -61,7 +65,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ***
 
 **ただし、当成果物に含まれている画像リソースに関してはこの限りではありません。**<br>
-**画像に関する全ての権利は[天篭り](https://twitter.com/tcm_b_c)氏が所有しており、使用・加工・再配布に関しては氏の許諾を得る必要があります。**
+**はたてちゃんの画像に関する全ての権利は[天篭り](https://twitter.com/tcm_b_c)氏が所有しており、使用・加工・再配布に関しては氏の許諾を得る必要があります。**
 
 また、当成果物内で使用している各種ライブラリのライセンスに関しては以下の通りとなっています。
 
@@ -69,3 +73,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     * [Twittrer4J](http://twitter4j.org/ja/index.html)
 + MITライセンスで配布されているもの
     * [Lombok](http://projectlombok.org/)
+
+なお、設定画面でのアイコンは[Material Design Icons ((C) Google 2014)](https://github.com/google/material-design-icons/releases) を使用しています。
+
+こちらはクリエイティブ・コモンズ・ライセンスにおける[「表示-継承」](http://creativecommons.org/licenses/by-sa/4.0/deed.ja)に基いて公開されています。ライセンスについては[こちら](http://creativecommons.org/licenses/by-sa/4.0/legalcode)をお読み下さい。
+

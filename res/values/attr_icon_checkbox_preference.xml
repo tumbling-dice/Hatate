@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    HatateHoutyouAlarm
+    Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+
+    This software is released under the MIT License.
+    http://opensource.org/licenses/mit-license.php
+-->
+<resources>
+    <declare-styleable name="IconCheckboxPreference">
+        <attr name="iconOn" format="reference"/>
+        <attr name="iconOff" format="reference"/>
+    </declare-styleable>
+</resources>
