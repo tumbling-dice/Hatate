@@ -1187,20 +1187,10 @@ android.support.v4.widget.ViewDragHelper:
     908:927:protected boolean canScroll(android.view.View,boolean,int,int,int,int)
     1331:1337:public boolean isEdgeTouched(int)
     1351:1351:public boolean isEdgeTouched(int,int)
-inujini_.function.Function:
-    4:4:private Function()
-inujini_.function.Function$Action3
-inujini_.function.Function$Action4
-inujini_.function.Function$Action5
-inujini_.function.Function$Actions
-inujini_.function.Function$Func2
-inujini_.function.Function$Func3
-inujini_.function.Function$Func4
-inujini_.function.Function$Func5
-inujini_.function.Function$Funcs
-inujini_.function.Function$IAction
-inujini_.function.Function$IFunc
 inujini_.hatate.BuildConfig
+inujini_.hatate.MainActivity:
+    private static final int REQ_GACHA
+    public static final java.lang.String KEY_GACHA
 inujini_.hatate.R:
     10:10:public R()
 inujini_.hatate.R$array
@@ -1208,12 +1198,16 @@ inujini_.hatate.R$attr
 inujini_.hatate.R$drawable
 inujini_.hatate.R$id
 inujini_.hatate.R$layout
+inujini_.hatate.R$menu
 inujini_.hatate.R$raw
 inujini_.hatate.R$string
 inujini_.hatate.R$style
 inujini_.hatate.R$styleable:
-    158:158:public R$styleable()
+    278:278:public R$styleable()
 inujini_.hatate.R$xml
+inujini_.hatate.data.TouhouData:
+    public abstract void setId(long)
+    public abstract void setName(java.lang.String)
 inujini_.hatate.data.meta.MetaAccount:
     public static final java.lang.String TBL_NAME
     8:8:public MetaAccount()
@@ -1238,36 +1232,103 @@ inujini_.hatate.data.meta.MetaStatistics:
     public static final java.lang.String TBL_NAME
     8:8:public MetaStatistics()
     17:17:public static boolean hasPrimaryId()
+inujini_.hatate.function.Function:
+    13:13:private Function()
+inujini_.hatate.function.Function$Action3
+inujini_.hatate.function.Function$Action4
+inujini_.hatate.function.Function$Action5
+inujini_.hatate.function.Function$Actions
+inujini_.hatate.function.Function$Func2
+inujini_.hatate.function.Function$Func3
+inujini_.hatate.function.Function$Func4
+inujini_.hatate.function.Function$Func5
+inujini_.hatate.function.Function$Funcs
+inujini_.hatate.function.Function$IAction
+inujini_.hatate.function.Function$IFunc
+inujini_.hatate.linq.Linq:
+    40:46:private Linq(byte[])
+    49:54:private Linq(int[])
+    57:62:private Linq(short[])
+    65:70:private Linq(long[])
+    73:78:private Linq(float[])
+    81:86:private Linq(double[])
+    89:94:private Linq(char[])
+    97:102:private Linq(boolean[])
+    113:113:public static inujini_.hatate.linq.Linq linq(byte[])
+    117:117:public static inujini_.hatate.linq.Linq linq(int[])
+    121:121:public static inujini_.hatate.linq.Linq linq(short[])
+    125:125:public static inujini_.hatate.linq.Linq linq(long[])
+    129:129:public static inujini_.hatate.linq.Linq linq(float[])
+    133:133:public static inujini_.hatate.linq.Linq linq(double[])
+    137:137:public static inujini_.hatate.linq.Linq linq(char[])
+    141:141:public static inujini_.hatate.linq.Linq linq(boolean[])
+    185:193:public inujini_.hatate.linq.Linq selectManyArray(inujini_.hatate.function.Function$Func1)
+    198:213:public inujini_.hatate.linq.Linq skip(int)
+    218:230:public inujini_.hatate.linq.Linq skipWhile(inujini_.hatate.function.Function$Predicate)
+    234:252:public inujini_.hatate.linq.Linq take(int)
+    256:268:public inujini_.hatate.linq.Linq takeWhile(inujini_.hatate.function.Function$Predicate)
+    273:310:public inujini_.hatate.linq.Linq join(java.util.Collection,inujini_.hatate.function.Function$Func1,inujini_.hatate.function.Function$Func1,inujini_.hatate.function.Function$Func2)
+    314:317:public inujini_.hatate.linq.Linq orderBy(java.util.Comparator)
+    321:321:public boolean any()
+    325:330:public boolean any(inujini_.hatate.function.Function$Func1)
+    334:334:public java.lang.Object first()
+    338:353:public java.util.Map groupBy(inujini_.hatate.function.Function$Func1,inujini_.hatate.function.Function$Func1)
+    391:397:public inujini_.hatate.linq.Linq distinct()
+    402:402:public java.lang.Object[] toArray()
+    430:438:public static float[] toFloatArray(inujini_.hatate.linq.Linq)
+    442:450:public static double[] toDoubleArray(inujini_.hatate.linq.Linq)
+    454:462:public static short[] toShortArray(inujini_.hatate.linq.Linq)
+    466:474:public static byte[] toByteArray(inujini_.hatate.linq.Linq)
 inujini_.hatate.love.Love:
-    11:11:public Love()
+    21:21:public Love()
+inujini_.hatate.preference.IconCheckboxPreference:
+    72:72:public int getIconOn()
+    76:78:public void setIconOn(int)
+    81:81:public int getIconOff()
+    85:87:public void setIconOff(int)
+inujini_.hatate.preference.IconEditTextPreference:
+    68:68:public int getIcon()
+    73:75:public void setIcon(int)
+inujini_.hatate.preference.IconListPreference:
+    54:54:public int getIcon()
+    59:61:public void setIcon(int)
+inujini_.hatate.preference.IconPreference:
+    52:52:public int getIcon()
+    57:59:public void setIcon(int)
 inujini_.hatate.preference.SeekBarPreference:
-    26:26:public int getMax()
-    27:27:public int getCurrentValue()
+    38:38:public int getMax()
+    39:39:public int getCurrentValue()
+inujini_.hatate.preference.TimePickerPreference:
+    105:105:public int getIcon()
+    110:112:public void setIcon(int)
 inujini_.hatate.preference.VolumePreference:
-    87:95:public void setVolumeType(int)
-    20:20:public int getVolumeType()
+    125:133:public void setVolumeType(int)
+    34:34:public int getVolumeType()
 inujini_.hatate.reactive.ReactiveAsyncTask:
-    58:60:public inujini_.hatate.reactive.ReactiveAsyncTask setOnProgress(inujini_.function.Function$Func,inujini_.function.Function$Action1)
-    123:123:public boolean isCanceled()
-    127:128:public void setCanceled(boolean)
+    70:72:public inujini_.hatate.reactive.ReactiveAsyncTask setOnProgress(inujini_.hatate.function.Function$Func,inujini_.hatate.function.Function$Action1)
+    137:137:public boolean isCanceled()
+    141:142:public void setCanceled(boolean)
 inujini_.hatate.scraping.Scraper:
     public abstract java.util.List extract(java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
     public abstract inujini_.hatate.scraping.Scraper$XElement specify(java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
 inujini_.hatate.scraping.Scraper$XElement:
-    37:37:public inujini_.hatate.scraping.Scraper$XElement findInnerElement(java.lang.String)
-    41:41:public inujini_.hatate.scraping.Scraper$XElement findInnerElement(java.lang.String,java.lang.String)
-    44:74:public inujini_.hatate.scraping.Scraper$XElement findInnerElement(java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
-    78:86:private static inujini_.hatate.scraping.Scraper$XElement seek(inujini_.hatate.scraping.Scraper$XElement,java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
+    46:46:public inujini_.hatate.scraping.Scraper$XElement findInnerElement(java.lang.String)
+    50:50:public inujini_.hatate.scraping.Scraper$XElement findInnerElement(java.lang.String,java.lang.String)
+    53:83:public inujini_.hatate.scraping.Scraper$XElement findInnerElement(java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
+    87:95:private static inujini_.hatate.scraping.Scraper$XElement seek(inujini_.hatate.scraping.Scraper$XElement,java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
 inujini_.hatate.scraping.ScraperImpl:
-    23:26:public ScraperImpl(java.lang.String)
-    44:44:public java.util.List extract(java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
-    83:83:public inujini_.hatate.scraping.Scraper$XElement specify(java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
-    88:118:public inujini_.hatate.scraping.Scraper$XElement specify(java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
+    32:35:public ScraperImpl(java.lang.String)
+    53:53:public java.util.List extract(java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
+    92:92:public inujini_.hatate.scraping.Scraper$XElement specify(java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
+    97:127:public inujini_.hatate.scraping.Scraper$XElement specify(java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter)
 inujini_.hatate.scraping.XmlPullParserExtensions:
-    14:14:public XmlPullParserExtensions()
-    25:34:public static boolean hasAttribute(org.xmlpull.v1.XmlPullParser,java.lang.String,java.lang.String,java.lang.String)
-    38:38:public static boolean hasAttribute(org.xmlpull.v1.XmlPullParser,java.lang.String,java.lang.String)
-    42:42:public static boolean hasAttribute(org.xmlpull.v1.XmlPullParser,java.lang.String)
+    26:26:public XmlPullParserExtensions()
+    50:59:public static boolean hasAttribute(org.xmlpull.v1.XmlPullParser,java.lang.String,java.lang.String,java.lang.String)
+    71:71:public static boolean hasAttribute(org.xmlpull.v1.XmlPullParser,java.lang.String,java.lang.String)
+    82:82:public static boolean hasAttribute(org.xmlpull.v1.XmlPullParser,java.lang.String)
+inujini_.hatate.service.CallbackBroadcastReceiver:
+    private static final java.lang.String ACTION_CALLBACK
+    private static final java.lang.String KEY_DATA
 inujini_.hatate.service.Houtyou:
     public static final java.lang.String KEY_KILL
     public static final java.lang.String KEY_KILL_COUNT
@@ -1275,6 +1336,11 @@ inujini_.hatate.service.Houtyou:
     private static final boolean DEBUG
 inujini_.hatate.service.Kill:
     public static final java.lang.String ACTION_KILL
+inujini_.hatate.service.OauthService:
+    public static final java.lang.String KEY_CONSUMER_KEY
+    public static final java.lang.String KEY_CONSUMER_SECRET
+    private static final java.lang.String URI_CALLBACK
+    public static final java.lang.String KEY_FINISHED_OAUTH
 inujini_.hatate.sqlite.DatabaseHelper:
     private static final int DB_VERSION
     private static final java.lang.String DB_NAME
@@ -1282,20 +1348,27 @@ inujini_.hatate.sqlite.DatabaseHelper:
     public static final java.lang.String KEY_IS_OPENED
     public static final java.lang.String KEY_CURRENT_DB_VERSION
 inujini_.hatate.sqlite.dao.AccountDao:
-    23:23:public AccountDao()
+    39:39:public AccountDao()
+inujini_.hatate.sqlite.dao.CharacterDao:
+    32:32:public CharacterDao()
+    54:60:public static inujini_.hatate.data.Character getCharacter(android.content.Context,long)
+inujini_.hatate.sqlite.dao.SeriesDao:
+    33:33:public SeriesDao()
+    55:61:public static inujini_.hatate.data.Series getSeries(android.content.Context,long)
+    65:65:public static java.util.List getSerieses(android.content.Context,long[])
+inujini_.hatate.sqlite.dao.SeriesDao$2
 inujini_.hatate.sqlite.dao.SpellCardDao:
     private static java.util.HashMap _names
-    33:33:public SpellCardDao()
-    58:59:public static java.util.List getAllSpellCards(android.content.Context)
-    63:67:public static java.util.List getHaveSpellCards(android.content.Context)
-    71:75:public static java.util.List getEquippedSpellCards(android.content.Context)
-    79:83:public static int getEquipCount(android.content.Context)
-    137:149:public static void update(android.content.Context,inujini_.hatate.data.SpellCard)
-    152:160:public static void insert(android.content.Context,inujini_.hatate.data.SpellCard)
-    163:177:public static void bulkInsert(android.content.Context,java.util.List)
-    181:181:private static java.lang.String createInsertQuery(inujini_.hatate.data.SpellCard)
-    203:228:public static java.lang.String getName(android.content.Context,long,java.lang.String)
-    179:179:static synthetic java.lang.String access$0(inujini_.hatate.data.SpellCard)
+    42:42:public SpellCardDao()
+    67:68:public static java.util.List getAllSpellCards(android.content.Context)
+    80:84:public static java.util.List getEquippedSpellCards(android.content.Context)
+    88:92:public static int getEquipCount(android.content.Context)
+    146:158:public static void update(android.content.Context,inujini_.hatate.data.SpellCard)
+    161:169:public static void insert(android.content.Context,inujini_.hatate.data.SpellCard)
+    172:186:public static void bulkInsert(android.content.Context,java.util.List)
+    190:190:private static java.lang.String createInsertQuery(inujini_.hatate.data.SpellCard)
+    212:237:public static java.lang.String getName(android.content.Context,long,java.lang.String)
+    188:188:static synthetic java.lang.String access$0(inujini_.hatate.data.SpellCard)
 inujini_.hatate.sqlite.dao.SpellCardDao$10
 inujini_.hatate.sqlite.dao.SpellCardDao$4
 inujini_.hatate.sqlite.dao.SpellCardDao$5
@@ -1304,66 +1377,13 @@ inujini_.hatate.sqlite.dao.SpellCardDao$7
 inujini_.hatate.sqlite.dao.SpellCardDao$8
 inujini_.hatate.sqlite.dao.SpellCardDao$9
 inujini_.hatate.sqlite.dao.StatisticsDao:
-    20:20:public StatisticsDao()
+    29:29:public StatisticsDao()
+inujini_.hatate.util.IconUtil:
+    17:17:public IconUtil()
 inujini_.hatate.util.PrefGetter:
-    12:12:public PrefGetter()
+    25:25:public PrefGetter()
 inujini_.hatate.util.Util:
-    28:28:public Util()
-inujini_.linq.Linq:
-    31:37:private Linq(byte[])
-    40:45:private Linq(int[])
-    48:53:private Linq(short[])
-    56:61:private Linq(long[])
-    64:69:private Linq(float[])
-    72:77:private Linq(double[])
-    80:85:private Linq(char[])
-    88:93:private Linq(boolean[])
-    104:104:public static inujini_.linq.Linq linq(byte[])
-    108:108:public static inujini_.linq.Linq linq(int[])
-    112:112:public static inujini_.linq.Linq linq(short[])
-    116:116:public static inujini_.linq.Linq linq(long[])
-    120:120:public static inujini_.linq.Linq linq(float[])
-    124:124:public static inujini_.linq.Linq linq(double[])
-    128:128:public static inujini_.linq.Linq linq(char[])
-    132:132:public static inujini_.linq.Linq linq(boolean[])
-    176:184:public inujini_.linq.Linq selectManyArray(inujini_.function.Function$Func1)
-    189:204:public inujini_.linq.Linq skip(int)
-    209:221:public inujini_.linq.Linq skipWhile(inujini_.function.Function$Predicate)
-    225:243:public inujini_.linq.Linq take(int)
-    247:259:public inujini_.linq.Linq takeWhile(inujini_.function.Function$Predicate)
-    264:301:public inujini_.linq.Linq join(java.util.Collection,inujini_.function.Function$Func1,inujini_.function.Function$Func1,inujini_.function.Function$Func2)
-    305:308:public inujini_.linq.Linq orderBy(java.util.Comparator)
-    312:312:public boolean any()
-    316:321:public boolean any(inujini_.function.Function$Predicate)
-    325:325:public java.lang.Object first()
-    329:344:public java.util.Map groupBy(inujini_.function.Function$Func1,inujini_.function.Function$Func1)
-    366:372:public java.util.Map toMap(inujini_.function.Function$Func1,inujini_.function.Function$Func1)
-    376:382:public inujini_.linq.Linq distinct()
-    387:387:public java.lang.Object[] toArray()
-    415:423:public static float[] toFloatArray(inujini_.linq.Linq)
-    427:435:public static double[] toDoubleArray(inujini_.linq.Linq)
-    439:447:public static short[] toShortArray(inujini_.linq.Linq)
-    451:459:public static byte[] toByteArray(inujini_.linq.Linq)
-inujini_.linq.test.Fuga
-inujini_.linq.test.Hoge
-inujini_.linq.test.Piyo
-inujini_.linq.test.Test
-inujini_.linq.test.Test$1
-inujini_.linq.test.Test$10
-inujini_.linq.test.Test$11
-inujini_.linq.test.Test$12
-inujini_.linq.test.Test$13
-inujini_.linq.test.Test$14
-inujini_.linq.test.Test$15
-inujini_.linq.test.Test$16
-inujini_.linq.test.Test$2
-inujini_.linq.test.Test$3
-inujini_.linq.test.Test$4
-inujini_.linq.test.Test$5
-inujini_.linq.test.Test$6
-inujini_.linq.test.Test$7
-inujini_.linq.test.Test$8
-inujini_.linq.test.Test$9
+    41:41:public Util()
 inujini_.sqlite.meta.annotation.SqliteField:
     public abstract boolean autoincrement()
 inujini_.sqlite.meta.factory.MetaField

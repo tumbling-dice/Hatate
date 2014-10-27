@@ -1,19 +1,19 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
 
 package inujini_.hatate;
 
-import inujini_.function.Function.Action;
-import inujini_.function.Function.Action1;
-import inujini_.function.Function.Func1;
 import inujini_.hatate.adapter.SpellCardHistoryAdapter;
 import inujini_.hatate.data.SpellCardHistory;
+import inujini_.hatate.function.Function.Action;
+import inujini_.hatate.function.Function.Action1;
+import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.sqlite.dao.SpellCardDao;
 
@@ -45,7 +45,7 @@ public class SpellCardHistoryActivity extends ListActivity {
 		new ReactiveAsyncTask<Context, Void, List<SpellCardHistory>>(new Func1<Context, List<SpellCardHistory>>() {
 			@Override
 			public List<SpellCardHistory> call(Context context) {
-				return SpellCardDao.getHistory(context);
+				return SpellCardDao.getHistory(context, 20);
 			}
 		}).setOnPreExecute(new Action() {
 			@Override
@@ -66,6 +66,8 @@ public class SpellCardHistoryActivity extends ListActivity {
 		}).setOnError(new Action1<Exception>() {
 			@Override
 			public void call(Exception e) {
+				if(prog != null && prog.isShowing())
+					prog.dismiss();
 				e.printStackTrace();
 				Toast.makeText(getApplicationContext(), "何らかのエラーが発生しました。", Toast.LENGTH_SHORT).show();
 			}

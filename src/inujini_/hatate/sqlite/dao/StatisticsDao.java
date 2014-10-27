@@ -1,24 +1,24 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
 
 package inujini_.hatate.sqlite.dao;
 
-import inujini_.function.Function.Action1;
-import inujini_.function.Function.Func1;
 import inujini_.hatate.data.Statistics;
 import inujini_.hatate.data.meta.MetaStatistics;
+import inujini_.hatate.function.Function.Action1;
+import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.love.Love;
 import inujini_.hatate.sqlite.DatabaseHelper;
-import inujini_.sqlite.helper.ColumnValuePair;
-import inujini_.sqlite.helper.CursorExtensions;
-import inujini_.sqlite.helper.QueryBuilder;
-import inujini_.sqlite.helper.SqliteUtil;
+import inujini_.hatate.sqlite.helper.ColumnValuePair;
+import inujini_.hatate.sqlite.helper.CursorExtensions;
+import inujini_.hatate.sqlite.helper.QueryBuilder;
+import inujini_.hatate.sqlite.helper.SqliteUtil;
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
 import android.content.Context;

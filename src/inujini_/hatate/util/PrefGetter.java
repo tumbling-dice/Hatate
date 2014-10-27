@@ -9,9 +9,9 @@
 
 package inujini_.hatate.util;
 
-import inujini_.function.Function.Func1;
 import inujini_.hatate.R;
-import inujini_.linq.Linq;
+import inujini_.hatate.function.Function.Func1;
+import inujini_.hatate.linq.Linq;
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
 import android.content.Context;
@@ -213,6 +213,11 @@ public class PrefGetter {
 		}
 
 		throw new IllegalStateException("vibration pattern couldn't find.");
+	}
+
+	public static boolean canGacha(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		return pref.getBoolean("canGacha", true);
 	}
 
 }

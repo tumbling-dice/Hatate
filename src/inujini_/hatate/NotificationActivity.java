@@ -9,8 +9,9 @@
 
 package inujini_.hatate;
 
-import inujini_.function.Function.Func1;
 import inujini_.hatate.data.TwitterAccount;
+import inujini_.hatate.function.Function.Func1;
+import inujini_.hatate.linq.Linq;
 import inujini_.hatate.preference.EventableListPreference;
 import inujini_.hatate.preference.EventableListPreference.OnChosenListener;
 import inujini_.hatate.preference.ValidatableEditTextPreference;
@@ -19,7 +20,6 @@ import inujini_.hatate.service.CallbackBroadcastReceiver;
 import inujini_.hatate.service.OauthService;
 import inujini_.hatate.sqlite.dao.AccountDao;
 import inujini_.hatate.util.PrefGetter;
-import inujini_.linq.Linq;
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
 import twitter4j.auth.AccessToken;

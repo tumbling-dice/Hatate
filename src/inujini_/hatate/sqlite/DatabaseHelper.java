@@ -1,16 +1,14 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
 
 package inujini_.hatate.sqlite;
 
-import inujini_.function.Function.Action1;
-import inujini_.function.Function.Func1;
 import inujini_.hatate.data.Character;
 import inujini_.hatate.data.Series;
 import inujini_.hatate.data.SpellCard;
@@ -20,16 +18,21 @@ import inujini_.hatate.data.TwitterAccount;
 import inujini_.hatate.data.meta.MetaCharacter;
 import inujini_.hatate.data.meta.MetaSeries;
 import inujini_.hatate.data.meta.MetaSpellCard;
+import inujini_.hatate.function.Function.Action1;
+import inujini_.hatate.function.Function.Func1;
+import inujini_.hatate.linq.Linq;
 import inujini_.hatate.scraping.Scraper.XElement;
 import inujini_.hatate.scraping.XmlScraper;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
+import inujini_.hatate.sqlite.helper.CursorExtensions;
+import inujini_.hatate.sqlite.helper.QueryBuilder;
+import inujini_.hatate.sqlite.helper.SqliteUtil;
 import inujini_.hatate.util.Util;
-import inujini_.linq.Linq;
-import inujini_.sqlite.helper.SqliteUtil;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
@@ -41,9 +44,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-@ExtensionMethod({SqliteUtil.class, Linq.class})
+@ExtensionMethod({SqliteUtil.class, Linq.class, CursorExtensions.class})
 public class DatabaseHelper extends SQLiteOpenHelper {
-	private static final int DB_VERSION = 3;
+	private static final int DB_VERSION = 4;
 	private static final String DB_NAME = "HATATE_DB";
 
 	public static final String KEY_DB_PREFERENCE = "OpenDbPreference";
@@ -93,6 +96,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			// to version 3
 			if(oldVersion <= 2 && newVersion >= 3) {
 				updateTo3(db, context);
+			}
+
+			if(oldVersion <= 3 && newVersion >= 4) {
+				updateTo4(db, context);
 			}
 
 			val pref = context.getSharedPreferences(KEY_DB_PREFERENCE, 0);
@@ -203,6 +210,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				}
 			}
 		}
+	}
+
+	/**
+	 * [2014/10/26]
+	 * db version 4
+	 * 1. having spellcard's flag on
+	 * (update only)
+	 * @param db
+	 * @param context
+	 */
+	private static void updateTo4(final SQLiteDatabase db, Context context) {
+		val q = new QueryBuilder()
+					.select(MetaSpellCard.Id)
+					.from(MetaSpellCard.TBL_NAME)
+					.where().bigger(MetaSpellCard.Count, 0)
+					.toString();
+
+		val c = db.rawQuery(q, null);
+
+		if(!c.moveToFirst()) {
+			c.close();
+			return;
+		}
+
+		val ids = new ArrayList<Long>();
+		try {
+			do {
+				ids.add(c.getLongByMeta(MetaSpellCard.Id));
+			} while (c.moveToNext());
+		} finally {
+			c.close();
+		}
+
+		ids.linq().forEach(new Action1<Long>() {
+			@Override
+			public void call(Long x) {
+				val cv = new ContentValues();
+				cv.put(MetaSpellCard.GetFlag.getColumnName(), 1);
+				db.update(MetaSpellCard.TBL_NAME, cv, "Id = ?", new String[] { x.toString() });
+			}
+		});
 	}
 
 	public static boolean isDbOpened(Context context) {

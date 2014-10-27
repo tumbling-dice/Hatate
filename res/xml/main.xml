@@ -45,12 +45,15 @@
                 android:key="gacha"
                 android:title="スペルカードガチャ"
                 android:summary="はたてちゃんの頭部を部位破壊してスペルカードを手に入れよう！"
-                android:enabled="false"
-                android:icon="@drawable/ic_navigate_next_black_24dp">
+                android:icon="@drawable/ic_launcher" />
+        <inujini_.hatate.preference.IconPreference
+                android:key="library"
+                android:title="スペルカード図鑑"
+                android:icon="@drawable/ic_my_library_books_black_24dp">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="inujini_.hatate"
-                android:targetClass="inujini_.hatate.GachaActivity" />
+                android:targetClass="inujini_.hatate.SpellCardLibraryActivity" />
         </inujini_.hatate.preference.IconPreference>
         <inujini_.hatate.preference.IconPreference
                 android:key="spellCardList"

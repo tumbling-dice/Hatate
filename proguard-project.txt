@@ -88,7 +88,7 @@
 ##### Libraries #####
 
 -keep class twitter4j.** { *; }
--keep class inujini_.sqlite.helper.* { *; }
+-keep class inujini_.hatate.sqlite.helper.* { *; }
 -keep class inujini_.sqlite.meta.* { *; }
 -keep class inujini_.sqlite.annotation.* { *; }
 -keep @inujini_.sqlite.meta.annotation.** class * { *; }

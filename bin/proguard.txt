@@ -1,23 +1,26 @@
-# view AndroidManifest.xml #generated:51
+# view AndroidManifest.xml #generated:57
 -keep class inujini_.hatate.AccountListActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:47
+# view AndroidManifest.xml #generated:51
 -keep class inujini_.hatate.GachaActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:34
+# view AndroidManifest.xml #generated:35
 -keep class inujini_.hatate.LicenseActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:27
+# view AndroidManifest.xml #generated:28
 -keep class inujini_.hatate.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:45
+# view AndroidManifest.xml #generated:48
 -keep class inujini_.hatate.NotificationActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:36
+# view AndroidManifest.xml #generated:38
 -keep class inujini_.hatate.OauthActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:49
+# view AndroidManifest.xml #generated:54
 -keep class inujini_.hatate.SpellCardHistoryActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:60
+-keep class inujini_.hatate.SpellCardLibraryActivity { <init>(...); }
 
 # view res/xml/notification.xml #generated:48
 -keep class inujini_.hatate.preference.EventableListPreference { <init>(...); }
@@ -35,13 +38,14 @@
 
 # view res/xml/main.xml #generated:31
 # view res/xml/main.xml #generated:44
-# view res/xml/main.xml #generated:55
-# view res/xml/main.xml #generated:67
-# view res/xml/main.xml #generated:77
-# view res/xml/main.xml #generated:87
+# view res/xml/main.xml #generated:49
+# view res/xml/main.xml #generated:58
+# view res/xml/main.xml #generated:70
+# view res/xml/main.xml #generated:80
+# view res/xml/main.xml #generated:90
 -keep class inujini_.hatate.preference.IconPreference { <init>(...); }
 
-# view res/xml/main.xml #generated:72
+# view res/xml/main.xml #generated:75
 # view res/xml/notification.xml #generated:79
 -keep class inujini_.hatate.preference.PreviewPreference { <init>(...); }
 
@@ -55,24 +59,24 @@
 # view res/xml/voice_setting.xml #generated:6
 -keep class inujini_.hatate.preference.VolumePreference { <init>(...); }
 
-# view AndroidManifest.xml #generated:53
+# view AndroidManifest.xml #generated:64
 -keep class inujini_.hatate.service.Houtyou { <init>(...); }
 
-# view AndroidManifest.xml #generated:72
+# view AndroidManifest.xml #generated:84
 -keep class inujini_.hatate.service.Kill { <init>(...); }
 
-# view AndroidManifest.xml #generated:74
+# view AndroidManifest.xml #generated:86
 -keep class inujini_.hatate.service.OauthService { <init>(...); }
 
-# view AndroidManifest.xml #generated:54
+# view AndroidManifest.xml #generated:65
 -keep class inujini_.hatate.service.OneMoreLovely { <init>(...); }
 
-# view AndroidManifest.xml #generated:56
+# view AndroidManifest.xml #generated:67
 -keep class inujini_.hatate.service.RebootReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:64
+# view AndroidManifest.xml #generated:75
 -keep class inujini_.hatate.service.UpdateReceiver { <init>(...); }
 
-# onClick res/layout/activity_gacha.xml #generated:14
+# onClick res/layout/activity_gacha.xml #generated:18
 -keepclassmembers class * { *** gacha(...); }
 

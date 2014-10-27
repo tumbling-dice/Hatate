@@ -23,7 +23,7 @@ import lombok.Data;
  */
 @Data
 @SqliteTable("SpellCard")
-public class SpellCard implements Serializable, ISqlite {
+public class SpellCard implements Serializable, ISqlite, TouhouData {
 
 	private static final long serialVersionUID = -1156911070998166635L;
 

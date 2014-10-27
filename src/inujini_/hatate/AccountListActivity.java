@@ -11,9 +11,16 @@ package inujini_.hatate;
 
 import inujini_.hatate.adapter.AccountAdapter;
 import inujini_.hatate.data.TwitterAccount;
+import inujini_.hatate.function.Function.Action;
+import inujini_.hatate.function.Function.Action1;
+import inujini_.hatate.function.Function.Func1;
+import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.service.CallbackBroadcastReceiver;
 import inujini_.hatate.service.OauthService;
 import inujini_.hatate.sqlite.dao.AccountDao;
+
+import java.util.List;
+
 import lombok.val;
 import twitter4j.auth.AccessToken;
 import android.app.AlertDialog;
@@ -51,18 +58,50 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
 
-		val context = getApplicationContext();
-		val lv = super.getListView();
-		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		lv.setOnItemLongClickListener(this);
+		val prog = new ProgressDialog(this);
+		prog.setMessage("アカウント一覧を取得しています...");
+		prog.setCancelable(false);
+		prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-		val adapter = new AccountAdapter(context, AccountDao.getAllAccount(context));
-		super.setListAdapter(adapter);
+		new ReactiveAsyncTask<Context, Void, List<TwitterAccount>>(new Func1<Context, List<TwitterAccount>>() {
+			@Override
+			public List<TwitterAccount> call(Context context) {
+				return AccountDao.getAllAccount(context);
+			}
+		}).setOnPreExecute(new Action() {
+			@Override
+			public void call() {
+				prog.show();
+			}
+		}).setOnPostExecute(new Action1<List<TwitterAccount>>() {
+			@Override
+			public void call(List<TwitterAccount> x) {
+				if(prog != null && prog.isShowing())
+					prog.dismiss();
 
-		// set default checkbox's value
-		for(int i = 0, count = adapter.getCount(); i < count; i++) {
-			lv.setItemChecked(i, adapter.getItem(i).isUse());
-		}
+				val lv = getListView();
+				lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+				lv.setOnItemLongClickListener(AccountListActivity.this);
+
+				val adapter = new AccountAdapter(getApplicationContext(), x);
+				setListAdapter(adapter);
+
+				// set default checkbox's value
+				for(int i = 0, count = adapter.getCount(); i < count; i++) {
+					lv.setItemChecked(i, adapter.getItem(i).isUse());
+				}
+
+			}
+		}).setOnError(new Action1<Exception>() {
+			@Override
+			public void call(Exception e) {
+				e.printStackTrace();
+				if(prog != null && prog.isShowing())
+					prog.dismiss();
+
+				Toast.makeText(getApplicationContext(), "取得に失敗しました。", Toast.LENGTH_SHORT).show();
+			}
+		}).execute(getApplicationContext());
 	}
 
 	@Override

@@ -1,27 +1,27 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
 
 package inujini_.hatate.sqlite.dao;
 
-import inujini_.function.Function.Action1;
-import inujini_.function.Function.Func1;
 import inujini_.hatate.data.SpellCard;
 import inujini_.hatate.data.SpellCardHistory;
 import inujini_.hatate.data.meta.MetaCharacter;
 import inujini_.hatate.data.meta.MetaSpellCard;
 import inujini_.hatate.data.meta.MetaSpellCardHistory;
+import inujini_.hatate.function.Function.Action1;
+import inujini_.hatate.function.Function.Func1;
+import inujini_.hatate.linq.Linq;
 import inujini_.hatate.sqlite.DatabaseHelper;
-import inujini_.linq.Linq;
-import inujini_.sqlite.helper.ColumnValuePair;
-import inujini_.sqlite.helper.CursorExtensions;
-import inujini_.sqlite.helper.QueryBuilder;
-import inujini_.sqlite.helper.SqliteUtil;
+import inujini_.hatate.sqlite.helper.ColumnValuePair;
+import inujini_.hatate.sqlite.helper.CursorExtensions;
+import inujini_.hatate.sqlite.helper.QueryBuilder;
+import inujini_.hatate.sqlite.helper.SqliteUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -126,7 +126,7 @@ public class SpellCardDao {
 			public void call(SQLiteDatabase db) {
 				ContentValues cv = new ContentValues();
 				cv.put(MetaSpellCard.Count.getColumnName(), (spell.getCount() + 1));
-				cv.put(MetaSpellCard.GetFlag.getColumnName(), (spell.isGot() ? 1 : 0));
+				cv.put(MetaSpellCard.GetFlag.getColumnName(), 1);
 				db.update(MetaSpellCard.TBL_NAME, cv, "Id = ?", new String[] { String.valueOf(getId) });
 
 				cv = new ContentValues();
@@ -237,21 +237,37 @@ public class SpellCardDao {
 		return _names.get(tableName).get(id);
 	}
 
-	public static List<SpellCardHistory> getHistory(Context context) {
+	public static List<SpellCardHistory> getHistory(final Context context, int limit) {
 		val q = new QueryBuilder()
 					.selectAll()
 					.from(MetaSpellCardHistory.TBL_NAME)
 					.orderByDesc(MetaSpellCardHistory.HistoryOrder)
+					.limit(limit)
 					.toString();
 
 		return new DatabaseHelper(context).getList(q, context, new Func1<Cursor, SpellCardHistory>(){
 			@Override
 			public SpellCardHistory call(Cursor x) {
 				val history = new SpellCardHistory();
+				val id = x.getLongByMeta(MetaSpellCardHistory.Id);
 				history.setOrder(x.getIntByMeta(MetaSpellCardHistory.HistoryOrder));
-				history.setId(x.getLongByMeta(MetaSpellCardHistory.Id));
+				history.setId(id);
 				history.setName(x.getStringByMeta(MetaSpellCardHistory.Name));
 				history.setTimestamp(x.getStringByMeta(MetaSpellCardHistory.Timestamp));
+
+				val joinQuery = new QueryBuilder()
+									.select(MetaSpellCard.CharacterId)
+									.from(MetaSpellCard.TBL_NAME)
+									.where().equal(MetaSpellCard.Id, id)
+									.toString();
+
+				history.setCharacterId(new DatabaseHelper(context).get(joinQuery, context, new Func1<Cursor, Integer>(){
+					@Override
+					public Integer call(Cursor y) {
+						return y.getIntByMeta(MetaSpellCard.CharacterId);
+					}
+				}));
+
 				return history;
 			}
 		});

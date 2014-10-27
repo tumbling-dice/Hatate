@@ -36,4 +36,6 @@ public class SpellCardHistory implements Serializable, ISqlite {
 
 	@SqliteField(name="HistoryOrder", type=FIELD_INTEGER, primary=true, autoincrement=true)
 	private int order;
+
+	private int characterId;
 }

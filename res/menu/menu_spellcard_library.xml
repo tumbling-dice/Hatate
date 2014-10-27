@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    HatateHoutyouAlarm
+    Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+
+    This software is released under the MIT License.
+    http://opensource.org/licenses/mit-license.php
+-->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/menu_item_series"
+        android:title="シリーズ順" />
+    <item android:id="@+id/menu_item_character"
+        android:title="キャラクター順" />
+</menu>

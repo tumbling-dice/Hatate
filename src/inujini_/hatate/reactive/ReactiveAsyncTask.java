@@ -1,20 +1,21 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
 
 package inujini_.hatate.reactive;
 
-import inujini_.function.Function.Action;
-import inujini_.function.Function.Action1;
-import inujini_.function.Function.Func;
-import inujini_.function.Function.Func1;
+import inujini_.hatate.function.Function.Action;
+import inujini_.hatate.function.Function.Action1;
+import inujini_.hatate.function.Function.Func;
+import inujini_.hatate.function.Function.Func1;
 import lombok.val;
 import android.os.AsyncTask;
+import android.util.Log;
 
 /**
  * AsyncTaskの各種イベントをクロージャでフックするクラス
@@ -22,7 +23,8 @@ import android.os.AsyncTask;
  * @param <TProgress> 途中経過で欲しいクラス
  * @param <TReturn> Backgroundから返ってくるクラス
  */
-public class ReactiveAsyncTask<TSource, TProgress, TReturn> extends AsyncTask<TSource, TProgress, ReactiveAsyncResult<TReturn>> {
+public class ReactiveAsyncTask<TSource, TProgress, TReturn>
+	extends AsyncTask<TSource, TProgress, ReactiveAsyncResult<TReturn>> {
 
 	/** 実行前イベント */
 	private Action _onPreExecute;
@@ -63,7 +65,8 @@ public class ReactiveAsyncTask<TSource, TProgress, TReturn> extends AsyncTask<TS
 	 * @param action
 	 * @return
 	 */
-	public ReactiveAsyncTask<TSource, TProgress, TReturn> setOnProgress(Func<TProgress> progressArg, Action1<TProgress> action) {
+	public ReactiveAsyncTask<TSource, TProgress, TReturn> setOnProgress(Func<TProgress> progressArg
+			, Action1<TProgress> action) {
 		_progressArg = progressArg;
 		_onProgress = action;
 		return this;
@@ -122,6 +125,8 @@ public class ReactiveAsyncTask<TSource, TProgress, TReturn> extends AsyncTask<TS
 		} else {
 			if(_onError != null) {
 				_onError.call(r.getError());
+			} else {
+				Log.w("ReactiveAsyncTask", r.getError());
 			}
 		}
 
@@ -152,5 +157,9 @@ public class ReactiveAsyncTask<TSource, TProgress, TReturn> extends AsyncTask<TS
 		_onError = null;
 	}
 
+	public static <TSource, TReturn> ReactiveAsyncTask<TSource, Void, TReturn> create(
+			Func1<TSource, TReturn> onBackground) {
+		return new ReactiveAsyncTask<TSource, Void, TReturn>(onBackground);
+	}
 
 }

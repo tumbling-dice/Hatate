@@ -48,7 +48,7 @@ public class AccountAdapter extends ArrayAdapter<TwitterAccount> {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View convertView, final ViewGroup parent) {
 		View view = convertView;
 		ViewHolder vh = null;
 

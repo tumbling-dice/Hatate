@@ -9,15 +9,15 @@
 
 package inujini_.hatate.util;
 
-import inujini_.function.Function.Action;
-import inujini_.function.Function.Action1;
-import inujini_.function.Function.Func1;
 import inujini_.hatate.NotificationActivity;
+import inujini_.hatate.function.Function.Action;
+import inujini_.hatate.function.Function.Action1;
+import inujini_.hatate.function.Function.Func1;
+import inujini_.hatate.linq.Linq;
 import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.service.OneMoreLovely;
 import inujini_.hatate.sqlite.DatabaseHelper;
-import inujini_.linq.Linq;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

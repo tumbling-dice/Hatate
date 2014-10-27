@@ -1,15 +1,15 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
 
 package inujini_.hatate.service;
 
-import inujini_.function.Function.Func1;
+import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.reactive.ReactiveAsyncTask;
 import android.content.BroadcastReceiver;
 import android.content.Context;

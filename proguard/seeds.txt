@@ -123,6 +123,8 @@ android.support.v4.widget.SwipeRefreshLayout: void setTriggerPercentage(float)
 android.support.v4.widget.SwipeRefreshLayout: void setRefreshing(boolean)
 android.support.v4.widget.SwipeRefreshLayout: void setColorScheme(int,int,int,int)
 android.support.v4.widget.SwipeRefreshLayout: void setTargetOffsetTopAndBottom(int)
+inujini_.hatate.AccountListActivity
+inujini_.hatate.AccountListActivity: AccountListActivity()
 inujini_.hatate.GachaActivity
 inujini_.hatate.GachaActivity: GachaActivity()
 inujini_.hatate.GachaActivity: void gacha(android.view.View)
@@ -140,38 +142,143 @@ inujini_.hatate.R$array: int VibraitionList
 inujini_.hatate.R$array: int VibrationValues
 inujini_.hatate.R$attr: int defualt_hour
 inujini_.hatate.R$attr: int defualt_minute
+inujini_.hatate.R$attr: int iconOff
+inujini_.hatate.R$attr: int iconOn
 inujini_.hatate.R$attr: int key_hour
 inujini_.hatate.R$attr: int key_minute
 inujini_.hatate.R$attr: int max
 inujini_.hatate.R$attr: int type
 inujini_.hatate.R$drawable: int hatate
+inujini_.hatate.R$drawable: int ic_account_box_black_24dp
+inujini_.hatate.R$drawable: int ic_alarm_black_24dp
+inujini_.hatate.R$drawable: int ic_color_lens_black_24dp
+inujini_.hatate.R$drawable: int ic_description_black_24dp
+inujini_.hatate.R$drawable: int ic_expand_less_black_24dp
+inujini_.hatate.R$drawable: int ic_expand_more_black_24dp
+inujini_.hatate.R$drawable: int ic_favorite_black_24dp
+inujini_.hatate.R$drawable: int ic_flash_off_black_24dp
+inujini_.hatate.R$drawable: int ic_flash_on_black_24dp
 inujini_.hatate.R$drawable: int ic_launcher
+inujini_.hatate.R$drawable: int ic_list_black_24dp
+inujini_.hatate.R$drawable: int ic_mic_black_24dp
+inujini_.hatate.R$drawable: int ic_mic_off_black_24dp
+inujini_.hatate.R$drawable: int ic_my_library_books_black_24dp
+inujini_.hatate.R$drawable: int ic_navigate_next_black_24dp
+inujini_.hatate.R$drawable: int ic_notifications_black_24dp
+inujini_.hatate.R$drawable: int ic_notifications_off_black_24dp
+inujini_.hatate.R$drawable: int ic_play_arrow_black_24dp
+inujini_.hatate.R$drawable: int ic_sms_black_24dp
+inujini_.hatate.R$drawable: int ic_timer_black_24dp
+inujini_.hatate.R$drawable: int ic_timer_off_black_24dp
+inujini_.hatate.R$drawable: int ic_vibration_black_24dp
+inujini_.hatate.R$drawable: int ic_view_list_black_24dp
+inujini_.hatate.R$drawable: int selector_expandable_indicator
+inujini_.hatate.R$drawable: int t_01_ic_reimu_16
+inujini_.hatate.R$drawable: int t_02_ic_marisa_16
+inujini_.hatate.R$drawable: int t_03_ic_rumia_16
+inujini_.hatate.R$drawable: int t_04_ic_chirno_16
+inujini_.hatate.R$drawable: int t_05_ic_meiling_16
+inujini_.hatate.R$drawable: int t_06_ic_patchouli_16
+inujini_.hatate.R$drawable: int t_07_ic_sakuya_16
+inujini_.hatate.R$drawable: int t_08_ic_remilia_16
+inujini_.hatate.R$drawable: int t_09_ic_flandre_16
+inujini_.hatate.R$drawable: int t_10_ic_letty_16
+inujini_.hatate.R$drawable: int t_11_ic_chen_16
+inujini_.hatate.R$drawable: int t_12_ic_alice_16
+inujini_.hatate.R$drawable: int t_13_ic_lunasa_16
+inujini_.hatate.R$drawable: int t_14_ic_merlin_16
+inujini_.hatate.R$drawable: int t_15_ic_lyrica_16
+inujini_.hatate.R$drawable: int t_17_ic_youmu_16
+inujini_.hatate.R$drawable: int t_18_ic_yuyuko_16
+inujini_.hatate.R$drawable: int t_19_ic_ran_16
+inujini_.hatate.R$drawable: int t_20_ic_yukari_16
+inujini_.hatate.R$drawable: int t_21_ic_wriggle_16
+inujini_.hatate.R$drawable: int t_22_ic_mystia_16
+inujini_.hatate.R$drawable: int t_23_ic_keine_16
+inujini_.hatate.R$drawable: int t_24_ic_tewi_16
+inujini_.hatate.R$drawable: int t_25_ic_reisen_16
+inujini_.hatate.R$drawable: int t_26_ic_eirin_16
+inujini_.hatate.R$drawable: int t_27_ic_kaguya_16
+inujini_.hatate.R$drawable: int t_28_ic_mokou_16
+inujini_.hatate.R$drawable: int t_29_ic_suika_16
+inujini_.hatate.R$drawable: int t_30_ic_shameimaru_16
+inujini_.hatate.R$drawable: int t_31_ic_medicine_16
+inujini_.hatate.R$drawable: int t_32_ic_yuuka_16
+inujini_.hatate.R$drawable: int t_33_ic_komachi_16
+inujini_.hatate.R$drawable: int t_34_ic_eiki_16
+inujini_.hatate.R$drawable: int t_35_ic_shizuha_16
+inujini_.hatate.R$drawable: int t_36_ic_minoriko_16
+inujini_.hatate.R$drawable: int t_37_ic_hina_16
+inujini_.hatate.R$drawable: int t_38_ic_nitori_16
+inujini_.hatate.R$drawable: int t_39_ic_momiji_16
+inujini_.hatate.R$drawable: int t_40_ic_sanae_16
+inujini_.hatate.R$drawable: int t_41_ic_kanako_16
+inujini_.hatate.R$drawable: int t_42_ic_suwako_16
+inujini_.hatate.R$drawable: int t_43_ic_iku_16
+inujini_.hatate.R$drawable: int t_44_ic_tenshi_16
+inujini_.hatate.R$drawable: int t_45_ic_kisume_16
+inujini_.hatate.R$drawable: int t_46_ic_yamame_16
+inujini_.hatate.R$drawable: int t_47_ic_parsee_16
+inujini_.hatate.R$drawable: int t_48_ic_yuugi_16
+inujini_.hatate.R$drawable: int t_49_ic_satori_16
+inujini_.hatate.R$drawable: int t_50_ic_rin_16
+inujini_.hatate.R$drawable: int t_51_ic_utsuho_16
+inujini_.hatate.R$drawable: int t_52_ic_koishi_16
+inujini_.hatate.R$drawable: int t_53_ic_nazrin_16
+inujini_.hatate.R$drawable: int t_54_ic_kogasa_16
+inujini_.hatate.R$drawable: int t_55_ic_ichirin_16
+inujini_.hatate.R$drawable: int t_56_ic_murasa_16
+inujini_.hatate.R$drawable: int t_57_ic_shou_16
+inujini_.hatate.R$drawable: int t_58_ic_hijiri_16
+inujini_.hatate.R$drawable: int t_59_ic_nue_16
+inujini_.hatate.R$drawable: int t_61_ic_hatate_16
+inujini_.hatate.R$drawable: int t_62_ic_sunny_16
+inujini_.hatate.R$drawable: int t_63_ic_star_16
+inujini_.hatate.R$drawable: int t_64_ic_luna_16
+inujini_.hatate.R$drawable: int t_66_ic_kyouko_16
+inujini_.hatate.R$drawable: int t_67_ic_yoshika_16
+inujini_.hatate.R$drawable: int t_68_ic_seiga_16
+inujini_.hatate.R$drawable: int t_69_ic_tojiko_16
+inujini_.hatate.R$drawable: int t_70_ic_futo_16
+inujini_.hatate.R$drawable: int t_71_ic_miko_16
+inujini_.hatate.R$drawable: int t_72_ic_mamizou_16
+inujini_.hatate.R$drawable: int t_73_ic_kokoro_16
+inujini_.hatate.R$drawable: int t_74_ic_wakasagihime_16
+inujini_.hatate.R$drawable: int t_75_ic_sekibanki_16
+inujini_.hatate.R$drawable: int t_76_ic_kagerou_16
+inujini_.hatate.R$drawable: int t_77_ic_benben_16
+inujini_.hatate.R$drawable: int t_78_ic_yatsuhashi_16
+inujini_.hatate.R$drawable: int t_80_ic_seija_16
+inujini_.hatate.R$drawable: int t_81_ic_shinmyoumaru_16
+inujini_.hatate.R$drawable: int t_82_ic_raiko_16
 inujini_.hatate.R$id: int alarm
 inujini_.hatate.R$id: int imgHatate
-inujini_.hatate.R$id: int imgIcon
+inujini_.hatate.R$id: int menu_item_add
+inujini_.hatate.R$id: int menu_item_character
+inujini_.hatate.R$id: int menu_item_series
 inujini_.hatate.R$id: int music
 inujini_.hatate.R$id: int notification
+inujini_.hatate.R$id: int preferenceIcon
 inujini_.hatate.R$id: int ring
 inujini_.hatate.R$id: int seekbar
-inujini_.hatate.R$id: int skbVolume
 inujini_.hatate.R$id: int system
-inujini_.hatate.R$id: int txvCuttentVolume
-inujini_.hatate.R$id: int txvMaxVolume
-inujini_.hatate.R$id: int txvMinVolume
 inujini_.hatate.R$id: int txvName
-inujini_.hatate.R$id: int txvSummary
 inujini_.hatate.R$id: int txvTimestamp
-inujini_.hatate.R$id: int txvTitle
 inujini_.hatate.R$id: int txvValue
 inujini_.hatate.R$id: int voice
+inujini_.hatate.R$layout: int activity_expandable_list
 inujini_.hatate.R$layout: int activity_gacha
 inujini_.hatate.R$layout: int activity_licence
-inujini_.hatate.R$layout: int activity_spellcard_list
+inujini_.hatate.R$layout: int activity_list
+inujini_.hatate.R$layout: int adapter_account_list
 inujini_.hatate.R$layout: int adapter_spellcard_history
-inujini_.hatate.R$layout: int datepicker_dialog
+inujini_.hatate.R$layout: int adapter_spellcard_library_child
+inujini_.hatate.R$layout: int adapter_spellcard_library_parent
+inujini_.hatate.R$layout: int icon_preference_imageview
 inujini_.hatate.R$layout: int seekbar_preference
 inujini_.hatate.R$layout: int toast_love
-inujini_.hatate.R$layout: int volume_preference
+inujini_.hatate.R$menu: int menu_account_list
+inujini_.hatate.R$menu: int menu_spellcard_library
 inujini_.hatate.R$raw: int ugu
 inujini_.hatate.R$raw: int ugu_hate
 inujini_.hatate.R$raw: int ugu_love
@@ -189,13 +296,30 @@ inujini_.hatate.R$string: int summary_light
 inujini_.hatate.R$string: int summary_snooze
 inujini_.hatate.R$string: int summary_time
 inujini_.hatate.R$string: int summary_vibration
+inujini_.hatate.R$string: int title_account_list
+inujini_.hatate.R$string: int title_gacha
+inujini_.hatate.R$string: int title_license
+inujini_.hatate.R$string: int title_notification
+inujini_.hatate.R$string: int title_oauth
+inujini_.hatate.R$string: int title_spellcard_history
+inujini_.hatate.R$string: int title_spellcard_library
 inujini_.hatate.R$string: int ugu
 inujini_.hatate.R$style: int AppBaseTheme
 inujini_.hatate.R$style: int AppTheme
+inujini_.hatate.R$styleable: int[] IconCheckboxPreference
+inujini_.hatate.R$styleable: int IconCheckboxPreference_iconOff
+inujini_.hatate.R$styleable: int IconCheckboxPreference_iconOn
+inujini_.hatate.R$styleable: int[] IconEditTextPreference
+inujini_.hatate.R$styleable: int IconEditTextPreference_android_icon
+inujini_.hatate.R$styleable: int[] IconListPreference
+inujini_.hatate.R$styleable: int IconListPreference_android_icon
+inujini_.hatate.R$styleable: int[] IconPreference
+inujini_.hatate.R$styleable: int IconPreference_android_icon
 inujini_.hatate.R$styleable: int[] SeekBarPreference
 inujini_.hatate.R$styleable: int SeekBarPreference_android_defaultValue
 inujini_.hatate.R$styleable: int SeekBarPreference_max
 inujini_.hatate.R$styleable: int[] TimePickerPreference
+inujini_.hatate.R$styleable: int TimePickerPreference_android_icon
 inujini_.hatate.R$styleable: int TimePickerPreference_defualt_hour
 inujini_.hatate.R$styleable: int TimePickerPreference_defualt_minute
 inujini_.hatate.R$styleable: int TimePickerPreference_key_hour
@@ -205,10 +329,10 @@ inujini_.hatate.R$styleable: int VolumePreference_type
 inujini_.hatate.R$xml: int main
 inujini_.hatate.R$xml: int notification
 inujini_.hatate.R$xml: int voice_setting
-inujini_.hatate.SpellCardListActivity
-inujini_.hatate.SpellCardListActivity: SpellCardListActivity()
-inujini_.hatate.VoiceSettingActivity
-inujini_.hatate.VoiceSettingActivity: VoiceSettingActivity()
+inujini_.hatate.SpellCardHistoryActivity
+inujini_.hatate.SpellCardHistoryActivity: SpellCardHistoryActivity()
+inujini_.hatate.SpellCardLibraryActivity
+inujini_.hatate.SpellCardLibraryActivity: SpellCardLibraryActivity()
 inujini_.hatate.data.Character
 inujini_.hatate.data.Character: long serialVersionUID
 inujini_.hatate.data.Character: long id
@@ -272,14 +396,17 @@ inujini_.hatate.data.SpellCardHistory: long id
 inujini_.hatate.data.SpellCardHistory: java.lang.String name
 inujini_.hatate.data.SpellCardHistory: java.lang.String timestamp
 inujini_.hatate.data.SpellCardHistory: int order
+inujini_.hatate.data.SpellCardHistory: int characterId
 inujini_.hatate.data.SpellCardHistory: long getId()
 inujini_.hatate.data.SpellCardHistory: java.lang.String getName()
 inujini_.hatate.data.SpellCardHistory: java.lang.String getTimestamp()
 inujini_.hatate.data.SpellCardHistory: int getOrder()
+inujini_.hatate.data.SpellCardHistory: int getCharacterId()
 inujini_.hatate.data.SpellCardHistory: void setId(long)
 inujini_.hatate.data.SpellCardHistory: void setName(java.lang.String)
 inujini_.hatate.data.SpellCardHistory: void setTimestamp(java.lang.String)
 inujini_.hatate.data.SpellCardHistory: void setOrder(int)
+inujini_.hatate.data.SpellCardHistory: void setCharacterId(int)
 inujini_.hatate.data.SpellCardHistory: boolean equals(java.lang.Object)
 inujini_.hatate.data.SpellCardHistory: boolean canEqual(java.lang.Object)
 inujini_.hatate.data.SpellCardHistory: int hashCode()
@@ -323,6 +450,21 @@ inujini_.hatate.data.TwitterAccount: TwitterAccount()
 inujini_.hatate.preference.EventableListPreference
 inujini_.hatate.preference.EventableListPreference: EventableListPreference(android.content.Context)
 inujini_.hatate.preference.EventableListPreference: EventableListPreference(android.content.Context,android.util.AttributeSet)
+inujini_.hatate.preference.IconCheckboxPreference
+inujini_.hatate.preference.IconCheckboxPreference: IconCheckboxPreference(android.content.Context)
+inujini_.hatate.preference.IconCheckboxPreference: IconCheckboxPreference(android.content.Context,android.util.AttributeSet)
+inujini_.hatate.preference.IconCheckboxPreference: IconCheckboxPreference(android.content.Context,android.util.AttributeSet,int)
+inujini_.hatate.preference.IconEditTextPreference
+inujini_.hatate.preference.IconEditTextPreference: IconEditTextPreference(android.content.Context)
+inujini_.hatate.preference.IconEditTextPreference: IconEditTextPreference(android.content.Context,android.util.AttributeSet)
+inujini_.hatate.preference.IconEditTextPreference: IconEditTextPreference(android.content.Context,android.util.AttributeSet,int)
+inujini_.hatate.preference.IconListPreference
+inujini_.hatate.preference.IconListPreference: IconListPreference(android.content.Context)
+inujini_.hatate.preference.IconListPreference: IconListPreference(android.content.Context,android.util.AttributeSet)
+inujini_.hatate.preference.IconPreference
+inujini_.hatate.preference.IconPreference: IconPreference(android.content.Context)
+inujini_.hatate.preference.IconPreference: IconPreference(android.content.Context,android.util.AttributeSet)
+inujini_.hatate.preference.IconPreference: IconPreference(android.content.Context,android.util.AttributeSet,int)
 inujini_.hatate.preference.PreviewPreference
 inujini_.hatate.preference.PreviewPreference: PreviewPreference(android.content.Context)
 inujini_.hatate.preference.PreviewPreference: PreviewPreference(android.content.Context,android.util.AttributeSet)
@@ -338,7 +480,6 @@ inujini_.hatate.preference.TimePickerPreference: TimePickerPreference(android.co
 inujini_.hatate.preference.TimePickerPreference: TimePickerPreference(android.content.Context,android.util.AttributeSet,int)
 inujini_.hatate.preference.ValidatableEditTextPreference
 inujini_.hatate.preference.ValidatableEditTextPreference: ValidatableEditTextPreference(android.content.Context)
-inujini_.hatate.preference.ValidatableEditTextPreference: ValidatableEditTextPreference(android.content.Context,int)
 inujini_.hatate.preference.ValidatableEditTextPreference: ValidatableEditTextPreference(android.content.Context,android.util.AttributeSet)
 inujini_.hatate.preference.ValidatableEditTextPreference: ValidatableEditTextPreference(android.content.Context,android.util.AttributeSet,int)
 inujini_.hatate.preference.VolumePreference
@@ -347,11 +488,23 @@ inujini_.hatate.preference.VolumePreference: VolumePreference(android.content.Co
 inujini_.hatate.preference.VolumePreference: VolumePreference(android.content.Context,android.util.AttributeSet,int)
 inujini_.hatate.service.AsyncBroadcastReceiver
 inujini_.hatate.service.AsyncBroadcastReceiver: AsyncBroadcastReceiver()
+inujini_.hatate.service.CallbackBroadcastReceiver
+inujini_.hatate.service.CallbackBroadcastReceiver$Data
+inujini_.hatate.service.CallbackBroadcastReceiver$Data: long serialVersionUID
+inujini_.hatate.service.CallbackBroadcastReceiver$Data: twitter4j.auth.AccessToken token
+inujini_.hatate.service.CallbackBroadcastReceiver$Data: java.lang.Exception exception
+inujini_.hatate.service.CallbackBroadcastReceiver$Data: boolean isSuccess
+inujini_.hatate.service.CallbackBroadcastReceiver$Data: CallbackBroadcastReceiver$Data()
+inujini_.hatate.service.CallbackBroadcastReceiver$Data: inujini_.hatate.service.CallbackBroadcastReceiver$Data create(twitter4j.auth.AccessToken)
+inujini_.hatate.service.CallbackBroadcastReceiver$Data: inujini_.hatate.service.CallbackBroadcastReceiver$Data create(java.lang.Exception)
 inujini_.hatate.service.Houtyou
 inujini_.hatate.service.Houtyou: Houtyou()
 inujini_.hatate.service.Kill
 inujini_.hatate.service.Kill: Kill()
 inujini_.hatate.service.Kill: Kill(java.lang.String)
+inujini_.hatate.service.OauthService
+inujini_.hatate.service.OauthService: OauthService()
+inujini_.hatate.service.OauthService: OauthService(java.lang.String)
 inujini_.hatate.service.OneMoreLovely
 inujini_.hatate.service.OneMoreLovely: OneMoreLovely()
 inujini_.hatate.service.PierceReceiver
@@ -360,93 +513,95 @@ inujini_.hatate.service.RebootReceiver
 inujini_.hatate.service.RebootReceiver: RebootReceiver()
 inujini_.hatate.service.UpdateReceiver
 inujini_.hatate.service.UpdateReceiver: UpdateReceiver()
-inujini_.sqlite.helper.ColumnValuePair
-inujini_.sqlite.helper.ColumnValuePair: inujini_.sqlite.meta.ColumnProperty column
-inujini_.sqlite.helper.ColumnValuePair: java.lang.String value
-inujini_.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,java.lang.String)
-inujini_.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,int)
-inujini_.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,long)
-inujini_.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,boolean)
-inujini_.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,float)
-inujini_.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,double)
-inujini_.sqlite.helper.ColumnValuePair: inujini_.sqlite.meta.ColumnProperty getColumn()
-inujini_.sqlite.helper.ColumnValuePair: java.lang.String getValue()
-inujini_.sqlite.helper.CursorExtensions
-inujini_.sqlite.helper.CursorExtensions: CursorExtensions()
-inujini_.sqlite.helper.CursorExtensions: int getIntByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
-inujini_.sqlite.helper.CursorExtensions: java.lang.String getStringByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
-inujini_.sqlite.helper.CursorExtensions: long getLongByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
-inujini_.sqlite.helper.CursorExtensions: float getFloatByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
-inujini_.sqlite.helper.CursorExtensions: boolean getBooleanByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
-inujini_.sqlite.helper.QueryBuilder
-inujini_.sqlite.helper.QueryBuilder: java.lang.StringBuilder _query
-inujini_.sqlite.helper.QueryBuilder: QueryBuilder()
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder select(inujini_.sqlite.meta.ColumnProperty[])
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder selectAll()
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder$UpdateQuery update(java.lang.String)
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder$WhereQuery delete(java.lang.String)
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder insert(java.lang.String,inujini_.sqlite.helper.ColumnValuePair[])
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder from(java.lang.String)
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder limit(int)
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder offset(int)
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder orderByAsc(inujini_.sqlite.meta.ColumnProperty[])
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder orderByDesc(inujini_.sqlite.meta.ColumnProperty[])
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder$WhereQuery where()
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder append(inujini_.sqlite.meta.ColumnProperty)
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder append(java.lang.String)
-inujini_.sqlite.helper.QueryBuilder: inujini_.sqlite.helper.QueryBuilder appendFormat(java.lang.String,java.lang.Object[])
-inujini_.sqlite.helper.QueryBuilder: java.lang.String toString()
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.sqlite.helper.QueryBuilder _qb
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: boolean isSet
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: QueryBuilder$UpdateQuery(inujini_.sqlite.helper.QueryBuilder)
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,java.lang.String)
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,int)
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,long)
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,boolean)
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.helper.ColumnValuePair[])
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.sqlite.helper.QueryBuilder$WhereQuery where()
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery: java.lang.String toString()
-inujini_.sqlite.helper.QueryBuilder$WhereQuery
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder _qb
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: QueryBuilder$WhereQuery(inujini_.sqlite.helper.QueryBuilder)
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,java.lang.String)
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,int)
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,long)
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,boolean)
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder$WhereQuery in(inujini_.sqlite.meta.ColumnProperty,java.lang.String[])
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder$WhereQuery between(inujini_.sqlite.meta.ColumnProperty,java.lang.String,java.lang.String)
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder$WhereQuery and()
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder$WhereQuery or()
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: inujini_.sqlite.helper.QueryBuilder toQuery()
-inujini_.sqlite.helper.QueryBuilder$WhereQuery: java.lang.String toString()
-inujini_.sqlite.helper.SqliteUtil
-inujini_.sqlite.helper.SqliteUtil: SqliteUtil()
-inujini_.sqlite.helper.SqliteUtil: java.lang.Object get(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.function.Function$Func1)
-inujini_.sqlite.helper.SqliteUtil: java.util.List getList(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.function.Function$Func1)
-inujini_.sqlite.helper.SqliteUtil: java.util.Map getMap(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.function.Function$Func1,inujini_.function.Function$Func1)
-inujini_.sqlite.helper.SqliteUtil: void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.function.Function$Action1)
-inujini_.sqlite.helper.SqliteUtil: void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.function.Function$Action1,inujini_.function.Function$Action2)
-inujini_.sqlite.helper.SqliteUtil: void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.function.Function$Action1,inujini_.function.Function$Action2,inujini_.function.Function$Action1)
-inujini_.sqlite.helper.SqliteUtil: java.lang.String getTableName(java.lang.Class)
-inujini_.sqlite.helper.SqliteUtil: java.lang.String getDropTableQuery(java.lang.Class)
-inujini_.sqlite.helper.SqliteUtil: java.lang.String getCreateTableQuery(java.lang.Class)
-inujini_.sqlite.helper.SqliteUtil: java.lang.String getDropCreateQuery(java.lang.Class)
-inujini_.sqlite.helper.SqliteUtil: boolean isMainThread(android.content.Context)
-inujini_.sqlite.helper.SqliteUtil$1
-inujini_.sqlite.helper.SqliteUtil$1: SqliteUtil$1()
-inujini_.sqlite.helper.SqliteUtil$1: java.lang.Boolean call(java.lang.reflect.Field)
-inujini_.sqlite.helper.SqliteUtil$1: java.lang.Object call(java.lang.Object)
-inujini_.sqlite.helper.SqliteUtil$1: java.lang.Boolean call(java.lang.Object)
-inujini_.sqlite.helper.SqliteUtil$2
-inujini_.sqlite.helper.SqliteUtil$2: java.lang.StringBuilder val$tblBuilder
-inujini_.sqlite.helper.SqliteUtil$2: java.util.List val$primaryKeyList
-inujini_.sqlite.helper.SqliteUtil$2: java.util.Map val$indexMap
-inujini_.sqlite.helper.SqliteUtil$2: java.lang.StringBuilder val$idxBuilder
-inujini_.sqlite.helper.SqliteUtil$2: java.lang.String val$tblName
-inujini_.sqlite.helper.SqliteUtil$2: SqliteUtil$2(java.lang.StringBuilder,java.util.List,java.util.Map,java.lang.StringBuilder,java.lang.String)
-inujini_.sqlite.helper.SqliteUtil$2: void call(java.lang.reflect.Field)
-inujini_.sqlite.helper.SqliteUtil$2: void call(java.lang.Object)
+inujini_.hatate.sqlite.helper.ColumnValuePair
+inujini_.hatate.sqlite.helper.ColumnValuePair: inujini_.sqlite.meta.ColumnProperty column
+inujini_.hatate.sqlite.helper.ColumnValuePair: java.lang.String value
+inujini_.hatate.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,java.lang.String)
+inujini_.hatate.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,int)
+inujini_.hatate.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,long)
+inujini_.hatate.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,boolean)
+inujini_.hatate.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,float)
+inujini_.hatate.sqlite.helper.ColumnValuePair: ColumnValuePair(inujini_.sqlite.meta.ColumnProperty,double)
+inujini_.hatate.sqlite.helper.ColumnValuePair: inujini_.sqlite.meta.ColumnProperty getColumn()
+inujini_.hatate.sqlite.helper.ColumnValuePair: java.lang.String getValue()
+inujini_.hatate.sqlite.helper.CursorExtensions
+inujini_.hatate.sqlite.helper.CursorExtensions: CursorExtensions()
+inujini_.hatate.sqlite.helper.CursorExtensions: int getIntByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
+inujini_.hatate.sqlite.helper.CursorExtensions: java.lang.String getStringByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
+inujini_.hatate.sqlite.helper.CursorExtensions: long getLongByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
+inujini_.hatate.sqlite.helper.CursorExtensions: float getFloatByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
+inujini_.hatate.sqlite.helper.CursorExtensions: boolean getBooleanByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty)
+inujini_.hatate.sqlite.helper.QueryBuilder
+inujini_.hatate.sqlite.helper.QueryBuilder: java.lang.StringBuilder _query
+inujini_.hatate.sqlite.helper.QueryBuilder: QueryBuilder()
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder select(inujini_.sqlite.meta.ColumnProperty[])
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder selectAll()
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery update(java.lang.String)
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery delete(java.lang.String)
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder insert(java.lang.String,inujini_.hatate.sqlite.helper.ColumnValuePair[])
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder from(java.lang.String)
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder limit(int)
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder offset(int)
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder orderByAsc(inujini_.sqlite.meta.ColumnProperty[])
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder orderByDesc(inujini_.sqlite.meta.ColumnProperty[])
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery where()
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder append(inujini_.sqlite.meta.ColumnProperty)
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder append(java.lang.String)
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder append(int)
+inujini_.hatate.sqlite.helper.QueryBuilder: inujini_.hatate.sqlite.helper.QueryBuilder appendFormat(java.lang.String,java.lang.Object[])
+inujini_.hatate.sqlite.helper.QueryBuilder: java.lang.String toString()
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.hatate.sqlite.helper.QueryBuilder _qb
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: boolean isSet
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: QueryBuilder$UpdateQuery(inujini_.hatate.sqlite.helper.QueryBuilder)
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,java.lang.String)
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,int)
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,long)
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,boolean)
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.hatate.sqlite.helper.ColumnValuePair[])
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery where()
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery: java.lang.String toString()
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder _qb
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: QueryBuilder$WhereQuery(inujini_.hatate.sqlite.helper.QueryBuilder)
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,java.lang.String)
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,int)
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,long)
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,boolean)
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery in(inujini_.sqlite.meta.ColumnProperty,java.lang.String[])
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery between(inujini_.sqlite.meta.ColumnProperty,java.lang.String,java.lang.String)
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery and()
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery or()
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery bigger(inujini_.sqlite.meta.ColumnProperty,int)
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery smaller(inujini_.sqlite.meta.ColumnProperty,int)
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: inujini_.hatate.sqlite.helper.QueryBuilder toQuery()
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery: java.lang.String toString()
+inujini_.hatate.sqlite.helper.SqliteUtil
+inujini_.hatate.sqlite.helper.SqliteUtil: SqliteUtil()
+inujini_.hatate.sqlite.helper.SqliteUtil: java.lang.Object get(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.hatate.function.Function$Func1)
+inujini_.hatate.sqlite.helper.SqliteUtil: java.util.List getList(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.hatate.function.Function$Func1)
+inujini_.hatate.sqlite.helper.SqliteUtil: java.util.Map getMap(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.hatate.function.Function$Func1,inujini_.hatate.function.Function$Func1)
+inujini_.hatate.sqlite.helper.SqliteUtil: void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.hatate.function.Function$Action1)
+inujini_.hatate.sqlite.helper.SqliteUtil: void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.hatate.function.Function$Action1,inujini_.hatate.function.Function$Action2)
+inujini_.hatate.sqlite.helper.SqliteUtil: void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.hatate.function.Function$Action1,inujini_.hatate.function.Function$Action2,inujini_.hatate.function.Function$Action1)
+inujini_.hatate.sqlite.helper.SqliteUtil: java.lang.String getTableName(java.lang.Class)
+inujini_.hatate.sqlite.helper.SqliteUtil: java.lang.String getDropTableQuery(java.lang.Class)
+inujini_.hatate.sqlite.helper.SqliteUtil: java.lang.String getCreateTableQuery(java.lang.Class)
+inujini_.hatate.sqlite.helper.SqliteUtil: java.lang.String getDropCreateQuery(java.lang.Class)
+inujini_.hatate.sqlite.helper.SqliteUtil: boolean isMainThread(android.content.Context)
+inujini_.hatate.sqlite.helper.SqliteUtil$1
+inujini_.hatate.sqlite.helper.SqliteUtil$1: SqliteUtil$1()
+inujini_.hatate.sqlite.helper.SqliteUtil$1: java.lang.Boolean call(java.lang.reflect.Field)
+inujini_.hatate.sqlite.helper.SqliteUtil$1: java.lang.Object call(java.lang.Object)
+inujini_.hatate.sqlite.helper.SqliteUtil$2
+inujini_.hatate.sqlite.helper.SqliteUtil$2: java.lang.StringBuilder val$tblBuilder
+inujini_.hatate.sqlite.helper.SqliteUtil$2: java.util.List val$primaryKeyList
+inujini_.hatate.sqlite.helper.SqliteUtil$2: java.util.Map val$indexMap
+inujini_.hatate.sqlite.helper.SqliteUtil$2: java.lang.StringBuilder val$idxBuilder
+inujini_.hatate.sqlite.helper.SqliteUtil$2: java.lang.String val$tblName
+inujini_.hatate.sqlite.helper.SqliteUtil$2: SqliteUtil$2(java.lang.StringBuilder,java.util.List,java.util.Map,java.lang.StringBuilder,java.lang.String)
+inujini_.hatate.sqlite.helper.SqliteUtil$2: void call(java.lang.reflect.Field)
+inujini_.hatate.sqlite.helper.SqliteUtil$2: void call(java.lang.Object)
 inujini_.sqlite.meta.ColumnProperty
 inujini_.sqlite.meta.ColumnProperty: java.lang.String columnName
 inujini_.sqlite.meta.ColumnProperty: int type

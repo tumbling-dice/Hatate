@@ -1893,163 +1893,294 @@ android.support.v4.widget.ViewDragHelper$Callback -> gk:
     boolean tryCaptureView(android.view.View,int) -> a
     304:304:int clampViewPositionHorizontal(android.view.View,int,int) -> a
     319:319:int clampViewPositionVertical(android.view.View,int,int) -> b
-inujini_.function.Function -> gl:
-inujini_.function.Function$Action -> gm:
-    void call() -> a
-inujini_.function.Function$Action1 -> gn:
-    void call(java.lang.Object) -> call
-inujini_.function.Function$Action2 -> go:
-    void call(java.lang.Object,java.lang.Object) -> a
-inujini_.function.Function$Func -> gp:
-    java.lang.Object call() -> a
-inujini_.function.Function$Func1 -> gq:
-    java.lang.Object call(java.lang.Object) -> call
-inujini_.function.Function$Predicate -> gr:
-    java.lang.Boolean call(java.lang.Object) -> call
+inujini_.hatate.AccountListActivity -> inujini_.hatate.AccountListActivity:
+    inujini_.hatate.service.CallbackBroadcastReceiver _receiver -> a
+    58:105:void onCreate(android.os.Bundle) -> onCreate
+    109:114:void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
+    118:143:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+    148:150:boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    155:215:boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    221:225:boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    54:54:void access$0(inujini_.hatate.AccountListActivity,inujini_.hatate.service.CallbackBroadcastReceiver) -> a
+inujini_.hatate.AccountListActivity$1 -> gl:
+    inujini_.hatate.AccountListActivity this$0 -> a
+    69:69:java.util.List call(android.content.Context) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.AccountListActivity$2 -> gm:
+    inujini_.hatate.AccountListActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    74:75:void call() -> a
+inujini_.hatate.AccountListActivity$3 -> gn:
+    inujini_.hatate.AccountListActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    79:94:void call(java.util.List) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.AccountListActivity$4 -> go:
+    inujini_.hatate.AccountListActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    98:103:void call(java.lang.Exception) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.AccountListActivity$5 -> gp:
+    inujini_.hatate.AccountListActivity this$0 -> a
+    inujini_.hatate.data.TwitterAccount val$item -> b
+    inujini_.hatate.adapter.AccountAdapter val$adapter -> c
+    127:136:void onClick(android.content.DialogInterface,int) -> onClick
+inujini_.hatate.AccountListActivity$6 -> gq:
+    inujini_.hatate.AccountListActivity this$0 -> a
+    140:141:void onClick(android.content.DialogInterface,int) -> onClick
+inujini_.hatate.AccountListActivity$7 -> gr:
+    inujini_.hatate.AccountListActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    169:192:void onSuccess(twitter4j.auth.AccessToken) -> a
+    196:202:void onError(java.lang.Exception) -> a
 inujini_.hatate.GachaActivity -> inujini_.hatate.GachaActivity:
-    10:12:void onCreate(android.os.Bundle) -> onCreate
-    16:16:void gacha(android.view.View) -> gacha
+    32:34:void onCreate(android.os.Bundle) -> onCreate
+    37:59:void gacha(android.view.View) -> gacha
+inujini_.hatate.GachaActivity$1 -> gs:
+    inujini_.hatate.GachaActivity this$0 -> a
+    52:53:void onCompletion(android.media.MediaPlayer) -> onCompletion
 inujini_.hatate.LicenseActivity -> inujini_.hatate.LicenseActivity:
-    10:12:void onCreate(android.os.Bundle) -> onCreate
+    23:25:void onCreate(android.os.Bundle) -> onCreate
 inujini_.hatate.MainActivity -> inujini_.hatate.MainActivity:
-    24:63:void onCreate(android.os.Bundle) -> onCreate
-    67:71:boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
-inujini_.hatate.MainActivity$1 -> gs:
+    53:102:void onCreate(android.os.Bundle) -> onCreate
+    106:110:boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    115:166:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+inujini_.hatate.MainActivity$1 -> gt:
     inujini_.hatate.MainActivity this$0 -> a
-    35:39:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
-inujini_.hatate.MainActivity$2 -> gt:
+    64:68:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
+inujini_.hatate.MainActivity$2 -> gu:
     inujini_.hatate.MainActivity this$0 -> a
-    46:54:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+    75:83:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+inujini_.hatate.MainActivity$3 -> gv:
+    inujini_.hatate.MainActivity this$0 -> a
+    92:93:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+inujini_.hatate.MainActivity$4 -> gw:
+    inujini_.hatate.MainActivity this$0 -> a
+    131:140:java.util.List call(android.content.Context) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.MainActivity$5 -> gx:
+    inujini_.hatate.MainActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    145:146:void call() -> a
+inujini_.hatate.MainActivity$6 -> gy:
+    inujini_.hatate.MainActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    150:164:void call(java.util.List) -> a
+    1:1:void call(java.lang.Object) -> call
 inujini_.hatate.NotificationActivity -> inujini_.hatate.NotificationActivity:
-    34:127:void onCreate(android.os.Bundle) -> onCreate
-    131:134:void onRestart() -> onRestart
-inujini_.hatate.NotificationActivity$1 -> gu:
+    inujini_.hatate.service.CallbackBroadcastReceiver _receiver -> a
+    59:197:void onCreate(android.os.Bundle) -> onCreate
+    201:205:boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    55:55:inujini_.hatate.service.CallbackBroadcastReceiver access$0(inujini_.hatate.NotificationActivity) -> a
+    55:55:void access$1(inujini_.hatate.NotificationActivity,inujini_.hatate.service.CallbackBroadcastReceiver) -> a
+inujini_.hatate.NotificationActivity$1 -> gz:
     inujini_.hatate.NotificationActivity this$0 -> a
-    40:68:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
-    37:37:inujini_.hatate.NotificationActivity access$0(inujini_.hatate.NotificationActivity$1) -> a
-inujini_.hatate.NotificationActivity$1$1 -> gv:
+    65:138:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+    62:62:inujini_.hatate.NotificationActivity access$0(inujini_.hatate.NotificationActivity$1) -> a
+inujini_.hatate.NotificationActivity$1$1 -> ha:
     inujini_.hatate.NotificationActivity$1 this$1 -> a
-    48:53:void onClick(android.content.DialogInterface,int) -> onClick
-inujini_.hatate.NotificationActivity$1$2 -> gw:
+    73:123:void onClick(android.content.DialogInterface,int) -> onClick
+    70:70:inujini_.hatate.NotificationActivity$1 access$0(inujini_.hatate.NotificationActivity$1$1) -> a
+inujini_.hatate.NotificationActivity$1$1$1 -> hb:
+    inujini_.hatate.NotificationActivity$1$1 this$2 -> a
+    android.app.ProgressDialog val$prog -> b
+    87:104:void onSuccess(twitter4j.auth.AccessToken) -> a
+    108:113:void onError(java.lang.Exception) -> a
+inujini_.hatate.NotificationActivity$1$2 -> hc:
     inujini_.hatate.NotificationActivity$1 this$1 -> a
-    57:58:void onClick(android.content.DialogInterface,int) -> onClick
-inujini_.hatate.NotificationActivity$2 -> gx:
+    127:128:void onClick(android.content.DialogInterface,int) -> onClick
+inujini_.hatate.NotificationActivity$2 -> hd:
     inujini_.hatate.NotificationActivity this$0 -> a
-    77:79:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
-inujini_.hatate.NotificationActivity$3 -> gy:
+    147:149:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
+inujini_.hatate.NotificationActivity$3 -> he:
     inujini_.hatate.NotificationActivity this$0 -> a
-    89:92:boolean validation(java.lang.String) -> a
-inujini_.hatate.NotificationActivity$4 -> gz:
+    159:162:boolean validation(java.lang.String) -> a
+inujini_.hatate.NotificationActivity$4 -> hf:
     inujini_.hatate.NotificationActivity this$0 -> a
-    98:99:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
-inujini_.hatate.NotificationActivity$5 -> ha:
+    168:169:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
+inujini_.hatate.NotificationActivity$5 -> hg:
     inujini_.hatate.NotificationActivity this$0 -> a
-    109:116:void onChosen(int,java.lang.String,java.lang.String) -> a
-inujini_.hatate.NotificationActivity$5$1 -> hb:
+    179:186:void onChosen(int,java.lang.String,java.lang.String) -> a
+inujini_.hatate.NotificationActivity$5$1 -> hh:
     inujini_.hatate.NotificationActivity$5 this$1 -> a
-    113:113:java.lang.Long call(java.lang.String) -> a
+    183:183:java.lang.Long call(java.lang.String) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.NotificationActivity$6 -> hc:
+inujini_.hatate.NotificationActivity$6 -> hi:
     inujini_.hatate.NotificationActivity this$0 -> a
-    121:123:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
+    191:193:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
 inujini_.hatate.OauthActivity -> inujini_.hatate.OauthActivity:
-    twitter4j.auth.OAuthAuthorization _oauth -> a
-    28:88:void onCreate(android.os.Bundle) -> onCreate
-    92:140:void onNewIntent(android.content.Intent) -> onNewIntent
-    24:24:twitter4j.auth.OAuthAuthorization access$0(inujini_.hatate.OauthActivity) -> a
-inujini_.hatate.OauthActivity$1 -> hd:
-    inujini_.hatate.OauthActivity this$0 -> a
-    53:59:java.lang.String call(java.lang.String) -> a
-    1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$2 -> he:
-    inujini_.hatate.OauthActivity this$0 -> a
-    android.app.ProgressDialog val$prog -> b
-    64:65:void call() -> a
-inujini_.hatate.OauthActivity$3 -> hf:
-    inujini_.hatate.OauthActivity this$0 -> a
-    android.app.ProgressDialog val$prog -> b
-    69:75:void call(java.lang.String) -> a
-    1:1:void call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$4 -> hg:
-    inujini_.hatate.OauthActivity this$0 -> a
-    android.app.ProgressDialog val$prog -> b
-    79:86:void call(java.lang.Exception) -> a
-    1:1:void call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$5 -> hh:
-    inujini_.hatate.OauthActivity this$0 -> a
-    101:120:java.lang.Void call(android.net.Uri) -> a
-    1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$6 -> hi:
-    inujini_.hatate.OauthActivity this$0 -> a
-    125:129:void call(java.lang.Void) -> a
-    1:1:void call(java.lang.Object) -> call
-inujini_.hatate.OauthActivity$7 -> hj:
-    inujini_.hatate.OauthActivity this$0 -> a
-    133:136:void call(java.lang.Exception) -> a
-    1:1:void call(java.lang.Object) -> call
-inujini_.hatate.R -> hk:
-inujini_.hatate.R$styleable -> hl:
+    24:30:void onCreate(android.os.Bundle) -> onCreate
+inujini_.hatate.R -> hj:
+inujini_.hatate.R$styleable -> hk:
+    int[] IconCheckboxPreference -> IconCheckboxPreference
+    int IconCheckboxPreference_iconOff -> IconCheckboxPreference_iconOff
+    int IconCheckboxPreference_iconOn -> IconCheckboxPreference_iconOn
+    int[] IconEditTextPreference -> IconEditTextPreference
+    int IconEditTextPreference_android_icon -> IconEditTextPreference_android_icon
+    int[] IconListPreference -> IconListPreference
+    int IconListPreference_android_icon -> IconListPreference_android_icon
+    int[] IconPreference -> IconPreference
+    int IconPreference_android_icon -> IconPreference_android_icon
     int[] SeekBarPreference -> SeekBarPreference
     int SeekBarPreference_android_defaultValue -> SeekBarPreference_android_defaultValue
     int SeekBarPreference_max -> SeekBarPreference_max
     int[] TimePickerPreference -> TimePickerPreference
+    int TimePickerPreference_android_icon -> TimePickerPreference_android_icon
     int TimePickerPreference_defualt_hour -> TimePickerPreference_defualt_hour
     int TimePickerPreference_defualt_minute -> TimePickerPreference_defualt_minute
     int TimePickerPreference_key_hour -> TimePickerPreference_key_hour
     int TimePickerPreference_key_minute -> TimePickerPreference_key_minute
     int[] VolumePreference -> VolumePreference
     int VolumePreference_type -> VolumePreference_type
-inujini_.hatate.SpellCardListActivity -> inujini_.hatate.SpellCardListActivity:
-    24:61:void onCreate(android.os.Bundle) -> onCreate
-inujini_.hatate.SpellCardListActivity$1 -> hm:
-    inujini_.hatate.SpellCardListActivity this$0 -> a
-    36:36:java.util.List call(android.content.Context) -> a
+inujini_.hatate.SpellCardHistoryActivity -> inujini_.hatate.SpellCardHistoryActivity:
+    36:75:void onCreate(android.os.Bundle) -> onCreate
+inujini_.hatate.SpellCardHistoryActivity$1 -> hl:
+    inujini_.hatate.SpellCardHistoryActivity this$0 -> a
+    48:48:java.util.List call(android.content.Context) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.SpellCardListActivity$2 -> hn:
-    inujini_.hatate.SpellCardListActivity this$0 -> a
+inujini_.hatate.SpellCardHistoryActivity$2 -> hm:
+    inujini_.hatate.SpellCardHistoryActivity this$0 -> a
     android.app.ProgressDialog val$prog -> b
-    41:42:void call() -> a
-inujini_.hatate.SpellCardListActivity$3 -> ho:
-    inujini_.hatate.SpellCardListActivity this$0 -> a
+    53:54:void call() -> a
+inujini_.hatate.SpellCardHistoryActivity$3 -> hn:
+    inujini_.hatate.SpellCardHistoryActivity this$0 -> a
     android.app.ProgressDialog val$prog -> b
-    46:53:void call(java.util.List) -> a
+    58:65:void call(java.util.List) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.SpellCardListActivity$4 -> hp:
-    inujini_.hatate.SpellCardListActivity this$0 -> a
-    57:59:void call(java.lang.Exception) -> a
+inujini_.hatate.SpellCardHistoryActivity$4 -> ho:
+    inujini_.hatate.SpellCardHistoryActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    69:73:void call(java.lang.Exception) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.VoiceSettingActivity -> inujini_.hatate.VoiceSettingActivity:
-    10:12:void onCreate(android.os.Bundle) -> onCreate
-inujini_.hatate.adapter.SpellCardHistoryAdapter -> hq:
+inujini_.hatate.SpellCardLibraryActivity -> inujini_.hatate.SpellCardLibraryActivity:
+    47:50:void onCreate(android.os.Bundle) -> onCreate
+    54:56:boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    61:69:boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    75:130:void setSpellCardBySeries() -> a
+    133:185:void setSpellCardByCharacter() -> b
+    188:191:void setIndicator() -> c
+    187:187:void access$0(inujini_.hatate.SpellCardLibraryActivity) -> a
+inujini_.hatate.SpellCardLibraryActivity$1 -> hp:
+    inujini_.hatate.SpellCardLibraryActivity this$0 -> a
+    83:86:java.util.Map call(android.content.Context) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$1$1 -> hq:
+    inujini_.hatate.SpellCardLibraryActivity$1 this$1 -> a
+    89:89:inujini_.hatate.data.Series call(inujini_.hatate.data.Series) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$1$2 -> hr:
+    inujini_.hatate.SpellCardLibraryActivity$1 this$1 -> a
+    java.util.List val$spellCards -> b
+    94:95:java.util.List call(inujini_.hatate.data.Series) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$1$2$1 -> hs:
+    inujini_.hatate.SpellCardLibraryActivity$1$2 this$2 -> a
+    long val$sId -> b
+    98:102:java.lang.Boolean call(inujini_.hatate.data.SpellCard) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$2 -> ht:
+    inujini_.hatate.SpellCardLibraryActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    111:112:void call() -> a
+inujini_.hatate.SpellCardLibraryActivity$3 -> hu:
+    inujini_.hatate.SpellCardLibraryActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    116:120:void call(java.util.Map) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$4 -> hv:
+    inujini_.hatate.SpellCardLibraryActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    124:128:void call(java.lang.Exception) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$5 -> hw:
+    inujini_.hatate.SpellCardLibraryActivity this$0 -> a
+    142:145:java.util.Map call(android.content.Context) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$5$1 -> hx:
+    inujini_.hatate.SpellCardLibraryActivity$5 this$1 -> a
+    148:148:inujini_.hatate.data.Character call(inujini_.hatate.data.Character) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$5$2 -> hy:
+    inujini_.hatate.SpellCardLibraryActivity$5 this$1 -> a
+    java.util.List val$spellCards -> b
+    153:154:java.util.List call(inujini_.hatate.data.Character) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$5$2$1 -> hz:
+    inujini_.hatate.SpellCardLibraryActivity$5$2 this$2 -> a
+    long val$cId -> b
+    157:157:java.lang.Boolean call(inujini_.hatate.data.SpellCard) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$6 -> ia:
+    inujini_.hatate.SpellCardLibraryActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    166:167:void call() -> a
+inujini_.hatate.SpellCardLibraryActivity$7 -> ib:
+    inujini_.hatate.SpellCardLibraryActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    171:175:void call(java.util.Map) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.SpellCardLibraryActivity$8 -> ic:
+    inujini_.hatate.SpellCardLibraryActivity this$0 -> a
+    android.app.ProgressDialog val$prog -> b
+    179:183:void call(java.lang.Exception) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.adapter.AccountAdapter -> id:
     android.view.LayoutInflater _inflater -> a
-    37:53:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-inujini_.hatate.adapter.SpellCardHistoryAdapter$ViewHolder -> hr:
+    52:68:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    73:73:boolean hasStableIds() -> hasStableIds
+    78:78:long getItemId(int) -> getItemId
+inujini_.hatate.adapter.AccountAdapter$ViewHolder -> ie:
+    android.widget.CheckedTextView name -> a
+inujini_.hatate.adapter.SpellCardHistoryAdapter -> if:
+    android.view.LayoutInflater _inflater -> a
+    58:78:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+inujini_.hatate.adapter.SpellCardHistoryAdapter$ViewHolder -> ig:
     android.widget.TextView name -> a
     android.widget.TextView timestamp -> b
+    android.widget.ImageView icon -> c
+inujini_.hatate.adapter.SpellCardLibraryAdapter -> ih:
+    java.util.Map _items -> a
+    android.view.LayoutInflater _inflater -> b
+    78:78:java.lang.Object getChild(int,int) -> getChild
+    82:90:java.util.List getChildren(int) -> a
+    98:98:long getChildId(int,int) -> getChildId
+    108:126:android.view.View getChildView(int,int,boolean,android.view.View,android.view.ViewGroup) -> getChildView
+    134:134:int getChildrenCount(int) -> getChildrenCount
+    142:146:java.lang.Object getGroup(int) -> getGroup
+    154:154:int getGroupCount() -> getGroupCount
+    162:162:long getGroupId(int) -> getGroupId
+    173:187:android.view.View getGroupView(int,boolean,android.view.View,android.view.ViewGroup) -> getGroupView
+    195:195:boolean hasStableIds() -> hasStableIds
+    203:203:boolean isChildSelectable(int,int) -> isChildSelectable
+inujini_.hatate.adapter.SpellCardLibraryAdapter$CViewHolder -> ii:
+    android.widget.TextView name -> a
+    android.widget.ImageView icon -> b
+inujini_.hatate.adapter.SpellCardLibraryAdapter$PViewHolder -> ij:
+    android.widget.TextView name -> a
 inujini_.hatate.data.Character -> inujini_.hatate.data.Character:
     long serialVersionUID -> serialVersionUID
     long id -> id
     java.lang.String name -> name
-    11:11:long getId() -> getId
-    11:11:java.lang.String getName() -> getName
-    11:11:void setId(long) -> setId
-    11:11:void setName(java.lang.String) -> setName
-    11:11:boolean equals(java.lang.Object) -> equals
-    11:11:boolean canEqual(java.lang.Object) -> canEqual
-    11:11:int hashCode() -> hashCode
-    11:11:java.lang.String toString() -> toString
+    24:24:long getId() -> getId
+    24:24:java.lang.String getName() -> getName
+    24:24:void setId(long) -> setId
+    24:24:void setName(java.lang.String) -> setName
+    24:24:boolean equals(java.lang.Object) -> equals
+    24:24:boolean canEqual(java.lang.Object) -> canEqual
+    24:24:int hashCode() -> hashCode
+    24:24:java.lang.String toString() -> toString
 inujini_.hatate.data.Series -> inujini_.hatate.data.Series:
     long serialVersionUID -> serialVersionUID
     long id -> id
     java.lang.String name -> name
-    11:11:long getId() -> getId
-    11:11:java.lang.String getName() -> getName
-    11:11:void setId(long) -> setId
-    11:11:void setName(java.lang.String) -> setName
-    11:11:boolean equals(java.lang.Object) -> equals
-    11:11:boolean canEqual(java.lang.Object) -> canEqual
-    11:11:int hashCode() -> hashCode
-    11:11:java.lang.String toString() -> toString
+    24:24:long getId() -> getId
+    24:24:java.lang.String getName() -> getName
+    24:24:void setId(long) -> setId
+    24:24:void setName(java.lang.String) -> setName
+    24:24:boolean equals(java.lang.Object) -> equals
+    24:24:boolean canEqual(java.lang.Object) -> canEqual
+    24:24:int hashCode() -> hashCode
+    24:24:java.lang.String toString() -> toString
 inujini_.hatate.data.SpellCard -> inujini_.hatate.data.SpellCard:
     long serialVersionUID -> serialVersionUID
     long id -> id
@@ -2060,56 +2191,62 @@ inujini_.hatate.data.SpellCard -> inujini_.hatate.data.SpellCard:
     boolean isEquipped -> isEquipped
     int characterId -> characterId
     int[] seriesId -> seriesId
-    11:11:long getId() -> getId
-    11:11:java.lang.String getName() -> getName
-    11:11:int getPower() -> getPower
-    11:11:int getCount() -> getCount
-    11:11:boolean isGot() -> isGot
-    11:11:boolean isEquipped() -> isEquipped
-    11:11:int getCharacterId() -> getCharacterId
-    11:11:int[] getSeriesId() -> getSeriesId
-    11:11:void setId(long) -> setId
-    11:11:void setName(java.lang.String) -> setName
-    11:11:void setPower(int) -> setPower
-    11:11:void setCount(int) -> setCount
-    11:11:void setGot(boolean) -> setGot
-    11:11:void setEquipped(boolean) -> setEquipped
-    11:11:void setCharacterId(int) -> setCharacterId
-    11:11:void setSeriesId(int[]) -> setSeriesId
-    11:11:boolean equals(java.lang.Object) -> equals
-    11:11:boolean canEqual(java.lang.Object) -> canEqual
-    11:11:int hashCode() -> hashCode
-    11:11:java.lang.String toString() -> toString
+    24:24:long getId() -> getId
+    24:24:java.lang.String getName() -> getName
+    24:24:int getPower() -> getPower
+    24:24:int getCount() -> getCount
+    24:24:boolean isGot() -> isGot
+    24:24:boolean isEquipped() -> isEquipped
+    24:24:int getCharacterId() -> getCharacterId
+    24:24:int[] getSeriesId() -> getSeriesId
+    24:24:void setId(long) -> setId
+    24:24:void setName(java.lang.String) -> setName
+    24:24:void setPower(int) -> setPower
+    24:24:void setCount(int) -> setCount
+    24:24:void setGot(boolean) -> setGot
+    24:24:void setEquipped(boolean) -> setEquipped
+    24:24:void setCharacterId(int) -> setCharacterId
+    24:24:void setSeriesId(int[]) -> setSeriesId
+    24:24:boolean equals(java.lang.Object) -> equals
+    24:24:boolean canEqual(java.lang.Object) -> canEqual
+    24:24:int hashCode() -> hashCode
+    24:24:java.lang.String toString() -> toString
 inujini_.hatate.data.SpellCardHistory -> inujini_.hatate.data.SpellCardHistory:
     long serialVersionUID -> serialVersionUID
     long id -> id
     java.lang.String name -> name
     java.lang.String timestamp -> timestamp
     int order -> order
-    10:10:long getId() -> getId
-    10:10:java.lang.String getName() -> getName
-    10:10:java.lang.String getTimestamp() -> getTimestamp
-    10:10:int getOrder() -> getOrder
-    10:10:void setId(long) -> setId
-    10:10:void setName(java.lang.String) -> setName
-    10:10:void setTimestamp(java.lang.String) -> setTimestamp
-    10:10:void setOrder(int) -> setOrder
-    10:10:boolean equals(java.lang.Object) -> equals
-    10:10:boolean canEqual(java.lang.Object) -> canEqual
-    10:10:int hashCode() -> hashCode
-    10:10:java.lang.String toString() -> toString
+    int characterId -> characterId
+    23:23:long getId() -> getId
+    23:23:java.lang.String getName() -> getName
+    23:23:java.lang.String getTimestamp() -> getTimestamp
+    23:23:int getOrder() -> getOrder
+    23:23:int getCharacterId() -> getCharacterId
+    23:23:void setId(long) -> setId
+    23:23:void setName(java.lang.String) -> setName
+    23:23:void setTimestamp(java.lang.String) -> setTimestamp
+    23:23:void setOrder(int) -> setOrder
+    23:23:void setCharacterId(int) -> setCharacterId
+    23:23:boolean equals(java.lang.Object) -> equals
+    23:23:boolean canEqual(java.lang.Object) -> canEqual
+    23:23:int hashCode() -> hashCode
+    23:23:java.lang.String toString() -> toString
 inujini_.hatate.data.Statistics -> inujini_.hatate.data.Statistics:
     long serialVersionUID -> serialVersionUID
     int count -> count
     int love -> love
-    11:11:int getCount() -> getCount
-    11:11:int getLove() -> getLove
-    11:11:void setCount(int) -> setCount
-    11:11:void setLove(int) -> setLove
-    11:11:boolean equals(java.lang.Object) -> equals
-    11:11:boolean canEqual(java.lang.Object) -> canEqual
-    11:11:int hashCode() -> hashCode
-    11:11:java.lang.String toString() -> toString
+    24:24:int getCount() -> getCount
+    24:24:int getLove() -> getLove
+    24:24:void setCount(int) -> setCount
+    24:24:void setLove(int) -> setLove
+    24:24:boolean equals(java.lang.Object) -> equals
+    24:24:boolean canEqual(java.lang.Object) -> canEqual
+    24:24:int hashCode() -> hashCode
+    24:24:java.lang.String toString() -> toString
+inujini_.hatate.data.TouhouData -> ik:
+    long getId() -> getId
+    java.lang.String getName() -> getName
 inujini_.hatate.data.TwitterAccount -> inujini_.hatate.data.TwitterAccount:
     long serialVersionUID -> serialVersionUID
     java.lang.String accessToken -> accessToken
@@ -2117,34 +2254,34 @@ inujini_.hatate.data.TwitterAccount -> inujini_.hatate.data.TwitterAccount:
     long userId -> userId
     java.lang.String screenName -> screenName
     boolean isUse -> isUse
-    12:12:java.lang.String getAccessToken() -> getAccessToken
-    12:12:java.lang.String getAccessSecret() -> getAccessSecret
-    12:12:long getUserId() -> getUserId
-    12:12:java.lang.String getScreenName() -> getScreenName
-    12:12:boolean isUse() -> isUse
-    12:12:void setAccessToken(java.lang.String) -> setAccessToken
-    12:12:void setAccessSecret(java.lang.String) -> setAccessSecret
-    12:12:void setUserId(long) -> setUserId
-    12:12:void setScreenName(java.lang.String) -> setScreenName
-    12:12:void setUse(boolean) -> setUse
-    12:12:boolean equals(java.lang.Object) -> equals
-    12:12:boolean canEqual(java.lang.Object) -> canEqual
-    12:12:int hashCode() -> hashCode
-    12:12:java.lang.String toString() -> toString
-inujini_.hatate.data.meta.MetaAccount -> hs:
+    25:25:java.lang.String getAccessToken() -> getAccessToken
+    25:25:java.lang.String getAccessSecret() -> getAccessSecret
+    25:25:long getUserId() -> getUserId
+    25:25:java.lang.String getScreenName() -> getScreenName
+    25:25:boolean isUse() -> isUse
+    25:25:void setAccessToken(java.lang.String) -> setAccessToken
+    25:25:void setAccessSecret(java.lang.String) -> setAccessSecret
+    25:25:void setUserId(long) -> setUserId
+    25:25:void setScreenName(java.lang.String) -> setScreenName
+    25:25:void setUse(boolean) -> setUse
+    25:25:boolean equals(java.lang.Object) -> equals
+    25:25:boolean canEqual(java.lang.Object) -> canEqual
+    25:25:int hashCode() -> hashCode
+    25:25:java.lang.String toString() -> toString
+inujini_.hatate.data.meta.MetaAccount -> il:
     inujini_.sqlite.meta.ColumnProperty Id -> a
     inujini_.sqlite.meta.ColumnProperty AccessSecret -> b
     inujini_.sqlite.meta.ColumnProperty AccessToken -> c
     inujini_.sqlite.meta.ColumnProperty UseFlag -> d
     inujini_.sqlite.meta.ColumnProperty ScreenName -> e
     inujini_.sqlite.meta.ColumnProperty UserId -> f
-inujini_.hatate.data.meta.MetaCharacter -> ht:
+inujini_.hatate.data.meta.MetaCharacter -> im:
     inujini_.sqlite.meta.ColumnProperty Id -> a
     inujini_.sqlite.meta.ColumnProperty Name -> b
-inujini_.hatate.data.meta.MetaSeries -> hu:
+inujini_.hatate.data.meta.MetaSeries -> in:
     inujini_.sqlite.meta.ColumnProperty Id -> a
     inujini_.sqlite.meta.ColumnProperty Name -> b
-inujini_.hatate.data.meta.MetaSpellCard -> hv:
+inujini_.hatate.data.meta.MetaSpellCard -> io:
     inujini_.sqlite.meta.ColumnProperty CharacterId -> a
     inujini_.sqlite.meta.ColumnProperty Count -> b
     inujini_.sqlite.meta.ColumnProperty Id -> c
@@ -2153,54 +2290,101 @@ inujini_.hatate.data.meta.MetaSpellCard -> hv:
     inujini_.sqlite.meta.ColumnProperty Name -> f
     inujini_.sqlite.meta.ColumnProperty Power -> g
     inujini_.sqlite.meta.ColumnProperty SeriesId -> h
-inujini_.hatate.data.meta.MetaSpellCardHistory -> hw:
+inujini_.hatate.data.meta.MetaSpellCardHistory -> ip:
     inujini_.sqlite.meta.ColumnProperty Id -> a
     inujini_.sqlite.meta.ColumnProperty Name -> b
     inujini_.sqlite.meta.ColumnProperty HistoryOrder -> c
     inujini_.sqlite.meta.ColumnProperty Timestamp -> d
-inujini_.hatate.data.meta.MetaStatistics -> hx:
+inujini_.hatate.data.meta.MetaStatistics -> iq:
     inujini_.sqlite.meta.ColumnProperty Count -> a
     inujini_.sqlite.meta.ColumnProperty Love -> b
-inujini_.hatate.love.Love -> hy:
-    14:14:int init(int) -> a
-    18:26:int getVoice(int) -> b
-    31:48:int culcLove(int) -> c
+inujini_.hatate.function.Function -> ir:
+inujini_.hatate.function.Function$Action -> is:
+    void call() -> a
+inujini_.hatate.function.Function$Action1 -> it:
+    void call(java.lang.Object) -> call
+inujini_.hatate.function.Function$Action2 -> iu:
+    void call(java.lang.Object,java.lang.Object) -> a
+inujini_.hatate.function.Function$Func -> iv:
+    java.lang.Object call() -> a
+inujini_.hatate.function.Function$Func1 -> iw:
+    java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.function.Function$Predicate -> ix:
+inujini_.hatate.linq.Linq -> iy:
+    java.lang.Iterable _items -> a
+    105:105:inujini_.hatate.linq.Linq linq(java.lang.Iterable) -> a
+    109:109:inujini_.hatate.linq.Linq linq(java.lang.Object[]) -> a
+    146:156:inujini_.hatate.linq.Linq where(inujini_.hatate.function.Function$Predicate) -> a
+    161:167:inujini_.hatate.linq.Linq select(inujini_.hatate.function.Function$Func1) -> a
+    172:180:inujini_.hatate.linq.Linq selectMany(inujini_.hatate.function.Function$Func1) -> b
+    357:365:java.util.List toList() -> a
+    369:372:void forEach(inujini_.hatate.function.Function$Action1) -> a
+    375:387:java.util.Map toMap(inujini_.hatate.function.Function$Func1,inujini_.hatate.function.Function$Func1) -> a
+    406:414:int[] toIntArray(inujini_.hatate.linq.Linq) -> a
+    418:426:long[] toLongArray(inujini_.hatate.linq.Linq) -> b
+    478:485:java.lang.String toJoinedString(inujini_.hatate.linq.Linq,java.lang.String) -> a
+    490:490:java.util.Iterator iterator() -> iterator
+inujini_.hatate.love.Love -> iz:
+    29:29:int init(int) -> a
+    57:62:int getVoice(int) -> b
+    105:125:int culc(int) -> c
 inujini_.hatate.preference.EventableListPreference -> inujini_.hatate.preference.EventableListPreference:
     int _selectedEntryIndex -> a
     inujini_.hatate.preference.EventableListPreference$OnChosenListener _onChosenListener -> b
-    32:60:void onPrepareDialogBuilder(android.app.AlertDialog$Builder) -> onPrepareDialogBuilder
-    64:72:void onDialogClosed(boolean) -> onDialogClosed
-    19:19:void setOnChosenListener(inujini_.hatate.preference.EventableListPreference$OnChosenListener) -> a
-    18:18:void access$0(inujini_.hatate.preference.EventableListPreference,int) -> a
-    19:19:inujini_.hatate.preference.EventableListPreference$OnChosenListener access$1(inujini_.hatate.preference.EventableListPreference) -> a
+    64:92:void onPrepareDialogBuilder(android.app.AlertDialog$Builder) -> onPrepareDialogBuilder
+    96:104:void onDialogClosed(boolean) -> onDialogClosed
+    40:40:void setOnChosenListener(inujini_.hatate.preference.EventableListPreference$OnChosenListener) -> a
+    39:39:void access$0(inujini_.hatate.preference.EventableListPreference,int) -> a
+    40:40:inujini_.hatate.preference.EventableListPreference$OnChosenListener access$1(inujini_.hatate.preference.EventableListPreference) -> a
     1:1:java.lang.CharSequence[] access$2(inujini_.hatate.preference.EventableListPreference) -> b
     1:1:java.lang.CharSequence[] access$3(inujini_.hatate.preference.EventableListPreference) -> c
-inujini_.hatate.preference.EventableListPreference$1 -> hz:
+inujini_.hatate.preference.EventableListPreference$1 -> ja:
     inujini_.hatate.preference.EventableListPreference this$0 -> a
-    44:50:void onClick(android.content.DialogInterface,int) -> onClick
-inujini_.hatate.preference.EventableListPreference$2 -> ia:
+    76:82:void onClick(android.content.DialogInterface,int) -> onClick
+inujini_.hatate.preference.EventableListPreference$2 -> jb:
     inujini_.hatate.preference.EventableListPreference this$0 -> a
-    56:58:void onClick(android.content.DialogInterface,int) -> onClick
-inujini_.hatate.preference.EventableListPreference$OnChosenListener -> ib:
+    88:90:void onClick(android.content.DialogInterface,int) -> onClick
+inujini_.hatate.preference.EventableListPreference$OnChosenListener -> jc:
     void onChosen(int,java.lang.String,java.lang.String) -> a
+inujini_.hatate.preference.IconCheckboxPreference -> inujini_.hatate.preference.IconCheckboxPreference:
+    java.lang.Integer _iconOn -> a
+    java.lang.Integer _iconOff -> b
+    boolean _isIconChanged -> c
+    63:68:void init(android.content.Context,android.util.AttributeSet) -> a
+    91:93:void onBindView(android.view.View) -> onBindView
+    97:137:void setIcon(android.view.View,java.lang.Integer) -> a
+inujini_.hatate.preference.IconEditTextPreference -> inujini_.hatate.preference.IconEditTextPreference:
+    java.lang.Integer _icon -> a
+    boolean _isIconChanged -> b
+    61:64:void init(android.content.Context,android.util.AttributeSet) -> a
+    79:123:void onBindView(android.view.View) -> onBindView
+inujini_.hatate.preference.IconListPreference -> inujini_.hatate.preference.IconListPreference:
+    java.lang.Integer _icon -> a
+    boolean _isIconChanged -> b
+    65:109:void onBindView(android.view.View) -> onBindView
+inujini_.hatate.preference.IconPreference -> inujini_.hatate.preference.IconPreference:
+    java.lang.Integer _icon -> a
+    boolean _isIconChanged -> b
+    45:48:void init(android.content.Context,android.util.AttributeSet) -> a
+    63:107:void onBindView(android.view.View) -> onBindView
 inujini_.hatate.preference.PreviewPreference -> inujini_.hatate.preference.PreviewPreference:
-    26:29:void onClick() -> onClick
+    55:58:void onClick() -> onClick
 inujini_.hatate.preference.SeekBarPreference -> inujini_.hatate.preference.SeekBarPreference:
     int _max -> a
     int _currentValue -> b
     java.lang.ref.WeakReference _txvValue -> c
     java.lang.ref.WeakReference _seekBar -> d
-    64:73:void init(android.content.Context,android.util.AttributeSet) -> a
-    78:104:android.view.View onCreateView(android.view.ViewGroup) -> onCreateView
-    109:131:void onBindView(android.view.View) -> onBindView
-    134:146:void setMax(int) -> a
-    149:162:void setCurrentValue(int) -> b
-    165:169:void changeTextView() -> a
-    173:175:void onProgressChanged(android.widget.SeekBar,int,boolean) -> onProgressChanged
-    178:178:void onStartTrackingTouch(android.widget.SeekBar) -> onStartTrackingTouch
-    182:184:void onStopTrackingTouch(android.widget.SeekBar) -> onStopTrackingTouch
-    187:189:void saveValue(int) -> c
-inujini_.hatate.preference.SeekBarPreference$SeekBarPreferenceViewHolder -> ic:
+    102:111:void init(android.content.Context,android.util.AttributeSet) -> a
+    116:142:android.view.View onCreateView(android.view.ViewGroup) -> onCreateView
+    147:169:void onBindView(android.view.View) -> onBindView
+    172:184:void setMax(int) -> a
+    187:200:void setCurrentValue(int) -> b
+    203:207:void changeTextView() -> a
+    211:213:void onProgressChanged(android.widget.SeekBar,int,boolean) -> onProgressChanged
+    216:216:void onStartTrackingTouch(android.widget.SeekBar) -> onStartTrackingTouch
+    220:222:void onStopTrackingTouch(android.widget.SeekBar) -> onStopTrackingTouch
+    225:227:void saveValue(int) -> c
+inujini_.hatate.preference.SeekBarPreference$SeekBarPreferenceViewHolder -> jd:
     android.widget.TextView txtValue -> a
     android.widget.SeekBar seekBar -> b
 inujini_.hatate.preference.TimePickerPreference -> inujini_.hatate.preference.TimePickerPreference:
@@ -2208,364 +2392,443 @@ inujini_.hatate.preference.TimePickerPreference -> inujini_.hatate.preference.Ti
     java.lang.String KEY_MINUTE -> b
     int _defaultHour -> c
     int _defaultMinute -> d
-    70:85:void onClick() -> onClick
+    java.lang.Integer _icon -> e
+    boolean _isIconChanged -> f
+    85:101:void init(android.content.Context,android.util.AttributeSet) -> a
+    116:160:void onBindView(android.view.View) -> onBindView
+    164:179:void onClick() -> onClick
     1:1:boolean access$0(inujini_.hatate.preference.TimePickerPreference,java.lang.Object) -> a
-    15:15:java.lang.String access$1(inujini_.hatate.preference.TimePickerPreference) -> a
-    16:16:java.lang.String access$2(inujini_.hatate.preference.TimePickerPreference) -> b
-inujini_.hatate.preference.TimePickerPreference$1 -> id:
+    33:33:java.lang.String access$1(inujini_.hatate.preference.TimePickerPreference) -> a
+    34:34:java.lang.String access$2(inujini_.hatate.preference.TimePickerPreference) -> b
+inujini_.hatate.preference.TimePickerPreference$1 -> je:
     inujini_.hatate.preference.TimePickerPreference this$0 -> a
-    77:83:void onTimeSet(android.widget.TimePicker,int,int) -> onTimeSet
+    171:177:void onTimeSet(android.widget.TimePicker,int,int) -> onTimeSet
 inujini_.hatate.preference.ValidatableEditTextPreference -> inujini_.hatate.preference.ValidatableEditTextPreference:
     boolean _isNeedValidation -> a
     java.lang.String _errorMessage -> b
     inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator _validator -> c
-    46:85:void onAddEditTextToDialogView(android.view.View,android.widget.EditText) -> onAddEditTextToDialogView
-    88:91:void setValidation(java.lang.String,inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator) -> a
-    22:22:inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator access$0(inujini_.hatate.preference.ValidatableEditTextPreference) -> a
-    21:21:java.lang.String access$1(inujini_.hatate.preference.ValidatableEditTextPreference) -> b
-inujini_.hatate.preference.ValidatableEditTextPreference$1 -> ie:
+    77:121:void onAddEditTextToDialogView(android.view.View,android.widget.EditText) -> onAddEditTextToDialogView
+    128:132:void setValidation(java.lang.String,inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator) -> a
+    34:34:inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator access$0(inujini_.hatate.preference.ValidatableEditTextPreference) -> a
+    33:33:java.lang.String access$1(inujini_.hatate.preference.ValidatableEditTextPreference) -> b
+inujini_.hatate.preference.ValidatableEditTextPreference$1 -> jf:
     inujini_.hatate.preference.ValidatableEditTextPreference this$0 -> a
     android.widget.TextView val$txtView -> b
-    63:63:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
-    66:66:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
-    70:83:void afterTextChanged(android.text.Editable) -> afterTextChanged
-inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator -> if:
+    97:97:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+    102:102:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    106:119:void afterTextChanged(android.text.Editable) -> afterTextChanged
+inujini_.hatate.preference.ValidatableEditTextPreference$TextValidator -> jg:
     boolean validation(java.lang.String) -> a
 inujini_.hatate.preference.VolumePreference -> inujini_.hatate.preference.VolumePreference:
     int _volumeType -> a
     android.preference.Preference$OnPreferenceChangeListener _onPreferenceChangeListener -> b
     java.lang.ref.WeakReference _manager -> c
-    60:73:void init(int,android.content.Context) -> a
-    77:79:void setCurrentValue(int) -> b
-    83:83:void setMax(int) -> a
-    98:104:android.media.AudioManager getAudioManager() -> a
-    109:113:void onBindView(android.view.View) -> onBindView
-    21:21:android.preference.Preference$OnPreferenceChangeListener getOnPreferenceChangeListener() -> getOnPreferenceChangeListener
-    21:21:void setOnPreferenceChangeListener(android.preference.Preference$OnPreferenceChangeListener) -> setOnPreferenceChangeListener
-    97:97:android.media.AudioManager access$0(inujini_.hatate.preference.VolumePreference) -> a
-    20:20:int access$1(inujini_.hatate.preference.VolumePreference) -> b
-    21:21:android.preference.Preference$OnPreferenceChangeListener access$2(inujini_.hatate.preference.VolumePreference) -> c
-inujini_.hatate.preference.VolumePreference$1 -> ig:
+    98:111:void init(int,android.content.Context) -> a
+    115:117:void setCurrentValue(int) -> b
+    121:121:void setMax(int) -> a
+    136:142:android.media.AudioManager getAudioManager() -> a
+    147:151:void onBindView(android.view.View) -> onBindView
+    35:35:android.preference.Preference$OnPreferenceChangeListener getOnPreferenceChangeListener() -> getOnPreferenceChangeListener
+    35:35:void setOnPreferenceChangeListener(android.preference.Preference$OnPreferenceChangeListener) -> setOnPreferenceChangeListener
+    135:135:android.media.AudioManager access$0(inujini_.hatate.preference.VolumePreference) -> a
+    34:34:int access$1(inujini_.hatate.preference.VolumePreference) -> b
+    35:35:android.preference.Preference$OnPreferenceChangeListener access$2(inujini_.hatate.preference.VolumePreference) -> c
+inujini_.hatate.preference.VolumePreference$1 -> jh:
     inujini_.hatate.preference.VolumePreference this$0 -> a
-    65:70:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
-inujini_.hatate.reactive.ReactiveAsyncResult -> ih:
+    103:108:boolean onPreferenceChange(android.preference.Preference,java.lang.Object) -> onPreferenceChange
+inujini_.hatate.reactive.ReactiveAsyncResult -> ji:
     java.lang.Object result -> a
     java.lang.Exception error -> b
-    15:15:boolean hasError() -> a
-    12:12:java.lang.Object getResult() -> b
-    12:12:void setResult(java.lang.Object) -> a
-    13:13:java.lang.Exception getError() -> c
-    13:13:void setError(java.lang.Exception) -> a
-inujini_.hatate.reactive.ReactiveAsyncTask -> ii:
-    inujini_.function.Function$Action _onPreExecute -> a
-    inujini_.function.Function$Func1 _onBackground -> b
-    inujini_.function.Function$Func _progressArg -> c
-    inujini_.function.Function$Action1 _onProgress -> d
-    inujini_.function.Function$Action1 _onPostExecute -> e
-    inujini_.function.Function$Action1 _onError -> f
+    24:24:boolean hasError() -> a
+    21:21:java.lang.Object getResult() -> b
+    21:21:void setResult(java.lang.Object) -> a
+    22:22:java.lang.Exception getError() -> c
+    22:22:void setError(java.lang.Exception) -> a
+inujini_.hatate.reactive.ReactiveAsyncTask -> jj:
+    inujini_.hatate.function.Function$Action _onPreExecute -> a
+    inujini_.hatate.function.Function$Func1 _onBackground -> b
+    inujini_.hatate.function.Function$Func _progressArg -> c
+    inujini_.hatate.function.Function$Action1 _onProgress -> d
+    inujini_.hatate.function.Function$Action1 _onPostExecute -> e
+    inujini_.hatate.function.Function$Action1 _onError -> f
     boolean isCanceled -> g
-    47:48:inujini_.hatate.reactive.ReactiveAsyncTask setOnPreExecute(inujini_.function.Function$Action) -> a
-    69:70:inujini_.hatate.reactive.ReactiveAsyncTask setOnPostExecute(inujini_.function.Function$Action1) -> a
-    79:80:inujini_.hatate.reactive.ReactiveAsyncTask setOnError(inujini_.function.Function$Action1) -> b
-    85:86:void onPreExecute() -> onPreExecute
-    92:101:inujini_.hatate.reactive.ReactiveAsyncResult doInBackground(java.lang.Object[]) -> a
-    106:107:void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
-    111:120:void onPostExecute(inujini_.hatate.reactive.ReactiveAsyncResult) -> a
-    132:135:void onCancelled() -> onCancelled
-    138:144:void destroy() -> a
+    58:59:inujini_.hatate.reactive.ReactiveAsyncTask setOnPreExecute(inujini_.hatate.function.Function$Action) -> a
+    81:82:inujini_.hatate.reactive.ReactiveAsyncTask setOnPostExecute(inujini_.hatate.function.Function$Action1) -> a
+    91:92:inujini_.hatate.reactive.ReactiveAsyncTask setOnError(inujini_.hatate.function.Function$Action1) -> b
+    97:98:void onPreExecute() -> onPreExecute
+    104:113:inujini_.hatate.reactive.ReactiveAsyncResult doInBackground(java.lang.Object[]) -> a
+    118:119:void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+    123:134:void onPostExecute(inujini_.hatate.reactive.ReactiveAsyncResult) -> a
+    146:149:void onCancelled() -> onCancelled
+    152:158:void destroy() -> a
+    162:162:inujini_.hatate.reactive.ReactiveAsyncTask create(inujini_.hatate.function.Function$Func1) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-inujini_.hatate.scraping.Scraper -> ij:
-inujini_.hatate.scraping.Scraper$AttributeFilter -> ik:
+inujini_.hatate.scraping.Scraper -> jk:
+inujini_.hatate.scraping.Scraper$AttributeFilter -> jl:
     boolean filter(inujini_.hatate.scraping.Scraper$XAttribute) -> a
-inujini_.hatate.scraping.Scraper$XAttribute -> il:
+inujini_.hatate.scraping.Scraper$XAttribute -> jm:
     java.lang.String namespace -> a
     java.lang.String name -> b
     java.lang.String value -> c
-    91:91:java.lang.String getNamespace() -> a
-    91:91:java.lang.String getName() -> b
-    91:91:java.lang.String getValue() -> c
-    91:91:void setNamespace(java.lang.String) -> a
-    91:91:void setName(java.lang.String) -> b
-    91:91:void setValue(java.lang.String) -> c
-    91:91:boolean equals(java.lang.Object) -> equals
-    91:91:boolean canEqual(java.lang.Object) -> a
-    91:91:int hashCode() -> hashCode
-    91:91:java.lang.String toString() -> toString
-inujini_.hatate.scraping.Scraper$XElement -> im:
+    100:100:java.lang.String getNamespace() -> a
+    100:100:java.lang.String getName() -> b
+    100:100:java.lang.String getValue() -> c
+    100:100:void setNamespace(java.lang.String) -> a
+    100:100:void setName(java.lang.String) -> b
+    100:100:void setValue(java.lang.String) -> c
+    100:100:boolean equals(java.lang.Object) -> equals
+    100:100:boolean canEqual(java.lang.Object) -> a
+    100:100:int hashCode() -> hashCode
+    100:100:java.lang.String toString() -> toString
+inujini_.hatate.scraping.Scraper$XElement -> jn:
     java.lang.String namespace -> a
     java.lang.String tagName -> b
     java.util.List attributes -> c
     java.lang.String text -> d
     java.util.List innerElements -> e
-    24:33:java.lang.String getAttributeValue(java.lang.String) -> a
-    16:16:java.lang.String getNamespace() -> a
-    16:16:java.lang.String getTagName() -> b
-    16:16:java.util.List getAttributes() -> c
-    16:16:java.lang.String getText() -> d
-    16:16:java.util.List getInnerElements() -> e
-    16:16:void setNamespace(java.lang.String) -> b
-    16:16:void setTagName(java.lang.String) -> c
-    16:16:void setAttributes(java.util.List) -> a
-    16:16:void setText(java.lang.String) -> d
-    16:16:void setInnerElements(java.util.List) -> b
-    16:16:boolean equals(java.lang.Object) -> equals
-    16:16:boolean canEqual(java.lang.Object) -> a
-    16:16:int hashCode() -> hashCode
-    16:16:java.lang.String toString() -> toString
-inujini_.hatate.scraping.ScraperImpl -> in:
+    33:42:java.lang.String getAttributeValue(java.lang.String) -> a
+    25:25:java.lang.String getNamespace() -> a
+    25:25:java.lang.String getTagName() -> b
+    25:25:java.util.List getAttributes() -> c
+    25:25:java.lang.String getText() -> d
+    25:25:java.util.List getInnerElements() -> e
+    25:25:void setNamespace(java.lang.String) -> b
+    25:25:void setTagName(java.lang.String) -> c
+    25:25:void setAttributes(java.util.List) -> a
+    25:25:void setText(java.lang.String) -> d
+    25:25:void setInnerElements(java.util.List) -> b
+    25:25:boolean equals(java.lang.Object) -> equals
+    25:25:boolean canEqual(java.lang.Object) -> a
+    25:25:int hashCode() -> hashCode
+    25:25:java.lang.String toString() -> toString
+inujini_.hatate.scraping.ScraperImpl -> jo:
     org.xmlpull.v1.XmlPullParser _parser -> a
     java.lang.String _source -> b
     java.io.Reader _sourceReader -> c
     org.xmlpull.v1.XmlPullParser createParser(java.lang.String,org.xmlpull.v1.XmlPullParserFactory) -> a
     org.xmlpull.v1.XmlPullParser createParser(java.io.Reader,org.xmlpull.v1.XmlPullParserFactory) -> a
-    39:39:java.util.List extract(java.lang.String) -> a
-    49:78:java.util.List extract(java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter) -> a
-    123:154:inujini_.hatate.scraping.Scraper$XElement createElement(org.xmlpull.v1.XmlPullParser) -> a
-    159:161:void close() -> close
-inujini_.hatate.scraping.XmlPullParserExtensions -> io:
-    17:22:java.util.List getAttributes(org.xmlpull.v1.XmlPullParser) -> a
-    47:51:boolean hasAttribute(org.xmlpull.v1.XmlPullParser,inujini_.hatate.scraping.Scraper$AttributeFilter) -> a
-    55:60:inujini_.hatate.scraping.Scraper$XAttribute createAttribute(org.xmlpull.v1.XmlPullParser,int) -> a
-inujini_.hatate.scraping.XmlScraper -> ip:
-    20:20:org.xmlpull.v1.XmlPullParser createParser(java.lang.String,org.xmlpull.v1.XmlPullParserFactory) -> a
-    25:29:org.xmlpull.v1.XmlPullParser createParser(java.io.Reader,org.xmlpull.v1.XmlPullParserFactory) -> a
+    48:48:java.util.List extract(java.lang.String) -> a
+    58:87:java.util.List extract(java.lang.String,java.lang.String,inujini_.hatate.scraping.Scraper$AttributeFilter) -> a
+    132:163:inujini_.hatate.scraping.Scraper$XElement createElement(org.xmlpull.v1.XmlPullParser) -> a
+    168:170:void close() -> close
+inujini_.hatate.scraping.XmlPullParserExtensions -> jp:
+    34:39:java.util.List getAttributes(org.xmlpull.v1.XmlPullParser) -> a
+    93:98:boolean hasAttribute(org.xmlpull.v1.XmlPullParser,inujini_.hatate.scraping.Scraper$AttributeFilter) -> a
+    102:107:inujini_.hatate.scraping.Scraper$XAttribute createAttribute(org.xmlpull.v1.XmlPullParser,int) -> a
+inujini_.hatate.scraping.XmlScraper -> jq:
+    37:37:org.xmlpull.v1.XmlPullParser createParser(java.lang.String,org.xmlpull.v1.XmlPullParserFactory) -> a
+    42:46:org.xmlpull.v1.XmlPullParser createParser(java.io.Reader,org.xmlpull.v1.XmlPullParserFactory) -> a
 inujini_.hatate.service.AsyncBroadcastReceiver -> inujini_.hatate.service.AsyncBroadcastReceiver:
-    13:20:void onReceive(android.content.Context,android.content.Intent) -> onReceive
+    22:29:void onReceive(android.content.Context,android.content.Intent) -> onReceive
     void asyncOnReceive(android.content.Context,android.content.Intent) -> a
-inujini_.hatate.service.AsyncBroadcastReceiver$1 -> iq:
+inujini_.hatate.service.AsyncBroadcastReceiver$1 -> jr:
     inujini_.hatate.service.AsyncBroadcastReceiver this$0 -> a
     android.content.Intent val$intent -> b
-    16:17:java.lang.Void call(android.content.Context) -> a
+    25:26:java.lang.Void call(android.content.Context) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.service.CallbackBroadcastReceiver -> inujini_.hatate.service.CallbackBroadcastReceiver:
+    55:58:android.content.Intent createIntent(inujini_.hatate.service.CallbackBroadcastReceiver$Data) -> a
+    66:68:android.content.IntentFilter createIntentFilter() -> a
+    73:84:void onReceive(android.content.Context,android.content.Intent) -> onReceive
+    void onSuccess(twitter4j.auth.AccessToken) -> a
+    void onError(java.lang.Exception) -> a
+inujini_.hatate.service.CallbackBroadcastReceiver$Data -> inujini_.hatate.service.CallbackBroadcastReceiver$Data:
+    long serialVersionUID -> serialVersionUID
+    twitter4j.auth.AccessToken token -> token
+    java.lang.Exception exception -> exception
+    boolean isSuccess -> isSuccess
+    35:38:inujini_.hatate.service.CallbackBroadcastReceiver$Data create(twitter4j.auth.AccessToken) -> create
+    42:45:inujini_.hatate.service.CallbackBroadcastReceiver$Data create(java.lang.Exception) -> create
 inujini_.hatate.service.Houtyou -> inujini_.hatate.service.Houtyou:
-    33:83:void onPierced(android.content.Context,android.content.Intent) -> b
+    47:104:void onPierced(android.content.Context,android.content.Intent) -> b
 inujini_.hatate.service.Kill -> inujini_.hatate.service.Kill:
-    24:25:void onHandleIntent(android.content.Intent) -> onHandleIntent
-    29:33:void onDestroy() -> onDestroy
+    36:37:void onHandleIntent(android.content.Intent) -> onHandleIntent
+    41:45:void onDestroy() -> onDestroy
+inujini_.hatate.service.OauthService -> inujini_.hatate.service.OauthService:
+    71:75:android.content.Intent createIntent(java.lang.String,java.lang.String,android.content.Context) -> a
+    80:84:void onHandleIntent(android.content.Intent) -> onHandleIntent
+    92:133:void startOauth(android.content.Intent) -> a
+    141:176:void getAccessToken(android.content.Intent) -> b
+    179:192:void serialize(twitter4j.auth.OAuthAuthorization,java.lang.String) -> a
+    195:210:twitter4j.auth.OAuthAuthorization deserialize(java.lang.String) -> a
 inujini_.hatate.service.OneMoreLovely -> inujini_.hatate.service.OneMoreLovely:
-    11:12:void onPierced(android.content.Context,android.content.Intent) -> b
+    20:21:void onPierced(android.content.Context,android.content.Intent) -> b
 inujini_.hatate.service.PierceReceiver -> inujini_.hatate.service.PierceReceiver:
     inujini_.hatate.data.Statistics _statistics -> a
-    26:76:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
+    35:85:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
     void onPierced(android.content.Context,android.content.Intent) -> b
-inujini_.hatate.service.PierceReceiver$1 -> ir:
+inujini_.hatate.service.PierceReceiver$1 -> js:
     inujini_.hatate.service.PierceReceiver this$0 -> a
-    38:39:void onCompletion(android.media.MediaPlayer) -> onCompletion
+    47:48:void onCompletion(android.media.MediaPlayer) -> onCompletion
 inujini_.hatate.service.RebootReceiver -> inujini_.hatate.service.RebootReceiver:
-    15:24:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
+    24:33:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
 inujini_.hatate.service.UpdateReceiver -> inujini_.hatate.service.UpdateReceiver:
-    16:30:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
-inujini_.hatate.sqlite.DatabaseHelper -> is:
+    25:39:void asyncOnReceive(android.content.Context,android.content.Intent) -> a
+inujini_.hatate.sqlite.DatabaseHelper -> jt:
     java.lang.ref.WeakReference _context -> a
-    54:71:void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
-    76:99:void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
-    110:113:void updateTo2(android.database.sqlite.SQLiteDatabase,android.content.Context) -> a
-    123:197:void updateTo3(android.database.sqlite.SQLiteDatabase,android.content.Context) -> b
-    200:201:boolean isDbOpened(android.content.Context) -> a
-    205:206:boolean isDbUpdated(android.content.Context) -> b
-inujini_.hatate.sqlite.DatabaseHelper$1 -> it:
+    66:83:void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
+    88:115:void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
+    126:129:void updateTo2(android.database.sqlite.SQLiteDatabase,android.content.Context) -> a
+    139:213:void updateTo3(android.database.sqlite.SQLiteDatabase,android.content.Context) -> b
+    224:254:void updateTo4(android.database.sqlite.SQLiteDatabase,android.content.Context) -> c
+    257:258:boolean isDbOpened(android.content.Context) -> a
+    262:263:boolean isDbUpdated(android.content.Context) -> b
+inujini_.hatate.sqlite.DatabaseHelper$1 -> ju:
     android.database.sqlite.SQLiteDatabase val$db -> a
-    134:138:void call(inujini_.hatate.scraping.Scraper$XElement) -> a
+    150:154:void call(inujini_.hatate.scraping.Scraper$XElement) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.sqlite.DatabaseHelper$2 -> iu:
+inujini_.hatate.sqlite.DatabaseHelper$2 -> jv:
     android.database.sqlite.SQLiteDatabase val$db -> a
-    147:177:void call(inujini_.hatate.scraping.Scraper$XElement) -> a
+    163:193:void call(inujini_.hatate.scraping.Scraper$XElement) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.sqlite.DatabaseHelper$2$1 -> iv:
+inujini_.hatate.sqlite.DatabaseHelper$2$1 -> jw:
     inujini_.hatate.sqlite.DatabaseHelper$2 this$1 -> a
-    156:156:java.lang.Iterable call(inujini_.hatate.scraping.Scraper$XElement) -> a
+    172:172:java.lang.Iterable call(inujini_.hatate.scraping.Scraper$XElement) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.sqlite.DatabaseHelper$2$2 -> iw:
+inujini_.hatate.sqlite.DatabaseHelper$2$2 -> jx:
     inujini_.hatate.sqlite.DatabaseHelper$2 this$1 -> a
     int val$cId -> b
     android.database.sqlite.SQLiteDatabase val$db -> c
-    161:175:void call(inujini_.hatate.scraping.Scraper$XElement) -> a
+    177:191:void call(inujini_.hatate.scraping.Scraper$XElement) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.sqlite.DatabaseHelper$2$2$1 -> ix:
+inujini_.hatate.sqlite.DatabaseHelper$2$2$1 -> jy:
     inujini_.hatate.sqlite.DatabaseHelper$2$2 this$2 -> a
-    170:170:java.lang.String call(inujini_.hatate.scraping.Scraper$XElement) -> a
+    186:186:java.lang.String call(inujini_.hatate.scraping.Scraper$XElement) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.sqlite.dao.AccountDao -> iy:
-    26:35:twitter4j.Twitter getTwitter(android.content.Context) -> a
-    53:65:void insert(inujini_.hatate.data.TwitterAccount,android.content.Context) -> a
-    68:69:boolean isAuthorized(android.content.Context) -> b
-inujini_.hatate.sqlite.dao.AccountDao$1 -> iz:
+inujini_.hatate.sqlite.DatabaseHelper$3 -> jz:
+    android.database.sqlite.SQLiteDatabase val$db -> a
+    249:252:void call(java.lang.Long) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.AccountDao -> ka:
+    47:57:java.util.List getTwitter(android.content.Context) -> a
+    80:85:int getCount(android.content.Context) -> b
+    100:105:java.util.List getAllAccount(android.content.Context) -> c
+    123:135:void insert(inujini_.hatate.data.TwitterAccount,android.content.Context) -> a
+    143:150:void insertAsync(inujini_.hatate.data.TwitterAccount,android.content.Context) -> b
+    159:168:void setUseFlag(long,boolean,android.content.Context) -> a
+    176:177:void setUseFlag(inujini_.hatate.data.TwitterAccount,android.content.Context) -> c
+    185:192:void setUseFlagAsync(inujini_.hatate.data.TwitterAccount,android.content.Context) -> d
+    200:208:void delete(inujini_.hatate.data.TwitterAccount,android.content.Context) -> e
+    216:223:void deleteAsync(inujini_.hatate.data.TwitterAccount,android.content.Context) -> f
+    231:231:boolean isAuthorized(android.content.Context) -> d
+    241:247:boolean isExist(long,android.content.Context) -> a
+inujini_.hatate.sqlite.dao.AccountDao$1 -> kb:
     java.lang.String val$consumerKey -> a
     java.lang.String val$consumerSecret -> b
-    38:38:twitter4j.Twitter call(android.database.Cursor) -> a
+    60:60:twitter4j.Twitter call(android.database.Cursor) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.sqlite.dao.AccountDao$2 -> ja:
+inujini_.hatate.sqlite.dao.AccountDao$10 -> kc:
+    250:250:java.lang.Long call(android.database.Cursor) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.AccountDao$2 -> kd:
+    88:88:java.lang.Integer call(android.database.Cursor) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.AccountDao$3 -> ke:
+    108:112:inujini_.hatate.data.TwitterAccount call(android.database.Cursor) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.AccountDao$4 -> kf:
     android.content.ContentValues val$values -> a
-    62:63:void call(android.database.sqlite.SQLiteDatabase) -> a
+    132:133:void call(android.database.sqlite.SQLiteDatabase) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.sqlite.dao.SpellCardDao -> jb:
-    inujini_.function.Function$Func1 _converter -> a
-    87:132:inujini_.hatate.data.SpellCard getRandomSpellCard(android.content.Context) -> a
-    232:238:java.util.List getHistory(android.content.Context) -> b
-inujini_.hatate.sqlite.dao.SpellCardDao$1 -> jc:
-    38:53:inujini_.hatate.data.SpellCard call(android.database.Cursor) -> a
+inujini_.hatate.sqlite.dao.AccountDao$5 -> kg:
+    inujini_.hatate.data.TwitterAccount val$account -> a
+    146:147:java.lang.Void call(android.content.Context) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.sqlite.dao.SpellCardDao$1$1 -> jd:
+inujini_.hatate.sqlite.dao.AccountDao$6 -> kh:
+    android.content.ContentValues val$cv -> a
+    long val$userId -> b
+    165:166:void call(android.database.sqlite.SQLiteDatabase) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.AccountDao$7 -> ki:
+    inujini_.hatate.data.TwitterAccount val$account -> a
+    188:189:java.lang.Void call(android.content.Context) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.AccountDao$8 -> kj:
+    long val$userId -> a
+    205:206:void call(android.database.sqlite.SQLiteDatabase) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.AccountDao$9 -> kk:
+    inujini_.hatate.data.TwitterAccount val$account -> a
+    219:220:java.lang.Void call(android.content.Context) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.CharacterDao -> kl:
+    inujini_.hatate.function.Function$Func1 _converter -> a
+    45:50:java.util.List getAllCharacter(android.content.Context) -> a
+inujini_.hatate.sqlite.dao.CharacterDao$1 -> km:
+    37:40:inujini_.hatate.data.Character call(android.database.Cursor) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.SeriesDao -> kn:
+    inujini_.hatate.function.Function$Func1 _converter -> a
+    46:51:java.util.List getAllSeries(android.content.Context) -> a
+inujini_.hatate.sqlite.dao.SeriesDao$1 -> ko:
+    38:41:inujini_.hatate.data.Series call(android.database.Cursor) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.SpellCardDao -> kp:
+    inujini_.hatate.function.Function$Func1 _converter -> a
+    72:76:java.util.List getHaveSpellCards(android.content.Context) -> a
+    96:141:inujini_.hatate.data.SpellCard getRandomSpellCard(android.content.Context) -> b
+    241:248:java.util.List getHistory(android.content.Context,int) -> a
+inujini_.hatate.sqlite.dao.SpellCardDao$1 -> kq:
+    47:62:inujini_.hatate.data.SpellCard call(android.database.Cursor) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.SpellCardDao$1$1 -> kr:
     inujini_.hatate.sqlite.dao.SpellCardDao$1 this$1 -> a
-    50:50:java.lang.Integer call(java.lang.String) -> a
+    59:59:java.lang.Integer call(java.lang.String) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.sqlite.dao.SpellCardDao$11 -> je:
-    241:246:inujini_.hatate.data.SpellCardHistory call(android.database.Cursor) -> a
+inujini_.hatate.sqlite.dao.SpellCardDao$11 -> ks:
+    android.content.Context val$context -> a
+    251:271:inujini_.hatate.data.SpellCardHistory call(android.database.Cursor) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.sqlite.dao.SpellCardDao$2 -> jf:
-    100:100:java.lang.Integer call(android.database.Cursor) -> a
+inujini_.hatate.sqlite.dao.SpellCardDao$11$1 -> kt:
+    inujini_.hatate.sqlite.dao.SpellCardDao$11 this$1 -> a
+    267:267:java.lang.Integer call(android.database.Cursor) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.sqlite.dao.SpellCardDao$3 -> jg:
+inujini_.hatate.sqlite.dao.SpellCardDao$2 -> ku:
+    109:109:java.lang.Integer call(android.database.Cursor) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.sqlite.dao.SpellCardDao$3 -> kv:
     inujini_.hatate.data.SpellCard val$spell -> a
     int val$getId -> b
-    118:129:void call(android.database.sqlite.SQLiteDatabase) -> a
+    127:138:void call(android.database.sqlite.SQLiteDatabase) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.sqlite.dao.StatisticsDao -> jh:
-    23:24:inujini_.hatate.data.Statistics getStatistics(android.content.Context) -> a
-    36:43:void init(android.database.sqlite.SQLiteDatabase,int) -> a
-    46:58:void update(android.content.Context,int,int) -> a
-inujini_.hatate.sqlite.dao.StatisticsDao$1 -> ji:
-    27:30:inujini_.hatate.data.Statistics call(android.database.Cursor) -> a
+inujini_.hatate.sqlite.dao.StatisticsDao -> kw:
+    32:33:inujini_.hatate.data.Statistics getStatistics(android.content.Context) -> a
+    45:52:void init(android.database.sqlite.SQLiteDatabase,int) -> a
+    55:67:void update(android.content.Context,int,int) -> a
+inujini_.hatate.sqlite.dao.StatisticsDao$1 -> kx:
+    36:39:inujini_.hatate.data.Statistics call(android.database.Cursor) -> a
     1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.sqlite.dao.StatisticsDao$2 -> jj:
+inujini_.hatate.sqlite.dao.StatisticsDao$2 -> ky:
     java.lang.String val$q -> a
-    55:56:void call(android.database.sqlite.SQLiteDatabase) -> a
+    64:65:void call(android.database.sqlite.SQLiteDatabase) -> a
     1:1:void call(java.lang.Object) -> call
-inujini_.hatate.util.PrefGetter -> jk:
-    15:16:int getHour(android.content.Context) -> a
-    20:21:int getMinute(android.content.Context) -> b
-    25:26:boolean isScream(android.content.Context) -> c
-    30:31:boolean isVibration(android.content.Context) -> d
-    35:36:boolean isNoisy(android.content.Context) -> e
-    40:41:boolean isLight(android.content.Context) -> f
-    45:48:long getLightColor(android.content.Context) -> g
-    52:54:java.lang.String getLightColorName(android.content.Context) -> h
-    58:66:java.lang.String getLightColorName(android.content.Context,java.lang.String) -> a
-    70:71:boolean isTweet(android.content.Context) -> i
-    75:76:boolean isSnooze(android.content.Context) -> j
-    80:81:int getSnoozeTime(android.content.Context) -> k
-    85:86:long getSnoozeTimeMill(android.content.Context) -> l
-    90:91:long[] getVibrationPattern(android.content.Context) -> m
-    100:102:java.lang.String getVibrationPatternName(android.content.Context) -> n
-    106:114:java.lang.String getVibrationPatternName(android.content.Context,java.lang.String) -> b
-inujini_.hatate.util.PrefGetter$1 -> jl:
-    94:94:java.lang.Long call(java.lang.String) -> a
-    1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.util.Util -> jm:
-    java.lang.ref.SoftReference _alarmManager -> a
-    34:48:long getAlermTime(int,int) -> a
-    52:55:void setAlarm(android.content.Context) -> a
-    58:59:void removeAlarm(android.content.Context) -> b
-    62:62:android.app.PendingIntent getAlarmIntent(android.content.Context) -> c
-    67:70:void setSnooze(android.content.Context) -> d
-    73:74:void removeSnooze(android.content.Context) -> e
-    77:77:android.app.PendingIntent getSnoozeIntent(android.content.Context) -> f
-    82:92:android.app.AlarmManager getAlarmManager(android.content.Context) -> g
-    96:97:java.io.InputStreamReader getAssetStream(android.content.Context,java.lang.String) -> a
-    102:142:void dbUpdateAsync(android.content.Context) -> h
-    145:151:void dbUpdate(android.content.Context) -> i
-inujini_.hatate.util.Util$1 -> jn:
-    114:117:java.lang.Void call(android.content.Context) -> a
-    1:1:java.lang.Object call(java.lang.Object) -> call
-inujini_.hatate.util.Util$2 -> jo:
-    android.app.ProgressDialog val$prog -> a
-    122:123:void call() -> a
-inujini_.hatate.util.Util$3 -> jp:
-    android.app.ProgressDialog val$prog -> a
-    127:129:void call(java.lang.Void) -> a
-    1:1:void call(java.lang.Object) -> call
-inujini_.hatate.util.Util$4 -> jq:
-    android.app.ProgressDialog val$prog -> a
-    android.content.Context val$context -> b
-    133:139:void call(java.lang.Exception) -> a
-    1:1:void call(java.lang.Object) -> call
-inujini_.linq.Linq -> jr:
-    java.lang.Iterable _items -> a
-    96:96:inujini_.linq.Linq linq(java.lang.Iterable) -> a
-    100:100:inujini_.linq.Linq linq(java.lang.Object[]) -> a
-    137:147:inujini_.linq.Linq where(inujini_.function.Function$Predicate) -> a
-    152:158:inujini_.linq.Linq select(inujini_.function.Function$Func1) -> a
-    163:171:inujini_.linq.Linq selectMany(inujini_.function.Function$Func1) -> b
-    348:356:java.util.List toList() -> a
-    360:363:void forEach(inujini_.function.Function$Action1) -> a
-    391:399:int[] toIntArray(inujini_.linq.Linq) -> a
-    403:411:long[] toLongArray(inujini_.linq.Linq) -> b
-    463:470:java.lang.String toJoinedString(inujini_.linq.Linq,java.lang.String) -> a
-    475:475:java.util.Iterator iterator() -> iterator
-inujini_.sqlite.helper.ColumnValuePair -> inujini_.sqlite.helper.ColumnValuePair:
+inujini_.hatate.sqlite.helper.ColumnValuePair -> inujini_.hatate.sqlite.helper.ColumnValuePair:
     inujini_.sqlite.meta.ColumnProperty column -> column
     java.lang.String value -> value
-    41:41:inujini_.sqlite.meta.ColumnProperty getColumn() -> getColumn
-    45:45:java.lang.String getValue() -> getValue
-inujini_.sqlite.helper.CursorExtensions -> inujini_.sqlite.helper.CursorExtensions:
-    8:8:int getIntByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getIntByMeta
-    12:12:java.lang.String getStringByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getStringByMeta
-    16:16:long getLongByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getLongByMeta
-    20:20:float getFloatByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getFloatByMeta
-    24:25:boolean getBooleanByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getBooleanByMeta
-inujini_.sqlite.helper.QueryBuilder -> inujini_.sqlite.helper.QueryBuilder:
+    50:50:inujini_.sqlite.meta.ColumnProperty getColumn() -> getColumn
+    54:54:java.lang.String getValue() -> getValue
+inujini_.hatate.sqlite.helper.CursorExtensions -> inujini_.hatate.sqlite.helper.CursorExtensions:
+    17:17:int getIntByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getIntByMeta
+    21:21:java.lang.String getStringByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getStringByMeta
+    25:25:long getLongByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getLongByMeta
+    29:29:float getFloatByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getFloatByMeta
+    33:34:boolean getBooleanByMeta(android.database.Cursor,inujini_.sqlite.meta.ColumnProperty) -> getBooleanByMeta
+inujini_.hatate.sqlite.helper.QueryBuilder -> inujini_.hatate.sqlite.helper.QueryBuilder:
     java.lang.StringBuilder _query -> _query
-    16:26:inujini_.sqlite.helper.QueryBuilder select(inujini_.sqlite.meta.ColumnProperty[]) -> select
-    30:31:inujini_.sqlite.helper.QueryBuilder selectAll() -> selectAll
-    35:36:inujini_.sqlite.helper.QueryBuilder$UpdateQuery update(java.lang.String) -> update
-    40:41:inujini_.sqlite.helper.QueryBuilder$WhereQuery delete(java.lang.String) -> delete
-    45:67:inujini_.sqlite.helper.QueryBuilder insert(java.lang.String,inujini_.sqlite.helper.ColumnValuePair[]) -> insert
-    71:72:inujini_.sqlite.helper.QueryBuilder from(java.lang.String) -> from
-    76:77:inujini_.sqlite.helper.QueryBuilder limit(int) -> limit
-    81:82:inujini_.sqlite.helper.QueryBuilder offset(int) -> offset
-    86:93:inujini_.sqlite.helper.QueryBuilder orderByAsc(inujini_.sqlite.meta.ColumnProperty[]) -> orderByAsc
-    97:100:inujini_.sqlite.helper.QueryBuilder orderByDesc(inujini_.sqlite.meta.ColumnProperty[]) -> orderByDesc
-    104:104:inujini_.sqlite.helper.QueryBuilder$WhereQuery where() -> where
-    108:109:inujini_.sqlite.helper.QueryBuilder append(inujini_.sqlite.meta.ColumnProperty) -> append
-    113:114:inujini_.sqlite.helper.QueryBuilder append(java.lang.String) -> append
-    118:119:inujini_.sqlite.helper.QueryBuilder appendFormat(java.lang.String,java.lang.Object[]) -> appendFormat
-    125:125:java.lang.String toString() -> toString
-inujini_.sqlite.helper.QueryBuilder$UpdateQuery -> inujini_.sqlite.helper.QueryBuilder$UpdateQuery:
-    inujini_.sqlite.helper.QueryBuilder _qb -> _qb
+    25:35:inujini_.hatate.sqlite.helper.QueryBuilder select(inujini_.sqlite.meta.ColumnProperty[]) -> select
+    39:40:inujini_.hatate.sqlite.helper.QueryBuilder selectAll() -> selectAll
+    44:45:inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery update(java.lang.String) -> update
+    49:50:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery delete(java.lang.String) -> delete
+    54:76:inujini_.hatate.sqlite.helper.QueryBuilder insert(java.lang.String,inujini_.hatate.sqlite.helper.ColumnValuePair[]) -> insert
+    80:81:inujini_.hatate.sqlite.helper.QueryBuilder from(java.lang.String) -> from
+    85:86:inujini_.hatate.sqlite.helper.QueryBuilder limit(int) -> limit
+    90:91:inujini_.hatate.sqlite.helper.QueryBuilder offset(int) -> offset
+    95:102:inujini_.hatate.sqlite.helper.QueryBuilder orderByAsc(inujini_.sqlite.meta.ColumnProperty[]) -> orderByAsc
+    106:109:inujini_.hatate.sqlite.helper.QueryBuilder orderByDesc(inujini_.sqlite.meta.ColumnProperty[]) -> orderByDesc
+    113:113:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery where() -> where
+    117:118:inujini_.hatate.sqlite.helper.QueryBuilder append(inujini_.sqlite.meta.ColumnProperty) -> append
+    122:123:inujini_.hatate.sqlite.helper.QueryBuilder append(java.lang.String) -> append
+    127:128:inujini_.hatate.sqlite.helper.QueryBuilder append(int) -> append
+    132:133:inujini_.hatate.sqlite.helper.QueryBuilder appendFormat(java.lang.String,java.lang.Object[]) -> appendFormat
+    139:139:java.lang.String toString() -> toString
+inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery -> inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery:
+    inujini_.hatate.sqlite.helper.QueryBuilder _qb -> _qb
     boolean isSet -> isSet
-    137:145:inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,java.lang.String) -> set
-    149:149:inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,int) -> set
-    153:153:inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,long) -> set
-    157:157:inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,boolean) -> set
-    161:164:inujini_.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.helper.ColumnValuePair[]) -> set
-    168:168:inujini_.sqlite.helper.QueryBuilder$WhereQuery where() -> where
-    173:173:java.lang.String toString() -> toString
-inujini_.sqlite.helper.QueryBuilder$WhereQuery -> inujini_.sqlite.helper.QueryBuilder$WhereQuery:
-    inujini_.sqlite.helper.QueryBuilder _qb -> _qb
-    186:191:inujini_.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,java.lang.String) -> equal
-    195:195:inujini_.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,int) -> equal
-    199:199:inujini_.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,long) -> equal
-    203:203:inujini_.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,boolean) -> equal
-    207:221:inujini_.sqlite.helper.QueryBuilder$WhereQuery in(inujini_.sqlite.meta.ColumnProperty,java.lang.String[]) -> in
-    226:234:inujini_.sqlite.helper.QueryBuilder$WhereQuery between(inujini_.sqlite.meta.ColumnProperty,java.lang.String,java.lang.String) -> between
-    238:239:inujini_.sqlite.helper.QueryBuilder$WhereQuery and() -> and
-    243:244:inujini_.sqlite.helper.QueryBuilder$WhereQuery or() -> or
-    248:249:inujini_.sqlite.helper.QueryBuilder toQuery() -> toQuery
-    254:254:java.lang.String toString() -> toString
-inujini_.sqlite.helper.SqliteUtil -> inujini_.sqlite.helper.SqliteUtil:
-    36:64:java.lang.Object get(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.function.Function$Func1) -> get
-    77:105:java.util.List getList(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.function.Function$Func1) -> getList
-    111:139:java.util.Map getMap(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.function.Function$Func1,inujini_.function.Function$Func1) -> getMap
-    150:151:void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.function.Function$Action1) -> transaction
-    162:163:void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.function.Function$Action1,inujini_.function.Function$Action2) -> transaction
-    176:196:void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.function.Function$Action1,inujini_.function.Function$Action2,inujini_.function.Function$Action1) -> transaction
-    199:199:java.lang.String getTableName(java.lang.Class) -> getTableName
-    203:203:java.lang.String getDropTableQuery(java.lang.Class) -> getDropTableQuery
-    207:333:java.lang.String getCreateTableQuery(java.lang.Class) -> getCreateTableQuery
-    337:337:java.lang.String getDropCreateQuery(java.lang.Class) -> getDropCreateQuery
-    341:341:boolean isMainThread(android.content.Context) -> isMainThread
-inujini_.sqlite.helper.SqliteUtil$1 -> inujini_.sqlite.helper.SqliteUtil$1:
-    229:229:java.lang.Boolean call(java.lang.reflect.Field) -> call
+    151:159:inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,java.lang.String) -> set
+    163:163:inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,int) -> set
+    167:167:inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,long) -> set
+    171:171:inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.sqlite.meta.ColumnProperty,boolean) -> set
+    175:178:inujini_.hatate.sqlite.helper.QueryBuilder$UpdateQuery set(inujini_.hatate.sqlite.helper.ColumnValuePair[]) -> set
+    182:182:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery where() -> where
+    187:187:java.lang.String toString() -> toString
+inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery -> inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery:
+    inujini_.hatate.sqlite.helper.QueryBuilder _qb -> _qb
+    200:205:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,java.lang.String) -> equal
+    209:209:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,int) -> equal
+    213:213:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,long) -> equal
+    217:217:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery equal(inujini_.sqlite.meta.ColumnProperty,boolean) -> equal
+    221:235:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery in(inujini_.sqlite.meta.ColumnProperty,java.lang.String[]) -> in
+    240:248:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery between(inujini_.sqlite.meta.ColumnProperty,java.lang.String,java.lang.String) -> between
+    252:253:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery and() -> and
+    257:258:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery or() -> or
+    262:263:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery bigger(inujini_.sqlite.meta.ColumnProperty,int) -> bigger
+    267:268:inujini_.hatate.sqlite.helper.QueryBuilder$WhereQuery smaller(inujini_.sqlite.meta.ColumnProperty,int) -> smaller
+    272:273:inujini_.hatate.sqlite.helper.QueryBuilder toQuery() -> toQuery
+    278:278:java.lang.String toString() -> toString
+inujini_.hatate.sqlite.helper.SqliteUtil -> inujini_.hatate.sqlite.helper.SqliteUtil:
+    47:75:java.lang.Object get(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.hatate.function.Function$Func1) -> get
+    88:116:java.util.List getList(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.hatate.function.Function$Func1) -> getList
+    122:150:java.util.Map getMap(android.database.sqlite.SQLiteOpenHelper,java.lang.String,android.content.Context,inujini_.hatate.function.Function$Func1,inujini_.hatate.function.Function$Func1) -> getMap
+    161:162:void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.hatate.function.Function$Action1) -> transaction
+    173:174:void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.hatate.function.Function$Action1,inujini_.hatate.function.Function$Action2) -> transaction
+    187:207:void transaction(android.database.sqlite.SQLiteOpenHelper,android.content.Context,inujini_.hatate.function.Function$Action1,inujini_.hatate.function.Function$Action2,inujini_.hatate.function.Function$Action1) -> transaction
+    210:210:java.lang.String getTableName(java.lang.Class) -> getTableName
+    214:214:java.lang.String getDropTableQuery(java.lang.Class) -> getDropTableQuery
+    218:342:java.lang.String getCreateTableQuery(java.lang.Class) -> getCreateTableQuery
+    346:346:java.lang.String getDropCreateQuery(java.lang.Class) -> getDropCreateQuery
+    350:350:boolean isMainThread(android.content.Context) -> isMainThread
+inujini_.hatate.sqlite.helper.SqliteUtil$1 -> inujini_.hatate.sqlite.helper.SqliteUtil$1:
+    239:239:java.lang.Boolean call(java.lang.reflect.Field) -> call
     1:1:java.lang.Object call(java.lang.Object) -> call
-    1:1:java.lang.Boolean call(java.lang.Object) -> call
-inujini_.sqlite.helper.SqliteUtil$2 -> inujini_.sqlite.helper.SqliteUtil$2:
+inujini_.hatate.sqlite.helper.SqliteUtil$2 -> inujini_.hatate.sqlite.helper.SqliteUtil$2:
     java.lang.StringBuilder val$tblBuilder -> val$tblBuilder
     java.util.List val$primaryKeyList -> val$primaryKeyList
     java.util.Map val$indexMap -> val$indexMap
     java.lang.StringBuilder val$idxBuilder -> val$idxBuilder
     java.lang.String val$tblName -> val$tblName
-    237:298:void call(java.lang.reflect.Field) -> call
+    246:307:void call(java.lang.reflect.Field) -> call
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.util.IconUtil -> kz:
+    21:179:int getIconId(int) -> a
+inujini_.hatate.util.PrefGetter -> la:
+    33:34:int getHour(android.content.Context) -> a
+    43:44:int getMinute(android.content.Context) -> b
+    53:54:boolean isScream(android.content.Context) -> c
+    63:64:boolean isVibration(android.content.Context) -> d
+    73:74:boolean isNoisy(android.content.Context) -> e
+    83:84:boolean isLight(android.content.Context) -> f
+    95:96:long getLightColor(android.content.Context) -> g
+    106:108:java.lang.String getLightColorName(android.content.Context) -> h
+    119:127:java.lang.String getLightColorName(android.content.Context,java.lang.String) -> a
+    136:137:boolean isTweet(android.content.Context) -> i
+    146:147:boolean isSnooze(android.content.Context) -> j
+    157:158:int getSnoozeTime(android.content.Context) -> k
+    168:169:long getSnoozeTimeMill(android.content.Context) -> l
+    178:179:long[] getVibrationPattern(android.content.Context) -> m
+    194:196:java.lang.String getVibrationPatternName(android.content.Context) -> n
+    207:215:java.lang.String getVibrationPatternName(android.content.Context,java.lang.String) -> b
+    219:220:boolean canGacha(android.content.Context) -> o
+inujini_.hatate.util.PrefGetter$1 -> lb:
+    182:182:java.lang.Long call(java.lang.String) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.util.Util -> lc:
+    java.lang.ref.SoftReference _alarmManager -> a
+    54:72:long getAlarmTime(int,int) -> a
+    84:87:void setAlarm(android.content.Context) -> a
+    96:97:void removeAlarm(android.content.Context) -> b
+    106:106:android.app.PendingIntent getAlarmIntent(android.content.Context) -> c
+    119:122:void setSnooze(android.content.Context) -> d
+    131:132:void removeSnooze(android.content.Context) -> e
+    141:141:android.app.PendingIntent getSnoozeIntent(android.content.Context) -> f
+    153:162:android.app.AlarmManager getAlarmManager(android.content.Context) -> g
+    173:173:java.io.InputStreamReader getAssetStream(android.content.Context,java.lang.String) -> a
+    186:226:void dbUpdateAsync(android.content.Context) -> h
+    237:243:void dbUpdate(android.content.Context) -> i
+inujini_.hatate.util.Util$1 -> ld:
+    198:201:java.lang.Void call(android.content.Context) -> a
+    1:1:java.lang.Object call(java.lang.Object) -> call
+inujini_.hatate.util.Util$2 -> le:
+    android.app.ProgressDialog val$prog -> a
+    206:207:void call() -> a
+inujini_.hatate.util.Util$3 -> lf:
+    android.app.ProgressDialog val$prog -> a
+    211:213:void call(java.lang.Void) -> a
+    1:1:void call(java.lang.Object) -> call
+inujini_.hatate.util.Util$4 -> lg:
+    android.app.ProgressDialog val$prog -> a
+    android.content.Context val$context -> b
+    217:223:void call(java.lang.Exception) -> a
     1:1:void call(java.lang.Object) -> call
 inujini_.sqlite.meta.ColumnProperty -> inujini_.sqlite.meta.ColumnProperty:
     java.lang.String columnName -> columnName
@@ -2590,7 +2853,7 @@ inujini_.sqlite.meta.ISqlite -> inujini_.sqlite.meta.ISqlite:
     int FIELD_REAL -> FIELD_REAL
     int FIELD_BLOB -> FIELD_BLOB
     int FIELD_NULL -> FIELD_NULL
-inujini_.sqlite.meta.annotation.SqliteField -> js:
+inujini_.sqlite.meta.annotation.SqliteField -> lh:
     int type() -> a
     java.lang.String name() -> b
     boolean notNull() -> c
@@ -2598,7 +2861,7 @@ inujini_.sqlite.meta.annotation.SqliteField -> js:
     boolean unique() -> e
     java.lang.String indexName() -> f
     java.lang.String defaultValue() -> g
-inujini_.sqlite.meta.annotation.SqliteTable -> jt:
+inujini_.sqlite.meta.annotation.SqliteTable -> li:
     java.lang.String value() -> a
     boolean hasPrimaryId() -> b
 twitter4j.AccountSettings -> twitter4j.AccountSettings:

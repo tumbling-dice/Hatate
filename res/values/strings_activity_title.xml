@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_notification">通知設定詳細</string>
+    <string name="title_license">ライセンス</string>
+    <string name="title_oauth">OAuth認証</string>
+    <string name="title_spellcard_history">スペルカード取得履歴</string>
+    <string name="title_account_list">Twitterアカウント一覧</string>
+    <string name="title_gacha">スペルカードガチャ</string>
+    <string name="title_spellcard_library">スペルカード一覧</string>
+
+</resources>

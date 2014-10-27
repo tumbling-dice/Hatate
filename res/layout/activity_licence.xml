@@ -18,7 +18,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="LICENCE"
+            android:text="PROGRAM LICENCE"
             android:textSize="28sp" />
         <TextView
             android:layout_width="fill_parent"
@@ -70,9 +70,16 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ICON LICENCE"
+            android:layout_marginTop="15dp"
+            android:textSize="28sp" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
-            android:text="また、設定画面上の各種アイコンはGoogleのmaterial-design-icons((C) Google 2014)を使用しています。" />
+            android:text="設定画面上の各種アイコンはMaterial Design Icons((C) Google 2014)を使用しています。" />
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -85,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
-            android:text="material-design-icons((C) Google 2014)はクリエイティブ・コモンズ・ライセンスの「表示-継承」に基いて公開されています。コモンズ証及びライセンスについては以下を御覧ください。" />
+            android:text="Material Design Iconsはクリエイティブ・コモンズ・ライセンス4.0の「表示-継承」に基いて公開されています。コモンズ証及びライセンスについては以下を御覧ください。" />
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -99,6 +106,39 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:text="http://creativecommons.org/licenses/by-sa/4.0/legalcode"
+            android:autoLink="web" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="また、東方キャラクタのドット絵アイコンは「東方16×16シリーズ」((C) Erl 2014)を使用しています。" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="http://d.hatena.ne.jp/Erl/20090523/1243059517"
+            android:autoLink="web" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="東方16×16シリーズはクリエイティブ・コモンズ・ライセンス2.1の「表示-非営利」に基いて公開されています。コモンズ証及びライセンスについては以下を御覧ください。" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="http://creativecommons.org/licenses/by-nc/2.1/jp/"
+            android:autoLink="web" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="http://creativecommons.org/licenses/by-nc/2.1/jp/legalcode"
             android:autoLink="web" />
 
         <TextView

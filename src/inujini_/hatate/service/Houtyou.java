@@ -9,6 +9,7 @@
 
 package inujini_.hatate.service;
 
+import inujini_.hatate.MainActivity;
 import inujini_.hatate.R;
 import inujini_.hatate.love.Love;
 import inujini_.hatate.sqlite.dao.AccountDao;
@@ -24,6 +25,7 @@ import twitter4j.TwitterException;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.preference.PreferenceManager;
 
 /**
  *
@@ -45,6 +47,9 @@ public class Houtyou extends PierceReceiver {
 		val isPreview = intent.getBooleanExtra(KEY_IS_PREVIEW, false);
 
 		if(!isPreview || DEBUG) {
+			val pref = PreferenceManager.getDefaultSharedPreferences(context);
+			pref.edit().putBoolean(MainActivity.KEY_GACHA, true).commit();
+
 			// スペルカードの取得
 			val spellCard = SpellCardDao.getRandomSpellCard(context);
 

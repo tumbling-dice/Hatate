@@ -9,16 +9,16 @@
 
 package inujini_.hatate.sqlite.dao;
 
-import inujini_.function.Function.Action1;
-import inujini_.function.Function.Func1;
 import inujini_.hatate.R;
 import inujini_.hatate.data.TwitterAccount;
 import inujini_.hatate.data.meta.MetaAccount;
+import inujini_.hatate.function.Function.Action1;
+import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.sqlite.DatabaseHelper;
-import inujini_.sqlite.helper.CursorExtensions;
-import inujini_.sqlite.helper.QueryBuilder;
-import inujini_.sqlite.helper.SqliteUtil;
+import inujini_.hatate.sqlite.helper.CursorExtensions;
+import inujini_.hatate.sqlite.helper.QueryBuilder;
+import inujini_.hatate.sqlite.helper.SqliteUtil;
 
 import java.util.List;
 
@@ -37,18 +37,6 @@ import android.database.sqlite.SQLiteDatabase;
  */
 @ExtensionMethod({SqliteUtil.class, CursorExtensions.class})
 public class AccountDao {
-
-	/** Cursor -> TwitterAccount (selectAll専用) */
-	private static final Func1<Cursor, TwitterAccount> _converter = new Func1<Cursor, TwitterAccount>() {
-		@Override
-		public TwitterAccount call(Cursor c) {
-			val a = new TwitterAccount();
-			a.setScreenName(c.getStringByMeta(MetaAccount.ScreenName));
-			a.setUserId(Long.parseLong(c.getStringByMeta(MetaAccount.UserId)));
-			a.setUse(c.getBooleanByMeta(MetaAccount.UseFlag));
-			return a;
-		}
-	};
 
 	/**
 	 * 連携用Twitter取得.
@@ -114,7 +102,16 @@ public class AccountDao {
 					.from(MetaAccount.TBL_NAME)
 					.toString();
 
-		return new DatabaseHelper(context).getList(q, context, _converter);
+		return new DatabaseHelper(context).getList(q, context, new Func1<Cursor, TwitterAccount>() {
+			@Override
+			public TwitterAccount call(Cursor c) {
+				val a = new TwitterAccount();
+				a.setScreenName(c.getStringByMeta(MetaAccount.ScreenName));
+				a.setUserId(Long.parseLong(c.getStringByMeta(MetaAccount.UserId)));
+				a.setUse(c.getBooleanByMeta(MetaAccount.UseFlag));
+				return a;
+			}
+		});
 	}
 
 	/**

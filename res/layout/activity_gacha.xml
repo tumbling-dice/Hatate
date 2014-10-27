@@ -2,7 +2,7 @@
 <!--
     HatateHoutyouAlarm
     Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
-    
+
     This software is released under the MIT License.
     http://opensource.org/licenses/mit-license.php
 -->
@@ -11,6 +11,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="はたてちゃんをタップしてスペルカードを手に入れよう！"/>
     <ImageView
         android:id="@+id/imgHatate"
         android:layout_width="match_parent"

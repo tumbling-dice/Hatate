@@ -6,6 +6,11 @@
 
 #更新履歴
 
++ ver 1.2.0
+    * スペルカードガチャ実装
+    * スペルカード図鑑追加
+    * スペルカード履歴にキャラのアイコンがついて見やすくなりました
+    * ライセンスの追記（東方16×16シリーズ）
 + ver 1.2.0β2
     * 設定画面に色々とアイコンを追加
     * Twitter連携アカウントを複数設定可能（やめろ）
@@ -67,14 +72,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 **ただし、当成果物に含まれている画像リソースに関してはこの限りではありません。**<br>
 **はたてちゃんの画像に関する全ての権利は[天篭り](https://twitter.com/tcm_b_c)氏が所有しており、使用・加工・再配布に関しては氏の許諾を得る必要があります。**
 
-また、当成果物内で使用している各種ライブラリのライセンスに関しては以下の通りとなっています。
+## Libary License
+当成果物内で使用している各種ライブラリのライセンスに関しては以下の通りとなっています。
 
 + [Apache 2.0ライセンス](http://www.apache.org/licenses/LICENSE-2.0)で配布されているもの
     * [Twittrer4J](http://twitter4j.org/ja/index.html)
 + MITライセンスで配布されているもの
     * [Lombok](http://projectlombok.org/)
 
-なお、設定画面でのアイコンは[Material Design Icons ((C) Google 2014)](https://github.com/google/material-design-icons/releases) を使用しています。
+## Icon License
+設定画面でのアイコンは[Material Design Icons ((C) Google 2014)](https://github.com/google/material-design-icons/releases) を使用しています。
 
-こちらはクリエイティブ・コモンズ・ライセンスにおける[「表示-継承」](http://creativecommons.org/licenses/by-sa/4.0/deed.ja)に基いて公開されています。ライセンスについては[こちら](http://creativecommons.org/licenses/by-sa/4.0/legalcode)をお読み下さい。
+Material Design Iconsはクリエイティブ・コモンズ・ライセンス4.0の[「表示-継承」](http://creativecommons.org/licenses/by-sa/4.0/deed.ja)に基いて公開されています。ライセンスについては[こちら](http://creativecommons.org/licenses/by-sa/4.0/legalcode)をお読み下さい。
 
+また、東方キャラクタのドット絵アイコンは[東方16×16シリーズ](http://d.hatena.ne.jp/Erl/20090523/1243059517)((C) Erl 2014)を使用しています。
+
+東方16×16シリーズはクリエイティブ・コモンズ・ライセンス2.1の[「表示-非営利」](http://creativecommons.org/licenses/by-nc/2.1/jp/)に基いて公開されています。ライセンスについては[こちら](http://creativecommons.org/licenses/by-nc/2.1/jp/legalcode)をお読み下さい。

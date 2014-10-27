@@ -1,25 +1,39 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
 
 package inujini_.hatate;
 
+import inujini_.hatate.data.SpellCard;
+import inujini_.hatate.function.Function.Action;
+import inujini_.hatate.function.Function.Action1;
+import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.preference.TimePickerPreference;
+import inujini_.hatate.reactive.ReactiveAsyncTask;
+import inujini_.hatate.sqlite.dao.SpellCardDao;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
 import inujini_.hatate.util.PrefGetter;
 import inujini_.hatate.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.widget.TimePicker;
@@ -30,6 +44,9 @@ import android.widget.Toast;
  */
 @ExtensionMethod({PrefGetter.class})
 public class MainActivity extends PreferenceActivity {
+
+	private static final int REQ_GACHA = 100;
+	public static final String KEY_GACHA = "canGacha";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +84,16 @@ public class MainActivity extends PreferenceActivity {
 			}
 		});
 
+		val gachaPref = findPreference("gacha");
+		gachaPref.setEnabled(PrefGetter.canGacha(getApplicationContext()));
+		gachaPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+				startActivityForResult(new Intent(getApplicationContext(), GachaActivity.class), REQ_GACHA);
+				return false;
+			}
+		});
+
 		// check db state
 		Util.dbUpdateAsync(this);
 
@@ -81,5 +108,60 @@ public class MainActivity extends PreferenceActivity {
 			Util.setAlarm(getApplicationContext());
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode != REQ_GACHA) {
+			super.onActivityResult(requestCode, resultCode, data);
+			return;
+		}
+
+		if(resultCode != RESULT_OK)
+			return;
+
+		val prog = new ProgressDialog(this);
+		prog.setMessage("結果を取得しています...");
+		prog.setCancelable(false);
+		prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+		new ReactiveAsyncTask<Context, Void, List<SpellCard>>(new Func1<Context, List<SpellCard>>() {
+			@Override
+			public List<SpellCard> call(Context context) {
+				val cardList = new ArrayList<SpellCard>();
+
+				for(int i = 0; i < 3; i++) {
+					cardList.add(SpellCardDao.getRandomSpellCard(context));
+				}
+
+				val pref = PreferenceManager.getDefaultSharedPreferences(context);
+				pref.edit().putBoolean(KEY_GACHA, false).commit();
+
+				return cardList;
+			}
+		}).setOnPreExecute(new Action() {
+			@Override
+			public void call() {
+				prog.show();
+			}
+		}).setOnPostExecute(new Action1<List<SpellCard>>() {
+			@Override
+			public void call(List<SpellCard> x) {
+				if(prog != null && prog.isShowing())
+					prog.dismiss();
+
+				findPreference("gacha").setEnabled(false);
+
+				val sb = new StringBuilder();
+
+				for (val spellCard : x) {
+					sb.append(spellCard.getName()).append('\n');
+				}
+
+				Toast.makeText(getApplicationContext(), String.format("%sを取得しました！", sb.toString())
+						, Toast.LENGTH_SHORT).show();
+
+			}
+		}).execute(getApplicationContext());
 	}
 }
