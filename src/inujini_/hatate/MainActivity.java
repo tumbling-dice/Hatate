@@ -28,6 +28,7 @@ import lombok.experimental.ExtensionMethod;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -90,6 +91,16 @@ public class MainActivity extends PreferenceActivity {
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
 				startActivityForResult(new Intent(getApplicationContext(), GachaActivity.class), REQ_GACHA);
+				return false;
+			}
+		});
+
+		findPreference("help").setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+				val intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://tumbling-dice.github.io/Hatate/"));
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivity(intent);
 				return false;
 			}
 		});

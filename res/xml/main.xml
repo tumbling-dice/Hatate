@@ -88,6 +88,11 @@
                 android:targetClass="inujini_.hatate.AccountListActivity" />
         </inujini_.hatate.preference.IconPreference>
         <inujini_.hatate.preference.IconPreference
+            android:key="help"
+            android:title="オンラインマニュアル"
+            android:summary="使い方とかtipsとかを見ることができます。"
+            android:icon="@drawable/ic_live_help_black_24dp"/>
+        <inujini_.hatate.preference.IconPreference
             android:key="license"
             android:title="ライセンス"
             android:summary="使ったライブラリのあれとか"
