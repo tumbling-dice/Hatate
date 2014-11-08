@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -29,6 +29,10 @@ import android.support.v4.app.NotificationCompat;
 public abstract class PierceReceiver extends AsyncBroadcastReceiver {
 
 	protected Statistics _statistics;
+	public static final int NOTIFY_HATATE_HOUTYOU = 0;
+	public static final int NOTIFY_SPELL_CARD = 1;
+	public static final int REQ_KILL = 10;
+	public static final int REQ_SPELL_CARD = 11;
 
 	@Override
 	protected void asyncOnReceive(Context context, Intent intent) {
@@ -52,7 +56,7 @@ public abstract class PierceReceiver extends AsyncBroadcastReceiver {
 		// 通知
 		val notifyManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-		val killIntent = PendingIntent.getService(context, -2, new Intent(context, Kill.class)
+		val killIntent = PendingIntent.getService(context, REQ_KILL, new Intent(context, Kill.class)
 				, PendingIntent.FLAG_UPDATE_CURRENT);
 
 		val notify = new NotificationCompat.Builder(context)
@@ -74,7 +78,7 @@ public abstract class PierceReceiver extends AsyncBroadcastReceiver {
 			notify.setVibrate(context.getVibrationPattern());
 		}
 
-		notifyManager.notify(0, notify.build());
+		notifyManager.notify(NOTIFY_HATATE_HOUTYOU, notify.build());
 
 		// スヌーズ
 		if(context.isSnooze()) {

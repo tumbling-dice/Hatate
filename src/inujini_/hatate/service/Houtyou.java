@@ -11,10 +11,12 @@ package inujini_.hatate.service;
 
 import inujini_.hatate.MainActivity;
 import inujini_.hatate.R;
+import inujini_.hatate.SpellCardHistoryActivity;
 import inujini_.hatate.love.Love;
 import inujini_.hatate.sqlite.dao.AccountDao;
 import inujini_.hatate.sqlite.dao.SpellCardDao;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
+import inujini_.hatate.util.IconUtil;
 import inujini_.hatate.util.PrefGetter;
 
 import java.util.Random;
@@ -23,15 +25,19 @@ import lombok.val;
 import lombok.experimental.ExtensionMethod;
 import twitter4j.TwitterException;
 import android.annotation.SuppressLint;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
 
 /**
  *
  */
 @ExtensionMethod({PrefGetter.class})
 public class Houtyou extends PierceReceiver {
+
 
 	// These KILL fields do not use any longer.
 	// But these need to switch from SharedPreference to SQLite, have been left.
@@ -52,6 +58,24 @@ public class Houtyou extends PierceReceiver {
 
 			// スペルカードの取得
 			val spellCard = SpellCardDao.getRandomSpellCard(context);
+			val spellCardName = spellCard.getName();
+
+			val spellcardIntent = PendingIntent.getActivity(context
+					, REQ_SPELL_CARD
+					, new Intent(context, SpellCardHistoryActivity.class)
+					, PendingIntent.FLAG_UPDATE_CURRENT);
+
+			((NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE))
+				.notify(NOTIFY_SPELL_CARD
+						, new NotificationCompat.Builder(context)
+							.setSmallIcon(IconUtil.getIconId(spellCard.getCharacterId()))
+							.setTicker(String.format("%s取得！", spellCardName))
+							.setWhen(System.currentTimeMillis())
+							.setContentTitle("スペルカード取得")
+							.setContentText(String.format("はたてちゃんの頭部から%sを剥ぎ取りました。", spellCardName))
+							.setContentIntent(spellcardIntent)
+							.setAutoCancel(true)
+							.build());
 
 			// 統計情報
 			val killCount = _statistics.getCount() + 1;

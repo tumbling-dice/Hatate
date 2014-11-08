@@ -41,6 +41,6 @@ public class Kill extends IntentService {
 		super.onDestroy();
 		val notifyManager = (NotificationManager) getApplicationContext()
 				.getSystemService(Context.NOTIFICATION_SERVICE);
-		notifyManager.cancel(0);
+		notifyManager.cancel(PierceReceiver.NOTIFY_HATATE_HOUTYOU);
 	}
 }
