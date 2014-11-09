@@ -46,4 +46,6 @@ public class SpellCard implements Serializable, ISqlite, TouhouData {
 	@SqliteField(name="SeriesId", type=FIELD_TEXT, notNull=true)
 	private int[] seriesId;
 
+	private int position;
+
 }

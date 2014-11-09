@@ -17,4 +17,6 @@ public interface TouhouData {
 	void setId(long id);
 	String getName();
 	void setName(String id);
+	int getPosition();
+	void setPosition(int position);
 }

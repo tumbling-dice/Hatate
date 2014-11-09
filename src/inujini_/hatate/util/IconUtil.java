@@ -10,6 +10,8 @@
 package inujini_.hatate.util;
 
 import inujini_.hatate.R;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 /**
  *
@@ -180,4 +182,7 @@ public class IconUtil {
 		}
 	}
 
+	public static Drawable getIconDrawable(Context context, int characterId) {
+		return context.getResources().getDrawable(getIconId(characterId));
+	}
 }

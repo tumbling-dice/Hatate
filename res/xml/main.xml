@@ -22,7 +22,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="通知設定">
         <inujini_.hatate.preference.IconCheckboxPreference
-            android:title="とどめをささない"
+            android:title="慈悲はない"
             android:summary="通知のオン・オフを切り替えます。"
             android:key="isNoisy"
             android:defaultValue="true"

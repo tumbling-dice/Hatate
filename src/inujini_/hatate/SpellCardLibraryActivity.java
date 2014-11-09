@@ -23,6 +23,7 @@ import inujini_.hatate.sqlite.dao.CharacterDao;
 import inujini_.hatate.sqlite.dao.SeriesDao;
 import inujini_.hatate.sqlite.dao.SpellCardDao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -83,9 +84,27 @@ public class SpellCardLibraryActivity extends ExpandableListActivity {
 				val serieses = SeriesDao.getAllSeries(x);
 				val spellCards = SpellCardDao.getHaveSpellCards(x);
 
-				return serieses.linq().toMap(new Func1<Series, Series>() {
+				val hasSeriese = spellCards.linq().selectMany(new Func1<SpellCard, Iterable<Long>>() {
+					@Override
+					public Iterable<Long> call(SpellCard y) {
+						ArrayList<Long> list = new ArrayList<Long>();
+						for (int id : y.getSeriesId()) {
+							list.add((long) id);
+						}
+						return list;
+					}
+				}).distinct().toList();
+
+				return serieses.linq().where(new Predicate<Series>() {
+					@Override
+					public Boolean call(Series y) {
+						return hasSeriese.contains(y.getId());
+					}
+				}).toMap(new Func1<Series, Series>() {
+					private int pos = 0;
 					@Override
 					public Series call(Series y) {
+						y.setPosition(pos++);
 						return y;
 					}
 				}, new Func1<Series, List<SpellCard>>() {
@@ -142,9 +161,23 @@ public class SpellCardLibraryActivity extends ExpandableListActivity {
 				val characters = CharacterDao.getAllCharacter(x);
 				val spellCards = SpellCardDao.getHaveSpellCards(x);
 
-				return characters.linq().toMap(new Func1<Character, Character>() {
+				val hasCharacters = spellCards.linq().select(new Func1<SpellCard, Long>() {
+					@Override
+					public Long call(SpellCard y) {
+						return (long) y.getCharacterId();
+					}
+				}).distinct().toList();
+
+				return characters.linq().where(new Predicate<Character>() {
+					@Override
+					public Boolean call(Character y) {
+						return hasCharacters.contains(y.getId());
+					}
+				}).toMap(new Func1<Character, Character>() {
+					private int pos = 0;
 					@Override
 					public Character call(Character y) {
+						y.setPosition(pos++);
 						return y;
 					}
 				}, new Func1<Character, List<SpellCard>>() {

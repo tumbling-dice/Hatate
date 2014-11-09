@@ -32,4 +32,6 @@ public class Character implements Serializable, ISqlite, TouhouData {
 
 	@SqliteField(name="Name", type=FIELD_TEXT, notNull=true, unique=true)
 	private String name;
+
+	private int position;
 }

@@ -38,7 +38,6 @@ import android.widget.TextView;
 public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandableListAdapter {
 
 	private final Map<K, List<SpellCard>> _items;
-	//private final Context _context;
 	private final LayoutInflater _inflater;
 
 	static class PViewHolder {
@@ -66,7 +65,6 @@ public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandabl
 	 */
 	public SpellCardLibraryAdapter(Map<K, List<SpellCard>> items, Context context) {
 		_items = items;
-		//_context = context;
 		_inflater = LayoutInflater.from(context);
 	}
 
@@ -79,10 +77,8 @@ public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandabl
 	}
 
 	public List<SpellCard> getChildren(int groupPosition) {
-		val id = groupPosition + 1;
 		for (val item : _items.entrySet()) {
-			val series = item.getKey();
-			if(series.getId() == id) {
+			if(item.getKey().getPosition() == groupPosition) {
 				return item.getValue();
 			}
 		}
@@ -139,9 +135,8 @@ public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandabl
 	 */
 	@Override
 	public Object getGroup(int groupPosition) {
-		val id = groupPosition + 1;
 		for (val item : _items.keySet()) {
-			if(item.getId() == id) return item;
+			if(item.getPosition() == groupPosition) return item;
 		}
 		return null;
 	}
