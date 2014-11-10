@@ -76,6 +76,14 @@
         android:defaultValue="false"
         hatate:iconOn="@drawable/ic_sms_black_24dp"
         hatate:iconOff="@drawable/ic_sms_black_24dp"/>
+    <inujini_.hatate.preference.IconCheckboxPreference
+        android:title="Yo"
+        android:summaryOff="はたてちゃんが刺されたYo"
+        android:summaryOn="「HATATE」をSubscribeしておくと全世界のはたてちゃんの死に際を示すYoを受信できます。"
+        android:key="isYo"
+        android:defaultValue="false"
+        hatate:iconOn="@drawable/ic_yo_logo_24dp"
+        hatate:iconOff="@drawable/ic_yo_logo_24dp"/>
     <inujini_.hatate.preference.PreviewPreference
         android:key="preview"
         android:title="確認"

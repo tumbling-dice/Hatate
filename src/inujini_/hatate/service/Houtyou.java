@@ -122,6 +122,11 @@ public class Houtyou extends PierceReceiver {
 					}
 				}
 			}
+			
+			// Yo
+			if(context.isYo()) {
+				//FIXME: Post YoAll
+			}
 
 			StatisticsDao.update(context, killCount, love);
 		}

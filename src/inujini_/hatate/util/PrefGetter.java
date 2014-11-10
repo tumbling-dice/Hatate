@@ -219,5 +219,10 @@ public class PrefGetter {
 		val pref = PreferenceManager.getDefaultSharedPreferences(context);
 		return pref.getBoolean("canGacha", true);
 	}
+	
+	public static boolean isYo(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		return pref.getBoolean("isYo", false);
+	}
 
 }
