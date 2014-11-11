@@ -194,18 +194,23 @@ public class NotificationActivity extends PreferenceActivity {
 			}
 		});
 		
-		/*findPreference("isYo").setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+		val yo = findPreference("yo");
+		
+		if(!RepeatYoService.isSentYo(getApplicationContext())) {
+			yo.setEnabled(false);
+		}
+		
+		yo.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				if(((Boolean) newValue) && !hasYo()) {
-					val i = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.yo_invate_uri)));
-					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					startActivity(i);
-				}
+				if(newValue == null || "".equals((String) newValue))
+					return false;
 				
+				preference.setEnabled(false);
+				Util.setRepeatYo(getApplicationContext());
 				return true;
 			}
-		});*/
+		});
 	}
 
 	@Override
@@ -216,16 +221,4 @@ public class NotificationActivity extends PreferenceActivity {
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
-	/*private boolean hasYo() {
-		val yoPackage = getString(R.string.yo_package);
-		val pm = getPackageManager();
-		
-		return !pm.getInstalledApplications(0).linq().any(new Predicate<ApplicationInfo>(){
-			@Override
-			public Boolean call(ApplicationInfo x) {
-				return x.packageName.equals(yoPackage);
-			}
-		});
-	}*/
 }

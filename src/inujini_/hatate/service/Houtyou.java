@@ -131,15 +131,24 @@ public class Houtyou extends PierceReceiver {
 						, new Response.Listener<String>() {
 							@Override
 							public void onResponse(String response) {
-								Log.d("Houtyou", "success yo");
+								Log.d("Houtyou", "success yo all.");
 							}
 						}, new Response.ErrorListener() {
 							@Override
 							public void onErrorResponse(VolleyError error) {
-								Log.d("Houtyou", "error yo");
+								if(error.networkResponse == null) {
+									Log.d("Houtyou"
+										, String.format("error yo all. message:%s", error.getMessage()));
+								} else {
+									Log.d("Houtyou"
+										, String.format("error yo all. statuscode:%d message:%s"
+											, error.networkResponse.statuscode
+											, error.getMessage()));
+								}
 							}
 						}));
 			}
+			
 
 			StatisticsDao.update(context, killCount, love);
 		}
