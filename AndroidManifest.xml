@@ -85,6 +85,8 @@
         <service android:name="inujini_.hatate.service.Kill" android:exported="false" />
 
         <service android:name="inujini_.hatate.service.OauthService" android:exported="false" />
+        
+        <service android:name="inujini_.hatate.service.RepeatYoService" android:exported="false" />
 
     </application>
 
