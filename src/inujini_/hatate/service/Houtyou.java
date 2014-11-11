@@ -46,6 +46,7 @@ public class Houtyou extends PierceReceiver {
 
 	public static final String KEY_IS_PREVIEW = "preview";
 	private static final boolean DEBUG = false;
+	private static Resources _res;
 
 	@SuppressLint("DefaultLocale")
 	@Override
@@ -86,7 +87,7 @@ public class Houtyou extends PierceReceiver {
 
 			// Twitter連携
 			if(context.isTweet()) {
-				val res = context.getResources();
+				val res = getResources(context);
 				val hash = res.getString(R.string.hash);
 
 				String tweet = null;
@@ -125,11 +126,29 @@ public class Houtyou extends PierceReceiver {
 			
 			// Yo
 			if(context.isYo()) {
-				//FIXME: Post YoAll
+				AppHatate.getRequestQueue()
+					.add(YoRequest.yoAll(new YoParam(getResources(context).getString(R.string.yo_api_key))
+						, new Response.Listener<String>() {
+							@Override
+							public void onResponse(String response) {
+								Log.d("Houtyou", "success yo");
+							}
+						}, new Response.ErrorListener() {
+							@Override
+							public void onErrorResponse(VolleyError error) {
+								Log.d("Houtyou", "error yo");
+							}
+						}));
 			}
 
 			StatisticsDao.update(context, killCount, love);
 		}
 	}
-
+	
+	private static Resources getResources(Context context) {
+		if(_res != null) return _res;
+		
+		_res = context.getResources();
+		return _res;
+	}
 }

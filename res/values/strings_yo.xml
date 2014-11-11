@@ -9,7 +9,6 @@
 
 <resources>
     <string name="yo_api_key"></string>
-    <string name="yo_api_uri">http://api.justyo.co/yoall/</string>
     <string name="yo_invate_uri">http://justyo.co/HATATE</string>
     <string name="yo_package">com.justyo</string>
 </resources>
