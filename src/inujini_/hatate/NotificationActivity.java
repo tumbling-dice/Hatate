@@ -193,19 +193,19 @@ public class NotificationActivity extends PreferenceActivity {
 				return true;
 			}
 		});
-		
-		val yo = findPreference("yo");
-		
+
+		val yoPref = findPreference("yo");
+
 		if(!RepeatYoService.isSentYo(getApplicationContext())) {
-			yo.setEnabled(false);
+			yoPref.setEnabled(false);
 		}
-		
-		yo.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+
+		yoPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 				if(newValue == null || "".equals((String) newValue))
 					return false;
-				
+
 				preference.setEnabled(false);
 				Util.setRepeatYo(getApplicationContext());
 				return true;

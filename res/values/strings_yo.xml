@@ -11,4 +11,5 @@
     <string name="yo_api_key"></string>
     <string name="yo_invate_uri">http://justyo.co/HATATE</string>
     <string name="yo_package">com.justyo</string>
+    <string name="yo_folk_url">https://tumbling-dice.github.io/Hatate/yo.html</string>
 </resources>

@@ -14,9 +14,9 @@ public enum YoAPI {
 	YoAll("http://api.justyo.co/yoall/"),
 	Accounts("https://api.justyo.co/accounts/"),
 	SubscribersCount("https://api.justyo.co/subscribers_count/");
-	
+
 	@Getter private final String value;
-	
+
 	private YoAPI(String value) {
 		this.value = value;
 	}

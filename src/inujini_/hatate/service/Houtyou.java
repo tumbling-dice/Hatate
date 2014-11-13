@@ -123,32 +123,35 @@ public class Houtyou extends PierceReceiver {
 					}
 				}
 			}
-			
+
 			// Yo
 			if(context.isYo()) {
-				AppHatate.getRequestQueue()
-					.add(YoRequest.yoAll(new YoParam(getResources(context).getString(R.string.yo_api_key))
-						, new Response.Listener<String>() {
-							@Override
-							public void onResponse(String response) {
-								Log.d("Houtyou", "success yo all.");
+				val res = getResources(context);
+				val param = new YoParam.Builder(res.getString(R.string.yo_api_key))
+								.link(res.getString(R.string.yo_folk_url))
+								.build();
+
+				AppHatate.getRequestQueue().add(YoRequest.yoAll(param
+					, new Response.Listener<String>() {
+						@Override
+						public void onResponse(String response) {
+							Log.d("Houtyou", "success yo all.");
+						}
+					}, new Response.ErrorListener() {
+						@Override
+						public void onErrorResponse(VolleyError error) {
+							if(error.networkResponse == null) {
+								Log.d("Houtyou"
+									, String.format("error yo all. message:%s", error.getMessage()));
+							} else {
+								Log.d("Houtyou"
+									, String.format("error yo all. statuscode:%d message:%s"
+										, error.networkResponse.statuscode
+										, error.getMessage()));
 							}
-						}, new Response.ErrorListener() {
-							@Override
-							public void onErrorResponse(VolleyError error) {
-								if(error.networkResponse == null) {
-									Log.d("Houtyou"
-										, String.format("error yo all. message:%s", error.getMessage()));
-								} else {
-									Log.d("Houtyou"
-										, String.format("error yo all. statuscode:%d message:%s"
-											, error.networkResponse.statuscode
-											, error.getMessage()));
-								}
-							}
-						}));
+						}
+					}));
 			}
-			
 
 			StatisticsDao.update(context, killCount, love);
 		}
