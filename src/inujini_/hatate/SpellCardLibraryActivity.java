@@ -84,6 +84,7 @@ public class SpellCardLibraryActivity extends ExpandableListActivity {
 				val serieses = SeriesDao.getAllSeries(x);
 				val spellCards = SpellCardDao.getHaveSpellCards(x);
 
+				// 全スペルカードの中から所持しているシリーズのIDだけを抽出する
 				val hasSeriese = spellCards.linq().selectMany(new Func1<SpellCard, Iterable<Long>>() {
 					@Override
 					public Iterable<Long> call(SpellCard y) {
@@ -98,12 +99,14 @@ public class SpellCardLibraryActivity extends ExpandableListActivity {
 				return serieses.linq().where(new Predicate<Series>() {
 					@Override
 					public Boolean call(Series y) {
+						// 所持済みのシリーズのみを対象とする
 						return hasSeriese.contains(y.getId());
 					}
 				}).toMap(new Func1<Series, Series>() {
 					private int pos = 0;
 					@Override
 					public Series call(Series y) {
+						// SpellCardLibraryAdapterでの表示順を設定しておく
 						y.setPosition(pos++);
 						return y;
 					}
@@ -161,6 +164,7 @@ public class SpellCardLibraryActivity extends ExpandableListActivity {
 				val characters = CharacterDao.getAllCharacter(x);
 				val spellCards = SpellCardDao.getHaveSpellCards(x);
 
+				// 全スペルカードの中から所持しているキャラクターのIDだけを抽出する
 				val hasCharacters = spellCards.linq().select(new Func1<SpellCard, Long>() {
 					@Override
 					public Long call(SpellCard y) {
@@ -171,12 +175,14 @@ public class SpellCardLibraryActivity extends ExpandableListActivity {
 				return characters.linq().where(new Predicate<Character>() {
 					@Override
 					public Boolean call(Character y) {
+						// 所持済みのキャラクターのみを対象とする
 						return hasCharacters.contains(y.getId());
 					}
 				}).toMap(new Func1<Character, Character>() {
 					private int pos = 0;
 					@Override
 					public Character call(Character y) {
+						// SpellCardLibraryAdapterでの表示順を設定しておく
 						y.setPosition(pos++);
 						return y;
 					}
@@ -217,6 +223,9 @@ public class SpellCardLibraryActivity extends ExpandableListActivity {
 		}).execute(getApplicationContext());
 	}
 
+	/**
+	 * indicatorの位置を右端へ寄せる.
+	 */
 	private void setIndicator() {
 		val newDisplay = getWindowManager().getDefaultDisplay();
 		val width = newDisplay.getWidth();

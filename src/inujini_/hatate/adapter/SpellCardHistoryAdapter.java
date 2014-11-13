@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 /**
  * スペルカード履歴一覧用ArrayAdapter.
+ * @see SpellCardHistoryActivity
  */
 public class SpellCardHistoryAdapter extends ArrayAdapter<SpellCardHistory> {
 
@@ -35,6 +36,7 @@ public class SpellCardHistoryAdapter extends ArrayAdapter<SpellCardHistory> {
 	 * スペルカード履歴一覧用ArrayAdapter.
 	 * @param context
 	 * @param objects
+	 * @see SpellCardHistoryActivity
 	 */
 	public SpellCardHistoryAdapter(Context context, List<SpellCardHistory> objects) {
 		super(context, 0, objects);

@@ -152,7 +152,8 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()){
+		switch(item.getItemId()) {
+		// add twitter account
 		case R.id.menu_item_add:
 			if(_receiver != null) {
 				unregisterReceiver(_receiver);
@@ -218,6 +219,7 @@ public class AccountListActivity extends ListActivity implements OnItemLongClick
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// Note: このアクティビティから抜けるときは必ず_receiverを解除しておく
 		if (keyCode == KeyEvent.KEYCODE_BACK && _receiver != null) {
 			unregisterReceiver(_receiver);
 			_receiver = null;

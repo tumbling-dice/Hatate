@@ -53,6 +53,10 @@ public class GachaActivity extends Activity {
 		setContentView(R.layout.activity_gacha);
 	}
 
+	/**
+	 * はたてちゃんの画像をクリックしたときの処理.
+	 * @param v
+	 */
 	public void gacha(View v) {
 		val context = getApplicationContext();
 
@@ -85,9 +89,15 @@ public class GachaActivity extends Activity {
 				val textViews = new ArrayList<TextView>();
 
 				for(int i = 0; i < 3; i++) {
+					// スペルカードの取得
 					val spellCard = SpellCardDao.getRandomSpellCard(c);
+
+					// TextViewの生成
 					val textView = cloneToastTextView(getApplicationContext());
+
 					val d = IconUtil.getIconDrawable(getApplicationContext(), spellCard.getCharacterId());
+					// Note: TextView#setCompoundDrawablesで設定するDrawableは
+					// 事前にDrawable#setBoundsでRectを設定しておく必要がある。
 					d.setBounds(new Rect(0, 0, 64, 64));
 					textView.setCompoundDrawables(d, null, null, null);
 					textView.setCompoundDrawablePadding(50);
@@ -114,6 +124,7 @@ public class GachaActivity extends Activity {
 				if(prog != null && prog.isShowing())
 					prog.dismiss();
 
+				// Toast内部のTextViewを削除し、代わりにonBackgroundで生成したTextViewを詰め込む
 				val t = Toast.makeText(getApplicationContext(), null, Toast.LENGTH_LONG);
 				val toastView = (ViewGroup) t.getView();
 				toastView.removeAllViews();
@@ -132,6 +143,11 @@ public class GachaActivity extends Activity {
 
 	private LayoutInflater _inflater;
 	private int _toastViewId;
+	/**
+	 * Toastで使用されるTextViewのClone.
+	 * @param context
+	 * @return
+	 */
 	private TextView cloneToastTextView(Context context) {
 		if(_inflater == null) {
 			_inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

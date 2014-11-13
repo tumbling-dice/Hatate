@@ -196,6 +196,7 @@ public class NotificationActivity extends PreferenceActivity {
 
 		val yoPref = findPreference("yo");
 
+		// 既にYoを送っている場合は押させない
 		if(!RepeatYoService.isSentYo(getApplicationContext())) {
 			yoPref.setEnabled(false);
 		}
@@ -215,6 +216,7 @@ public class NotificationActivity extends PreferenceActivity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// Note: このアクティビティから抜けるときは必ず_receiverを解除しておく
 		if (keyCode == KeyEvent.KEYCODE_BACK && _receiver != null) {
 			unregisterReceiver(_receiver);
 			_receiver = null;
