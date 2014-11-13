@@ -321,7 +321,7 @@ public final class Linq<T> implements Iterable<T> {
 		return _items.iterator().hasNext();
 	}
 
-	public boolean any(Func1<T, Boolean> p) {
+	public boolean any(Predicate<Boolean> p) {
 		for (T obj : _items) {
 			if(p.call(obj)) {
 				return true;

@@ -142,6 +142,27 @@ public class Util {
 				, PendingIntent.FLAG_CANCEL_CURRENT);
 	}
 
+	public static void setRepeatYo(Context context) {
+		context.getSharedPreference(RepeatYoService.PREF_YO, 0)
+			.edit().putBoolean(RepeatYoService.IS_SENT_YO, false).commit();
+
+		getAlarmManager(context).setRepeating(AlarmManager.RTC
+			, System.currentTimeMillis() + 1
+			, 65000L
+			, getRepeatYoIntent(context));
+	}
+
+	public static PendingIntent getRepeatYoIntent(Context context) {
+		return PendingIntent.getService(context, 0, new Intent(context, RepeatYoService.class)
+				, PendingIntent.FLAG_CANCEL_CURRENT);
+	}
+
+	public static void removeRepeatYo(Context context) {
+		context.getSharedPreference(RepeatYoService.PREF_YO, 0)
+			.edit().putBoolean(RepeatYoService.IS_SENT_YO, true).commit();
+		getAlarmManager(context).cancel(getRepeatYoIntent(context));
+	}
+
 	/**
 	 * AlarmManagerの取得とキャッシング.
 	 * @param context

@@ -8,8 +8,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="inujini_.hatate"
-    android:versionCode="15"
-    android:versionName="1.2.3" >
+    android:versionCode="16"
+    android:versionName="1.2.4" >
 
     <uses-sdk
         android:minSdkVersion="4"
@@ -22,7 +22,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:name="inujini_.hatate.AppHatate" >
 
         <!-- Activities -->
         <activity android:name="inujini_.hatate.MainActivity">
@@ -84,6 +85,8 @@
         <service android:name="inujini_.hatate.service.Kill" android:exported="false" />
 
         <service android:name="inujini_.hatate.service.OauthService" android:exported="false" />
+        
+        <service android:name="inujini_.hatate.service.RepeatYoService" android:exported="false" />
 
     </application>
 

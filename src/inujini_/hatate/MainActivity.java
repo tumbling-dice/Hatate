@@ -106,6 +106,8 @@ public class MainActivity extends PreferenceActivity {
 	@Override
 	protected void onUserLeaveHint() {
 		super.onUserLeaveHint();
+		// Note: Activity#onUserLeaveHintをオーバーライドすることで
+		// HOMEキーが押されたときの処理をフックできる。
 		if(getApplicationContext().isNoisy()) {
 			Util.setAlarm(getApplicationContext());
 		}

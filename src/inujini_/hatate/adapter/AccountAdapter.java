@@ -23,7 +23,8 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 
 /**
- *
+ * TwitterAccountを表示するArrayAdapter
+ * @see AccountListActivity
  */
 public class AccountAdapter extends ArrayAdapter<TwitterAccount> {
 
@@ -38,9 +39,10 @@ public class AccountAdapter extends ArrayAdapter<TwitterAccount> {
 	private LayoutInflater _inflater;
 
 	/**
-	 *
+	 * TwitterAccountを表示するArrayAdapter
 	 * @param context
 	 * @param list
+	 * @see AccountListActivity
 	 */
 	public AccountAdapter(Context context, List<TwitterAccount> list) {
 		super(context, 0, list);

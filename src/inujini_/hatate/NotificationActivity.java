@@ -194,10 +194,29 @@ public class NotificationActivity extends PreferenceActivity {
 			}
 		});
 
+		val yoPref = findPreference("yo");
+
+		// 既にYoを送っている場合は押させない
+		if(!RepeatYoService.isSentYo(getApplicationContext())) {
+			yoPref.setEnabled(false);
+		}
+
+		yoPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+			@Override
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				if(newValue == null || "".equals((String) newValue))
+					return false;
+
+				preference.setEnabled(false);
+				Util.setRepeatYo(getApplicationContext());
+				return true;
+			}
+		});
 	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// Note: このアクティビティから抜けるときは必ず_receiverを解除しておく
 		if (keyCode == KeyEvent.KEYCODE_BACK && _receiver != null) {
 			unregisterReceiver(_receiver);
 			_receiver = null;

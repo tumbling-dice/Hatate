@@ -30,9 +30,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- *
- *
- * @param <K> Group(親)として表示されるクラス
+ * スペルカード図鑑用BaseExpandableListAdapter.
+ * @param <K extends TouhouData> Group(親)として表示されるクラス
+ * @see SpellCardLibraryActivity
  */
 @ExtensionMethod({Linq.class})
 public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandableListAdapter {
@@ -59,23 +59,26 @@ public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandabl
 	}
 
 	/**
-	 *
+	 * スペルカード図鑑用BaseExpandableListAdapter.
 	 * @param items
 	 * @param context
+	 * @see SpellCardLibraryActivity
 	 */
 	public SpellCardLibraryAdapter(Map<K, List<SpellCard>> items, Context context) {
 		_items = items;
 		_inflater = LayoutInflater.from(context);
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#getChild(int, int)
-	 */
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
 		return getChildren(groupPosition).get(childPosition);
 	}
 
+	/**
+	 * 子要素取得
+	 * @param groupPosition 親要素の位置
+	 * @return groupPositionから割り出した子要素
+	 */
 	public List<SpellCard> getChildren(int groupPosition) {
 		for (val item : _items.entrySet()) {
 			if(item.getKey().getPosition() == groupPosition) {
@@ -86,17 +89,11 @@ public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandabl
 		return new ArrayList<SpellCard>();
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#getChildId(int, int)
-	 */
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
 		return ((SpellCard) getChild(groupPosition, childPosition)).getId();
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#getChildView(int, int, boolean, android.view.View, android.view.ViewGroup)
-	 */
 	@Override
 	public View getChildView(int groupPosition, int childPosition, boolean isLastChild
 			, View convertView, ViewGroup parent) {
@@ -122,17 +119,11 @@ public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandabl
 		return view;
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#getChildrenCount(int)
-	 */
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		return getChildren(groupPosition).size();
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#getGroup(int)
-	 */
 	@Override
 	public Object getGroup(int groupPosition) {
 		for (val item : _items.keySet()) {
@@ -141,25 +132,16 @@ public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandabl
 		return null;
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#getGroupCount()
-	 */
 	@Override
 	public int getGroupCount() {
 		return _items.keySet().size();
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#getGroupId(int)
-	 */
 	@Override
 	public long getGroupId(int groupPosition) {
 		return groupPosition;
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#getGroupView(int, boolean, android.view.View, android.view.ViewGroup)
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
@@ -182,17 +164,11 @@ public class SpellCardLibraryAdapter<K extends TouhouData> extends BaseExpandabl
 		return view;
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#hasStableIds()
-	 */
 	@Override
 	public boolean hasStableIds() {
 		return false;
 	}
 
-	/* (非 Javadoc)
-	 * @see android.widget.ExpandableListAdapter#isChildSelectable(int, int)
-	 */
 	@Override
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		return false;
