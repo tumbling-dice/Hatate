@@ -10,7 +10,7 @@
 package inujini_.hatate.service;
 
 /**
- *
+ * Yo.
  */
 @ExtensionMethod({PrefGetter.class})
 public class RepeatYoService extends IntentService {
@@ -18,10 +18,17 @@ public class RepeatYoService extends IntentService {
 	public static final PREF_YO = "prefYo";
 	public static final IS_SENT_YO = "isSentYo";
 
+	/**
+	 * Yo.
+	 */
 	public RepeatYoService() {
 		super("RepeatYoService");
 	}
 
+	/**
+	 * Yo.
+	 * @param name
+	 */
 	public RepeatYoService(String name) {
 		super(name);
 	}
@@ -64,7 +71,11 @@ public class RepeatYoService extends IntentService {
 				});
 	}
 
-
+	/**
+	 * 予約しておいたYoが成功しているかをチェック.
+	 * @param context
+	 * @return 成功していたらtrue
+	 */
 	public static boolean isSentYo(Context context) {
 		return context.getSharedPreference(PREF_YO, 0).getBoolean(IS_SENT_YO, true)
 	}

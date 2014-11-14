@@ -27,7 +27,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 /**
- *
+ * {@link Series}のDAO.
  */
 @ExtensionMethod({SqliteUtil.class, CursorExtensions.class, Linq.class})
 public class SeriesDao {
@@ -42,6 +42,11 @@ public class SeriesDao {
 		}
 	};
 
+	/**
+	 * 全シリーズの取得.
+	 * @param context
+	 * @return DBに登録されている全ての{@link Series}.
+	 */
 	public static List<Series> getAllSeries(Context context) {
 		val q = new QueryBuilder()
 					.selectAll()
@@ -51,6 +56,13 @@ public class SeriesDao {
 		return new DatabaseHelper(context).getList(q, context, _converter);
 	}
 
+	/**
+	 * シリーズの取得.
+	 * @param context
+	 * @param id シリーズID
+	 * @return idで指定された{@link Series}.
+	 * @see getSerieses(Context, long[])
+	 */
 	public static Series getSeries(Context context, long id) {
 		val q = new QueryBuilder()
 					.selectAll()
@@ -61,6 +73,13 @@ public class SeriesDao {
 		return new DatabaseHelper(context).get(q, context, _converter);
 	}
 
+	/**
+	 * シリーズの取得.
+	 * @param context
+	 * @param ids シリーズIDの配列
+	 * @return idsで指定された{@link Series}のリスト.
+	 * @see getSeries(Context, long)
+	 */
 	public static List<Series> getSerieses(Context context, final long[] ids) {
 		return getAllSeries(context).linq().where(new Predicate<Series>() {
 			@Override

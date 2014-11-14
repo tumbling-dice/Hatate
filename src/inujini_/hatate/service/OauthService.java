@@ -37,12 +37,13 @@ import android.net.Uri;
  */
 public class OauthService extends IntentService {
 
-	// use in start oauth
+	/** use in start oauth. */
 	public static final String KEY_CONSUMER_KEY = "consumerKey";
+	/** use in start oauth. */
 	public static final String KEY_CONSUMER_SECRET = "consumerSecret";
 	private static final String URI_CALLBACK = "oauth://callback";
 
-	// use in get access_token
+	/** use in get access_token. */
 	public static final String KEY_FINISHED_OAUTH = "isFinished";
 
 	/**
@@ -84,8 +85,9 @@ public class OauthService extends IntentService {
 	}
 
 	/**
-	 * Oauth認証開始
+	 * Oauth認証開始.
 	 * @param intent
+	 * @throws IllegalStateException intentにconsumerKeyかconsumerKeyが含まれていなかった場合に発生.
 	 */
 	private void startOauth(Intent intent) {
 		// validate
@@ -133,8 +135,9 @@ public class OauthService extends IntentService {
 	}
 
 	/**
-	 * AccessToken取得
+	 * AccessToken取得.
 	 * @param intent
+	 * @throws IllegalStateException OAuth認証に成功したにも関わらずintentにデータが含まれていなかった場合に発生.
 	 */
 	private void getAccessToken(Intent intent) {
 		// validate

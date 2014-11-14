@@ -44,7 +44,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-@ExtensionMethod({SqliteUtil.class, Linq.class, CursorExtensions.class})
+/**
+ *
+ */
+@ExtensionMethod({SqliteUtil.class, Linq.class, CursorExtensions.class, ContentValuesExtensions.class})
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final int DB_VERSION = 4;
 	private static final String DB_NAME = "HATATE_DB";
@@ -55,6 +58,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	private WeakReference<Context> _context;
 
+	/**
+	 *
+	 * @param context
+	 */
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
 		_context = new WeakReference<Context>(context);
@@ -147,9 +154,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			scraper.extract("Seriese").linq().forEach(new Action1<XElement>() {
 				@Override
 				public void call(XElement x) {
-					val cv = new ContentValues();
-					cv.put(MetaSeries.Id.getColumnName(), Integer.parseInt(x.getAttributeValue("id")));
-					cv.put(MetaSeries.Name.getColumnName(), x.getText());
+					val cv = new ContentValues()
+							.putInt(MetaSeries.Id, Integer.parseInt(x.getAttributeValue("id")))
+							.putString(MetaSeries.Name, x.getText());
 					db.insert(MetaSeries.TBL_NAME, null, cv);
 				}
 			});
@@ -161,9 +168,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				@Override
 				public void call(XElement x) {
 					val cId = Integer.parseInt(x.getAttributeValue("id"));
-					val cv = new ContentValues();
-					cv.put(MetaCharacter.Id.getColumnName(), cId);
-					cv.put(MetaCharacter.Name.getColumnName(), x.getAttributeValue("name"));
+					val cv = new ContentValues()
+							.putInt(MetaCharacter.Id, cId)
+							.putString(MetaCharacter.Name, x.getAttributeValue("name"));
 					db.insert(MetaCharacter.TBL_NAME, null, cv);
 
 					x.getInnerElements().linq().selectMany(new Func1<XElement, Iterable<XElement>>() {
@@ -174,12 +181,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					}).forEach(new Action1<XElement>() {
 						@Override
 						public void call(XElement y) {
-							val cvs = new ContentValues();
-							cvs.put(MetaSpellCard.Id.getColumnName(), Integer.parseInt(y.getAttributeValue("id")));
-							cvs.put(MetaSpellCard.Name.getColumnName(), y.getAttributeValue("name"));
-							cvs.put(MetaSpellCard.Power.getColumnName(), Integer.parseInt(y.getAttributeValue("power")));
-							cvs.put(MetaSpellCard.CharacterId.getColumnName(), cId);
-							cvs.put(MetaSpellCard.SeriesId.getColumnName()
+							val cvs = new ContentValues()
+									.putInt(MetaSpellCard.Id, Integer.parseInt(y.getAttributeValue("id")))
+									.putString(MetaSpellCard.Name, y.getAttributeValue("name"))
+									.putInt(MetaSpellCard.Power, Integer.parseInt(y.getAttributeValue("power")))
+									.putInt(MetaSpellCard.CharacterId, cId);
+									.putString(MetaSpellCard.SeriesId
 									, y.getInnerElements().linq().select(new Func1<XElement, String>() {
 										@Override
 										public String call(XElement z) {
@@ -246,18 +253,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		ids.linq().forEach(new Action1<Long>() {
 			@Override
 			public void call(Long x) {
-				val cv = new ContentValues();
-				cv.put(MetaSpellCard.GetFlag.getColumnName(), 1);
+				val cv = new ContentValues()
+						.putBoolean(MetaSpellCard.GetFlag, true);
 				db.update(MetaSpellCard.TBL_NAME, cv, "Id = ?", new String[] { x.toString() });
 			}
 		});
 	}
 
+	/**
+	 * DB初期化チェック.
+	 * @param context
+	 * @return DBが既に初期化済みであればtrue
+	 */
 	public static boolean isDbOpened(Context context) {
 		val pref = context.getSharedPreferences(KEY_DB_PREFERENCE, 0);
 		return pref.getBoolean(KEY_IS_OPENED, false);
 	}
 
+	/**
+	 * DB更新済みチェック.
+	 * @param context
+	 * @return DBが既に最新のバージョンであればtrue
+	 */
 	public static boolean isDbUpdated(Context context) {
 		val pref = context.getSharedPreferences(KEY_DB_PREFERENCE, 0);
 		return pref.getInt(KEY_CURRENT_DB_VERSION, 0) == DB_VERSION;

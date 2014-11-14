@@ -1,8 +1,8 @@
 /**
  * HatateHoutyouAlarm
- * 
+ *
  * Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
- * 
+ *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
@@ -15,8 +15,10 @@ import lombok.val;
 import lombok.experimental.ExtensionMethod;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
+/**
+ * アプリのアップデート後にアラームを再セットするBroadcastReceiver.
+ */
 @ExtensionMethod({PrefGetter.class})
 public class UpdateReceiver extends AsyncBroadcastReceiver {
 
@@ -24,7 +26,7 @@ public class UpdateReceiver extends AsyncBroadcastReceiver {
 	protected void asyncOnReceive(Context context, Intent intent) {
 		if(intent == null || !context.isNoisy()) return;
 
-		Log.d("UpdateReceiver", "onReceive");
+		//Log.d("UpdateReceiver", "onReceive");
 
 		val action = intent.getAction();
 		val packagePath = intent.getDataString();
@@ -33,7 +35,7 @@ public class UpdateReceiver extends AsyncBroadcastReceiver {
 
 		if(Intent.ACTION_PACKAGE_REPLACED.equals(action)
 				&& packagePath.equals("package:" + context.getPackageName())) {
-			Log.d("UpdateReceiver", "this intent is PACKAGE_REPLACED");
+			//Log.d("UpdateReceiver", "this intent is PACKAGE_REPLACED");
 			Util.setAlarm(context);
 		}
 	}

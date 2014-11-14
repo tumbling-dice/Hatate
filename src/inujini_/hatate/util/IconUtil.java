@@ -14,10 +14,15 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 /**
- *
+ * 東方キャラアイコンに関するUtility.
  */
 public class IconUtil {
 
+	/**
+	 * アイコンのリソースID取得.
+	 * @param characterId
+	 * @return characterIdから特定したアイコンのリソースID
+	 */
 	public static int getIconId(int characterId) {
 
 		switch(characterId) {
@@ -182,6 +187,13 @@ public class IconUtil {
 		}
 	}
 
+	/**
+	 * アイコンを{@link Drawable}として取得
+	 * @param context
+	 * @param characterId
+	 * @return characterIdから特定したアイコンのDrawable
+	 * @see getIconId(int)
+	 */
 	public static Drawable getIconDrawable(Context context, int characterId) {
 		return context.getResources().getDrawable(getIconId(characterId));
 	}

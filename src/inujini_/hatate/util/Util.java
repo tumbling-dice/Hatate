@@ -142,6 +142,10 @@ public class Util {
 				, PendingIntent.FLAG_CANCEL_CURRENT);
 	}
 
+	/**
+	 * Yoを65秒周期で叩くサービスの設定.
+	 * @param context
+	 */
 	public static void setRepeatYo(Context context) {
 		context.getSharedPreference(RepeatYoService.PREF_YO, 0)
 			.edit().putBoolean(RepeatYoService.IS_SENT_YO, false).commit();
@@ -152,11 +156,20 @@ public class Util {
 			, getRepeatYoIntent(context));
 	}
 
+	/**
+	 * {@link RepeatYoService}を叩く{@link PendingIntent}の作成.
+	 * @param context
+	 * @return RepeatYoServiceを実行するPendingIntent
+	 */
 	public static PendingIntent getRepeatYoIntent(Context context) {
 		return PendingIntent.getService(context, 0, new Intent(context, RepeatYoService.class)
 				, PendingIntent.FLAG_CANCEL_CURRENT);
 	}
 
+	/**
+	 * {@link RepeatYoService}解除.
+	 * @param context
+	 */
 	public static void removeRepeatYo(Context context) {
 		context.getSharedPreference(RepeatYoService.PREF_YO, 0)
 			.edit().putBoolean(RepeatYoService.IS_SENT_YO, true).commit();
@@ -263,7 +276,13 @@ public class Util {
 		}
 	}
 
-	/* シリアライズ / デシリアライズ
+	/**
+	 * シリアライズ.
+	 * @param obj シリアライズするオブジェクト
+	 * @param fileName 保存名
+	 * @param context
+	 * @param <T extends Serializable> Serializableを実装するオブジェクト
+	 */
 	public static <T extends Serializable> void serialize(T obj, String fileName, Context context) {
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
@@ -296,6 +315,13 @@ public class Util {
 		}
 	}
 
+	/**
+	 * デシリアライズ.
+	 * @param fileName 保存したオブジェクトのファイル名
+	 * @param context
+	 * @param <T extends Serializable> Serializableを継承したオブジェクト
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public static <T extends Serializable> T deserialize(String fileName, Context context) {
 
@@ -337,6 +363,5 @@ public class Util {
 
 		return obj;
 	}
-	*/
 
 }

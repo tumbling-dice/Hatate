@@ -215,16 +215,31 @@ public class PrefGetter {
 		throw new IllegalStateException("vibration pattern couldn't find.");
 	}
 
+	/**
+	 * スペルカードガチャ可能フラグ.
+	 * @param context
+	 * @return key:[canGacha] default:true
+	 */
 	public static boolean canGacha(Context context) {
 		val pref = PreferenceManager.getDefaultSharedPreferences(context);
 		return pref.getBoolean("canGacha", true);
 	}
 
+	/**
+	 * YoAll送信フラグ.
+	 * @param context
+	 * @return key:[isYo] default:false
+	 */
 	public static boolean isYo(Context context) {
 		val pref = PreferenceManager.getDefaultSharedPreferences(context);
 		return pref.getBoolean("isYo", false);
 	}
 
+	/**
+	 * Yoのユーザ名取得
+	 * @param context
+	 * @return key:[yo] default:null
+	 */
 	public static String getYo(Context context) {
 		val pref = PreferenceManager.getDefaultSharedPreferences(context);
 		return pref.getString("yo");

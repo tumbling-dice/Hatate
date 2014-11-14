@@ -33,7 +33,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 
 /**
- *
+ * 包丁.
  */
 @ExtensionMethod({PrefGetter.class})
 public class Houtyou extends PierceReceiver {
@@ -156,10 +156,10 @@ public class Houtyou extends PierceReceiver {
 			StatisticsDao.update(context, killCount, love);
 		}
 	}
-	
+
 	private static Resources getResources(Context context) {
 		if(_res != null) return _res;
-		
+
 		_res = context.getResources();
 		return _res;
 	}

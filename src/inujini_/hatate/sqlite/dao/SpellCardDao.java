@@ -38,7 +38,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-@ExtensionMethod({SqliteUtil.class, CursorExtensions.class, Linq.class})
+/**
+ * {@link SpellCard}のDAO.
+ */
+@ExtensionMethod({SqliteUtil.class, CursorExtensions.class, Linq.class, ContentValuesExtensions.class})
 public class SpellCardDao {
 
 	private static final Func1<Cursor, SpellCard> _converter = new Func1<Cursor, SpellCard>() {
@@ -63,11 +66,22 @@ public class SpellCardDao {
 		}
 	};
 
+	/**
+	 * 全スペルカードの取得.
+	 * @param context
+	 * @return DBに登録されている全ての{@link SpellCard}.
+	 */
 	public static List<SpellCard> getAllSpellCards(Context context) {
 		val q = new QueryBuilder().selectAll().from(MetaSpellCard.TBL_NAME).toString();
 		return new DatabaseHelper(context).getList(q, context, _converter);
 	}
 
+	/**
+	 * 所持スペルカードの取得.
+	 * @param context
+	 * @return 所持済みの{@link SpellCard}.
+	 * @see SpellCard#isGot()
+	 */
 	public static List<SpellCard> getHaveSpellCards(Context context) {
 		val q = new QueryBuilder().selectAll().from(MetaSpellCard.TBL_NAME)
 					.where().equal(MetaSpellCard.GetFlag, true)
@@ -76,6 +90,12 @@ public class SpellCardDao {
 		return new DatabaseHelper(context).getList(q, context, _converter);
 	}
 
+	/**
+	 * 装備済みスペルカードの取得.
+	 * @param context
+	 * @return 装備済みの{@link SpellCard}.
+	 * @see SpellCard#isEquipped()
+	 */
 	public static List<SpellCard> getEquippedSpellCards(Context context) {
 		val q = new QueryBuilder().selectAll().from(MetaSpellCard.TBL_NAME)
 					.where().equal(MetaSpellCard.EquipmentFlag, true)
@@ -84,6 +104,11 @@ public class SpellCardDao {
 		return new DatabaseHelper(context).getList(q, context, _converter);
 	}
 
+	/**
+	 * 装備済みスペルカード数取得.
+	 * @param context
+	 * @return 装備済みのスペルカードの総数.
+	 */
 	public static int getEquipCount(Context context) {
 		val q = new QueryBuilder().select(MetaSpellCard.Id).from(MetaSpellCard.TBL_NAME)
 					.where().equal(MetaSpellCard.EquipmentFlag, true)
@@ -92,16 +117,23 @@ public class SpellCardDao {
 		return new DatabaseHelper(context).getList(q, context, _converter).size();
 	}
 
+	/**
+	 * <p>スペルカードランダム取得.</p>
+	 * <p>スペルカード1枚をランダムに取得し、それを返す.</p>
+	 * <p>取得枚数のカウントアップ及び取得履歴情報の書き込みはこのメソッド内で行われる.</p>
+	 * @param context
+	 * @return ランダムに取得した{@link SpellCard}.
+	 */
 	public static SpellCard getRandomSpellCard(Context context) {
 		val helper = new DatabaseHelper(context);
 
+		// 一番大きいスペルカードIDを取得する
 		val q = new QueryBuilder()
 						.select(MetaSpellCard.Id)
 						.from(MetaSpellCard.TBL_NAME)
 						.orderByDesc(MetaSpellCard.Id)
 						.limit(1)
 						.toString();
-
 
 		val maxId = helper.get(q, context, new Func1<Cursor, Integer>() {
 			@Override
@@ -110,7 +142,7 @@ public class SpellCardDao {
 			}
 		});
 
-
+		// 一番大きいスペルカードIDを基にランダムなIDを生成
 		val getId = new Random().nextInt(maxId) + 1;
 		val sql = new QueryBuilder()
 						.selectAll()
@@ -120,20 +152,23 @@ public class SpellCardDao {
 
 		val spell =  helper.get(sql, context, _converter);
 
+		// 取得したスペルカード情報の登録
 		helper.transaction(context, new Action1<SQLiteDatabase>() {
 			@SuppressLint("SimpleDateFormat")
 			@Override
 			public void call(SQLiteDatabase db) {
-				ContentValues cv = new ContentValues();
-				cv.put(MetaSpellCard.Count.getColumnName(), (spell.getCount() + 1));
-				cv.put(MetaSpellCard.GetFlag.getColumnName(), 1);
+				// カウントアップ
+				ContentValues cv = new ContentValues()
+									.putInt(MetaSpellCard.Count, (spell.getCount() + 1))
+									.putBoolean(MetaSpellCard.GetFlag, true);
 				db.update(MetaSpellCard.TBL_NAME, cv, "Id = ?", new String[] { String.valueOf(getId) });
 
-				cv = new ContentValues();
-				cv.put(MetaSpellCardHistory.Id.getColumnName(), getId);
-				cv.put(MetaSpellCardHistory.Name.getColumnName(), spell.getName());
-				SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-				cv.put(MetaSpellCardHistory.Timestamp.getColumnName(), df.format(new Date()));
+				// 履歴情報の登録
+				cv = new ContentValues()
+						.putInt(MetaSpellCardHistory.Id, getId)
+						.putString(MetaSpellCardHistory.Name, spell.getName())
+						.putString(MetaSpellCardHistory.Timestamp
+								, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
 				db.insert(MetaSpellCardHistory.TBL_NAME, null, cv);
 			}
 		});
@@ -141,13 +176,18 @@ public class SpellCardDao {
 		return spell;
 	}
 
+	/**
+	 * スペルカード情報更新.
+	 * @param context
+	 * @param spellCard 更新対象のスペルカード
+	 */
 	public static void update(Context context, SpellCard spellCard) {
 
-		val cv = new ContentValues();
 		val id = spellCard.getId();
 
-		cv.put(MetaSpellCard.Count.getColumnName(), spellCard.getCount() + 1);
-		cv.put(MetaSpellCard.GetFlag.getColumnName(), 1);
+		val cv = new ContentValues()
+				.putInt(MetaSpellCard.Count, spellCard.getCount() + 1)
+				.putBoolean(MetaSpellCard.GetFlag, true);
 
 		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
 			@Override
@@ -157,6 +197,11 @@ public class SpellCardDao {
 		});
 	}
 
+	/**
+	 * スペルカード情報挿入.
+	 * @param context
+	 * @param spellCard 挿入するスペルカード
+	 */
 	public static void insert(Context context, SpellCard spellCard) {
 		val q = createInsertQuery(spellCard);
 
@@ -168,6 +213,11 @@ public class SpellCardDao {
 		});
 	}
 
+	/**
+	 * スペルカード情報一括挿入.
+	 * @param context
+	 * @param spellCards 挿入するスペルカード
+	 */
 	public static void bulkInsert(Context context, List<SpellCard> spellCards) {
 		val querys = spellCards.linq().select(new Func1<SpellCard, String>(){
 			@Override
@@ -206,8 +256,15 @@ public class SpellCardDao {
 				.toString();
 	}
 
-
+	// FIX ME:これはCharacterDaoとSeriesDaoにあるべきだと思う…
 	private static HashMap<String, Map<Long, String>> _names;
+	/**
+	 *
+	 * @param context
+	 * @param id
+	 * @param tableName
+	 * @return
+	 */
 	public static String getName(Context context, long id, String tableName) {
 		if(_names == null){
 			_names = new HashMap<String, Map<Long, String>>();
@@ -237,6 +294,12 @@ public class SpellCardDao {
 		return _names.get(tableName).get(id);
 	}
 
+	/**
+	 * スペルカード履歴取得.
+	 * @param context
+	 * @param limit 取得する数
+	 * @return limitで指定された数だけの最新{@link SpellCardHistory}.
+	 */
 	public static List<SpellCardHistory> getHistory(final Context context, int limit) {
 		val q = new QueryBuilder()
 					.selectAll()

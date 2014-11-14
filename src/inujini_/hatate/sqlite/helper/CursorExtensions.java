@@ -30,7 +30,6 @@ public final class CursorExtensions {
 	}
 
 	public static boolean getBooleanByMeta(Cursor c, ColumnProperty property) {
-		int v = getIntByMeta(c, property);
-		return v == 1;
+		return getIntByMeta(c, property) == 1;
 	}
 }

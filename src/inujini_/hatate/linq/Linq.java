@@ -24,10 +24,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 汎用コレクション処理.
+ * @param <T>
+ */
 public final class Linq<T> implements Iterable<T> {
 
 	private Iterable<T> _items;
 
+	/****** object constractors ******/
 	private Linq(Iterable<T> items) {
 		_items = items;
 	}
@@ -36,6 +41,16 @@ public final class Linq<T> implements Iterable<T> {
 		_items = Arrays.asList(array);
 	}
 
+
+	public static <T> Linq<T> linq(Iterable<T> items) {
+		return new Linq<T>(items);
+	}
+
+	public static <T> Linq<T> linq(T[] array) {
+		return new Linq<T>(array);
+	}
+
+	/****** primitive array type's constractors ******/
 	@SuppressWarnings("unchecked")
 	private Linq(byte[] array) {
 		Byte[] a = new Byte[array.length];
@@ -99,14 +114,6 @@ public final class Linq<T> implements Iterable<T> {
 		for (int i = 0; i < array.length; i++)
 			a[i] = array[i];
 		_items = (Iterable<T>) Arrays.asList(a);
-	}
-
-	public static <T> Linq<T> linq(Iterable<T> items) {
-		return new Linq<T>(items);
-	}
-
-	public static <T> Linq<T> linq(T[] array) {
-		return new Linq<T>(array);
 	}
 
 	public static Linq<Byte> linq(byte[] array) {
@@ -334,6 +341,24 @@ public final class Linq<T> implements Iterable<T> {
 		return _items.iterator().next();
 	}
 
+	public T first(Predicate<T> p) {
+		for(T obj : _items) {
+			if(p.call(obj)) return obj;
+		}
+
+		throw new IllegalStateException("not found.");
+	}
+
+	public Linq<T> distinct() {
+		ArrayList<T> list = new ArrayList<T>();
+
+		for (T obj : _items) {
+			if(!list.contains(obj)) list.add(obj);
+		}
+
+		return new Linq<T>(list);
+	}
+
 	public <TKey, TValue> Map<TKey, List<TValue>> groupBy(Func1<T, TKey> keyProvider, Func1<T, TValue> valueProvider) {
 		Map<TKey, List<TValue>> map = new HashMap<TKey, List<TValue>>();
 
@@ -385,16 +410,6 @@ public final class Linq<T> implements Iterable<T> {
 		}
 
 		return map;
-	}
-
-	public Linq<T> distinct() {
-		ArrayList<T> list = new ArrayList<T>();
-
-		for (T obj : _items) {
-			if(!list.contains(obj)) list.add(obj);
-		}
-
-		return new Linq<T>(list);
 	}
 
 	@SuppressWarnings("unchecked")

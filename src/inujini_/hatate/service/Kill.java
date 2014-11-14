@@ -17,16 +17,24 @@ import android.content.Context;
 import android.content.Intent;
 
 /**
- *
+ * 確殺.
  */
 public class Kill extends IntentService {
 
+	/** THIS VARIABLE HAS NOT USE YET. */
 	public static final String ACTION_KILL = "inujini_.hatate.service.action.KILL";
 
+	/**
+	 * 確殺.
+	 */
 	public Kill() {
 		super("Kill");
 	}
 
+	/**
+	 * 確殺.
+	 * @param name
+	 */
 	public Kill(String name) {
 		super(name);
 	}

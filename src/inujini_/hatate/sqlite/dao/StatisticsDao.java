@@ -25,9 +25,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+/**
+ * {@link Statistics}のDAO.
+ */
 @ExtensionMethod({SqliteUtil.class, CursorExtensions.class})
 public class StatisticsDao {
 
+	/**
+	 * 統計情報取得
+	 * @param context
+	 * @return {@link Statistics}
+	 */
 	public static Statistics getStatistics(Context context) {
 		val q = new QueryBuilder().selectAll().from(MetaStatistics.TBL_NAME).toString();
 		return new DatabaseHelper(context).get(q, context, new Func1<Cursor, Statistics>() {
@@ -41,6 +49,11 @@ public class StatisticsDao {
 		});
 	}
 
+	/**
+	 * 初期化
+	 * @param db
+	 * @param killCount
+	 */
 	public static void init(SQLiteDatabase db, int killCount) {
 		val q = new QueryBuilder()
 					.insert(MetaStatistics.TBL_NAME
@@ -51,6 +64,12 @@ public class StatisticsDao {
 		db.execSQL(q);
 	}
 
+	/**
+	 * 更新
+	 * @param context
+	 * @param killCount
+	 * @param love
+	 */
 	public static void update(Context context, int killCount, int love) {
 		val q = new QueryBuilder()
 				.update(MetaStatistics.TBL_NAME)

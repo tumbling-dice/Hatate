@@ -25,6 +25,11 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.support.v4.app.NotificationCompat;
 
+/**
+ * 通知処理の共通部分.
+ * @see Houtyou
+ * @see OneMoreLovely
+ */
 @ExtensionMethod({PrefGetter.class})
 public abstract class PierceReceiver extends AsyncBroadcastReceiver {
 
@@ -88,6 +93,12 @@ public abstract class PierceReceiver extends AsyncBroadcastReceiver {
 		onPierced(context, intent);
 	}
 
+	// FIXME: fix name: onPierced -> onAfterPierced
+	/**
+	 * 通知処理が終わった後の処理.
+	 * @param context
+	 * @param intent
+	 */
 	public abstract void onPierced(Context context, Intent intent);
 
 }

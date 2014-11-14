@@ -36,6 +36,7 @@
 -keep public class * extends android.app.Service
 -keep public class * extends android.content.BroadcastReceiver
 -keep public class * extends android.content.ContentProvider
+-keep public class com.android.vending.licensing.ILicensingService
 
 -keep public class * extends android.view.View {
     public <init>(android.content.Context);
@@ -69,6 +70,10 @@
     @android.webkit.JavascriptInterface <methods>;
 }
 
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
 ##### Serializable Object #####
 
 -keepnames class * implements java.io.Serializable
@@ -83,6 +88,13 @@
     private void readObject(java.io.ObjectInputStream);
     java.lang.Object writeReplace();
     java.lang.Object readResolve();
+}
+
+##### Enum #####
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
 }
 
 ##### Libraries #####

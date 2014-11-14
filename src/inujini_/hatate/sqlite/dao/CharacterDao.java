@@ -26,7 +26,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 /**
- *
+ * {@link Character}のDAO.
  */
 @ExtensionMethod({SqliteUtil.class, CursorExtensions.class, Linq.class})
 public class CharacterDao {
@@ -41,6 +41,11 @@ public class CharacterDao {
 		}
 	};
 
+	/**
+	 * 全キャラクターの取得.
+	 * @param context
+	 * @return DBに登録されている全ての{@link Character}.
+	 */
 	public static List<Character> getAllCharacter(Context context) {
 		val q = new QueryBuilder()
 					.selectAll()
@@ -50,6 +55,12 @@ public class CharacterDao {
 		return new DatabaseHelper(context).getList(q, context, _converter);
 	}
 
+	/**
+	 * キャラクターの取得.
+	 * @param context
+	 * @param id キャラクターのId
+	 * @return idで指定された{@link Character}.
+	 */
 	public static Character getCharacter(Context context, long id) {
 		val q = new QueryBuilder()
 					.selectAll()

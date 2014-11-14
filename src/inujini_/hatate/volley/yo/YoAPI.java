@@ -9,10 +9,18 @@
 
 package inujini_.hatate.volley.yo;
 
+/**
+ * Yoで使用できるAPIのWrapper.
+ * @see YoRequest
+ */
 public enum YoAPI {
+	/** Yo (http://api.justyo.co/yo/) */
 	Yo("http://api.justyo.co/yo/"),
+	/** YoAll (http://api.justyo.co/yoall/) */
 	YoAll("http://api.justyo.co/yoall/"),
+	/** Accounts (https://api.justyo.co/accounts/) */
 	Accounts("https://api.justyo.co/accounts/"),
+	/** SubscribersCount (https://api.justyo.co/subscribers_count/) */
 	SubscribersCount("https://api.justyo.co/subscribers_count/");
 
 	@Getter private final String value;

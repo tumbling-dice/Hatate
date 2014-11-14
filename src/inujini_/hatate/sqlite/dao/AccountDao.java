@@ -33,9 +33,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * TwitterAccountのDAO
+ * {@link TwitterAccount}のDAO
  */
-@ExtensionMethod({SqliteUtil.class, CursorExtensions.class})
+@ExtensionMethod({SqliteUtil.class, CursorExtensions.class, ContentValuesExtensions.class})
 public class AccountDao {
 
 	/**
@@ -120,11 +120,11 @@ public class AccountDao {
 	 * @param context
 	 */
 	public static void insert(TwitterAccount account, Context context) {
-		val values = new ContentValues();
-		values.put(MetaAccount.ScreenName.getColumnName(), account.getScreenName());
-		values.put(MetaAccount.UserId.getColumnName(), account.getUserId());
-		values.put(MetaAccount.AccessToken.getColumnName(), account.getAccessToken());
-		values.put(MetaAccount.AccessSecret.getColumnName(), account.getAccessSecret());
+		val values = new ContentValues()
+						.putString(MetaAccount.ScreenName, account.getScreenName())
+						.putLong(MetaAccount.UserId, account.getUserId())
+						.putString(MetaAccount.AccessToken, account.getAccessToken())
+						.putString(MetaAccount.AccessSecret, account.getAccessSecret());
 
 		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
 			@Override
@@ -156,8 +156,7 @@ public class AccountDao {
 	 * @param context
 	 */
 	public static void setUseFlag(final long userId, boolean isUse, Context context) {
-		val cv = new ContentValues();
-		cv.put(MetaAccount.UseFlag.getColumnName(), (isUse ? 1: 0));
+		val cv = new ContentValues().putBoolean(MetaAccount.UseFlag, isUse);
 
 		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
 			@Override
