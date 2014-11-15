@@ -9,6 +9,16 @@
 
 package inujini_.hatate.volley.yo;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import lombok.val;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
+
 /**
  * Yo APIs Request.
  * @see YoAPI
@@ -20,7 +30,6 @@ public class YoRequest extends StringRequest {
 	private YoAPI _api;
 	private YoParam _param;
 	private YoAccount _accounts;
-	private String _apiToken;
 
 	/**
 	 * yo.
@@ -98,7 +107,6 @@ public class YoRequest extends StringRequest {
 		// Note: subscribers_countだけは現状GETメソッドとなっている
 		super(Request.Method.GET, YoAPI.SubscribersCount.getValue() + String.format("?api_token=%s", apiToken)
 			, listener, errorListener);
-		_apiToken = apiToken;
 		_api = YoAPI.SubscribersCount;
 	}
 
@@ -112,7 +120,7 @@ public class YoRequest extends StringRequest {
 	}
 
 	@Override
-	protected Map<String, String> getParams() {
+	protected Map<String, String> getParams() throws AuthFailureError {
 		// GETメソッドの場合は特に何もしない
 		if(getMethod() == Request.Method.GET) {
 			return super.getParams();
@@ -128,9 +136,9 @@ public class YoRequest extends StringRequest {
 
 			// Note: linkとlocationは同時に渡してはいけないらしい。
 			if(_param.getLink() != null && _param.hasLocation()) {
-				throw IllegalArgumentException("'yo' api can only send link OR location but not both.");
+				throw new IllegalArgumentException("'yo' api can only send link OR location but not both.");
 			} else if(_param.getLink() != null) {
-				param.put("link", _param.getLink())
+				param.put("link", _param.getLink());
 			} else if(_param.hasLocation()) {
 				param.put("location", String.format("%d,%d", _param.getLatitude(), _param.getLongitude()));
 			}
@@ -139,7 +147,7 @@ public class YoRequest extends StringRequest {
 		case YoAll:
 			param.put("api_token", _param.getApiToken());
 			if(_param.getLink() != null) {
-				param.put("link", _param.getLink())
+				param.put("link", _param.getLink());
 			}
 			break;
 		// accounts
@@ -152,7 +160,7 @@ public class YoRequest extends StringRequest {
 				param.put("callback_url", _accounts.getCallbackUrl());
 			}
 
-			if(_accounts.getEmall() != null) {
+			if(_accounts.getEmail() != null) {
 				param.put("email", _accounts.getEmail());
 			}
 
@@ -164,6 +172,10 @@ public class YoRequest extends StringRequest {
 				param.put("needs_location", "true");
 			}
 
+			break;
+		case SubscribersCount:
+			break;
+		default:
 			break;
 		}
 

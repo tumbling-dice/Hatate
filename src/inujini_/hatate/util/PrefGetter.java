@@ -242,7 +242,7 @@ public class PrefGetter {
 	 */
 	public static String getYo(Context context) {
 		val pref = PreferenceManager.getDefaultSharedPreferences(context);
-		return pref.getString("yo");
+		return pref.getString("yo", null);
 	}
 
 }

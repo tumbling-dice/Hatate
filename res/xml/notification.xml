@@ -90,7 +90,7 @@
         android:key="yo"
         android:defaultValue=""
         android:dependency="isYo"
-        hatate:icon="@drawable/ic_yo_logo_24dp"/>
+        android:icon="@drawable/ic_yo_logo_24dp"/>
     <inujini_.hatate.preference.PreviewPreference
         android:key="preview"
         android:title="確認"

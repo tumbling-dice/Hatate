@@ -18,8 +18,10 @@ import inujini_.hatate.preference.ValidatableEditTextPreference;
 import inujini_.hatate.preference.ValidatableEditTextPreference.TextValidator;
 import inujini_.hatate.service.CallbackBroadcastReceiver;
 import inujini_.hatate.service.OauthService;
+import inujini_.hatate.service.RepeatYoService;
 import inujini_.hatate.sqlite.dao.AccountDao;
 import inujini_.hatate.util.PrefGetter;
+import inujini_.hatate.util.Util;
 import lombok.val;
 import lombok.experimental.ExtensionMethod;
 import twitter4j.auth.AccessToken;
@@ -204,7 +206,7 @@ public class NotificationActivity extends PreferenceActivity {
 		yoPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				if(newValue == null || "".equals((String) newValue))
+				if(newValue == null || "".equals(newValue))
 					return false;
 
 				preference.setEnabled(false);

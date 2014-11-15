@@ -9,6 +9,7 @@
 
 package inujini_.hatate.service;
 
+import inujini_.hatate.AppHatate;
 import inujini_.hatate.MainActivity;
 import inujini_.hatate.R;
 import inujini_.hatate.SpellCardHistoryActivity;
@@ -18,6 +19,8 @@ import inujini_.hatate.sqlite.dao.SpellCardDao;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
 import inujini_.hatate.util.IconUtil;
 import inujini_.hatate.util.PrefGetter;
+import inujini_.hatate.volley.yo.YoParam;
+import inujini_.hatate.volley.yo.YoRequest;
 
 import java.util.Random;
 
@@ -29,8 +32,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 
 /**
  * 包丁.
@@ -131,7 +139,7 @@ public class Houtyou extends PierceReceiver {
 								.link(res.getString(R.string.yo_folk_url))
 								.build();
 
-				AppHatate.getRequestQueue().add(YoRequest.yoAll(param
+				AppHatate.getRequestQueue(context).add(YoRequest.yoAll(param
 					, new Response.Listener<String>() {
 						@Override
 						public void onResponse(String response) {
@@ -146,7 +154,7 @@ public class Houtyou extends PierceReceiver {
 							} else {
 								Log.d("Houtyou"
 									, String.format("error yo all. statuscode:%d message:%s"
-										, error.networkResponse.statuscode
+										, error.networkResponse.statusCode
 										, error.getMessage()));
 							}
 						}

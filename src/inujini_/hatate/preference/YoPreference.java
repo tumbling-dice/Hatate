@@ -9,9 +9,15 @@
 
 package inujini_.hatate.preference;
 
+import android.content.Context;
+import android.text.InputType;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.EditText;
+
 
 /**
- * 
+ *
  */
 public class YoPreference extends IconEditTextPreference {
 
@@ -30,7 +36,7 @@ public class YoPreference extends IconEditTextPreference {
 	@Override
 	protected void onAddEditTextToDialogView(View dialogView, final EditText editText) {
 		super.onAddEditTextToDialogView(dialogView, editText);
-		
+
 		editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
 
 		/*

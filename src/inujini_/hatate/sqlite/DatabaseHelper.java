@@ -25,6 +25,7 @@ import inujini_.hatate.scraping.Scraper.XElement;
 import inujini_.hatate.scraping.XmlScraper;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
+import inujini_.hatate.sqlite.helper.ContentValuesExtensions;
 import inujini_.hatate.sqlite.helper.CursorExtensions;
 import inujini_.hatate.sqlite.helper.QueryBuilder;
 import inujini_.hatate.sqlite.helper.SqliteUtil;
@@ -185,7 +186,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 									.putInt(MetaSpellCard.Id, Integer.parseInt(y.getAttributeValue("id")))
 									.putString(MetaSpellCard.Name, y.getAttributeValue("name"))
 									.putInt(MetaSpellCard.Power, Integer.parseInt(y.getAttributeValue("power")))
-									.putInt(MetaSpellCard.CharacterId, cId);
+									.putInt(MetaSpellCard.CharacterId, cId)
 									.putString(MetaSpellCard.SeriesId
 									, y.getInnerElements().linq().select(new Func1<XElement, String>() {
 										@Override

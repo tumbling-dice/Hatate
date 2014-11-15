@@ -17,10 +17,18 @@ import inujini_.hatate.linq.Linq;
 import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.service.OneMoreLovely;
+import inujini_.hatate.service.RepeatYoService;
 import inujini_.hatate.sqlite.DatabaseHelper;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.io.StreamCorruptedException;
 import java.lang.ref.SoftReference;
 import java.util.Calendar;
 
@@ -147,7 +155,7 @@ public class Util {
 	 * @param context
 	 */
 	public static void setRepeatYo(Context context) {
-		context.getSharedPreference(RepeatYoService.PREF_YO, 0)
+		context.getSharedPreferences(RepeatYoService.PREF_YO, 0)
 			.edit().putBoolean(RepeatYoService.IS_SENT_YO, false).commit();
 
 		getAlarmManager(context).setRepeating(AlarmManager.RTC
@@ -171,7 +179,7 @@ public class Util {
 	 * @param context
 	 */
 	public static void removeRepeatYo(Context context) {
-		context.getSharedPreference(RepeatYoService.PREF_YO, 0)
+		context.getSharedPreferences(RepeatYoService.PREF_YO, 0)
 			.edit().putBoolean(RepeatYoService.IS_SENT_YO, true).commit();
 		getAlarmManager(context).cancel(getRepeatYoIntent(context));
 	}

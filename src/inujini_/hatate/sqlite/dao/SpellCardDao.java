@@ -19,6 +19,7 @@ import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.linq.Linq;
 import inujini_.hatate.sqlite.DatabaseHelper;
 import inujini_.hatate.sqlite.helper.ColumnValuePair;
+import inujini_.hatate.sqlite.helper.ContentValuesExtensions;
 import inujini_.hatate.sqlite.helper.CursorExtensions;
 import inujini_.hatate.sqlite.helper.QueryBuilder;
 import inujini_.hatate.sqlite.helper.SqliteUtil;

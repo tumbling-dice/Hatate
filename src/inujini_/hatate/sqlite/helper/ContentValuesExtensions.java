@@ -9,6 +9,9 @@
 
 package inujini_.hatate.sqlite.helper;
 
+import inujini_.sqlite.meta.ColumnProperty;
+import android.content.ContentValues;
+
 /**
  * {@link ContentValues}拡張.
  */

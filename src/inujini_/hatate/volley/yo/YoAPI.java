@@ -9,6 +9,8 @@
 
 package inujini_.hatate.volley.yo;
 
+import lombok.Getter;
+
 /**
  * Yoで使用できるAPIのWrapper.
  * @see YoRequest

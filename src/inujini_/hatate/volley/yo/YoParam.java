@@ -9,6 +9,12 @@
 
 package inujini_.hatate.volley.yo;
 
+import java.io.Serializable;
+
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+
 /**
  * <p>//api.justyo.co/yo/および//api.justyo.co/yoall/で使用するparamのWrapper.</p>
  * <p>yoの方はapiTokenだけでなくuserNameも必須となるので注意.</p>
@@ -17,6 +23,8 @@ package inujini_.hatate.volley.yo;
  * @see YoRequest
  */
 public class YoParam implements Serializable {
+	private static final long serialVersionUID = -8290811847682126819L;
+
 	@Getter private final String apiToken;
 
 	/** Yoを送りつけるユーザ名 */
@@ -75,7 +83,7 @@ public class YoParam implements Serializable {
 	* <p>//api.justyo.co/yo/および//api.justyo.co/yoall/で使用するparamのBuilder.</p>
 	* <p>yoの方はapiTokenだけでなくuserNameも必須となるので注意.</p>
 	*/
-	public class Builder {
+	public static class Builder {
 		private final YoParam _param;
 
 		/**

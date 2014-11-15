@@ -9,6 +9,12 @@
 
 package inujini_.hatate;
 
+import android.app.Application;
+import android.content.Context;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 /**
  *
  */
@@ -18,19 +24,19 @@ public class AppHatate extends Application {
 
 	@Override
 	public void onCreate() {
-		initQueue();
+		initQueue(getApplicationContext());
 	}
 
-	private static void initQueue() {
-		if(_queue == null) _queue = Volley.newRequestQueue(getApplicationContext());
+	private static void initQueue(Context context) {
+		if(_queue == null) _queue = Volley.newRequestQueue(context);
 	}
 
 	/**
 	 * {@link RequestQueue}の取得.
 	 * @return {@link RequestQueue}
 	 */
-	public static RequestQueue getRequestQueue() {
-		initQueue();
+	public static RequestQueue getRequestQueue(Context context) {
+		initQueue(context);
 		return _queue;
 	}
 }

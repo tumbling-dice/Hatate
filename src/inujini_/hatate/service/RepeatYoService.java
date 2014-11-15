@@ -9,14 +9,30 @@
 
 package inujini_.hatate.service;
 
+import inujini_.hatate.AppHatate;
+import inujini_.hatate.R;
+import inujini_.hatate.util.PrefGetter;
+import inujini_.hatate.util.Util;
+import inujini_.hatate.volley.yo.YoParam;
+import inujini_.hatate.volley.yo.YoRequest;
+import lombok.val;
+import lombok.experimental.ExtensionMethod;
+import android.app.IntentService;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 /**
  * Yo.
  */
 @ExtensionMethod({PrefGetter.class})
 public class RepeatYoService extends IntentService {
 
-	public static final PREF_YO = "prefYo";
-	public static final IS_SENT_YO = "isSentYo";
+	public static final String PREF_YO = "prefYo";
+	public static final String IS_SENT_YO = "isSentYo";
 
 	/**
 	 * Yo.
@@ -47,8 +63,8 @@ public class RepeatYoService extends IntentService {
 						.userName(userName)
 						.build();
 
-		AppHatate.getRequestQueue()
-			.add(YoRequest.yo(param)
+		AppHatate.getRequestQueue(getApplicationContext())
+			.add(YoRequest.yo(param
 				, new Response.Listener<String>() {
 					@Override
 					public void onResponse(String response) {
@@ -64,11 +80,11 @@ public class RepeatYoService extends IntentService {
 						} else {
 							Log.d("RepeatYoService"
 								, String.format("error yo. statuscode:%d message:%s"
-									, error.networkResponse.statuscode
+									, error.networkResponse.statusCode
 									, error.getMessage()));
 						}
 					}
-				});
+				}));
 	}
 
 	/**
@@ -77,6 +93,6 @@ public class RepeatYoService extends IntentService {
 	 * @return 成功していたらtrue
 	 */
 	public static boolean isSentYo(Context context) {
-		return context.getSharedPreference(PREF_YO, 0).getBoolean(IS_SENT_YO, true)
+		return context.getSharedPreferences(PREF_YO, 0).getBoolean(IS_SENT_YO, true);
 	}
 }

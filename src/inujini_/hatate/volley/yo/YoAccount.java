@@ -9,6 +9,12 @@
 
 package inujini_.hatate.volley.yo;
 
+import java.io.Serializable;
+
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+
 /**
  * //api.justyo.co/accounts/で使用するparamのWrapper.
  * @see YoAPI
@@ -17,7 +23,8 @@ package inujini_.hatate.volley.yo;
  */
 public class YoAccount implements Serializable {
 
-    @Getter private final String newAccountUserName;
+	private static final long serialVersionUID = 2436518593695682L;
+	@Getter private final String newAccountUserName;
 	@Getter private final String newAccountPasscode;
 	@Getter private final String apiToken;
 
@@ -48,7 +55,7 @@ public class YoAccount implements Serializable {
     /**
      * //api.justyo.co/accounts/で使用するparamのBuilder.
      */
-	public class Builder {
+	public static class Builder {
 		private final YoAccount _accounts;
 
         /**
@@ -58,7 +65,7 @@ public class YoAccount implements Serializable {
          * @param apiToken api_token
          */
 		public Builder(@NonNull String newAccountUserName, @NonNull String newAccountPasscode, @NonNull String apiToken) {
-			_accounts = new accounts(newAccountUserName, newAccountPasscode, apiToken);
+			_accounts = new YoAccount(newAccountUserName, newAccountPasscode, apiToken);
 		}
 
         /**
@@ -84,7 +91,7 @@ public class YoAccount implements Serializable {
          * @param email
          * @return
          */
-		public AccountsBuilder email(String email) {
+		public Builder email(String email) {
 			_accounts.setEmail(email);
 			return this;
 		}
@@ -105,7 +112,7 @@ public class YoAccount implements Serializable {
          * @return
          */
 		public Builder needsLocation(boolean isNeedsLocation) {
-			_accounts.isNeedsLocation(isNeedsLocation);
+			_accounts.setNeedsLocation(isNeedsLocation);
 			return this;
 		}
 	}
