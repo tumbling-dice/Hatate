@@ -83,6 +83,8 @@ public class RepeatYoService extends IntentService {
 									, error.networkResponse.statusCode
 									, error.getMessage()));
 						}
+
+						Util.removeRepeatYo(context);
 					}
 				}));
 	}

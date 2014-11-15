@@ -159,7 +159,7 @@ public class Util {
 			.edit().putBoolean(RepeatYoService.IS_SENT_YO, false).commit();
 
 		getAlarmManager(context).setRepeating(AlarmManager.RTC
-			, System.currentTimeMillis() + 1
+			, Calendar.getInstance().getTimeInMillis() + 1000L
 			, 65000L
 			, getRepeatYoIntent(context));
 	}

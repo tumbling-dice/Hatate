@@ -53,6 +53,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
+            android:text="● Volley" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="https://android.googlesource.com/platform/frameworks/volley/"
+            android:autoLink="web" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
             android:text="また、このソフトウェアには、 MITライセンスで配布されている以下の製作物が含まれています。" />
         <TextView
             android:layout_width="fill_parent"

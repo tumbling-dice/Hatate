@@ -19,7 +19,6 @@ import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.linq.Linq;
 import inujini_.hatate.sqlite.DatabaseHelper;
 import inujini_.hatate.sqlite.helper.ColumnValuePair;
-import inujini_.hatate.sqlite.helper.ContentValuesExtensions;
 import inujini_.hatate.sqlite.helper.CursorExtensions;
 import inujini_.hatate.sqlite.helper.QueryBuilder;
 import inujini_.hatate.sqlite.helper.SqliteUtil;
@@ -42,7 +41,7 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * {@link SpellCard}のDAO.
  */
-@ExtensionMethod({SqliteUtil.class, CursorExtensions.class, Linq.class, ContentValuesExtensions.class})
+@ExtensionMethod({SqliteUtil.class, CursorExtensions.class, Linq.class})
 public class SpellCardDao {
 
 	private static final Func1<Cursor, SpellCard> _converter = new Func1<Cursor, SpellCard>() {
@@ -159,17 +158,17 @@ public class SpellCardDao {
 			@Override
 			public void call(SQLiteDatabase db) {
 				// カウントアップ
-				ContentValues cv = new ContentValues()
-									.putInt(MetaSpellCard.Count, (spell.getCount() + 1))
-									.putBoolean(MetaSpellCard.GetFlag, true);
+				ContentValues cv = new ContentValues();
+				cv.put(MetaSpellCard.Count.getColumnName(), (spell.getCount() + 1));
+				cv.put(MetaSpellCard.GetFlag.getColumnName(), 1);
 				db.update(MetaSpellCard.TBL_NAME, cv, "Id = ?", new String[] { String.valueOf(getId) });
 
 				// 履歴情報の登録
-				cv = new ContentValues()
-						.putInt(MetaSpellCardHistory.Id, getId)
-						.putString(MetaSpellCardHistory.Name, spell.getName())
-						.putString(MetaSpellCardHistory.Timestamp
-								, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
+				cv = new ContentValues();
+				cv.put(MetaSpellCardHistory.Id.getColumnName(), getId);
+				cv.put(MetaSpellCardHistory.Name.getColumnName(), spell.getName());
+				cv.put(MetaSpellCardHistory.Timestamp.getColumnName()
+						, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
 				db.insert(MetaSpellCardHistory.TBL_NAME, null, cv);
 			}
 		});
@@ -186,9 +185,9 @@ public class SpellCardDao {
 
 		val id = spellCard.getId();
 
-		val cv = new ContentValues()
-				.putInt(MetaSpellCard.Count, spellCard.getCount() + 1)
-				.putBoolean(MetaSpellCard.GetFlag, true);
+		val cv = new ContentValues();
+		cv.put(MetaSpellCard.Count.getColumnName(), spellCard.getCount() + 1);
+		cv.put(MetaSpellCard.GetFlag.getColumnName(), 1);
 
 		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
 			@Override

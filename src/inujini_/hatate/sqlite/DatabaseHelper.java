@@ -25,7 +25,6 @@ import inujini_.hatate.scraping.Scraper.XElement;
 import inujini_.hatate.scraping.XmlScraper;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
-import inujini_.hatate.sqlite.helper.ContentValuesExtensions;
 import inujini_.hatate.sqlite.helper.CursorExtensions;
 import inujini_.hatate.sqlite.helper.QueryBuilder;
 import inujini_.hatate.sqlite.helper.SqliteUtil;
@@ -48,7 +47,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  *
  */
-@ExtensionMethod({SqliteUtil.class, Linq.class, CursorExtensions.class, ContentValuesExtensions.class})
+@ExtensionMethod({SqliteUtil.class, Linq.class, CursorExtensions.class})
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final int DB_VERSION = 4;
 	private static final String DB_NAME = "HATATE_DB";
@@ -155,9 +154,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			scraper.extract("Seriese").linq().forEach(new Action1<XElement>() {
 				@Override
 				public void call(XElement x) {
-					val cv = new ContentValues()
-							.putInt(MetaSeries.Id, Integer.parseInt(x.getAttributeValue("id")))
-							.putString(MetaSeries.Name, x.getText());
+					val cv = new ContentValues();
+					cv.put(MetaSeries.Id.getColumnName(), Integer.parseInt(x.getAttributeValue("id")));
+					cv.put(MetaSeries.Name.getColumnName(), x.getText());
 					db.insert(MetaSeries.TBL_NAME, null, cv);
 				}
 			});
@@ -169,9 +168,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				@Override
 				public void call(XElement x) {
 					val cId = Integer.parseInt(x.getAttributeValue("id"));
-					val cv = new ContentValues()
-							.putInt(MetaCharacter.Id, cId)
-							.putString(MetaCharacter.Name, x.getAttributeValue("name"));
+					val cv = new ContentValues();
+					cv.put(MetaCharacter.Id.getColumnName(), cId);
+					cv.put(MetaCharacter.Name.getColumnName(), x.getAttributeValue("name"));
 					db.insert(MetaCharacter.TBL_NAME, null, cv);
 
 					x.getInnerElements().linq().selectMany(new Func1<XElement, Iterable<XElement>>() {
@@ -182,12 +181,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					}).forEach(new Action1<XElement>() {
 						@Override
 						public void call(XElement y) {
-							val cvs = new ContentValues()
-									.putInt(MetaSpellCard.Id, Integer.parseInt(y.getAttributeValue("id")))
-									.putString(MetaSpellCard.Name, y.getAttributeValue("name"))
-									.putInt(MetaSpellCard.Power, Integer.parseInt(y.getAttributeValue("power")))
-									.putInt(MetaSpellCard.CharacterId, cId)
-									.putString(MetaSpellCard.SeriesId
+							val cvs = new ContentValues();
+							cvs.put(MetaSpellCard.Id.getColumnName(), Integer.parseInt(y.getAttributeValue("id")));
+							cvs.put(MetaSpellCard.Name.getColumnName(), y.getAttributeValue("name"));
+							cvs.put(MetaSpellCard.Power.getColumnName(), Integer.parseInt(y.getAttributeValue("power")));
+							cvs.put(MetaSpellCard.CharacterId.getColumnName(), cId);
+							cvs.put(MetaSpellCard.SeriesId.getColumnName()
 									, y.getInnerElements().linq().select(new Func1<XElement, String>() {
 										@Override
 										public String call(XElement z) {
@@ -254,8 +253,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		ids.linq().forEach(new Action1<Long>() {
 			@Override
 			public void call(Long x) {
-				val cv = new ContentValues()
-						.putBoolean(MetaSpellCard.GetFlag, true);
+				val cv = new ContentValues();
+				cv.put(MetaSpellCard.GetFlag.getColumnName(), true);
 				db.update(MetaSpellCard.TBL_NAME, cv, "Id = ?", new String[] { x.toString() });
 			}
 		});

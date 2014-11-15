@@ -11,6 +11,7 @@ package inujini_.hatate;
 
 import inujini_.hatate.data.TwitterAccount;
 import inujini_.hatate.function.Function.Func1;
+import inujini_.hatate.function.Function.Predicate;
 import inujini_.hatate.linq.Linq;
 import inujini_.hatate.preference.EventableListPreference;
 import inujini_.hatate.preference.EventableListPreference.OnChosenListener;
@@ -30,6 +31,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.CheckBoxPreference;
@@ -203,6 +207,20 @@ public class NotificationActivity extends PreferenceActivity {
 			yoPref.setEnabled(false);
 		}
 
+		yoPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+				if(hasYo()) {
+					return false;
+				}
+
+				val i = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.yo_invate_uri)));
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivity(i);
+				return true;
+			}
+		});
+
 		yoPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -224,5 +242,17 @@ public class NotificationActivity extends PreferenceActivity {
 			_receiver = null;
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+
+	private boolean hasYo() {
+		val yoPackage = getString(R.string.yo_package);
+		val pm = getPackageManager();
+
+		return pm.getInstalledApplications(0).linq().any(new Predicate<ApplicationInfo>(){
+			@Override
+			public Boolean call(ApplicationInfo x) {
+				return x.packageName.equals(yoPackage);
+			}
+		});
 	}
 }

@@ -16,7 +16,6 @@ import inujini_.hatate.function.Function.Action1;
 import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.sqlite.DatabaseHelper;
-import inujini_.hatate.sqlite.helper.ContentValuesExtensions;
 import inujini_.hatate.sqlite.helper.CursorExtensions;
 import inujini_.hatate.sqlite.helper.QueryBuilder;
 import inujini_.hatate.sqlite.helper.SqliteUtil;
@@ -36,7 +35,7 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * {@link TwitterAccount}のDAO
  */
-@ExtensionMethod({SqliteUtil.class, CursorExtensions.class, ContentValuesExtensions.class})
+@ExtensionMethod({SqliteUtil.class, CursorExtensions.class})
 public class AccountDao {
 
 	/**
@@ -121,11 +120,11 @@ public class AccountDao {
 	 * @param context
 	 */
 	public static void insert(TwitterAccount account, Context context) {
-		val values = new ContentValues()
-						.putString(MetaAccount.ScreenName, account.getScreenName())
-						.putLong(MetaAccount.UserId, account.getUserId())
-						.putString(MetaAccount.AccessToken, account.getAccessToken())
-						.putString(MetaAccount.AccessSecret, account.getAccessSecret());
+		val values = new ContentValues();
+		values.put(MetaAccount.ScreenName.getColumnName(), account.getScreenName());
+		values.put(MetaAccount.UserId.getColumnName(), account.getUserId());
+		values.put(MetaAccount.AccessToken.getColumnName(), account.getAccessToken());
+		values.put(MetaAccount.AccessSecret.getColumnName(), account.getAccessSecret());
 
 		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
 			@Override
@@ -157,7 +156,8 @@ public class AccountDao {
 	 * @param context
 	 */
 	public static void setUseFlag(final long userId, boolean isUse, Context context) {
-		val cv = new ContentValues().putBoolean(MetaAccount.UseFlag, isUse);
+		val cv = new ContentValues();
+		cv.put(MetaAccount.UseFlag.getColumnName(), (isUse ? 1 : 0));
 
 		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
 			@Override

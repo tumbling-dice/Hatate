@@ -8,7 +8,7 @@
 -->
 
 <resources>
-    <string name="consumer_key">d4fjJ4qVlpC0w41RuNSOch7IT</string>
-    <string name="consumer_secret">DJzG0kHrFVHGWnDnT3Fza9lqkSMPE0ypv1No6wgF1KA3C2wXdk</string>
+    <string name="consumer_key"></string>
+    <string name="consumer_secret"></string>
     <string name="callback">myapp://hatate</string>
 </resources>

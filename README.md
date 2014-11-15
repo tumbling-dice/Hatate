@@ -6,6 +6,9 @@
 
 #更新履歴
 
++ ver 1.2.4
+    * Yo
+    * Yoの送受信はややこしいので[こちら](https://tumbling-dice.github.io/Hatate/tips/index.html?md=yo)をお読み下さい。
 + ver 1.2.3
     * 「とどめをささない」→「慈悲はない」に変更
     * スペルカードガチャの結果をわかりやすくしました
@@ -85,6 +88,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 + [Apache 2.0ライセンス](http://www.apache.org/licenses/LICENSE-2.0)で配布されているもの
     * [Twittrer4J](http://twitter4j.org/ja/index.html)
+    * [Volley](https://android.googlesource.com/platform/frameworks/volley/)
 + MITライセンスで配布されているもの
     * [Lombok](http://projectlombok.org/)
 
