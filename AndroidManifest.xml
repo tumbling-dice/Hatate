@@ -8,8 +8,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="inujini_.hatate"
-    android:versionCode="16"
-    android:versionName="1.2.4" >
+    android:versionCode="17"
+    android:versionName="1.2.5" >
 
     <uses-sdk
         android:minSdkVersion="4"
@@ -26,12 +26,15 @@
         android:name="inujini_.hatate.AppHatate" >
 
         <!-- Activities -->
-        <activity android:name="inujini_.hatate.MainActivity">
+        <activity android:name="inujini_.hatate.OnStartActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="inujini_.hatate.MainActivity" />
 
         <activity android:name="inujini_.hatate.LicenseActivity"
             android:label="@string/title_license" />
@@ -85,7 +88,7 @@
         <service android:name="inujini_.hatate.service.Kill" android:exported="false" />
 
         <service android:name="inujini_.hatate.service.OauthService" android:exported="false" />
-        
+
         <service android:name="inujini_.hatate.service.RepeatYoService" android:exported="false" />
 
     </application>

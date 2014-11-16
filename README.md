@@ -6,6 +6,8 @@
 
 #更新履歴
 
++ ver 1.2.5
+    * 権力と戦うために自動アップデート機能を実装
 + ver 1.2.4
     * Yo
     * Yoの送受信はややこしいので[こちら](https://tumbling-dice.github.io/Hatate/tips/index.html?md=yo)をお読み下さい。

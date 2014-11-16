@@ -10,11 +10,7 @@
 package inujini_.hatate.util;
 
 import inujini_.hatate.NotificationActivity;
-import inujini_.hatate.function.Function.Action;
-import inujini_.hatate.function.Function.Action1;
-import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.linq.Linq;
-import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.service.Houtyou;
 import inujini_.hatate.service.OneMoreLovely;
 import inujini_.hatate.service.RepeatYoService;
@@ -37,10 +33,8 @@ import lombok.experimental.ExtensionMethod;
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
 /**
  * 行き場のないpublic staticなメソッドを集めたUtility class.
@@ -213,58 +207,6 @@ public class Util {
 	 */
 	public static InputStreamReader getAssetStream(Context context, String fileName) throws IOException {
 		return new InputStreamReader(context.getResources().getAssets().open(fileName));
-	}
-
-	/**
-	 * <p>内部DBのアップデート（非同期版）.</p>
-	 * <p>DBがまだ作成されていない、もしくはアップデートされていない場合に実行.</p>
-	 * <p>ProgressDialogを表示し、非同期処理でDBのアップデートを行う.</p>
-	 * @param context ActivityContext（{@link ProgressDialog}を呼び出すため）
-	 * @see dbUpdate(Context)
-	 * @see DatabaseHelper#isDbOpened(Context)
-	 * @see DatabaseHelper#isDbUpdated(Context)
-	 */
-	public static void dbUpdateAsync(final Context context) {
-		if(!DatabaseHelper.isDbOpened(context)
-			|| !DatabaseHelper.isDbUpdated(context)) {
-
-			val prog = new ProgressDialog(context);
-			prog.setTitle("DB Update");
-			prog.setMessage("内部データベースを更新しています...");
-			prog.setCancelable(false);
-			prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-
-			new ReactiveAsyncTask<Context, Void, Void>(new Func1<Context, Void>() {
-				@Override
-				public Void call(Context c) {
-					val d = new DatabaseHelper(c);
-					d.getWritableDatabase().close();
-					d.close();
-					return null;
-				}
-			}).setOnPreExecute(new Action() {
-				@Override
-				public void call() {
-					prog.show();
-				}
-			}).setOnPostExecute(new Action1<Void>() {
-				@Override
-				public void call(Void arg0) {
-					if(prog != null && prog.isShowing())
-						prog.dismiss();
-				}
-			}).setOnError(new Action1<Exception>() {
-				@Override
-				public void call(Exception e) {
-					if(prog != null && prog.isShowing())
-						prog.dismiss();
-
-					if(e != null) e.printStackTrace();
-					Toast.makeText(context, "エラーが発生しました。", Toast.LENGTH_SHORT).show();
-
-				}
-			}).execute(context);
-		}
 	}
 
 	/**

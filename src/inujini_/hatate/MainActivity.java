@@ -92,8 +92,6 @@ public class MainActivity extends PreferenceActivity {
 			}
 		});
 
-		// check db state
-		Util.dbUpdateAsync(this);
 	}
 
 	@Override
