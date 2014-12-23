@@ -72,8 +72,7 @@ public class SpellCardDao {
 	 * @return DBに登録されている全ての{@link SpellCard}.
 	 */
 	public static List<SpellCard> getAllSpellCards(Context context) {
-		val q = new QueryBuilder().selectAll().from(MetaSpellCard.TBL_NAME).toString();
-		return new DatabaseHelper(context).getList(q, context, _converter);
+		return new DatabaseHelper(context).selectAll(context, MetaSpellCard.TBL_NAME, _converter);
 	}
 
 	/**
@@ -189,12 +188,9 @@ public class SpellCardDao {
 		cv.put(MetaSpellCard.Count.getColumnName(), spellCard.getCount() + 1);
 		cv.put(MetaSpellCard.GetFlag.getColumnName(), 1);
 
-		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
-			@Override
-			public void call(SQLiteDatabase x) {
-				x.update(MetaSpellCard.TBL_NAME, cv, "Id = ?", new String[]{String.valueOf(id)});
-			}
-		});
+		new DatabaseHelper(context).update(context
+				, MetaSpellCard.TBL_NAME, cv, new ColumnValuePair(MetaSpellCard.Id, id));
+
 	}
 
 	/**
@@ -256,7 +252,7 @@ public class SpellCardDao {
 				.toString();
 	}
 
-	// FIX ME:これはCharacterDaoとSeriesDaoにあるべきだと思う…
+	// FIXME:これはCharacterDaoとSeriesDaoにあるべきだと思う…
 	private static HashMap<String, Map<Long, String>> _names;
 	/**
 	 *

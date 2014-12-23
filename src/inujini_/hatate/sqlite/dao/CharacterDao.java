@@ -47,12 +47,7 @@ public class CharacterDao {
 	 * @return DBに登録されている全ての{@link Character}.
 	 */
 	public static List<Character> getAllCharacter(Context context) {
-		val q = new QueryBuilder()
-					.selectAll()
-					.from(MetaCharacter.TBL_NAME)
-					.toString();
-
-		return new DatabaseHelper(context).getList(q, context, _converter);
+		return new DatabaseHelper(context).selectAll(context, MetaCharacter.TBL_NAME, _converter);
 	}
 
 	/**

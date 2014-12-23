@@ -23,4 +23,9 @@ public class OneMoreLovely extends PierceReceiver {
 		Util.setSnooze(context);
 	}
 
+	@Override
+	protected void onUIThread(Context context, Intent intent) {
+		// not implement
+	}
+
 }

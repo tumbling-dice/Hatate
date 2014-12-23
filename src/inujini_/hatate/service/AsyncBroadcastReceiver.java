@@ -21,7 +21,7 @@ import android.content.Intent;
 public abstract class AsyncBroadcastReceiver extends BroadcastReceiver {
 
 	@Override
-	public final void onReceive(Context context, final Intent intent) {
+	public final void onReceive(final Context context, final Intent intent) {
 		ReactiveAsyncTask.create(new Func1<Context, Void>() {
 			@Override
 			public Void call(Context x) {
@@ -29,6 +29,8 @@ public abstract class AsyncBroadcastReceiver extends BroadcastReceiver {
 				return null;
 			}
 		}).execute(context);
+
+		onUIThread(context, intent);
 	}
 
 	/**
@@ -38,5 +40,7 @@ public abstract class AsyncBroadcastReceiver extends BroadcastReceiver {
 	 * @see BroadcastReceiver#onReceive(Context, Intent)
 	 */
 	protected abstract void asyncOnReceive(Context context, Intent intent);
+
+	protected abstract void onUIThread(Context context, Intent intent);
 
 }

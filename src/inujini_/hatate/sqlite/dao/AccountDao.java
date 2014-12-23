@@ -12,10 +12,10 @@ package inujini_.hatate.sqlite.dao;
 import inujini_.hatate.R;
 import inujini_.hatate.data.TwitterAccount;
 import inujini_.hatate.data.meta.MetaAccount;
-import inujini_.hatate.function.Function.Action1;
 import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.reactive.ReactiveAsyncTask;
 import inujini_.hatate.sqlite.DatabaseHelper;
+import inujini_.hatate.sqlite.helper.ColumnValuePair;
 import inujini_.hatate.sqlite.helper.CursorExtensions;
 import inujini_.hatate.sqlite.helper.QueryBuilder;
 import inujini_.hatate.sqlite.helper.SqliteUtil;
@@ -30,7 +30,6 @@ import twitter4j.conf.ConfigurationBuilder;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 /**
  * {@link TwitterAccount}のDAO
@@ -97,12 +96,7 @@ public class AccountDao {
 	 * @return 全{@link TwitterAccount}のリスト
 	 */
 	public static List<TwitterAccount> getAllAccount(Context context) {
-		val q = new QueryBuilder()
-					.selectAll()
-					.from(MetaAccount.TBL_NAME)
-					.toString();
-
-		return new DatabaseHelper(context).getList(q, context, new Func1<Cursor, TwitterAccount>() {
+		return new DatabaseHelper(context).selectAll(context, MetaAccount.TBL_NAME, new Func1<Cursor, TwitterAccount>() {
 			@Override
 			public TwitterAccount call(Cursor c) {
 				val a = new TwitterAccount();
@@ -126,12 +120,7 @@ public class AccountDao {
 		values.put(MetaAccount.AccessToken.getColumnName(), account.getAccessToken());
 		values.put(MetaAccount.AccessSecret.getColumnName(), account.getAccessSecret());
 
-		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
-			@Override
-			public void call(SQLiteDatabase db) {
-				db.insert(MetaAccount.TBL_NAME, null, values);
-			}
-		});
+		new DatabaseHelper(context).insert(context, MetaAccount.TBL_NAME, values);
 	}
 
 	/**
@@ -155,16 +144,12 @@ public class AccountDao {
 	 * @param isUse 使用フラグ
 	 * @param context
 	 */
-	public static void setUseFlag(final long userId, boolean isUse, Context context) {
+	public static void setUseFlag(long userId, boolean isUse, Context context) {
 		val cv = new ContentValues();
 		cv.put(MetaAccount.UseFlag.getColumnName(), (isUse ? 1 : 0));
 
-		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
-			@Override
-			public void call(SQLiteDatabase db) {
-				db.update(MetaAccount.TBL_NAME, cv, "UserId = ?", new String[]{ String.valueOf(userId) });
-			}
-		});
+		new DatabaseHelper(context).update(context
+				, MetaAccount.TBL_NAME, cv, new ColumnValuePair(MetaAccount.UserId, userId));
 	}
 
 	/**
@@ -197,14 +182,8 @@ public class AccountDao {
 	 * @param context
 	 */
 	public static void delete(TwitterAccount account, Context context) {
-		val userId = account.getUserId();
-
-		new DatabaseHelper(context).transaction(context, new Action1<SQLiteDatabase>() {
-			@Override
-			public void call(SQLiteDatabase db) {
-				db.delete(MetaAccount.TBL_NAME, "UserId = ?", new String[]{ String.valueOf(userId) });
-			}
-		});
+		new DatabaseHelper(context).delete(context
+				, MetaAccount.TBL_NAME, new ColumnValuePair(MetaAccount.UserId, account.getUserId()));
 	}
 
 	/**

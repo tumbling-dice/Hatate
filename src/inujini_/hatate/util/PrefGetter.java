@@ -245,4 +245,14 @@ public class PrefGetter {
 		return pref.getString("yo", null);
 	}
 
+	/**
+	 * 天気予報フラグ
+	 * @param context
+	 * @return
+	 */
+	public static boolean isWeather(Context context) {
+		val pref = PreferenceManager.getDefaultSharedPreferences(context);
+		return pref.getBoolean("isWeather", false);
+	}
+
 }

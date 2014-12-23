@@ -91,6 +91,13 @@
         android:defaultValue=""
         android:dependency="isYo"
         android:icon="@drawable/ic_yo_logo_24dp"/>
+    <inujini_.hatate.preference.IconCheckboxPreference
+        android:key="isWeather"
+        android:title="はたてちゃん天気予報"
+        android:summary="はたてちゃんに今日の天気を教えてもらいます。\n(新聞記者っぽい！)"
+        hatate:iconOn="@drawable/ic_cloud_black_24dp"
+        hatate:iconOff="@drawable/ic_cloud_black_24dp"
+        android:defaultValue="false" />
     <inujini_.hatate.preference.PreviewPreference
         android:key="preview"
         android:title="確認"

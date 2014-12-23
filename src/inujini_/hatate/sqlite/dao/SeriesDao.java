@@ -48,12 +48,7 @@ public class SeriesDao {
 	 * @return DBに登録されている全ての{@link Series}.
 	 */
 	public static List<Series> getAllSeries(Context context) {
-		val q = new QueryBuilder()
-					.selectAll()
-					.from(MetaSeries.TBL_NAME)
-					.toString();
-
-		return new DatabaseHelper(context).getList(q, context, _converter);
+		return new DatabaseHelper(context).selectAll(context, MetaSeries.TBL_NAME, _converter);
 	}
 
 	/**

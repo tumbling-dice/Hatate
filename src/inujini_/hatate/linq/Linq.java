@@ -20,9 +20,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 汎用コレクション処理.
@@ -349,6 +351,16 @@ public final class Linq<T> implements Iterable<T> {
 		throw new IllegalStateException("not found.");
 	}
 
+	public T aggregate(Func2<T, T, T> compare) {
+		T tmp = null;
+
+		for(T obj : _items) {
+			tmp = tmp == null ? obj : compare.call(tmp, obj);
+		}
+
+		return tmp;
+	}
+
 	public Linq<T> distinct() {
 		ArrayList<T> list = new ArrayList<T>();
 
@@ -412,9 +424,14 @@ public final class Linq<T> implements Iterable<T> {
 		return map;
 	}
 
-	@SuppressWarnings("unchecked")
-	public T[] toArray() {
-		return (T[]) toList().toArray();
+	public Set<T> toSet() {
+		Set<T> set = new HashSet<T>();
+		for(T obj : _items) set.add(obj);
+		return set;
+	}
+
+	public T[] toArray(T[] ts) {
+		return toList().toArray(ts);
 	}
 
 	public static int[] toIntArray(Linq<Integer> linq) {
@@ -490,12 +507,29 @@ public final class Linq<T> implements Iterable<T> {
 	}
 
 	public static String toJoinedString(Linq<String> linq, String delimiter) {
+		return toJoinedString(linq.toList(), delimiter);
+	}
+
+	public static String toJoinedString(List<String> list, String delimiter) {
 		StringBuilder sb = new StringBuilder();
-		for (String item : linq) {
+		for (String item : list) {
 			sb.append(item).append(delimiter);
 		}
 
-		sb.deleteCharAt(sb.length() - 1);
+		int builderLength = sb.length();
+		sb.delete((builderLength - delimiter.length()), builderLength);
+
+		return sb.toString();
+	}
+
+	public static String toJoinedString(String[] array, String delimiter) {
+		StringBuilder sb = new StringBuilder();
+		for (String item : array) {
+			sb.append(item).append(delimiter);
+		}
+
+		int builderLength = sb.length() - 1;
+		sb.delete((builderLength - delimiter.length()), builderLength);
 
 		return sb.toString();
 	}

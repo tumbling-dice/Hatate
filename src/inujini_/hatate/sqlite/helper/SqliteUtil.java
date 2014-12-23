@@ -10,7 +10,6 @@
 package inujini_.hatate.sqlite.helper;
 
 import inujini_.hatate.function.Function.Action1;
-import inujini_.hatate.function.Function.Action2;
 import inujini_.hatate.function.Function.Func1;
 import inujini_.hatate.function.Function.Predicate;
 import inujini_.hatate.linq.Linq;
@@ -25,7 +24,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import lombok.val;
 import lombok.experimental.ExtensionMethod;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -33,6 +34,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 @ExtensionMethod({Linq.class})
 public class SqliteUtil {
+
+	public static interface ErrorHandler {
+		public boolean onError(SQLiteDatabase db, RuntimeException e);
+		public void recovery(SQLiteDatabase db);
+	}
 
 	/**
 	 * DBから要素を取得
@@ -42,11 +48,11 @@ public class SqliteUtil {
 	 * @param f CursorからTを抽出するFunc
 	 * @return 要素が見つからない場合はNull
 	 */
-	public static <T> T get(SQLiteOpenHelper helper, String query, Context cont, Func1<Cursor, T> f) {
+	public static <T> T get(SQLiteOpenHelper helper, String query, Context context, Func1<Cursor, T> f) {
 
 		SQLiteDatabase db = helper.getReadableDatabase();
 
-		if(!isMainThread(cont)) db.acquireReference();
+		if(!isMainThread(context)) db.acquireReference();
 
 		Cursor c = null;
 
@@ -83,12 +89,12 @@ public class SqliteUtil {
 	 * @param context
 	 * @return 要素が見つからない場合は空のリスト
 	 */
-	public static <T> List<T> getList(SQLiteOpenHelper helper, String query, Context cont, Func1<Cursor, T> f) {
+	public static <T> List<T> getList(SQLiteOpenHelper helper, String query, Context context, Func1<Cursor, T> f) {
 
 		List<T> dataList = new ArrayList<T>();
 
 		SQLiteDatabase db = helper.getReadableDatabase();
-		if(!isMainThread(cont)) db.acquireReference();
+		if(!isMainThread(context)) db.acquireReference();
 
 		Cursor c = null;
 		try {
@@ -116,13 +122,13 @@ public class SqliteUtil {
 		return dataList;
 	}
 
-	public static <K, V> Map<K, V> getMap(SQLiteOpenHelper helper, String query, Context cont
+	public static <K, V> Map<K, V> getMap(SQLiteOpenHelper helper, String query, Context context
 			, Func1<Cursor, K> keyProvider, Func1<Cursor, V> valueProvider) {
 
 		Map<K, V> map = new HashMap<K, V>();
 
 		SQLiteDatabase db = helper.getReadableDatabase();
-		if(!isMainThread(cont)) db.acquireReference();
+		if(!isMainThread(context)) db.acquireReference();
 
 		Cursor c = null;
 		try {
@@ -155,55 +161,304 @@ public class SqliteUtil {
 	 * トランザクション処理
 	 * @param helper
 	 * @param context
-	 * @param act 実行内容
+	 * @param onTransaction
 	 */
-	public static void transaction(SQLiteOpenHelper helper, Context cont, Action1<SQLiteDatabase> act) {
-		transaction(helper, cont, act, null, null);
+	public static void transaction(SQLiteOpenHelper helper, Context context, Action1<SQLiteDatabase> onTransaction) {
+		transaction(helper, context, onTransaction, null);
 	}
 
 	/**
 	 * トランザクション処理
 	 * @param helper
-	 * @param cont
-	 * @param act 実行内容
-	 * @param onError catch節で実行する内容
+	 * @param context
+	 * @param onTransaction 実行内容
+	 * @param errorHandler
 	 */
-	public static void transaction(SQLiteOpenHelper helper, Context cont, Action1<SQLiteDatabase> act
-			, Action2<RuntimeException, SQLiteDatabase> onError) {
-		transaction(helper, cont, act, onError, null);
-	}
-
-	/**
-	 * トランザクション処理
-	 * @param helper
-	 * @param cont
-	 * @param act 実行内容
-	 * @param onError catch節で実行する内容
-	 * @param finallyAct finally節で実行する内容(endTransactionは必ず呼ばれる)
-	 */
-	public static void transaction(SQLiteOpenHelper helper, Context cont
-			, Action1<SQLiteDatabase> act, Action2<RuntimeException, SQLiteDatabase> onError, Action1<SQLiteDatabase> finallyAct) {
+	public static void transaction(SQLiteOpenHelper helper, Context context, Action1<SQLiteDatabase> onTransaction
+		, ErrorHandler errorHandler) {
 
 		SQLiteDatabase db = helper.getWritableDatabase();
-		if(!isMainThread(cont)) db.acquireReference();
+		if(!isMainThread(context)) db.acquireReference();
 
 		db.beginTransaction();
 		try {
-			act.call(db);
+			onTransaction.call(db);
 			if(db.isOpen()) db.setTransactionSuccessful();
 		} catch(RuntimeException e) {
-			if(onError != null) {
-				onError.call(e, db);
-			} else {
+			if(errorHandler == null || !errorHandler.onError(db, e)) {
 				throw e;
 			}
 		} finally {
-			if(finallyAct != null) finallyAct.call(db);
+			if(errorHandler != null) errorHandler.recovery(db);
 			if(db.isOpen()) {
 				db.endTransaction();
 				helper.close();
 			}
 		}
+	}
+
+	/**
+	 * SELECT *
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param converter 取得したカーソルの変換
+	 * @return
+	 */
+	public static <R> List<R> selectAll(SQLiteOpenHelper helper, Context context, String tableName
+		, Func1<Cursor, R> converter) {
+		return getList(helper, new QueryBuilder().selectAll().from(tableName).toString()
+			, context, converter);
+	}
+
+	/**
+	 * INSERT
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param columns INSERTするカラムと値のペア
+	 */
+	public static void insert(SQLiteOpenHelper helper, Context context, String tableName
+		, ColumnValuePair... columns) {
+		insert(helper, context, tableName, columns, null);
+	}
+
+	/**
+	 * INSERT
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param cv INSERTする値
+	 */
+	public static void insert(SQLiteOpenHelper helper, Context context, String tableName
+		, ContentValues cv) {
+		insert(helper, context, tableName, cv, null);
+	}
+
+	/**
+	 * INSERT
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param columns INSERTするカラムと値のペア
+	 * @param errorHandler エラー時処理
+	 */
+	public static void insert(SQLiteOpenHelper helper, Context context, final String tableName
+		, final ColumnValuePair[] columns, ErrorHandler errorHandler) {
+
+		val cv = new ContentValues();
+		for(val c : columns) {
+			val v = c.getValue();
+			if(v != null) cv.put(c.getColumn().getColumnName(), v);
+		}
+		insert(helper, context, tableName, columns, errorHandler);
+	}
+
+	/**
+	 * INSERT
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param cv INSERTする値
+	 * @param errorHandler エラー時処理
+	 */
+	public static void insert(SQLiteOpenHelper helper, Context context, final String tableName
+		, final ContentValues cv, ErrorHandler errorHandler) {
+		transaction(helper, context, new Action1<SQLiteDatabase>() {
+			@Override
+			public void call(SQLiteDatabase db) {
+				db.insert(tableName, null, cv);
+			}
+		}, errorHandler);
+	}
+
+	/**
+	 * REPLACE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param columns INSERT or UPDATEするカラムと値のペア
+	 */
+	public static void replace(SQLiteOpenHelper helper, Context context, String tableName
+		, ColumnValuePair... columns) {
+		replace(helper, context, tableName, columns, null);
+	}
+
+	/**
+	 * REPLACE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param cv INSERT or UPDATEする値
+	 */
+	public static void replace(SQLiteOpenHelper helper, Context context, String tableName
+		, ContentValues cv) {
+		replace(helper, context, tableName, cv, null);
+	}
+
+	/**
+	 * REPLACE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param columns INSERT or UPDATEするカラムと値のペア
+	 * @param errorHandler エラー時処理
+	 */
+	public static void replace(SQLiteOpenHelper helper, Context context, final String tableName
+		, final ColumnValuePair[] columns, ErrorHandler errorHandler) {
+		val cv = new ContentValues();
+		for(val c : columns) {
+			val v = c.getValue();
+			if(v != null) cv.put(c.getColumn().getColumnName(), v);
+		}
+		replace(helper, context, tableName, columns, errorHandler);
+	}
+
+	/**
+	 * REPLACE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param cv INSERT or UPDATEする値
+	 * @param errorHandler エラー時処理
+	 */
+	public static void replace(SQLiteOpenHelper helper, Context context, final String tableName
+		, final ContentValues cv, ErrorHandler errorHandler) {
+		transaction(helper, context, new Action1<SQLiteDatabase>() {
+			@Override
+			public void call(SQLiteDatabase db) {
+				db.replace(tableName, null, cv);
+			}
+		}, errorHandler);
+	}
+
+	/**
+	 * UPDATE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param updateColumns UPDATEするカラムと値のペア
+	 * @param whereColumns WHEREの条件とするカラムと値のペア
+	 */
+	public static void update(SQLiteOpenHelper helper, Context context, String tableName
+		, ColumnValuePair[] updateColumns, ColumnValuePair... whereColumns) {
+		update(helper, context, tableName, updateColumns, whereColumns, null);
+	}
+
+	/**
+	 * UPDATE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param cv UPDATEする値
+	 * @param whereColumns WHEREの条件とするカラムと値のペア
+	 */
+	public static void update(SQLiteOpenHelper helper, Context context, String tableName
+		, ContentValues cv, ColumnValuePair... whereColumns) {
+		update(helper, context, tableName, cv, whereColumns, null);
+	}
+
+	/**
+	 * UPDATE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param updateColumns UPDATEするカラムと値のペア
+	 * @param whereColumns WHEREの条件とするカラムと値のペア
+	 * @param errorHandler エラー時処理
+	 */
+	public static void update(SQLiteOpenHelper helper, Context context, final String tableName
+		, final ColumnValuePair[] updateColumns, final ColumnValuePair[] whereColumns
+		, ErrorHandler errorHandler) {
+		val cv = new ContentValues();
+		for(val c : updateColumns) {
+			val v = c.getValue();
+			if(v != null) cv.put(c.getColumn().getColumnName(), v);
+		}
+		update(helper, context, tableName, cv, whereColumns, errorHandler);
+	}
+
+	/**
+	 * UPDATE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param cv UPDATEする値
+	 * @param whereColumns WHEREの条件とするカラムと値のペア
+	 * @param errorHandler エラー時処理
+	 */
+	public static void update(SQLiteOpenHelper helper, Context context, final String tableName
+		, final ContentValues cv, final ColumnValuePair[] whereColumns
+		, ErrorHandler errorHandler) {
+		transaction(helper, context, new Action1<SQLiteDatabase>() {
+			@Override
+			public void call(SQLiteDatabase db) {
+
+				val linq = whereColumns.linq();
+
+				val q = linq.select(new Func1<ColumnValuePair, String>() {
+					@Override
+					public String call(ColumnValuePair x) {
+						return String.format("%s = ?", x.getColumn().getColumnName());
+					}
+				}).toJoinedString(" AND ");
+
+				String[] v = linq.select(new Func1<ColumnValuePair, String>() {
+					@Override
+					public String call(ColumnValuePair x) {
+						return x.getValue();
+					}
+				}).toArray(new String[0]);
+
+				db.update(tableName, cv, q, v);
+			}
+		}, errorHandler);
+	}
+
+	/**
+	 * DELETE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param whereColumns WHEREの条件とするカラムと値のペア
+	 */
+	public static void delete(SQLiteOpenHelper helper, Context context, String tableName
+		, ColumnValuePair... whereColumns) {
+		delete(helper, context, tableName, whereColumns, null);
+	}
+
+	/**
+	 * DELETE
+	 * @param helper
+	 * @param context
+	 * @param tableName テーブル名
+	 * @param whereColumns WHEREの条件とするカラムと値のペア
+	 * @param errorHandler エラー時処理
+	 */
+	public static void delete(SQLiteOpenHelper helper, Context context, final String tableName
+		, final ColumnValuePair[] whereColumns, ErrorHandler errorHandler) {
+		transaction(helper, context, new Action1<SQLiteDatabase>() {
+			@Override
+			public void call(SQLiteDatabase db) {
+				val linq = whereColumns.linq();
+
+				val q = linq.select(new Func1<ColumnValuePair, String>() {
+					@Override
+					public String call(ColumnValuePair x) {
+						return String.format("%s = ?", x.getColumn().getColumnName());
+					}
+				}).toJoinedString(" AND ");
+
+				String[] v = linq.select(new Func1<ColumnValuePair, String>() {
+					@Override
+					public String call(ColumnValuePair x) {
+						return x.getValue();
+					}
+				}).toArray(new String[0]);
+
+				db.delete(tableName, q, v);
+			}
+		}, errorHandler);
 	}
 
 	public static String getTableName(Class<? extends ISqlite> clazz) {
@@ -346,7 +601,7 @@ public class SqliteUtil {
 		return getDropTableQuery(clazz) + getCreateTableQuery(clazz);
 	}
 
-	private static boolean isMainThread(Context cont) {
-		return Thread.currentThread().equals(cont.getMainLooper().getThread());
+	private static boolean isMainThread(Context context) {
+		return Thread.currentThread().equals(context.getMainLooper().getThread());
 	}
 }

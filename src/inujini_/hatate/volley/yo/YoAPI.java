@@ -9,25 +9,31 @@
 
 package inujini_.hatate.volley.yo;
 
+import inujini_.hatate.volley.WebAPI;
+
+import com.android.volley.Request.Method;
+
 import lombok.Getter;
 
 /**
  * Yoで使用できるAPIのWrapper.
  * @see YoRequest
  */
-public enum YoAPI {
+public enum YoAPI implements WebAPI {
 	/** Yo (http://api.justyo.co/yo/) */
-	Yo("http://api.justyo.co/yo/"),
+	Yo("http://api.justyo.co/yo/", Method.POST),
 	/** YoAll (http://api.justyo.co/yoall/) */
-	YoAll("http://api.justyo.co/yoall/"),
+	YoAll("http://api.justyo.co/yoall/", Method.POST),
 	/** Accounts (https://api.justyo.co/accounts/) */
-	Accounts("https://api.justyo.co/accounts/"),
+	Accounts("https://api.justyo.co/accounts/", Method.POST),
 	/** SubscribersCount (https://api.justyo.co/subscribers_count/) */
-	SubscribersCount("https://api.justyo.co/subscribers_count/");
+	SubscribersCount("https://api.justyo.co/subscribers_count/", Method.GET);
 
-	@Getter private final String value;
+	@Getter private final String endPoint;
+	@Getter private final int method;
 
-	private YoAPI(String value) {
-		this.value = value;
+	private YoAPI(String endPoint, int method) {
+		this.endPoint = endPoint;
+		this.method = method;
 	}
 }

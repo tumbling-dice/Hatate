@@ -34,4 +34,9 @@ public class RebootReceiver extends AsyncBroadcastReceiver {
 
 	}
 
+	@Override
+	protected void onUIThread(Context context, Intent intent) {
+		// not implement
+	}
+
 }

@@ -40,4 +40,9 @@ public class UpdateReceiver extends AsyncBroadcastReceiver {
 		}
 	}
 
+	@Override
+	protected void onUIThread(Context context, Intent intent) {
+		// not implement
+	}
+
 }

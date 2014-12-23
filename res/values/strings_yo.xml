@@ -8,7 +8,7 @@
 -->
 
 <resources>
-    <string name="yo_api_key"></string>
+    <string name="yo_api_key">19e12ccc-1803-4c59-a71f-64e58f057b94</string>
     <string name="yo_invate_uri">http://justyo.co/HATATE</string>
     <string name="yo_package">com.justyo</string>
     <string name="yo_folk_url">https://tumbling-dice.github.io/Hatate/yo.html</string>
