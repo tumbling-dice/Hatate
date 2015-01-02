@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    HatateHoutyouAlarm
+    Copyright (c) 2014 @inujini_ (https://twitter.com/inujini_)
+
+    This software is released under the MIT License.
+    http://opensource.org/licenses/mit-license.php
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <TextView
+        android:id="@+id/txvDate"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000"
+        android:textSize="18sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+        <TextView
+            android:id="@+id/txvWeather"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="#000" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txvMaxTemp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000" />
+    <TextView
+        android:id="@+id/txvMinTemp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000" />
+</LinearLayout>

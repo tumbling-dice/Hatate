@@ -46,8 +46,10 @@ public class OnStartActivity extends Activity {
 			@Override
 			public void call(Void x) {
 				// check current version
-				AppHatate.getRequestQueue(getApplicationContext())
-					.add(new StringRequest("https://tumbling-dice.github.io/Hatate/ver.txt", new Listener<String>() {
+				val q = AppHatate.getRequestQueue(getApplicationContext());
+				q.getCache().remove("https://tumbling-dice.github.io/Hatate/ver.txt");
+
+				q.add(new StringRequest("https://tumbling-dice.github.io/Hatate/ver.txt", new Listener<String>() {
 						@Override
 						public void onResponse(String response) {
 							val context = getApplicationContext();
@@ -87,7 +89,7 @@ public class OnStartActivity extends Activity {
 						public void onErrorResponse(VolleyError error) {
 							startMainActivity();
 						}
-					}));
+					})).setShouldCache(false);
 			}
 		});
 

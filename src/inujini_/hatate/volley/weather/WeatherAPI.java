@@ -17,7 +17,9 @@ import android.content.Context;
 import com.android.volley.Request.Method;
 
 public enum WeatherAPI implements WebAPI {
-	Current("http://api.openweathermap.org/data/2.5/weather", Method.GET);
+	CURRENT("http://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&APPID=%s&mode=json&units=metric", Method.GET),
+	WEAKLY("http://api.openweathermap.org/data/2.5/forecast/daily?lat=%f&lon=%f&APPID=%s&cnt=7&mode=json&units=metric"
+			, Method.GET);
 
 	@Getter private final String endPoint;
 	@Getter private final int method;
@@ -29,6 +31,10 @@ public enum WeatherAPI implements WebAPI {
 
 	public static String getKey(Context context) {
 		return context.getString(R.string.weather_api_key);
+	}
+
+	public String getEndPoint(double latitude, double longitude, Context context) {
+		return String.format(this.endPoint, latitude, longitude, getKey(context));
 	}
 
 }

@@ -19,8 +19,7 @@ import inujini_.hatate.sqlite.dao.SpellCardDao;
 import inujini_.hatate.sqlite.dao.StatisticsDao;
 import inujini_.hatate.util.IconUtil;
 import inujini_.hatate.util.PrefGetter;
-import inujini_.hatate.volley.weather.WeatherAPI;
-import inujini_.hatate.volley.weather.WeatherRequest;
+import inujini_.hatate.volley.weather.WeatherManager;
 import inujini_.hatate.volley.weather.WeatherResponse;
 import inujini_.hatate.volley.yo.YoParam;
 import inujini_.hatate.volley.yo.YoRequest;
@@ -36,11 +35,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -56,6 +50,7 @@ import com.android.volley.VolleyError;
 @ExtensionMethod({PrefGetter.class})
 public class Houtyou extends PierceReceiver {
 
+	private static final String TAG = "Houtyou";
 
 	// These KILL fields do not use any longer.
 	// But these need to switch from SharedPreference to SQLite, have been left.
@@ -69,7 +64,7 @@ public class Houtyou extends PierceReceiver {
 
 	@SuppressLint("DefaultLocale")
 	@Override
-	public void onPierced(final Context context, Intent intent) {
+	public void onAfterPierced(final Context context, Intent intent) {
 		val isPreview = intent.getBooleanExtra(KEY_IS_PREVIEW, false);
 
 		if(!isPreview || DEBUG) {
@@ -154,16 +149,16 @@ public class Houtyou extends PierceReceiver {
 					, new Response.Listener<String>() {
 						@Override
 						public void onResponse(String response) {
-							Log.d("Houtyou", "success yo all.");
+							Log.d(TAG, "success yo all.");
 						}
 					}, new Response.ErrorListener() {
 						@Override
 						public void onErrorResponse(VolleyError error) {
 							if(error.networkResponse == null) {
-								Log.d("Houtyou"
+								Log.d(TAG
 									, String.format("error yo all. message:%s", error.getMessage()));
 							} else {
-								Log.d("Houtyou"
+								Log.d(TAG
 									, String.format("error yo all. statuscode:%d message:%s"
 										, error.networkResponse.statusCode
 										, error.getMessage()));
@@ -180,71 +175,40 @@ public class Houtyou extends PierceReceiver {
 	protected void onUIThread(final Context context, Intent intent) {
 		// 天気予報
 		if(PrefGetter.isWeather(context)) {
-			val locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-			val criteria = new Criteria();
-			criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-			criteria.setPowerRequirement(Criteria.POWER_LOW);
-			val provider = locationManager.getBestProvider(criteria, true);
-
-			locationManager.requestLocationUpdates(provider, 0, 0, new LocationListener() {
+			new WeatherManager(context).getCurrent(new Listener<WeatherResponse>() {
 				@Override
-				public void onStatusChanged(String _, int status, Bundle extras) {
-					// not implement
+				public void onResponse(WeatherResponse response) {
+					// 通知
+					val notifyManager
+						= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+					val data = response.getDatas().get(0);
+
+					val notify = new NotificationCompat.Builder(context)
+								.setSmallIcon(R.drawable.ic_launcher)
+								.setTicker(String.format("%s : %s"
+										, response.getName(), data.getWeather()))
+								.setWhen(System.currentTimeMillis())
+								.setContentTitle("はたてちゃん天気予報")
+								.setContentText(String.format("今日の天気 ： %s\n最高気温:%.1f℃　最低気温：%.1f℃"
+										, data.getWeather()
+										, data.getMaxTemp()
+										, data.getMinTemp()));
+
+					notifyManager.notify(NOTIFY_WEATHER_REPORT, notify.build());
 				}
+			}, new ErrorListener() {
 				@Override
-				public void onProviderEnabled(String _) {
-					// not implement
-				}
-				@Override
-				public void onProviderDisabled(String _) {
-					// not implement
-				}
-
-				@Override
-				public void onLocationChanged(Location location) {
-
-					if(locationManager != null) locationManager.removeUpdates(this);
-
-					val latitude = location.getLatitude();
-					val longitude = location.getLongitude();
-
-					AppHatate.getRequestQueue(context)
-						.add(new WeatherRequest(WeatherAPI.Current, latitude, longitude, WeatherAPI.getKey(context)
-								, new Listener<WeatherResponse>() {
-								@Override
-								public void onResponse(WeatherResponse response) {
-									// 通知
-									val notifyManager
-										= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-									val notify = new NotificationCompat.Builder(context)
-												.setSmallIcon(R.drawable.ic_launcher)
-												.setTicker(String.format("%s : %s"
-														, response.getName(), response.getWeather()))
-												.setWhen(System.currentTimeMillis())
-												.setContentTitle("はたてちゃん天気予報")
-												.setContentText(String.format("今日の天気 ： %s\n最高気温:%.1f℃　最低気温：%.1f℃"
-														, response.getWeather()
-														, response.getMaxTemp()
-														, response.getMinTemp()));
-
-									notifyManager.notify(NOTIFY_WEATHER_REPORT, notify.build());
-								}
-							}, new ErrorListener() {
-							@Override
-							public void onErrorResponse(VolleyError error) {
-								if(error.networkResponse == null) {
-									Log.d("Houtyou"
-										, String.format("error weather report. message:%s", error.getMessage()));
-								} else {
-									Log.d("Houtyou"
-										, String.format("error weather report. statuscode:%d message:%s"
-											, error.networkResponse.statusCode
-											, error.getMessage()));
-								}
-							}
-						}));
-
+				public void onErrorResponse(VolleyError error) {
+					if(error.networkResponse == null) {
+						Log.d("Houtyou"
+							, String.format("error weather report. message:%s", error.getMessage()));
+					} else {
+						Log.d("Houtyou"
+							, String.format("error weather report. statuscode:%d message:%s"
+								, error.networkResponse.statusCode
+								, error.getMessage()));
+					}
 				}
 			});
 		}

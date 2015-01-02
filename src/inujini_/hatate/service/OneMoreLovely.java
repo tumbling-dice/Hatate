@@ -19,7 +19,7 @@ import android.content.Intent;
 public class OneMoreLovely extends PierceReceiver {
 
 	@Override
-	public void onPierced(Context context, Intent intent) {
+	public void onAfterPierced(Context context, Intent intent) {
 		Util.setSnooze(context);
 	}
 

@@ -78,6 +78,16 @@
             android:summary="実際に刺されるとどうなるのか見てみます。"
             android:icon="@drawable/ic_play_arrow_black_24dp"/>
         <inujini_.hatate.preference.IconPreference
+            android:key="weather"
+            android:title="週間はたてちゃん天気予報"
+            android:summary="はたてちゃんによるクッソガバガバな天気予報をお楽しみください。"
+            android:icon="@drawable/ic_cloud_black_24dp">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="inujini_.hatate"
+                android:targetClass="inujini_.hatate.WeatherActivity" />
+        </inujini_.hatate.preference.IconPreference>
+        <inujini_.hatate.preference.IconPreference
             android:key="account"
             android:title="Twitterアカウント"
             android:summary="Twitter連携するアカウントを管理します。"

@@ -28,15 +28,7 @@ import android.widget.CheckedTextView;
  */
 public class AccountAdapter extends ArrayAdapter<TwitterAccount> {
 
-	static class ViewHolder {
-		CheckedTextView name;
-
-		ViewHolder(View v) {
-			name = (CheckedTextView) v.findViewById(android.R.id.text1);
-		}
-	}
-
-	private LayoutInflater _inflater;
+	private final LayoutInflater _inflater;
 
 	/**
 	 * TwitterAccountを表示するArrayAdapter
@@ -49,17 +41,25 @@ public class AccountAdapter extends ArrayAdapter<TwitterAccount> {
 		_inflater = LayoutInflater.from(context);
 	}
 
+	static class AccountViewHolder {
+		CheckedTextView name;
+
+		AccountViewHolder(View v) {
+			name = (CheckedTextView) v.findViewById(android.R.id.text1);
+		}
+	}
+
 	@Override
 	public View getView(int position, View convertView, final ViewGroup parent) {
 		View view = convertView;
-		ViewHolder vh = null;
+		AccountViewHolder vh = null;
 
 		if(view == null) {
 			view = _inflater.inflate(R.layout.adapter_account_list, null);
-			vh = new ViewHolder(view);
+			vh = new AccountViewHolder(view);
 			view.setTag(vh);
 		} else {
-			vh = (ViewHolder) view.getTag();
+			vh = (AccountViewHolder) view.getTag();
 		}
 
 		val item = getItem(position);

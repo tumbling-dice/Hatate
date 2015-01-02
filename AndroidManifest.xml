@@ -8,8 +8,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="inujini_.hatate"
-    android:versionCode="18"
-    android:versionName="1.2.6" >
+    android:versionCode="19"
+    android:versionName="1.2.7" >
 
     <uses-sdk
         android:minSdkVersion="4"
@@ -64,6 +64,9 @@
 
         <activity android:name="inujini_.hatate.SpellCardLibraryActivity"
             android:label="@string/title_spellcard_library"/>
+
+        <activity android:name="inujini_.hatate.WeatherActivity"
+            android:label="@string/title_weather"/>
 
         <!-- BroadcastReceivers -->
         <receiver android:name="inujini_.hatate.service.Houtyou" android:process=":remote"/>

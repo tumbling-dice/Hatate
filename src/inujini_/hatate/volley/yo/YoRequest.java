@@ -38,11 +38,11 @@ public class YoRequest extends StringRequest {
 	 * @param errorListener エラー時処理
 	 * @return
 	 * @see YoParam
-	 * @see YoAPI#Yo
+	 * @see YoAPI#YO
 	 */
 	public static YoRequest yo(YoParam param
 		, Response.Listener<String> listener, Response.ErrorListener errorListener) {
-		return new YoRequest(param, YoAPI.Yo, listener, errorListener);
+		return new YoRequest(param, YoAPI.YO, listener, errorListener);
 	}
 
 	/**
@@ -52,11 +52,11 @@ public class YoRequest extends StringRequest {
 	 * @param errorListener エラー時処理
 	 * @return
 	 * @see YoParam
-	 * @see YoAPI#YoAll
+	 * @see YoAPI#YO_ALL
 	 */
 	public static YoRequest yoAll(YoParam param
 		, Response.Listener<String> listener, Response.ErrorListener errorListener) {
-		return new YoRequest(param, YoAPI.YoAll, listener, errorListener);
+		return new YoRequest(param, YoAPI.YO_ALL, listener, errorListener);
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class YoRequest extends StringRequest {
 	 * @param errorListener エラー時処理
 	 * @return
 	 * @see YoAccount
-	 * @see YoAPI#Accounts
+	 * @see YoAPI#ACCOUNTS
 	 */
 	public static YoRequest accounts(YoAccount accounts
 		, Response.Listener<String> listener, Response.ErrorListener errorListener) {
@@ -78,7 +78,7 @@ public class YoRequest extends StringRequest {
 	 * @param apiToken api_token
 	 * @param listener 成功時処理
 	 * @param errorListener エラー時処理
-	 * @see YoAPI#SubscribersCount
+	 * @see YoAPI#SUBSCRIBERS_COUNT
 	 */
 	public static YoRequest subscribersCount(String apiToken
 		, Response.Listener<String> listener, Response.ErrorListener errorListener) {
@@ -96,18 +96,18 @@ public class YoRequest extends StringRequest {
 	/* accounts */
 	private YoRequest(YoAccount accounts
 		, Response.Listener<String> listener, Response.ErrorListener errorListener) {
-		super(Request.Method.POST, YoAPI.Accounts.getEndPoint(), listener, errorListener);
+		super(Request.Method.POST, YoAPI.ACCOUNTS.getEndPoint(), listener, errorListener);
 		_accounts = accounts;
-		_api = YoAPI.Accounts;
+		_api = YoAPI.ACCOUNTS;
 	}
 
 	/* subscribers_count */
 	private YoRequest(String apiToken
 		, Response.Listener<String> listener, Response.ErrorListener errorListener) {
 		// Note: subscribers_countだけは現状GETメソッドとなっている
-		super(Request.Method.GET, YoAPI.SubscribersCount.getEndPoint() + String.format("?api_token=%s", apiToken)
+		super(Request.Method.GET, YoAPI.SUBSCRIBERS_COUNT.getEndPoint() + String.format("?api_token=%s", apiToken)
 			, listener, errorListener);
-		_api = YoAPI.SubscribersCount;
+		_api = YoAPI.SUBSCRIBERS_COUNT;
 	}
 
 	@Override
@@ -130,7 +130,7 @@ public class YoRequest extends StringRequest {
 
 		switch(_api) {
 		// yo
-		case Yo:
+		case YO:
 			param.put("username", _param.getUserName());
 			param.put("api_token", _param.getApiToken());
 
@@ -144,14 +144,14 @@ public class YoRequest extends StringRequest {
 			}
 			break;
 		// yoall
-		case YoAll:
+		case YO_ALL:
 			param.put("api_token", _param.getApiToken());
 			if(_param.getLink() != null) {
 				param.put("link", _param.getLink());
 			}
 			break;
 		// accounts
-		case Accounts:
+		case ACCOUNTS:
 			param.put("new_account_username", _accounts.getNewAccountUserName());
 			param.put("new_account_passcode", _accounts.getNewAccountPasscode());
 			param.put("api_token", _accounts.getApiToken());
@@ -173,7 +173,7 @@ public class YoRequest extends StringRequest {
 			}
 
 			break;
-		case SubscribersCount:
+		case SUBSCRIBERS_COUNT:
 			break;
 		default:
 			break;

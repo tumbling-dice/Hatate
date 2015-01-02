@@ -90,15 +90,14 @@ public abstract class PierceReceiver extends AsyncBroadcastReceiver {
 			Util.setSnooze(context);
 		}
 
-		onPierced(context, intent);
+		onAfterPierced(context, intent);
 	}
 
-	// FIXME: fix name: onPierced -> onAfterPierced
 	/**
 	 * 通知処理が終わった後の処理.
 	 * @param context
 	 * @param intent
 	 */
-	public abstract void onPierced(Context context, Intent intent);
+	public abstract void onAfterPierced(Context context, Intent intent);
 
 }

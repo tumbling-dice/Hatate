@@ -43,12 +43,12 @@ public class SpellCardHistoryAdapter extends ArrayAdapter<SpellCardHistory> {
 		_inflater = LayoutInflater.from(context);
 	}
 
-	static class ViewHolder {
+	static class SpellCardHistoryViewHolder {
 		TextView name;
 		TextView timestamp;
 		ImageView icon;
 
-		ViewHolder(View v) {
+		SpellCardHistoryViewHolder(View v) {
 			name = (TextView) v.findViewById(R.id.txvName);
 			timestamp = (TextView) v.findViewById(R.id.txvTimestamp);
 			icon = (ImageView) v.findViewById(android.R.id.icon);
@@ -58,14 +58,14 @@ public class SpellCardHistoryAdapter extends ArrayAdapter<SpellCardHistory> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = convertView;
-		ViewHolder vh;
+		SpellCardHistoryViewHolder vh;
 
 		if(convertView == null) {
 			view = _inflater.inflate(R.layout.adapter_spellcard_history, null);
-			vh = new ViewHolder(view);
+			vh = new SpellCardHistoryViewHolder(view);
 			view.setTag(vh);
 		} else {
-			vh = (ViewHolder) view.getTag();
+			vh = (SpellCardHistoryViewHolder) view.getTag();
 		}
 
 		val data = getItem(position);

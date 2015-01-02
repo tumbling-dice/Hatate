@@ -21,13 +21,13 @@ import lombok.Getter;
  */
 public enum YoAPI implements WebAPI {
 	/** Yo (http://api.justyo.co/yo/) */
-	Yo("http://api.justyo.co/yo/", Method.POST),
+	YO("http://api.justyo.co/yo/", Method.POST),
 	/** YoAll (http://api.justyo.co/yoall/) */
-	YoAll("http://api.justyo.co/yoall/", Method.POST),
+	YO_ALL("http://api.justyo.co/yoall/", Method.POST),
 	/** Accounts (https://api.justyo.co/accounts/) */
-	Accounts("https://api.justyo.co/accounts/", Method.POST),
+	ACCOUNTS("https://api.justyo.co/accounts/", Method.POST),
 	/** SubscribersCount (https://api.justyo.co/subscribers_count/) */
-	SubscribersCount("https://api.justyo.co/subscribers_count/", Method.GET);
+	SUBSCRIBERS_COUNT("https://api.justyo.co/subscribers_count/", Method.GET);
 
 	@Getter private final String endPoint;
 	@Getter private final int method;

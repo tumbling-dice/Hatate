@@ -8,5 +8,5 @@
 -->
 
 <resources>
-    <string name="weather_api_key">e88ca95a06b9c05adafc5a1ba71293c2</string>
+    <string name="weather_api_key"></string>
 </resources>
